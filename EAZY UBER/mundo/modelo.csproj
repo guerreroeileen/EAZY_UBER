@@ -47,5 +47,11 @@
     <Compile Include="Usuario.cs" />
     <Compile Include="Vehiculo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Excepciones\Excepciones.csproj">
+      <Project>{46B3A480-FA0C-409A-831D-06CD34FD4E29}</Project>
+      <Name>Excepciones</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
