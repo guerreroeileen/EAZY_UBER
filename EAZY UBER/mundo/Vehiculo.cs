@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace mundo
 {
-    class Vehiculo
+    public class Vehiculo
     {
         private string placa;
         private string color;

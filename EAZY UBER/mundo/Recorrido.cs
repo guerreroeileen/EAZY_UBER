@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace mundo
 {
-    class Recorrido
+    public class Recorrido
     {
         private Double tarifa;
         private string fecha;

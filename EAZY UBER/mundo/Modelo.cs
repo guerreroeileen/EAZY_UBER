@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace mundo
 {
-    class Modelo
+    public class Modelo
     {
     }
 }

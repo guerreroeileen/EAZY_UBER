@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace mundo
 {
-    class Usuario
+    public class Usuario
     {
 
 
