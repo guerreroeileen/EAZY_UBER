@@ -126,6 +126,28 @@ namespace mundo
         }
 
 
+
+        public Boolean eliminarVehiculo (string placa)
+        {
+            bool eliminado = false;
+            if (vehiculos.Where(z=> z.Placa.Equals(placa)).First() != null)
+            {
+                vehiculos.Remove(vehiculos.Where(z => z.Placa.Equals(placa)).First());
+                eliminado = vehiculos.Contains(vehiculos.Where(z => z.Placa.Equals(placa)).First());
+            }
+            else
+            {
+                throw new AgregarVehiculoExcepcion("El vehiculo que esta intentando eliminar no existe");
+            }
+            
+            return eliminado;
+        }
+
+
+
+
+
+
         public string Nombre { get => nombre; set => nombre = value; }
         public string Apellido { get => apellido; set => apellido = value; }
         public string Celular { get => celular; set => celular = value; }
