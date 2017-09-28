@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace EAZY_UBER
 {
-    public partial class Form1 : Form
+    public partial class RegistroVehiculo : Form
     {
-        public Form1()
+        public RegistroVehiculo()
         {
             InitializeComponent();
         }
