@@ -70,15 +70,19 @@ namespace mundo
 
 
 
-        public Boolean registrarRuta()
+        public Boolean registrarRuta(String nombre, Tuple<double, double> inicio, Tuple<double, double> fin, List<Tuple<double, double>> puntos, string descripcion) 
         {
-            bool registrado = false;
+            bool registrado = true;
 
+            if (nombre != null) { throw new AgregarRutaExcepcion("Debe agregar el nombre de la ruta"); }
+            if ((rutas.Find(x => x.Nombre.Equals(nombre))==null)){ throw new AgregarRutaExcepcion("El nombre de la ruta ya existe! Debe elegir otro nombre"); }
+            if (inicio != null) { throw new AgregarRutaExcepcion("Debe agregar el nombre de la ruta"); }
+            if (fin != null) { throw new AgregarRutaExcepcion("Debe agregar el nombre de la ruta"); }
+            if (puntos != null) { throw new AgregarRutaExcepcion("Debe agregar el nombre de la ruta"); }
+            if (descripcion == null) { descripcion=""; } //Descripcion puede ser opcional.. creo que siempre se retorna "" pero por si las moscas
 
-            // no lo hice porque aun no tengo claro como vas a trabajar la ruta
-
-
-
+            rutas.Add(new Ruta(nombre, inicio, fin, puntos, descripcion));  
+            
             return registrado;
         }
 
@@ -109,7 +113,38 @@ namespace mundo
             
             return registrado;
         }
+         
         
+        public Boolean eliminarRuta(Ruta ruta)
+        {
+            Ruta rut = rutas.Find(x => x.Nombre.Equals(ruta.Nombre));
+            if (rut == null) { return false; }
+            return rutas.Remove(rut);           
+        }
+
+        public Boolean eliminarRecorrido(string idRecorrido)
+        {
+            //Hace falta un identificador para el recorrido?
+            return true;
+        }
+
+        //En el UML los parametros de que tipo son?
+        public Boolean agregarCalificacion(Usuario calificador, int calificacion) {
+            //TODO
+            return true;
+        }
+
+        public Boolean aceptarUsuario(Usuario user) {
+            if (usuariosPorAceptar.Contains(user))
+            {
+                usuariosPorAceptar.Remove(user);
+                usuariosAceptados.Add(user);
+            }
+            else {
+                return false;
+            }
+            return true;
+        }
 
         public double darCalificacion()
         {
@@ -137,13 +172,13 @@ namespace mundo
             }
             else
             {
-                throw new AgregarVehiculoExcepcion("El vehiculo que esta intentando eliminar no existe");
+                throw new AgregarVehiculoExcepcion("El vehiculo que esta intentando eliminar no existe"); //por que esa exception?
             }
             
             return eliminado;
         }
 
-
+        
 
 
 
