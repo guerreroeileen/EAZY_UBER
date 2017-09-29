@@ -44,7 +44,11 @@ namespace mundo
         public Usuario darUsuario(string celular) {
             return usuarios.Find(x => x.Celular.Equals(celular));
         }
-
+        public Recorrido recomendarReccorrido ( Tuple <double, double> xddd)
+        {
+            //No necesita puntos de inicio ni de final att: Reyes
+            return null;
+        }
         
 
     }
