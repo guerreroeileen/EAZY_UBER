@@ -9,7 +9,7 @@ namespace mundo
 {
     public class Modelo
     {
-        private Dictionary<Usuario, List<Recorrido>> estado_recorridosRecomendados;
+        private Dictionary<Usuario, Recorrido> estado_recorridosRecomendados;
         private Usuario estado_usuarioVisualizado;
         private List<Usuario> estado_usuariosRecomendados;
         private Usuario estado_usuarioLogged;
@@ -17,7 +17,7 @@ namespace mundo
         private List<Usuario> usuarios;
 
         public Modelo() {
-            Dictionary<Usuario, List<Recorrido>> estado_recorridosRecomendados=null;
+            Dictionary<Usuario, Recorrido> estado_recorridosRecomendados=null;
             Usuario estado_usuarioVisualizado=null;
             List<Usuario> estado_usuariosRecomendados=null;
             Usuario estado_usuarioLogged=null;
@@ -53,7 +53,7 @@ namespace mundo
                 }
             }
 
-            var auxiliar = recomendaciones.Select(x => new { dist = distMinimaARuta(x, ubicacion), reco = x }).OrderBy(x=>x.dist).Select(x=>x.reco);
+            var auxiliar = recomendaciones.Select(x => new {dist = distMinimaARuta(x, ubicacion), reco = x}).OrderBy(x=>x.dist).Select(x=>x.reco);
             recomendaciones = auxiliar.ToList();
             return true;
         }
