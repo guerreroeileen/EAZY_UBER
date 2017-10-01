@@ -33,7 +33,7 @@
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.registrarse = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -48,6 +48,7 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.cancelar = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // textBox6
@@ -90,15 +91,16 @@
             this.textBox2.Size = new System.Drawing.Size(110, 20);
             this.textBox2.TabIndex = 23;
             // 
-            // button1
+            // registrarse
             // 
-            this.button1.Location = new System.Drawing.Point(109, 288);
-            this.button1.Margin = new System.Windows.Forms.Padding(2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(76, 22);
-            this.button1.TabIndex = 21;
-            this.button1.Text = "Registrarse";
-            this.button1.UseVisualStyleBackColor = true;
+            this.registrarse.Location = new System.Drawing.Point(109, 288);
+            this.registrarse.Margin = new System.Windows.Forms.Padding(2);
+            this.registrarse.Name = "registrarse";
+            this.registrarse.Size = new System.Drawing.Size(76, 22);
+            this.registrarse.TabIndex = 21;
+            this.registrarse.Text = "Registrarse";
+            this.registrarse.UseVisualStyleBackColor = true;
+            this.registrarse.Click += new System.EventHandler(this.registrarse_Click);
             // 
             // label7
             // 
@@ -234,11 +236,25 @@
             this.checkBox1.TabIndex = 34;
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
+            // cancelar
+            // 
+            this.cancelar.AutoSize = true;
+            this.cancelar.BackColor = System.Drawing.Color.Beige;
+            this.cancelar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.cancelar.Location = new System.Drawing.Point(124, 312);
+            this.cancelar.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.cancelar.Name = "cancelar";
+            this.cancelar.Size = new System.Drawing.Size(49, 13);
+            this.cancelar.TabIndex = 35;
+            this.cancelar.Text = "Cancelar";
+            this.cancelar.Click += new System.EventHandler(this.cancelar_Click);
+            // 
             // Panel_registro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.Controls.Add(this.cancelar);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
@@ -251,7 +267,7 @@
             this.Controls.Add(this.textBox4);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.registrarse);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -273,7 +289,7 @@
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button registrarse;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
@@ -288,5 +304,6 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.Label cancelar;
     }
 }
