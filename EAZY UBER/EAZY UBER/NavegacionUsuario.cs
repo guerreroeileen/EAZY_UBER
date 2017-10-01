@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using GMap.NET;
+using GMap.NET.WindowsForms;
 
 namespace EAZY_UBER
 {
@@ -18,6 +20,11 @@ namespace EAZY_UBER
         }
 
         private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void gMapControl1_Load(object sender, EventArgs e)
         {
 
         }
