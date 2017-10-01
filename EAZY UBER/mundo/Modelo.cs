@@ -58,6 +58,22 @@ namespace mundo
             return true;
         }
 
+        public Boolean recomendarRecorridos(Tuple<double, double> ubicacion, double radio)
+        {
+            List<Recorrido> recomendaciones = new List<Recorrido>();
+            foreach (Usuario u in usuarios)
+            {
+                foreach (Recorrido r in u.Recorridos)
+                {
+                    recomendaciones.Add(r);
+                }
+            }
+
+            var auxiliar = recomendaciones.Select(x => new { dist = distMinimaARuta(x, ubicacion), reco = x }).Where(x=>x.dist<=radio).OrderBy(x => x.dist).Select(x => x.reco);
+            recomendaciones = auxiliar.ToList();
+            return true;
+        }
+
         public double distMinimaARuta(Recorrido recorrido, Tuple<double, double> punto) {
             double dist = double.MaxValue;
             double v1=0.0;
