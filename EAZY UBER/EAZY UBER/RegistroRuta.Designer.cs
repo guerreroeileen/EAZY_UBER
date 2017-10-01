@@ -130,6 +130,6 @@
         private System.Windows.Forms.Label labelDescripcion;
         private System.Windows.Forms.TextBox textBoxNombreRuta;
         private System.Windows.Forms.TextBox textBoxDescripcionRuta;
-        private GMap.NET.WindowsForms.GMapControl gMapControl1;
+        //private GMap.NET.WindowsForms.GMapControl gMapControl1;
     }
 }
