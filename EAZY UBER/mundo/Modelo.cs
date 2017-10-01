@@ -53,8 +53,8 @@ namespace mundo
                 }
             }
 
-            
-
+            var auxiliar = recomendaciones.Select(x => new { dist = distMinimaARuta(x, ubicacion), reco = x }).OrderBy(x=>x.dist).Select(x=>x.reco);
+            recomendaciones = auxiliar.ToList();
             return true;
         }
 
