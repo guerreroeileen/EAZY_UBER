@@ -51,10 +51,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="GMap.NET.Core">
-      <HintPath>..\Librerias\gmaps\GMap.NET.Core.dll</HintPath>
+      <HintPath>..\Libreria\gmaps\GMap.NET.Core.dll</HintPath>
     </Reference>
     <Reference Include="GMap.NET.WindowsForms">
-      <HintPath>..\Librerias\gmaps\GMap.NET.WindowsForms.dll</HintPath>
+      <HintPath>..\Libreria\gmaps\GMap.NET.WindowsForms.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -81,6 +81,12 @@
     <Compile Include="NavegacionUsuario.Designer.cs">
       <DependentUpon>NavegacionUsuario.cs</DependentUpon>
     </Compile>
+    <Compile Include="Panel_PerfilUsuario.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Panel_PerfilUsuario.Designer.cs">
+      <DependentUpon>Panel_PerfilUsuario.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegistroRuta.cs">
@@ -101,17 +107,14 @@
     <Compile Include="RegistroVehiculo.Designer.cs">
       <DependentUpon>RegistroVehiculo.cs</DependentUpon>
     </Compile>
-    <Compile Include="VentanaPrincipal.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="VentanaPrincipal.Designer.cs">
-      <DependentUpon>VentanaPrincipal.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NavegacionUsuario.resx">
       <DependentUpon>NavegacionUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Panel_PerfilUsuario.resx">
+      <DependentUpon>Panel_PerfilUsuario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -130,9 +133,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RegistroVehiculo.resx">
       <DependentUpon>RegistroVehiculo.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="VentanaPrincipal.resx">
-      <DependentUpon>VentanaPrincipal.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
