@@ -70,7 +70,7 @@ namespace mundo
             }
 
             var auxiliar = recomendaciones.Select(x => new { dist = distMinimaARuta(x, ubicacion), reco = x }).Where(x=>x.dist<=radio).OrderBy(x => x.dist).Select(x => x.reco);
-            recomendaciones = auxiliar.ToList();
+            
             return true;
         }
 
