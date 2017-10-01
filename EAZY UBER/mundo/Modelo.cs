@@ -45,7 +45,20 @@ namespace mundo
             return usuarios.Find(x => x.Celular.Equals(celular));
         }
 
-        
+        public List<Recorrido> recomendarRecorridos(Tuple<double, double> ubicacion) {
+            List<Recorrido> recomendaciones = new List<Recorrido>();
+            foreach (Usuario u in usuarios) {
+                foreach (Recorrido r in u.Recorridos) {
+                    recomendaciones.Add(r);
+                }
+            }
+
+            
+
+            return recomendaciones;
+        }
+
+       
 
     }
 }

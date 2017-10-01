@@ -192,5 +192,6 @@ namespace mundo
         public Dictionary<string, int> Calificadores { get => calificadores; set => calificadores = value; }
         internal List<Usuario> UsuariosAceptados { get => usuariosAceptados; set => usuariosAceptados = value; }
         internal List<Usuario> UsuariosPorAceptar { get => usuariosPorAceptar; set => usuariosPorAceptar = value; }
+        public List<Recorrido> Recorridos { get => recorridos; set => recorridos = value; }
     }
 }
