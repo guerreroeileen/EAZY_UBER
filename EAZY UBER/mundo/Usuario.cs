@@ -21,7 +21,7 @@ namespace mundo
         private List<Usuario> usuariosAceptados;
         private List<Usuario> usuariosPorAceptar;
         private Dictionary<String, int> calificadores;
-
+        private Tuple<double, double> ubicacion;
 
 
         //relaciones
@@ -32,7 +32,7 @@ namespace mundo
 
 
 
-        public Usuario(string nombre, string apellido, string celular, string contrasenia, string correo, string rutaFoto)
+        public Usuario(string nombre, string apellido, string celular, string contrasenia, string correo, string rutaFoto, Tuple <double,double> ubicacion)
         {
             this.nombre = nombre;
             this.apellido = apellido;
@@ -43,7 +43,7 @@ namespace mundo
             usuariosAceptados = new List<Usuario> ();
             usuariosPorAceptar = new List<Usuario>();
             calificadores = new Dictionary<string, int> ();
-            
+            this.ubicacion = ubicacion;
 
 
             //inicializacion de las relaciones
@@ -193,5 +193,6 @@ namespace mundo
         internal List<Usuario> UsuariosAceptados { get => usuariosAceptados; set => usuariosAceptados = value; }
         internal List<Usuario> UsuariosPorAceptar { get => usuariosPorAceptar; set => usuariosPorAceptar = value; }
         public List<Recorrido> Recorridos { get => recorridos; set => recorridos = value; }
+        public Tuple<double, double> Ubicacion { get => ubicacion; set => ubicacion = value; }
     }
 }
