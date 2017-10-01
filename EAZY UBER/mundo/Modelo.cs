@@ -44,12 +44,21 @@ namespace mundo
         public Usuario darUsuario(string celular) {
             return usuarios.Find(x => x.Celular.Equals(celular));
         }
-        public Recorrido recomendarReccorrido ( Tuple <double, double> xddd)
-        {
-            //No necesita puntos de inicio ni de final att: Reyes
-            return null;
+
+        public List<Recorrido> recomendarRecorridos(Tuple<double, double> ubicacion) {
+            List<Recorrido> recomendaciones = new List<Recorrido>();
+            foreach (Usuario u in usuarios) {
+                foreach (Recorrido r in u.Recorridos) {
+                    recomendaciones.Add(r);
+                }
+            }
+
+            
+
+            return recomendaciones;
         }
-        
+
+       
 
     }
 }
