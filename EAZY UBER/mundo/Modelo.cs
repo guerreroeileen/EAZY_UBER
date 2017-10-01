@@ -45,7 +45,7 @@ namespace mundo
             return usuarios.Find(x => x.Celular.Equals(celular));
         }
 
-        public List<Recorrido> recomendarRecorridos(Tuple<double, double> ubicacion) {
+        public Boolean recomendarRecorridos(Tuple<double, double> ubicacion) {
             List<Recorrido> recomendaciones = new List<Recorrido>();
             foreach (Usuario u in usuarios) {
                 foreach (Recorrido r in u.Recorridos) {
@@ -55,9 +55,33 @@ namespace mundo
 
             
 
-            return recomendaciones;
+            return true;
         }
 
+        public double distMinimaARuta(Recorrido recorrido, Tuple<double, double> punto) {
+            double dist = double.MaxValue;
+            double v1=0.0;
+            double v2=0.0;
+            double distAux=0.0;
+            Tuple < double, double> ini = recorrido.Ruta.Inicio;
+            Tuple<double, double> fin;
+            foreach (var p in recorrido.Ruta.Puntos) {
+                fin = p;
+                v1 = fin.Item1 - ini.Item1;
+                v2 = fin.Item2 - ini.Item2;
+                distAux = (Math.Abs((v2 * punto.Item1) + (v1 * punto.Item2) + ((ini.Item1 * v2) + (ini.Item2 * v1)))) / (Math.Sqrt((v2 * v2) + (v1 * v1)));
+                dist = Math.Min(dist, distAux);
+
+                ini = p;
+            }
+            fin = recorrido.Ruta.Fin;
+            v1 = fin.Item1 - ini.Item1;
+            v2 = fin.Item2 - ini.Item2;
+            distAux = (Math.Abs((v2 * punto.Item1) + (v1 * punto.Item2) + ((ini.Item1 * v2) + (ini.Item2 * v1)))) / (Math.Sqrt((v2 * v2) + (v1 * v1)));
+            dist = Math.Min(dist, distAux);
+            
+            return dist;
+        }
        
 
     }
