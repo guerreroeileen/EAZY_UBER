@@ -47,6 +47,8 @@ namespace mundo
 
         public Boolean recomendarRecorridos(Tuple<double, double> ubicacion) {
             List<Recorrido> recomendaciones = new List<Recorrido>();
+            estado_recorridosRecomendados = new Dictionary<Usuario, Recorrido> ();
+
             foreach (Usuario u in usuarios) {
                 
 
@@ -70,15 +72,19 @@ namespace mundo
         public Boolean recomendarRecorridos(Tuple<double, double> ubicacion, double radio)
         {
             List<Recorrido> recomendaciones = new List<Recorrido>();
+            estado_recorridosRecomendados = new Dictionary<Usuario, Recorrido>();
             foreach (Usuario u in usuarios)
             {
                 foreach (Recorrido r in u.Recorridos)
                 {
                     recomendaciones.Add(r);
                 }
+                List<Recorrido> auxiliar = recomendaciones.Select(x => new { dist = distMinimaARuta(x, ubicacion), reco = x }).Where(x => x.dist <= radio).OrderBy(x => x.dist).Select(x => x.reco).ToList();
+                estado_recorridosRecomendados.Add(u, auxiliar[0]);
+                recomendaciones = null;
             }
 
-            var auxiliar = recomendaciones.Select(x => new { dist = distMinimaARuta(x, ubicacion), reco = x }).Where(x=>x.dist<=radio).OrderBy(x => x.dist).Select(x => x.reco);
+     
             
             return true;
         }
