@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace EAZY_UBER
 {
-    public partial class Panel_PerfilUsuario : UserControl
+    public partial class panel_BuscarRuta : UserControl
     {
-        public Panel_PerfilUsuario()
+        public panel_BuscarRuta()
         {
             InitializeComponent();
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

@@ -81,6 +81,36 @@
     <Compile Include="NavegacionUsuario.Designer.cs">
       <DependentUpon>NavegacionUsuario.cs</DependentUpon>
     </Compile>
+    <Compile Include="panel_BuscarRuta.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="panel_BuscarRuta.Designer.cs">
+      <DependentUpon>panel_BuscarRuta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="panel_OfrecerCupo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="panel_OfrecerCupo.Designer.cs">
+      <DependentUpon>panel_OfrecerCupo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Panel_PerfilUsuario.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Panel_PerfilUsuario.Designer.cs">
+      <DependentUpon>Panel_PerfilUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="panel_RecorridoRecomendado.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="panel_RecorridoRecomendado.Designer.cs">
+      <DependentUpon>panel_RecorridoRecomendado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="panel_UsuarioRecomendado.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="panel_UsuarioRecomendado.Designer.cs">
+      <DependentUpon>panel_UsuarioRecomendado.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegistroRuta.cs">
@@ -101,15 +131,26 @@
     <Compile Include="RegistroVehiculo.Designer.cs">
       <DependentUpon>RegistroVehiculo.cs</DependentUpon>
     </Compile>
-    <Compile Include="VentanaPrincipal.cs" />
-    <Compile Include="VentanaPrincipal.Designer.cs">
-      <DependentUpon>VentanaPrincipal.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NavegacionUsuario.resx">
       <DependentUpon>NavegacionUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="panel_BuscarRuta.resx">
+      <DependentUpon>panel_BuscarRuta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="panel_OfrecerCupo.resx">
+      <DependentUpon>panel_OfrecerCupo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Panel_PerfilUsuario.resx">
+      <DependentUpon>Panel_PerfilUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="panel_RecorridoRecomendado.resx">
+      <DependentUpon>panel_RecorridoRecomendado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="panel_UsuarioRecomendado.resx">
+      <DependentUpon>panel_UsuarioRecomendado.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -128,9 +169,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RegistroVehiculo.resx">
       <DependentUpon>RegistroVehiculo.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="VentanaPrincipal.resx">
-      <DependentUpon>VentanaPrincipal.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
