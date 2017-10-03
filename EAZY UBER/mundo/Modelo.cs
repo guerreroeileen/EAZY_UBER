@@ -103,8 +103,11 @@ namespace mundo
         }
         public Boolean calificarUsuario (Usuario calificador,Usuario usuarioCalificado,int calificacion)
         {
-
-            return true;
+            if (usuarioCalificado.UsuariosAceptados.Contains(calificador))
+            {
+                usuarioCalificado.agregarCalificacion(calificador, calificacion);
+            }
+            return usuarioCalificado.Calificadores.ContainsKey(calificador.Nombre);
         }
 
 
