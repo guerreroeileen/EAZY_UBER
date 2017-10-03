@@ -72,6 +72,12 @@
     <Compile Include="Inicio.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Notificaciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Notificaciones.Designer.cs">
+      <DependentUpon>Notificaciones.cs</DependentUpon>
+    </Compile>
     <Compile Include="panel_BuscarRuta.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -128,8 +134,17 @@
     <Compile Include="RegistroVehiculo.Designer.cs">
       <DependentUpon>RegistroVehiculo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Resources\Notificaciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Resources\Notificaciones.Designer.cs">
+      <DependentUpon>Notificaciones.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Inicio.resx">
       <DependentUpon>Inicio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Notificaciones.resx">
+      <DependentUpon>Notificaciones.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="panel_BuscarRuta.resx">
       <DependentUpon>panel_BuscarRuta.cs</DependentUpon>
@@ -167,6 +182,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RegistroVehiculo.resx">
       <DependentUpon>RegistroVehiculo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Notificaciones.resx">
+      <DependentUpon>Notificaciones.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

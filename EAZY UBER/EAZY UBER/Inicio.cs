@@ -7,6 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using GMap.NET;
+using GMap.NET.MapProviders;
+using GMap.NET.WindowsForms;
 
 namespace EAZY_UBER
 {
@@ -15,6 +18,7 @@ namespace EAZY_UBER
         //VENTANAS
         private RegistroRuta registroRuta;
         private RegistroVehiculo registroVehiculo;
+        private Notificaciones notificaciones;
 
         private Panel_registro panel_registro1;
         private GMap.NET.WindowsForms.GMapControl mapa;
@@ -26,6 +30,7 @@ namespace EAZY_UBER
         private MenuStrip menuStrip1;
         private ToolStripMenuItem opcionesToolStripMenuItem;
         private ToolStripMenuItem cerrarSesionToolStripMenuItem;
+        private ToolStripMenuItem notificacionesToolStripMenuItem;
         private Panel_LogIn panel_LogIn1;
 
         public Inicio()
@@ -121,6 +126,14 @@ namespace EAZY_UBER
             panel_RecorridoRecomendado1.Visible = true;
             panel_UsuarioRecomendado1.Visible = false;
         }
+        private void notificacionesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (notificaciones != null)
+                notificaciones.Close();
+            notificaciones = new Notificaciones();
+            notificaciones.Owner = this;
+            notificaciones.Show();
+        }
 
 
         private void InitializeComponent()
@@ -136,6 +149,7 @@ namespace EAZY_UBER
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.opcionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cerrarSesionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.notificacionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -192,7 +206,7 @@ namespace EAZY_UBER
             // panel_OfrecerCupo1
             // 
             this.panel_OfrecerCupo1.Location = new System.Drawing.Point(555, 264);
-            this.panel_OfrecerCupo1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel_OfrecerCupo1.Margin = new System.Windows.Forms.Padding(2);
             this.panel_OfrecerCupo1.Name = "panel_OfrecerCupo1";
             this.panel_OfrecerCupo1.Size = new System.Drawing.Size(346, 116);
             this.panel_OfrecerCupo1.TabIndex = 14;
@@ -200,7 +214,7 @@ namespace EAZY_UBER
             // panel_BuscarRuta1
             // 
             this.panel_BuscarRuta1.Location = new System.Drawing.Point(555, 264);
-            this.panel_BuscarRuta1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel_BuscarRuta1.Margin = new System.Windows.Forms.Padding(2);
             this.panel_BuscarRuta1.Name = "panel_BuscarRuta1";
             this.panel_BuscarRuta1.Size = new System.Drawing.Size(346, 116);
             this.panel_BuscarRuta1.TabIndex = 15;
@@ -208,7 +222,7 @@ namespace EAZY_UBER
             // panel_UsuarioRecomendado1
             // 
             this.panel_UsuarioRecomendado1.Location = new System.Drawing.Point(555, 396);
-            this.panel_UsuarioRecomendado1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel_UsuarioRecomendado1.Margin = new System.Windows.Forms.Padding(2);
             this.panel_UsuarioRecomendado1.Name = "panel_UsuarioRecomendado1";
             this.panel_UsuarioRecomendado1.Size = new System.Drawing.Size(346, 245);
             this.panel_UsuarioRecomendado1.TabIndex = 16;
@@ -216,7 +230,7 @@ namespace EAZY_UBER
             // panel_RecorridoRecomendado1
             // 
             this.panel_RecorridoRecomendado1.Location = new System.Drawing.Point(555, 396);
-            this.panel_RecorridoRecomendado1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel_RecorridoRecomendado1.Margin = new System.Windows.Forms.Padding(2);
             this.panel_RecorridoRecomendado1.Name = "panel_RecorridoRecomendado1";
             this.panel_RecorridoRecomendado1.Size = new System.Drawing.Size(346, 245);
             this.panel_RecorridoRecomendado1.TabIndex = 17;
@@ -234,7 +248,8 @@ namespace EAZY_UBER
             // opcionesToolStripMenuItem
             // 
             this.opcionesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.cerrarSesionToolStripMenuItem});
+            this.cerrarSesionToolStripMenuItem,
+            this.notificacionesToolStripMenuItem});
             this.opcionesToolStripMenuItem.Name = "opcionesToolStripMenuItem";
             this.opcionesToolStripMenuItem.Size = new System.Drawing.Size(69, 20);
             this.opcionesToolStripMenuItem.Text = "Opciones";
@@ -244,6 +259,13 @@ namespace EAZY_UBER
             this.cerrarSesionToolStripMenuItem.Name = "cerrarSesionToolStripMenuItem";
             this.cerrarSesionToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.cerrarSesionToolStripMenuItem.Text = "Cerrar Sesion";
+            // 
+            // notificacionesToolStripMenuItem
+            // 
+            this.notificacionesToolStripMenuItem.Name = "notificacionesToolStripMenuItem";
+            this.notificacionesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.notificacionesToolStripMenuItem.Text = "Notificaciones";
+            this.notificacionesToolStripMenuItem.Click += new System.EventHandler(this.notificacionesToolStripMenuItem_Click);
             // 
             // Inicio
             // 
@@ -260,11 +282,20 @@ namespace EAZY_UBER
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Inicio";
+            this.Load += new System.EventHandler(this.Inicio_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
+
+        private void Inicio_Load(object sender, EventArgs e)
+        {
+
+            mapa.MapProvider = GMapProviders.GoogleMap;
+
+        }
+
     }
 }

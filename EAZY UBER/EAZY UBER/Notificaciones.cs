@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Drawing;
 using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace EAZY_UBER
 {
-    public partial class panel_RecorridoRecomendado : UserControl
+    public partial class Notificaciones : Form
     {
-        public panel_RecorridoRecomendado()
+        public Notificaciones()
         {
             InitializeComponent();
-        }
-
-        private void panel_RecorridoRecomendado_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }
