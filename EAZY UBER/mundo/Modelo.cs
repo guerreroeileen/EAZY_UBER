@@ -96,7 +96,7 @@ namespace mundo
         }
         public Boolean recomendarPasajeros( Recorrido recorrido)
         {
-
+            estado_usuariosRecomendados = usuarios.Select(x => new { dist = distMinimaARuta(recorrido, x.Ubicacion), usuario = x }).OrderBy(x => x.dist).Select(x => x.usuario).Take(15).ToList();
 
             return true;
 
