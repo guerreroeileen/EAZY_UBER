@@ -69,23 +69,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Login.cs">
+    <Compile Include="Inicio.cs">
       <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Login.Designer.cs">
-      <DependentUpon>Login.cs</DependentUpon>
-    </Compile>
-    <Compile Include="NavegacionUsuario.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="NavegacionUsuario.Designer.cs">
-      <DependentUpon>NavegacionUsuario.cs</DependentUpon>
     </Compile>
     <Compile Include="panel_BuscarRuta.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="panel_BuscarRuta.Designer.cs">
       <DependentUpon>panel_BuscarRuta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Panel_LogIn.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Panel_LogIn.designer.cs">
+      <DependentUpon>Panel_LogIn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Panel_NavegacionUsuario.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Panel_NavegacionUsuario.Designer.cs">
+      <DependentUpon>Panel_NavegacionUsuario.cs</DependentUpon>
     </Compile>
     <Compile Include="panel_OfrecerCupo.cs">
       <SubType>UserControl</SubType>
@@ -104,6 +107,12 @@
     </Compile>
     <Compile Include="panel_RecorridoRecomendado.Designer.cs">
       <DependentUpon>panel_RecorridoRecomendado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Panel_registro.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Panel_registro.designer.cs">
+      <DependentUpon>Panel_registro.cs</DependentUpon>
     </Compile>
     <Compile Include="panel_UsuarioRecomendado.cs">
       <SubType>UserControl</SubType>
@@ -131,14 +140,17 @@
     <Compile Include="RegistroVehiculo.Designer.cs">
       <DependentUpon>RegistroVehiculo.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Login.resx">
-      <DependentUpon>Login.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="NavegacionUsuario.resx">
-      <DependentUpon>NavegacionUsuario.cs</DependentUpon>
+    <EmbeddedResource Include="Inicio.resx">
+      <DependentUpon>Inicio.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="panel_BuscarRuta.resx">
       <DependentUpon>panel_BuscarRuta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Panel_LogIn.resx">
+      <DependentUpon>Panel_LogIn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Panel_NavegacionUsuario.resx">
+      <DependentUpon>Panel_NavegacionUsuario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="panel_OfrecerCupo.resx">
       <DependentUpon>panel_OfrecerCupo.cs</DependentUpon>
@@ -148,6 +160,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="panel_RecorridoRecomendado.resx">
       <DependentUpon>panel_RecorridoRecomendado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Panel_registro.resx">
+      <DependentUpon>Panel_registro.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="panel_UsuarioRecomendado.resx">
       <DependentUpon>panel_UsuarioRecomendado.cs</DependentUpon>
@@ -160,6 +175,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="RegistroRuta.resx">
       <DependentUpon>RegistroRuta.cs</DependentUpon>
@@ -194,6 +210,12 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\search.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\maxresdefault.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
