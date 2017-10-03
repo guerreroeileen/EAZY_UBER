@@ -48,7 +48,7 @@ namespace mundo
         public Boolean recomendarRecorridos(Tuple<double, double> ubicacion) {
             List<Recorrido> recomendaciones = new List<Recorrido>();
             estado_recorridosRecomendados = new Dictionary<Usuario, Recorrido> ();
-
+            
             foreach (Usuario u in usuarios) {
                 if (u.Ubicacion.Item1 != ubicacion.Item1 && u.Ubicacion.Item2 != ubicacion.Item2)
                 {
