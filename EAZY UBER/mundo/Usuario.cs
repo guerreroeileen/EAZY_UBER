@@ -130,8 +130,17 @@ namespace mundo
 
         //En el UML los parametros de que tipo son?
         public Boolean agregarCalificacion(Usuario calificador, int calificacion) {
-            //TODO
-            return true;
+
+            if (usuariosAceptados.Contains(calificador))
+            {
+                calificadores.Add(calificador.nombre, calificacion);
+            }
+            else
+            {
+                throw new CalificacionExcepcion("No se ha podido realizar la calificacion");
+            }
+
+            return calificadores.ContainsKey(calificador.Nombre);
         }
 
         public Boolean aceptarUsuario(Usuario user) {
