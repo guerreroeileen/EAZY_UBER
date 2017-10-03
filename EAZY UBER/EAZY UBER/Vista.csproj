@@ -84,12 +84,6 @@
     <Compile Include="Panel_LogIn.designer.cs">
       <DependentUpon>Panel_LogIn.cs</DependentUpon>
     </Compile>
-    <Compile Include="Panel_NavegacionUsuario.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Panel_NavegacionUsuario.Designer.cs">
-      <DependentUpon>Panel_NavegacionUsuario.cs</DependentUpon>
-    </Compile>
     <Compile Include="panel_OfrecerCupo.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -128,12 +122,6 @@
     <Compile Include="RegistroRuta.Designer.cs">
       <DependentUpon>RegistroRuta.cs</DependentUpon>
     </Compile>
-    <Compile Include="RegistroUsuario.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="RegistroUsuario.Designer.cs">
-      <DependentUpon>RegistroUsuario.cs</DependentUpon>
-    </Compile>
     <Compile Include="RegistroVehiculo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -148,9 +136,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Panel_LogIn.resx">
       <DependentUpon>Panel_LogIn.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Panel_NavegacionUsuario.resx">
-      <DependentUpon>Panel_NavegacionUsuario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="panel_OfrecerCupo.resx">
       <DependentUpon>panel_OfrecerCupo.cs</DependentUpon>
@@ -179,9 +164,6 @@
     </Compile>
     <EmbeddedResource Include="RegistroRuta.resx">
       <DependentUpon>RegistroRuta.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="RegistroUsuario.resx">
-      <DependentUpon>RegistroUsuario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RegistroVehiculo.resx">
       <DependentUpon>RegistroVehiculo.cs</DependentUpon>
