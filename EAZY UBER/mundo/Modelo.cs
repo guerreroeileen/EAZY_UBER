@@ -52,13 +52,9 @@ namespace mundo
             foreach (Usuario u in usuarios) {
                 if (u.Ubicacion.Item1 != ubicacion.Item1 && u.Ubicacion.Item2 != ubicacion.Item2)
                 {
-
                     foreach (Recorrido r in u.Recorridos)
                     {
-
                         recomendaciones.Add(r);
-
-
                     }
 
                     List<Recorrido> auxiliar = recomendaciones.Select(x => new { dist = distMinimaARuta(x, ubicacion), reco = x }).OrderBy(x => x.dist).Select(x => x.reco).ToList();
@@ -96,8 +92,7 @@ namespace mundo
         }
         public Boolean recomendarPasajeros( Recorrido recorrido)
         {
-            estado_usuariosRecomendados = usuarios.Select(x => new { dist = distMinimaARuta(recorrido, x.Ubicacion), usuario = x }).OrderBy(x => x.dist).Select(x => x.usuario).Take(15).ToList();
-
+            estado_usuariosRecomendados = usuarios.Where(x=>x.Celular.Equals(estado_usuarioLogged.Celular)).Select(x => new { dist = distMinimaARuta(recorrido, x.Ubicacion), usuario = x }).OrderBy(x => x.dist).Select(x => x.usuario).Take(9).ToList();
             return true;
 
         }
@@ -110,6 +105,28 @@ namespace mundo
             return usuarioCalificado.Calificadores.ContainsKey(calificador.Nombre);
         }
 
+        public Boolean loguearUsuario(String celular) {
+            Boolean logued = true;
+            Usuario aux = usuarios.Find(x => x.Celular.Equals(celular));
+            if (aux != null)            {
+                estado_usuarioLogged = aux;
+            }
+            else {
+                logued = false;
+            }
+            return logued;
+        }
+
+        public Boolean desloguearUsuario() {
+            if (estado_usuarioLogged != null)
+            {
+                estado_usuarioLogged = null;
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
 
 
         public double distMinimaARuta(Recorrido recorrido, Tuple<double, double> punto) {
