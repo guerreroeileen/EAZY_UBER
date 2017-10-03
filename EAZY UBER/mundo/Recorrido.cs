@@ -9,13 +9,13 @@ namespace mundo
     public class Recorrido
     {
         private Double tarifa;
-        private string fecha;
-        private string hora;
+        private DateTime fecha;
+        private DateTime hora;
         private Ruta ruta;
         //en el diagrama habiamos puesto 0..N pero creo que en un recorrido solo puedes usar un vehiculo
         private Vehiculo vehiculo;
 
-        public Recorrido(double tarifa, string fecha, string hora, Vehiculo vehiculo, Ruta ruta)
+        public Recorrido(double tarifa, DateTime fecha, DateTime hora, Vehiculo vehiculo, Ruta ruta)
         {
             this.tarifa = tarifa;
             this.fecha = fecha;
@@ -25,8 +25,8 @@ namespace mundo
         }
 
         public double Tarifa { get => tarifa; set => tarifa = value; }
-        public string Fecha { get => fecha; set => fecha = value; }
-        public string Hora { get => hora; set => hora = value; }
+        public DateTime Fecha { get => fecha; set => fecha = value; }
+        public DateTime Hora { get => hora; set => hora = value; }
         public Ruta Ruta { get => ruta; set => ruta = value; }
     }
 }
