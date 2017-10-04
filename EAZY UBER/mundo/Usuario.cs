@@ -86,14 +86,14 @@ namespace mundo
             return registrado;
         }
 
-        public Boolean registrarRecorrido(Double tarifa, string fecha, string hora, Vehiculo vehiculo, Ruta ruta)
+        public Boolean registrarRecorrido(Double tarifa, DateTime fecha, DateTime hora, Vehiculo vehiculo, Ruta ruta)
         {
             bool registrado = false;
-            if (hora.Length < 1)
+            if (hora==null)
             {
                 throw new AgregarRecorridoExcepcion("Debe agregar la hora de salida");
             }
-            else if (fecha.Length < 1)
+            else if (fecha==null)
             {
                 throw new AgregarRecorridoExcepcion("Debe agregar una fecha de salida");
             }
@@ -122,10 +122,11 @@ namespace mundo
             return rutas.Remove(rut);           
         }
 
-        public Boolean eliminarRecorrido(string idRecorrido)
+        public Boolean eliminarRecorrido(int index)
         {
-            //Hace falta un identificador para el recorrido?
-            return true;
+            Recorrido removed = recorridos[index];
+            return recorridos.Remove(removed);
+            
         }
 
         //En el UML los parametros de que tipo son?
