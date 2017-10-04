@@ -21,7 +21,7 @@ namespace mundo
         private List<Usuario> usuariosAceptados;
         private List<Usuario> usuariosPorAceptar;
         private Dictionary<String, int> calificadores;
-
+        private Tuple<double, double> ubicacion;
 
 
         //relaciones
@@ -32,7 +32,7 @@ namespace mundo
 
 
 
-        public Usuario(string nombre, string apellido, string celular, string contrasenia, string correo, string rutaFoto)
+        public Usuario(string nombre, string apellido, string celular, string contrasenia, string correo, string rutaFoto, Tuple <double,double> ubicacion)
         {
             this.nombre = nombre;
             this.apellido = apellido;
@@ -43,7 +43,7 @@ namespace mundo
             usuariosAceptados = new List<Usuario> ();
             usuariosPorAceptar = new List<Usuario>();
             calificadores = new Dictionary<string, int> ();
-            
+            this.ubicacion = ubicacion;
 
 
             //inicializacion de las relaciones
@@ -86,14 +86,14 @@ namespace mundo
             return registrado;
         }
 
-        public Boolean registrarRecorrido(Double tarifa, string fecha, string hora, Vehiculo vehiculo, Ruta ruta)
+        public Boolean registrarRecorrido(Double tarifa, DateTime fecha, DateTime hora, Vehiculo vehiculo, Ruta ruta)
         {
             bool registrado = false;
-            if (hora.Length < 1)
+            if (hora==null)
             {
                 throw new AgregarRecorridoExcepcion("Debe agregar la hora de salida");
             }
-            else if (fecha.Length < 1)
+            else if (fecha==null)
             {
                 throw new AgregarRecorridoExcepcion("Debe agregar una fecha de salida");
             }
@@ -122,16 +122,26 @@ namespace mundo
             return rutas.Remove(rut);           
         }
 
-        public Boolean eliminarRecorrido(string idRecorrido)
+        public Boolean eliminarRecorrido(int index)
         {
-            //Hace falta un identificador para el recorrido?
-            return true;
+            Recorrido removed = recorridos[index];
+            return recorridos.Remove(removed);
+            
         }
 
         //En el UML los parametros de que tipo son?
         public Boolean agregarCalificacion(Usuario calificador, int calificacion) {
-            //TODO
-            return true;
+
+            if (usuariosAceptados.Contains(calificador))
+            {
+                calificadores.Add(calificador.nombre, calificacion);
+            }
+            else
+            {
+                throw new CalificacionExcepcion("No se ha podido realizar la calificacion");
+            }
+
+            return calificadores.ContainsKey(calificador.Nombre);
         }
 
         public Boolean aceptarUsuario(Usuario user) {
@@ -193,5 +203,6 @@ namespace mundo
         internal List<Usuario> UsuariosAceptados { get => usuariosAceptados; set => usuariosAceptados = value; }
         internal List<Usuario> UsuariosPorAceptar { get => usuariosPorAceptar; set => usuariosPorAceptar = value; }
         public List<Recorrido> Recorridos { get => recorridos; set => recorridos = value; }
+        public Tuple<double, double> Ubicacion { get => ubicacion; set => ubicacion = value; }
     }
 }

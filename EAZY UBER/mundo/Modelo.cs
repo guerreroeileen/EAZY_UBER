@@ -9,7 +9,7 @@ namespace mundo
 {
     public class Modelo
     {
-        private Dictionary<Usuario, List<Recorrido>> estado_recorridosRecomendados;
+        private Dictionary<Usuario, Recorrido> estado_recorridosRecomendados;
         private Usuario estado_usuarioVisualizado;
         private List<Usuario> estado_usuariosRecomendados;
         private Usuario estado_usuarioLogged;
@@ -17,7 +17,7 @@ namespace mundo
         private List<Usuario> usuarios;
 
         public Modelo() {
-            Dictionary<Usuario, List<Recorrido>> estado_recorridosRecomendados=null;
+            Dictionary<Usuario, Recorrido> estado_recorridosRecomendados=null;
             Usuario estado_usuarioVisualizado=null;
             List<Usuario> estado_usuariosRecomendados=null;
             Usuario estado_usuarioLogged=null;
@@ -25,7 +25,7 @@ namespace mundo
             List<Usuario> usuarios= new List<Usuario>();
         }
 
-        public Boolean registrarUsuario(string nombre, string apellido, string celular, string contrasenia, string correo, string rutaFoto) {
+        public Boolean registrarUsuario(string nombre, string apellido, string celular, string contrasenia, string correo, string rutaFoto, Tuple <double,double> ubicacion) {
 
             if (nombre != null) { throw new AgregarUsuarioExcepcion("Debe ingresar nombre"); }
             if (apellido != null) { throw new AgregarUsuarioExcepcion("Debe ingresar apellido"); }
@@ -35,7 +35,7 @@ namespace mundo
             if (correo != null) { throw new AgregarUsuarioExcepcion("Debe ingresar Correo Electronico"); }
 
             if ((usuarios.Find(x => x.Celular.Equals(celular)))!=null) {
-                usuarios.Add(new Usuario(nombre, apellido, celular, contrasenia, correo, rutaFoto));                
+                usuarios.Add(new Usuario(nombre, apellido, celular, contrasenia, correo, rutaFoto, ubicacion));                
             }
             
             return true;
@@ -47,32 +47,87 @@ namespace mundo
 
         public Boolean recomendarRecorridos(Tuple<double, double> ubicacion) {
             List<Recorrido> recomendaciones = new List<Recorrido>();
+            estado_recorridosRecomendados = new Dictionary<Usuario, Recorrido> ();
+            
             foreach (Usuario u in usuarios) {
-                foreach (Recorrido r in u.Recorridos) {
-                    recomendaciones.Add(r);
+                if (u.Ubicacion.Item1 != ubicacion.Item1 && u.Ubicacion.Item2 != ubicacion.Item2)
+                {
+                    foreach (Recorrido r in u.Recorridos)
+                    {
+                        recomendaciones.Add(r);
+                    }
+
+                    List<Recorrido> auxiliar = recomendaciones.Select(x => new { dist = distMinimaARuta(x, ubicacion), reco = x }).OrderBy(x => x.dist).Select(x => x.reco).ToList();
+                    estado_recorridosRecomendados.Add(u, auxiliar[0]);
+                    recomendaciones = null;
                 }
             }
 
-            var auxiliar = recomendaciones.Select(x => new { dist = distMinimaARuta(x, ubicacion), reco = x }).OrderBy(x=>x.dist).Select(x=>x.reco);
-            recomendaciones = auxiliar.ToList();
+           
+           
             return true;
         }
 
         public Boolean recomendarRecorridos(Tuple<double, double> ubicacion, double radio)
         {
             List<Recorrido> recomendaciones = new List<Recorrido>();
+            estado_recorridosRecomendados = new Dictionary<Usuario, Recorrido>();
             foreach (Usuario u in usuarios)
             {
-                foreach (Recorrido r in u.Recorridos)
+                if (u.Ubicacion.Item1 != ubicacion.Item1 && u.Ubicacion.Item2 != ubicacion.Item2)
                 {
-                    recomendaciones.Add(r);
+                    foreach (Recorrido r in u.Recorridos)
+                    {
+                        recomendaciones.Add(r);
+                    }
+                    List<Recorrido> auxiliar = recomendaciones.Select(x => new { dist = distMinimaARuta(x, ubicacion), reco = x }).Where(x => x.dist <= radio).OrderBy(x => x.dist).Select(x => x.reco).ToList();
+                    estado_recorridosRecomendados.Add(u, auxiliar[0]);
+                    recomendaciones = null;
                 }
             }
 
-            var auxiliar = recomendaciones.Select(x => new { dist = distMinimaARuta(x, ubicacion), reco = x }).Where(x=>x.dist<=radio).OrderBy(x => x.dist).Select(x => x.reco);
-            recomendaciones = auxiliar.ToList();
+     
+            
             return true;
         }
+        public Boolean recomendarPasajeros( Recorrido recorrido)
+        {
+            estado_usuariosRecomendados = usuarios.Where(x=>x.Celular.Equals(estado_usuarioLogged.Celular)).Select(x => new { dist = distMinimaARuta(recorrido, x.Ubicacion), usuario = x }).OrderBy(x => x.dist).Select(x => x.usuario).Take(9).ToList();
+            return true;
+
+        }
+        public Boolean calificarUsuario (Usuario calificador,Usuario usuarioCalificado,int calificacion)
+        {
+            if (usuarioCalificado.UsuariosAceptados.Contains(calificador))
+            {
+                usuarioCalificado.agregarCalificacion(calificador, calificacion);
+            }
+            return usuarioCalificado.Calificadores.ContainsKey(calificador.Nombre);
+        }
+
+        public Boolean loguearUsuario(String celular) {
+            Boolean logued = true;
+            Usuario aux = usuarios.Find(x => x.Celular.Equals(celular));
+            if (aux != null)            {
+                estado_usuarioLogged = aux;
+            }
+            else {
+                logued = false;
+            }
+            return logued;
+        }
+
+        public Boolean desloguearUsuario() {
+            if (estado_usuarioLogged != null)
+            {
+                estado_usuarioLogged = null;
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+
 
         public double distMinimaARuta(Recorrido recorrido, Tuple<double, double> punto) {
             double dist = double.MaxValue;
