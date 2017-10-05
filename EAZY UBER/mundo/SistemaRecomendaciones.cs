@@ -25,7 +25,7 @@ namespace mundo
             List<Usuario> usuarios= new List<Usuario>();
         }
 
-        public Boolean registrarUsuario(string nombre, string apellido, string celular, string contrasenia, string correo, string rutaFoto) {
+        public Boolean registrarUsuario(string nombre, string apellido, string celular, string contrasenia, string correo, string rutaFoto, Tuple<double,double> ubicacion) {
 
             if (nombre != null) { throw new AgregarUsuarioExcepcion("Debe ingresar nombre"); }
             if (apellido != null) { throw new AgregarUsuarioExcepcion("Debe ingresar apellido"); }
@@ -35,7 +35,7 @@ namespace mundo
             if (correo != null) { throw new AgregarUsuarioExcepcion("Debe ingresar Correo Electronico"); }
 
             if ((usuarios.Find(x => x.Celular.Equals(celular)))!=null) {
-                usuarios.Add(new Usuario(nombre, apellido, celular, contrasenia, correo, rutaFoto));                
+                usuarios.Add(new Usuario(nombre, apellido, celular, contrasenia, correo, rutaFoto, ubicacion));                
             }
             
             return true;
