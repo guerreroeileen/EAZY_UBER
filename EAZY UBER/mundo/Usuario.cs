@@ -86,14 +86,11 @@ namespace mundo
             return registrado;
         }
 
-        public Boolean registrarRecorrido(Double tarifa, DateTime fecha, DateTime hora, Vehiculo vehiculo, Ruta ruta)
+        public Boolean registrarRecorrido(Double tarifa, DateTime fecha, Vehiculo vehiculo, Ruta ruta)
         {
             bool registrado = false;
-            if (hora==null)
-            {
-                throw new AgregarRecorridoExcepcion("Debe agregar la hora de salida");
-            }
-            else if (fecha==null)
+            
+            if (fecha==null)
             {
                 throw new AgregarRecorridoExcepcion("Debe agregar una fecha de salida");
             }
@@ -107,7 +104,7 @@ namespace mundo
             }
             else
             {
-                recorridos.Add(new Recorrido(tarifa,fecha,hora,vehiculo, ruta));
+                recorridos.Add(new Recorrido(tarifa,fecha,vehiculo, ruta));
                 registrado = true;
             }
             

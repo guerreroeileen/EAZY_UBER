@@ -47,6 +47,18 @@ namespace PruebaUnitariaModelo
         [TestMethod]
         public void TestAgregarVehiculo(){
             setup1();
+            String placa = "GFB469", color = "Azul", modelo = "Cayenne", rutaFoto="" ;
+            sist.darUsuario("30155844").registrarVehiculo(placa, color, modelo, rutaFoto);
+            try
+            {
+                placa = ""; color = "Azul"; modelo = "Cayenne"; rutaFoto = "";
+                sist.darUsuario("30155844").registrarVehiculo(placa, color, modelo, rutaFoto);
+                Assert.Fail("Se debe generar una excepcion por no asignar placa");
+            }
+            catch (Exception e) {
+            }
+
+
 
         }
 
