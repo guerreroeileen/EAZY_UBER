@@ -9,7 +9,7 @@ namespace mundo
 {
     public class SistemaRecomendaciones
     {
-        private Dictionary<Usuario, List<Recorrido>> estado_recorridosRecomendados;
+        private Dictionary<Usuario, Recorrido> estado_recorridosRecomendados;
         private Usuario estado_usuarioVisualizado;
         private List<Usuario> estado_usuariosRecomendados;
         private Usuario estado_usuarioLogged;
@@ -19,7 +19,7 @@ namespace mundo
         
 
         public SistemaRecomendaciones() {
-            Dictionary<Usuario, List<Recorrido>> estado_recorridosRecomendados=null;
+            Dictionary<Usuario, Recorrido> estado_recorridosRecomendados=null;
             Usuario estado_usuarioVisualizado=null;
             List<Usuario> estado_usuariosRecomendados=null;
             Usuario estado_usuarioLogged=null;
@@ -52,16 +52,35 @@ namespace mundo
         }
 
         public Boolean recomendarRecorridos(Tuple<double, double> ubicacion) {
-            List<Recorrido> recomendaciones = new List<Recorrido>();
-            foreach (Usuario u in usuarios) {
-                foreach (Recorrido r in u.Recorridos) {
-                    recomendaciones.Add(r);
+            estado_recorridosRecomendados = new Dictionary<Usuario, Recorrido>();
+
+            foreach (Usuario u in usuarios)
+            {
+                if (u.Ubicacion.Item1 != ubicacion.Item1 && u.Ubicacion.Item2 != ubicacion.Item2)
+                {
+                    List<Recorrido> recomendaciones = new List<Recorrido>();
+                    foreach (Recorrido r in u.Recorridos)
+                    {
+                        recomendaciones.Add(r);
+                    }
+
+                    List<Recorrido> auxiliar = recomendaciones.Select(x => new { dist = distMinimaARuta(x, ubicacion), reco = x }).OrderBy(x => x.dist).Select(x => x.reco).ToList();
+                    estado_recorridosRecomendados.Add(u, auxiliar[0]);
+
+
                 }
             }
 
-            var auxiliar = recomendaciones.Select(x => new { dist = distMinimaARuta(x, ubicacion), reco = x }).OrderBy(x=>x.dist).Select(x=>x.reco);
-            recomendaciones = auxiliar.ToList();
-            return true;
+            var dictionary = from entry in estado_recorridosRecomendados orderby distMinimaARuta(entry.Value, ubicacion) ascending select entry;
+            estado_recorridosRecomendados = new Dictionary<Usuario, Recorrido>();
+            foreach (KeyValuePair<Usuario, Recorrido> kvp in dictionary)
+            {
+                estado_recorridosRecomendados.Add(kvp.Key, kvp.Value);
+
+            }
+
+
+            return estado_recorridosRecomendados.Count != 0;
         }
 
         public Boolean recomendarRecorridos(Tuple<double, double> ubicacion, double radio)
@@ -134,7 +153,7 @@ namespace mundo
             return dist;
         }
 
-        public Dictionary<Usuario, List<Recorrido>> Estado_recorridosRecomendados { get => estado_recorridosRecomendados; set => estado_recorridosRecomendados = value; }
+        public Dictionary<Usuario, Recorrido> Estado_recorridosRecomendados { get => estado_recorridosRecomendados; set => estado_recorridosRecomendados = value; }
         public Usuario Estado_usuarioVisualizado { get => estado_usuarioVisualizado; set => estado_usuarioVisualizado = value; }
         public List<Usuario> Estado_usuariosRecomendados { get => estado_usuariosRecomendados; set => estado_usuariosRecomendados = value; }
         public Usuario Estado_usuarioLogged { get => estado_usuarioLogged; set => estado_usuarioLogged = value; }
