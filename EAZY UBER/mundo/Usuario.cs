@@ -55,7 +55,7 @@ namespace mundo
         public Boolean registrarVehiculo(string placa, string color, string modelo, string rutaFoto)
         {
             bool registrado= false;
-            if (placa.Length<1 || color.Length<1 || modelo.Length<1 || rutaFoto.Length<1)
+            if (placa.Length<1 || color.Length<1 || modelo.Length<1 )
             {
                 throw new AgregarVehiculoExcepcion("Debe llenar todos los campos");
             }
@@ -74,12 +74,12 @@ namespace mundo
         {
             bool registrado = true;
 
-            if (nombre != null) { throw new AgregarRutaExcepcion("Debe agregar el nombre de la ruta"); }
-            if ((rutas.Find(x => x.Nombre.Equals(nombre))==null)){ throw new AgregarRutaExcepcion("El nombre de la ruta ya existe! Debe elegir otro nombre"); }
-            if (inicio != null) { throw new AgregarRutaExcepcion("Debe agregar el nombre de la ruta"); }
-            if (fin != null) { throw new AgregarRutaExcepcion("Debe agregar el nombre de la ruta"); }
-            if (puntos != null) { throw new AgregarRutaExcepcion("Debe agregar el nombre de la ruta"); }
-            if (descripcion == null) { descripcion=""; } //Descripcion puede ser opcional.. creo que siempre se retorna "" pero por si las moscas
+            if (nombre == null || nombre.Length<1) { throw new AgregarRutaExcepcion("Debe agregar el nombre de la ruta"); }
+            if ((rutas.Exists(x => x.Nombre.Equals(nombre)))){ throw new AgregarRutaExcepcion("El nombre de la ruta ya existe! Debe elegir otro nombre"); }
+            if (inicio == null) { throw new AgregarRutaExcepcion("La ruta no tiene inicio"); }
+            if (fin == null) { throw new AgregarRutaExcepcion("La ruta no tiene punto final"); }
+            //if (puntos == null) { throw new AgregarRutaExcepcion("Debe agregar el nombre de la ruta"); }       //La ruta no tiene por que tener puntos intermedios
+             
 
             rutas.Add(new Ruta(nombre, inicio, fin, puntos, descripcion));  
             
