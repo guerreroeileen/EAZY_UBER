@@ -185,7 +185,11 @@ namespace mundo
             return eliminado;
         }
 
-        
+        public Vehiculo darVehiculoPorPlaca (String placa)
+        {
+            Vehiculo res = vehiculos.Where(n => n.Placa.SequenceEqual(placa)).ToList().ElementAt(0);
+            return res;
+        }
 
 
 
@@ -201,5 +205,8 @@ namespace mundo
         internal List<Usuario> UsuariosPorAceptar { get => usuariosPorAceptar; set => usuariosPorAceptar = value; }
         public List<Recorrido> Recorridos { get => recorridos; set => recorridos = value; }
         public Tuple<double, double> Ubicacion { get => ubicacion; set => ubicacion = value; }
+        public List<Ruta> Rutas { get => rutas; set => rutas = value; }
+        public List<Vehiculo> Vehiculos { get => vehiculos; set => vehiculos = value; }
+        public List<Recorrido> Recorridos1 { get => recorridos; set => recorridos = value; }
     }
 }

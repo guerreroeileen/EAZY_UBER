@@ -51,6 +51,9 @@
     <Compile Include="PruebasSistRecomendaciones.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PruebasUsuario.cs" />
+    <Compile Include="PruebasVehiculo.cs" />
+    <Compile Include="PruebasRuta.cs" />
+    <Compile Include="PruebaRecorrido.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
