@@ -74,7 +74,7 @@ namespace mundo
             }
 
 
-            return true;
+            return estado_recorridosRecomendados.Count != 0;
         }
 
         public Boolean recomendarRecorridos(Tuple<double, double> ubicacion, double radio)
@@ -104,7 +104,7 @@ namespace mundo
             }
 
 
-            return true;
+            return estado_recorridosRecomendados.Count !=0;
         }
         public Boolean recomendarPasajeros( Recorrido recorrido)
         {
