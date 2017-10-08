@@ -16,7 +16,14 @@ namespace EAZY_UBER
 
         public panel_BuscarRuta()
         {
+            
             InitializeComponent();
+            dateTimePicker1.MinDate = DateTime.Today;
+            dateTimePicker1.MaxDate = new DateTime(2017, 12, 31);
+
+            // Set the CustomFormat string.
+            dateTimePicker1.CustomFormat = "MMMM dd, yyyy - dddd";
+            dateTimePicker1.Format = DateTimePickerFormat.Custom;
         }
 
         public void addHandlerConfirmarOfrecerCupoo(delegado1 delegado)
@@ -27,6 +34,16 @@ namespace EAZY_UBER
         {
             if (eventoConfirmarBuscarRuta != null)
                 eventoConfirmarBuscarRuta.Invoke(this);
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel_BuscarRuta_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
