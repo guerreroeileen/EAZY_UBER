@@ -19,7 +19,7 @@ namespace mundo
         
 
         public SistemaRecomendaciones() {
-            Dictionary<Usuario, Recorrido> estado_recorridosRecomendados=null;
+            estado_recorridosRecomendados=null;
             Usuario estado_usuarioVisualizado=null;
             List<Usuario> estado_usuariosRecomendados=null;
             Usuario estado_usuarioLogged=null;
@@ -56,7 +56,7 @@ namespace mundo
 
             foreach (Usuario u in usuarios)
             {
-                if (u.Ubicacion.Item1 != ubicacion.Item1 && u.Ubicacion.Item2 != ubicacion.Item2)
+                if (u.Ubicacion.Item1 != ubicacion.Item1 || u.Ubicacion.Item2 != ubicacion.Item2)
                 {
                     List<Recorrido> recomendaciones = new List<Recorrido>();
                     foreach (Recorrido r in u.Recorridos)
