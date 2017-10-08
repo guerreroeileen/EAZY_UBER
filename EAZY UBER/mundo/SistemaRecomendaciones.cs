@@ -22,22 +22,22 @@ namespace mundo
             List<Usuario> estado_usuariosRecomendados=null;
             Usuario estado_usuarioLogged=null;
 
-            List<Usuario> usuarios= new List<Usuario>();
+            usuarios= new List<Usuario>();
         }
 
         public Boolean registrarUsuario(string nombre, string apellido, string celular, string contrasenia, string correo, string rutaFoto, Tuple<double,double> ubicacion) {
 
-            if (nombre != null) { throw new AgregarUsuarioExcepcion("Debe ingresar nombre"); }
-            if (apellido != null) { throw new AgregarUsuarioExcepcion("Debe ingresar apellido"); }
-            if (celular != null) { throw new AgregarUsuarioExcepcion("Debe ingresar celular"); }
-            if (contrasenia != null) { throw new AgregarUsuarioExcepcion("Debe ingresar contraseña"); }
-            if (rutaFoto != null) { rutaFoto = ""; }
-            if (correo != null) { throw new AgregarUsuarioExcepcion("Debe ingresar Correo Electronico"); }
-
-            if ((usuarios.Find(x => x.Celular.Equals(celular)))!=null) {
+            if (nombre == null) { throw new AgregarUsuarioExcepcion("Debe ingresar nombre"); }
+            if (apellido == null) { throw new AgregarUsuarioExcepcion("Debe ingresar apellido"); }
+            if (celular == null) { throw new AgregarUsuarioExcepcion("Debe ingresar celular"); }
+            if (contrasenia == null) { throw new AgregarUsuarioExcepcion("Debe ingresar contraseña"); }
+            if (rutaFoto == null) { rutaFoto = ""; }
+            if (correo == null) { throw new AgregarUsuarioExcepcion("Debe ingresar Correo Electronico"); }
+            
+            if (!(usuarios.Exists(x => x.Celular.Equals(celular)))) {
                 usuarios.Add(new Usuario(nombre, apellido, celular, contrasenia, correo, rutaFoto, ubicacion));                
             }
-            
+            Console.WriteLine(usuarios.Count);
             return true;
         }
 
@@ -81,14 +81,17 @@ namespace mundo
             double distAux=0.0;
             Tuple < double, double> ini = recorrido.Ruta.Inicio;
             Tuple<double, double> fin;
-            foreach (var p in recorrido.Ruta.Puntos) {
-                fin = p;
-                v1 = fin.Item1 - ini.Item1;
-                v2 = fin.Item2 - ini.Item2;
-                distAux = (Math.Abs((v2 * punto.Item1) + (v1 * punto.Item2) + ((ini.Item1 * v2) + (ini.Item2 * v1)))) / (Math.Sqrt((v2 * v2) + (v1 * v1)));
-                dist = Math.Min(dist, distAux);
+            if (recorrido.Ruta.Puntos != null) {
+                foreach (var p in recorrido.Ruta.Puntos)
+                {
+                    fin = p;
+                    v1 = fin.Item1 - ini.Item1;
+                    v2 = fin.Item2 - ini.Item2;
+                    distAux = (Math.Abs((v2 * punto.Item1) + (v1 * punto.Item2) + ((ini.Item1 * v2) + (ini.Item2 * v1)))) / (Math.Sqrt((v2 * v2) + (v1 * v1)));
+                    dist = Math.Min(dist, distAux);
 
-                ini = p;
+                    ini = p;
+                }
             }
             fin = recorrido.Ruta.Fin;
             v1 = fin.Item1 - ini.Item1;

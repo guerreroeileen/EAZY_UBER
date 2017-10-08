@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using mundo;
+using Excepciones;
 using System.Collections;
 
 namespace PruebaUnitariaModelo
@@ -45,32 +46,127 @@ namespace PruebaUnitariaModelo
         }
 
         [TestMethod]
-        public void TestAgregarVehiculo(){
+        public void TestAgregarVehiculoExcepciones(){
             setup1();
-            String placa = "GFB469", color = "Azul", modelo = "Cayenne", rutaFoto="" ;
-            sist.darUsuario("30155844").registrarVehiculo(placa, color, modelo, rutaFoto);
+            String placa = "GFB469", color = "Azul", modelo = "Cayenne", rutaFoto="" ;                
             try
             {
                 placa = ""; color = "Azul"; modelo = "Cayenne"; rutaFoto = "";
                 sist.darUsuario("30155844").registrarVehiculo(placa, color, modelo, rutaFoto);
-                Assert.Fail("Se debe generar una excepcion por no asignar placa");
+                Assert.Fail("Se debe generar una excepcion por no asignar placa");               
             }
             catch (Exception e) {
+                Assert.IsInstanceOfType(e, typeof(AgregarVehiculoExcepcion),"Excepcion esperada");                
             }
 
+            try
+            {
+                placa = "HPH434"; color = ""; modelo = "Cayenne"; rutaFoto = "";
+                sist.darUsuario("30155844").registrarVehiculo(placa, color, modelo, rutaFoto);
+                Assert.Fail("Se debe generar una excepcion por no asignar placa");
+            }
+            catch (Exception e)
+            {
+                Assert.IsInstanceOfType(e, typeof(AgregarVehiculoExcepcion), "Excepcion esperada");
+            }
 
+            try
+            {
+                placa = "KLO656"; color = "Morado"; modelo = ""; rutaFoto = "";
+                sist.darUsuario("30155844").registrarVehiculo(placa, color, modelo, rutaFoto);
+                Assert.Fail("Se debe generar una excepcion por no asignar placa");
+            }
+            catch (Exception e)
+            {
+                Assert.IsInstanceOfType(e, typeof(AgregarVehiculoExcepcion), "Excepcion esperada");
+
+            }
+            placa = "MNL089"; color = "Morado"; modelo = "rolls"; rutaFoto = "";
+            Assert.IsTrue(sist.darUsuario("30155844").registrarVehiculo(placa, color, modelo, rutaFoto));
 
         }
 
         [TestMethod]
-        public void TestAgregarRuta() { 
+        public void TestAgregarRutaExcepciones() { 
             setup1();
+            string nombre = "ruta 1", descripcion = "";            
+            Tuple<double, double> ini = new Tuple<double, double>(95.544, 56.2255);
+            Tuple<double, double> fin = new Tuple<double, double>(105.658, 86.485);
+            System.Collections.Generic.List<Tuple<double, double>> puntos = new System.Collections.Generic.List<Tuple<double, double>>() { new Tuple<double, double>(98.544, 66.2255), new Tuple<double, double>(102.65, 76.2255), new Tuple<double, double>(104.695, 82.225) };
+
+            try
+            {
+                nombre = null; descripcion = "";
+                ini = new Tuple<double, double>(95.544, 56.2255);
+                fin = new Tuple<double, double>(105.658, 86.485);
+                puntos = new System.Collections.Generic.List<Tuple<double, double>>() { new Tuple<double, double>(98.544, 66.2255), new Tuple<double, double>(102.65, 76.2255), new Tuple<double, double>(104.695, 82.225) };
+                sist.darUsuario("30155844").registrarRuta(nombre, ini, fin, puntos, descripcion);
+                Assert.Fail("Se debe generar una excepcion por no asignar placa");
+            }
+            catch (Exception e)
+            {
+                Assert.IsInstanceOfType(e, typeof(AgregarRutaExcepcion), "Excepcion esperada");
+            }
+
+            try
+            {
+                nombre = "ruta 1"; descripcion = "";
+                ini = null;
+                fin = new Tuple<double, double>(105.658, 86.485);
+                puntos = new System.Collections.Generic.List<Tuple<double, double>>() { new Tuple<double, double>(98.544, 66.2255), new Tuple<double, double>(102.65, 76.2255), new Tuple<double, double>(104.695, 82.225) };
+                sist.darUsuario("30155844").registrarRuta(nombre, ini, fin, puntos, descripcion);
+                Assert.Fail("Se debe generar una excepcion por no asignar placa");
+            }
+            catch (Exception e)
+            {
+                Assert.IsInstanceOfType(e, typeof(AgregarRutaExcepcion), "Excepcion esperada");
+            }
+
+            try
+            {
+                nombre = "ruta 1"; descripcion = "";
+                ini = new Tuple<double, double>(95.544, 56.2255);
+                fin = null;
+                puntos = new System.Collections.Generic.List<Tuple<double, double>>() { new Tuple<double, double>(98.544, 66.2255), new Tuple<double, double>(102.65, 76.2255), new Tuple<double, double>(104.695, 82.225) };
+                sist.darUsuario("30155844").registrarRuta(nombre, ini, fin, puntos, descripcion);
+                Assert.Fail("Se debe generar una excepcion por no asignar placa");
+            }
+            catch (Exception e)
+            {
+                Assert.IsInstanceOfType(e, typeof(AgregarRutaExcepcion), "Excepcion esperada");
+            }
+
+            
+
+            //Agrega la ruta con nombre ruta 1
+            nombre = "ruta 1"; descripcion = "";
+            ini = new Tuple<double, double>(95.544, 56.2255);
+            fin = new Tuple<double, double>(105.658, 86.485);
+            puntos = new System.Collections.Generic.List<Tuple<double, double>>() { new Tuple<double, double>(98.544, 66.2255), new Tuple<double, double>(102.65, 76.2255), new Tuple<double, double>(104.695, 82.225) };
+            sist.darUsuario("30155844").registrarRuta(nombre, ini, fin, puntos, descripcion);
+
+            //Verifica que no hayan rutas con el nombre repetido
+            try
+            {
+                nombre = "ruta 1"; descripcion = "";
+                ini = new Tuple<double, double>(95.544, 56.2255);
+                fin = new Tuple<double, double>(105.658, 86.485);
+                puntos = new System.Collections.Generic.List<Tuple<double, double>>() { new Tuple<double, double>(98.544, 66.2255), new Tuple<double, double>(102.65, 76.2255), new Tuple<double, double>(104.695, 82.225) };
+                sist.darUsuario("30155844").registrarRuta(nombre, ini, fin, puntos, descripcion);
+                Assert.Fail("Se debe generar una excepcion por no asignar placa");
+            }
+            catch (Exception e)
+            {
+                Assert.IsInstanceOfType(e, typeof(AgregarRutaExcepcion), "Excepcion esperada");
+            }
 
         }
 
         [TestMethod]
-        public void TestAgregarRecorrido(){
+        public void TestAgregarRecorridoExcepciones(){
             setup2();
+
+
         }
 
 
