@@ -33,11 +33,15 @@ namespace mundo
             if (contrasenia == null) { throw new AgregarUsuarioExcepcion("Debe ingresar contraseña"); }
             if (rutaFoto == null) { rutaFoto = ""; }
             if (correo == null) { throw new AgregarUsuarioExcepcion("Debe ingresar Correo Electronico"); }
-            
-            if (!(usuarios.Exists(x => x.Celular.Equals(celular)))) {
-                usuarios.Add(new Usuario(nombre, apellido, celular, contrasenia, correo, rutaFoto, ubicacion));                
+
+            if (!(usuarios.Exists(x => x.Celular.Equals(celular))))
+            {
+                usuarios.Add(new Usuario(nombre, apellido, celular, contrasenia, correo, rutaFoto, ubicacion));
             }
-            Console.WriteLine(usuarios.Count);
+            else {
+                throw new AgregarUsuarioExcepcion("El usuario ya existe");
+            }
+            
             return true;
         }
 
