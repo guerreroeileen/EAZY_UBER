@@ -47,8 +47,7 @@ namespace PruebaUnitariaModelo
 
         [TestMethod]
         public void TestAgregarVehiculo()
-        {
-            setup1();
+        {            
             setup2();
             Assert.AreEqual("GFB469", sist.darUsuario("30155844").darVehiculoPorPlaca("GFB469").Placa);
             Assert.AreEqual("MKL598", sist.darUsuario("3068455").darVehiculoPorPlaca("MKL598").Placa);
@@ -91,8 +90,7 @@ namespace PruebaUnitariaModelo
 
         [TestMethod]
         public void TestAgregarRuta()
-        {
-            setup1();
+        {           
             setup2();
             Usuario carlos = sist.darUsuario("30155844");
             carlos.registrarRuta("El teatro 2", new Tuple<double, double>(45.365, 69.265), new Tuple<double, double>(98.254, 35.365), new System.Collections.Generic.List<Tuple<double, double>>() { new Tuple<double, double>(52.698, 59.333), new Tuple<double, double>(91.365, 42.365) }, "Buena la Obra, triste el final");
@@ -176,6 +174,39 @@ namespace PruebaUnitariaModelo
         [TestMethod]
         public void TestAgregarRecorridoExcepciones(){
             setup2();
+            double tarifa=0.0;
+            DateTime fecha = DateTime.Now;
+            Vehiculo v = sist.darUsuario("30155844").darVehiculoPorPlaca("GFB469");
+            Ruta r = sist.darUsuario("30155844").Rutas[0];
+            
+
+            try
+            {
+                tarifa = 0.0;
+                v = null;
+                r = sist.darUsuario("30155844").Rutas[0];
+                sist.darUsuario("30155844").registrarRecorrido(tarifa, fecha, v, r);
+                Assert.Fail("Se debe generar una excepcion por no asignar placa");
+            }
+            catch (Exception e)
+            {
+                Assert.IsInstanceOfType(e, typeof(AgregarRecorridoExcepcion), "Excepcion esperada");
+            }
+
+            try
+            {
+                tarifa = 0.0;
+                v = sist.darUsuario("30155844").darVehiculoPorPlaca("GFB469");
+                r = null;
+                sist.darUsuario("30155844").registrarRecorrido(tarifa, fecha, v, r);
+                Assert.Fail("Se debe generar una excepcion por no asignar placa");
+            }
+            catch (Exception e)
+            {
+                Assert.IsInstanceOfType(e, typeof(AgregarRecorridoExcepcion), "Excepcion esperada");
+            }
+
+
         }
 
 

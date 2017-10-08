@@ -74,7 +74,7 @@ namespace mundo
             return true;
         }
 
-        public double distMinimaARuta(Recorrido recorrido, Tuple<double, double> punto) {
+        private double distMinimaARuta(Recorrido recorrido, Tuple<double, double> punto) {
             double dist = double.MaxValue;
             double v1=0.0;
             double v2=0.0;

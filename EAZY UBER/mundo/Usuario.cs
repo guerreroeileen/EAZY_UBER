@@ -90,11 +90,8 @@ namespace mundo
         {
             bool registrado = false;
             
-            if (fecha==null)
-            {
-                throw new AgregarRecorridoExcepcion("Debe agregar una fecha de salida");
-            }
-            else if (vehiculo==null)
+            
+            if (vehiculo==null)
             {
                 throw new AgregarRecorridoExcepcion("Debe agregar un vehiculo al recorrido");
             }
