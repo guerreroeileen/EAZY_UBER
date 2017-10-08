@@ -16,6 +16,8 @@ namespace mundo
 
         private List<Usuario> usuarios;
 
+        
+
         public SistemaRecomendaciones() {
             Dictionary<Usuario, List<Recorrido>> estado_recorridosRecomendados=null;
             Usuario estado_usuarioVisualizado=null;
@@ -131,7 +133,10 @@ namespace mundo
             
             return dist;
         }
-       
 
+        public Dictionary<Usuario, List<Recorrido>> Estado_recorridosRecomendados { get => estado_recorridosRecomendados; set => estado_recorridosRecomendados = value; }
+        public Usuario Estado_usuarioVisualizado { get => estado_usuarioVisualizado; set => estado_usuarioVisualizado = value; }
+        public List<Usuario> Estado_usuariosRecomendados { get => estado_usuariosRecomendados; set => estado_usuariosRecomendados = value; }
+        public Usuario Estado_usuarioLogged { get => estado_usuarioLogged; set => estado_usuarioLogged = value; }
     }
 }
