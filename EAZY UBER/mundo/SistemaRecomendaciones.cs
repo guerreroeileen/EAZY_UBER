@@ -74,6 +74,32 @@ namespace mundo
             return true;
         }
 
+        public Boolean loguearUsuario(String celular)
+        {
+            Boolean logued = true;
+            Usuario aux = usuarios.Find(x => x.Celular.Equals(celular));
+                        if (aux != null)
+            {
+                estado_usuarioLogged = aux;
+                            }
+                        else {
+                logued = false;
+                            }
+                        return logued;
+                    }
+ 
+         public Boolean desloguearUsuario()
+        {
+                        if (estado_usuarioLogged != null)
+                            {
+                estado_usuarioLogged = null;
+                                return true;
+                            }
+                        else {
+                                return false;
+                            }
+                    }
+
         private double distMinimaARuta(Recorrido recorrido, Tuple<double, double> punto) {
             double dist = double.MaxValue;
             double v1=0.0;
