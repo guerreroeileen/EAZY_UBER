@@ -155,35 +155,13 @@ namespace EAZY_UBER
             // 
             // mapa
             // 
-            this.mapa.Bearing = 0F;
-            this.mapa.CanDragMap = true;
-            this.mapa.EmptyTileColor = System.Drawing.Color.Navy;
-            this.mapa.GrayScaleMode = false;
-            this.mapa.HelperLineOption = GMap.NET.WindowsForms.HelperLineOptions.DontShow;
-            this.mapa.LevelsKeepInMemmory = 5;
-            this.mapa.Location = new System.Drawing.Point(11, 50);
-            this.mapa.Margin = new System.Windows.Forms.Padding(2);
-            this.mapa.MarkersEnabled = true;
-            this.mapa.MaxZoom = 2;
-            this.mapa.MinZoom = 2;
-            this.mapa.MouseWheelZoomEnabled = true;
-            this.mapa.MouseWheelZoomType = GMap.NET.MouseWheelZoomType.MousePositionAndCenter;
-            this.mapa.Name = "mapa";
-            this.mapa.NegativeMode = false;
-            this.mapa.PolygonsEnabled = true;
-            this.mapa.RetryLoadTile = 0;
-            this.mapa.RoutesEnabled = true;
-            this.mapa.ScaleMode = GMap.NET.WindowsForms.ScaleModes.Integer;
-            this.mapa.SelectedAreaFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(65)))), ((int)(((byte)(105)))), ((int)(((byte)(225)))));
-            this.mapa.ShowTileGridLines = false;
-            this.mapa.Size = new System.Drawing.Size(523, 591);
-            this.mapa.TabIndex = 12;
-            this.mapa.Zoom = 0D;
+           
             // 
             // panel_registro1
             // 
             this.panel_registro1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.panel_registro1.Location = new System.Drawing.Point(298, 97);
+            this.panel_registro1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel_registro1.Name = "panel_registro1";
             this.panel_registro1.Size = new System.Drawing.Size(304, 342);
             this.panel_registro1.TabIndex = 1;
@@ -191,6 +169,7 @@ namespace EAZY_UBER
             // panel_LogIn1
             // 
             this.panel_LogIn1.Location = new System.Drawing.Point(335, 130);
+            this.panel_LogIn1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel_LogIn1.Name = "panel_LogIn1";
             this.panel_LogIn1.Size = new System.Drawing.Size(253, 289);
             this.panel_LogIn1.TabIndex = 0;
@@ -237,11 +216,12 @@ namespace EAZY_UBER
             // 
             // menuStrip1
             // 
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.opcionesToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(912, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(912, 28);
             this.menuStrip1.TabIndex = 18;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -251,21 +231,22 @@ namespace EAZY_UBER
             this.cerrarSesionToolStripMenuItem,
             this.notificacionesToolStripMenuItem});
             this.opcionesToolStripMenuItem.Name = "opcionesToolStripMenuItem";
-            this.opcionesToolStripMenuItem.Size = new System.Drawing.Size(69, 20);
+            this.opcionesToolStripMenuItem.Size = new System.Drawing.Size(83, 24);
             this.opcionesToolStripMenuItem.Text = "Opciones";
             // 
             // cerrarSesionToolStripMenuItem
             // 
             this.cerrarSesionToolStripMenuItem.Name = "cerrarSesionToolStripMenuItem";
-            this.cerrarSesionToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.cerrarSesionToolStripMenuItem.Size = new System.Drawing.Size(179, 26);
             this.cerrarSesionToolStripMenuItem.Text = "Cerrar Sesion";
             // 
             // notificacionesToolStripMenuItem
             // 
             this.notificacionesToolStripMenuItem.Name = "notificacionesToolStripMenuItem";
-            this.notificacionesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.notificacionesToolStripMenuItem.Size = new System.Drawing.Size(179, 26);
             this.notificacionesToolStripMenuItem.Text = "Notificaciones";
             this.notificacionesToolStripMenuItem.Click += new System.EventHandler(this.notificacionesToolStripMenuItem_Click);
+            mapa.Visible = true;
             // 
             // Inicio
             // 
@@ -293,9 +274,37 @@ namespace EAZY_UBER
         private void Inicio_Load(object sender, EventArgs e)
         {
 
+            mapa.DragButton = MouseButtons.Left;
+            mapa.CanDragMap = true;
             mapa.MapProvider = GMapProviders.GoogleMap;
+            mapa.SetPositionByKeywords("Cali,Colombia");
 
+           
+            mapa.MinZoom = 0;
+            mapa.MaxZoom = 42;
+            mapa.Zoom = 12;
+            mapa.AutoScroll = true;
+
+            this.mapa.MarkersEnabled = true;
+          
+            this.mapa.MouseWheelZoomEnabled = true;
+           
+            this.mapa.Name = "mapa";
+            
+            this.mapa.PolygonsEnabled = true;
+        
+            this.mapa.RoutesEnabled = true;
+            
+            this.mapa.Size = new System.Drawing.Size(523, 552);
+           
+         
+            this.mapa.Load += new System.EventHandler(this.mapa_Load);
+          
         }
 
+        private void mapa_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
