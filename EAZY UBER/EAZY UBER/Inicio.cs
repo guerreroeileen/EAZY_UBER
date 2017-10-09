@@ -362,6 +362,9 @@ namespace EAZY_UBER
             marker.Position = new PointLatLng(lat, lng);
 
             marker.ToolTipText = string.Format("Latitud: {0} \n Longitud: {1}", lat, lng);
+
+            Tuple<double, double> ubicacion = new Tuple<double, double>(lat, lng);//este se la pasas al atribut ubicación usuario dependiendo del controlador
+           
         }
 
         private void mapa_Load_1(object sender, EventArgs e)
