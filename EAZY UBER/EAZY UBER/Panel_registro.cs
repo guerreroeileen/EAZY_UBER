@@ -14,19 +14,11 @@ namespace EAZY_UBER
     {
         public event delegado1 eventoRegistro;
         public event delegado1 eventoCancelar;
+        public event delegado1 eventoSeleccionarRutaImagen;
 
         public Panel_registro()
         {
             InitializeComponent();
-        }
-
-        public void addHandlerregistro(delegado1 delegado)
-        {
-            eventoRegistro += delegado;
-        }
-        public void addHandlerCancelar(delegado1 delegado)
-        {
-            eventoCancelar += delegado;
         }
 
         private void registrarse_Click(object sender, EventArgs e)
@@ -39,6 +31,17 @@ namespace EAZY_UBER
         {
             if (eventoCancelar != null)
                 eventoCancelar.Invoke(this);
+        }
+
+        private void Panel_registro_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (eventoSeleccionarRutaImagen != null)
+                eventoSeleccionarRutaImagen.Invoke(this);
         }
     }
 }

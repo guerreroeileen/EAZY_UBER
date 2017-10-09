@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textConfContrasena = new System.Windows.Forms.TextBox();
+            this.textContrasena = new System.Windows.Forms.TextBox();
+            this.textFoto = new System.Windows.Forms.TextBox();
+            this.textCelular = new System.Windows.Forms.TextBox();
+            this.textCorreo = new System.Windows.Forms.TextBox();
             this.registrarse = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -42,54 +42,54 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.textApellido = new System.Windows.Forms.TextBox();
+            this.textNombre = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.checkBoxRecomendaciones = new System.Windows.Forms.CheckBox();
             this.cancelar = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // textBox6
+            // textConfContrasena
             // 
-            this.textBox6.Location = new System.Drawing.Point(149, 198);
-            this.textBox6.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(110, 20);
-            this.textBox6.TabIndex = 27;
+            this.textConfContrasena.Location = new System.Drawing.Point(149, 198);
+            this.textConfContrasena.Margin = new System.Windows.Forms.Padding(2);
+            this.textConfContrasena.Name = "textConfContrasena";
+            this.textConfContrasena.Size = new System.Drawing.Size(110, 20);
+            this.textConfContrasena.TabIndex = 27;
             // 
-            // textBox5
+            // textContrasena
             // 
-            this.textBox5.Location = new System.Drawing.Point(148, 174);
-            this.textBox5.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(110, 20);
-            this.textBox5.TabIndex = 26;
+            this.textContrasena.Location = new System.Drawing.Point(148, 174);
+            this.textContrasena.Margin = new System.Windows.Forms.Padding(2);
+            this.textContrasena.Name = "textContrasena";
+            this.textContrasena.Size = new System.Drawing.Size(110, 20);
+            this.textContrasena.TabIndex = 26;
             // 
-            // textBox4
+            // textFoto
             // 
-            this.textBox4.Location = new System.Drawing.Point(149, 150);
-            this.textBox4.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(85, 20);
-            this.textBox4.TabIndex = 25;
+            this.textFoto.Location = new System.Drawing.Point(149, 150);
+            this.textFoto.Margin = new System.Windows.Forms.Padding(2);
+            this.textFoto.Name = "textFoto";
+            this.textFoto.Size = new System.Drawing.Size(85, 20);
+            this.textFoto.TabIndex = 25;
             // 
-            // textBox3
+            // textCelular
             // 
-            this.textBox3.Location = new System.Drawing.Point(149, 126);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(110, 20);
-            this.textBox3.TabIndex = 24;
+            this.textCelular.Location = new System.Drawing.Point(149, 126);
+            this.textCelular.Margin = new System.Windows.Forms.Padding(2);
+            this.textCelular.Name = "textCelular";
+            this.textCelular.Size = new System.Drawing.Size(110, 20);
+            this.textCelular.TabIndex = 24;
             // 
-            // textBox2
+            // textCorreo
             // 
-            this.textBox2.Location = new System.Drawing.Point(149, 102);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(110, 20);
-            this.textBox2.TabIndex = 23;
+            this.textCorreo.Location = new System.Drawing.Point(149, 102);
+            this.textCorreo.Margin = new System.Windows.Forms.Padding(2);
+            this.textCorreo.Name = "textCorreo";
+            this.textCorreo.Size = new System.Drawing.Size(110, 20);
+            this.textCorreo.TabIndex = 23;
             // 
             // registrarse
             // 
@@ -183,21 +183,22 @@
             this.label8.TabIndex = 28;
             this.label8.Text = "Foto";
             // 
-            // textBox1
+            // textApellido
             // 
-            this.textBox1.Location = new System.Drawing.Point(149, 78);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(110, 20);
-            this.textBox1.TabIndex = 29;
+            this.textApellido.Location = new System.Drawing.Point(149, 78);
+            this.textApellido.Margin = new System.Windows.Forms.Padding(2);
+            this.textApellido.Name = "textApellido";
+            this.textApellido.Size = new System.Drawing.Size(110, 20);
+            this.textApellido.TabIndex = 29;
             // 
-            // textBox7
+            // textNombre
             // 
-            this.textBox7.Location = new System.Drawing.Point(149, 54);
-            this.textBox7.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(110, 20);
-            this.textBox7.TabIndex = 30;
+            this.textNombre.AcceptsTab = true;
+            this.textNombre.Location = new System.Drawing.Point(149, 54);
+            this.textNombre.Margin = new System.Windows.Forms.Padding(2);
+            this.textNombre.Name = "textNombre";
+            this.textNombre.Size = new System.Drawing.Size(110, 20);
+            this.textNombre.TabIndex = 30;
             // 
             // button2
             // 
@@ -208,6 +209,7 @@
             this.button2.Size = new System.Drawing.Size(20, 20);
             this.button2.TabIndex = 31;
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // label9
             // 
@@ -227,14 +229,14 @@
             this.label10.TabIndex = 33;
             this.label10.Text = "recorridos automaticamente";
             // 
-            // checkBox1
+            // checkBoxRecomendaciones
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(219, 248);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(15, 14);
-            this.checkBox1.TabIndex = 34;
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBoxRecomendaciones.AutoSize = true;
+            this.checkBoxRecomendaciones.Location = new System.Drawing.Point(219, 248);
+            this.checkBoxRecomendaciones.Name = "checkBoxRecomendaciones";
+            this.checkBoxRecomendaciones.Size = new System.Drawing.Size(15, 14);
+            this.checkBoxRecomendaciones.TabIndex = 34;
+            this.checkBoxRecomendaciones.UseVisualStyleBackColor = true;
             // 
             // cancelar
             // 
@@ -255,18 +257,18 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.Controls.Add(this.cancelar);
-            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.checkBoxRecomendaciones);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.textBox7);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.textNombre);
+            this.Controls.Add(this.textApellido);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.textBox6);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.textConfContrasena);
+            this.Controls.Add(this.textContrasena);
+            this.Controls.Add(this.textFoto);
+            this.Controls.Add(this.textCelular);
+            this.Controls.Add(this.textCorreo);
             this.Controls.Add(this.registrarse);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
@@ -277,18 +279,13 @@
             this.Controls.Add(this.label1);
             this.Name = "Panel_registro";
             this.Size = new System.Drawing.Size(304, 342);
+            this.Load += new System.EventHandler(this.Panel_registro_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Button registrarse;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
@@ -298,12 +295,17 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox7;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.Label cancelar;
+        public System.Windows.Forms.TextBox textNombre;
+        public System.Windows.Forms.TextBox textCelular;
+        public System.Windows.Forms.TextBox textCorreo;
+        public System.Windows.Forms.TextBox textApellido;
+        public System.Windows.Forms.TextBox textConfContrasena;
+        public System.Windows.Forms.TextBox textContrasena;
+        public System.Windows.Forms.TextBox textFoto;
+        public System.Windows.Forms.CheckBox checkBoxRecomendaciones;
     }
 }
