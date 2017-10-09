@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.button1 = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textContrasena = new System.Windows.Forms.TextBox();
+            this.textUsuario = new System.Windows.Forms.TextBox();
             this.registro = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -49,21 +49,21 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // textBox2
+            // textContrasena
             // 
-            this.textBox2.Location = new System.Drawing.Point(128, 113);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(87, 20);
-            this.textBox2.TabIndex = 14;
+            this.textContrasena.Location = new System.Drawing.Point(128, 113);
+            this.textContrasena.Margin = new System.Windows.Forms.Padding(2);
+            this.textContrasena.Name = "textContrasena";
+            this.textContrasena.Size = new System.Drawing.Size(87, 20);
+            this.textContrasena.TabIndex = 14;
             // 
-            // textBox1
+            // textUsuario
             // 
-            this.textBox1.Location = new System.Drawing.Point(128, 87);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(87, 20);
-            this.textBox1.TabIndex = 13;
+            this.textUsuario.Location = new System.Drawing.Point(128, 87);
+            this.textUsuario.Margin = new System.Windows.Forms.Padding(2);
+            this.textUsuario.Name = "textUsuario";
+            this.textUsuario.Size = new System.Drawing.Size(87, 20);
+            this.textUsuario.TabIndex = 13;
             // 
             // registro
             // 
@@ -122,8 +122,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.textContrasena);
+            this.Controls.Add(this.textUsuario);
             this.Controls.Add(this.registro);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -139,12 +139,12 @@
         #endregion
 
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label registro;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        public System.Windows.Forms.TextBox textUsuario;
+        public System.Windows.Forms.TextBox textContrasena;
     }
 }

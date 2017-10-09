@@ -9,6 +9,7 @@ namespace Controlador
 {
     class Runner
     {
+        [STAThread]
         static void Main(string[] args)
         {
             //crear modelo pasar a vista u control

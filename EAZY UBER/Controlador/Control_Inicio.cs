@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace Controlador
 {
@@ -21,11 +22,14 @@ namespace Controlador
 
         public Control_Inicio(Inicio formInicio)
         {
+            //eventos listos
             this.formInicio = formInicio;
-            formInicio.panel_LogIn1.addHandlerregistro(iniciarRegistro);
-            formInicio.panel_LogIn1.addHandlerIngreso(ingresar);
-            formInicio.panel_registro1.addHandlerregistro(registrarse);
-            formInicio.panel_registro1.addHandlerCancelar(cancelarRegistro);
+            this.formInicio.panel_LogIn1.eventoRegistro += iniciarRegistro;
+            this.formInicio.panel_LogIn1.eventoIngresar += ingresar;
+            this.formInicio.panel_registro1.eventoRegistro += (registrarse);
+            this.formInicio.panel_registro1.eventoCancelar += cancelarRegistro;
+            this.formInicio.panel_registro1.eventoSeleccionarRutaImagen += seleccionarRutaFoto;
+
             formInicio.panel_PerfilUsuario1.addHandlerAgregarRuta(agregarRuta);
             formInicio.panel_PerfilUsuario1.addHandlerAgregarVehiculo(agregarVehiculo);
             formInicio.panel_PerfilUsuario1.addHandlerBuscarRuta(buscarRuta);
@@ -47,38 +51,66 @@ namespace Controlador
             Application.Run(this.formInicio);
         }
 
+
+       //---------------------------------------INICIO REGISTRO Y LOGIN-----------------------------------------
+        
+        /* metodo para ingresar al sistema
+         * se activa al dar click en el boton de ingreso en el Panel_login
+         */
+        public void ingresar(Object sender)
+        {
+            //datos log in
+            string usuario = formInicio.panel_LogIn1.textUsuario.Text;
+            string contasena = formInicio.panel_LogIn1.textContrasena.Text;
+
+
+            //TODO hacer logica de ingreso
+            bool ingresar = true;
+
+            if (ingresar)
+            {
+                formInicio.panel_registro1.Visible = false;
+                formInicio.mapa.Visible = true;
+                formInicio.panel_PerfilUsuario1.Visible = true;
+                formInicio.panel_OfrecerCupo1.Visible = true;
+                formInicio.panel_BuscarRuta1.Visible = false;
+                formInicio.panel_UsuarioRecomendado1.Visible = false;
+                formInicio.panel_RecorridoRecomendado1.Visible = false;
+                formInicio.panel_LogIn1.Visible = false;
+                formInicio.opcionesToolStripMenuItem.Visible = true;
+            }
+            else
+            { 
+                //TODO muestra mensaje error login
+            }
+        }
+
         /* Metodo para inciar registro
          * Se activa al undir el boton de registro en el Panel_logIn
          */
         public void iniciarRegistro(Object sender)
         {
             formInicio.panel_registro1.Visible = true;
-        }
-
-        /* metodo para ingresar al sistema
-         * se activa al dar click en el boton de ingreso en el Panel_login
-         */
-        public void ingresar(Object sender)
-        {
-            //TODO
-            formInicio.panel_registro1.Visible = false;
-            formInicio.mapa.Visible = true;
-            formInicio.panel_PerfilUsuario1.Visible = true;
-            formInicio.panel_OfrecerCupo1.Visible = true;
-            formInicio.panel_BuscarRuta1.Visible = false;
-            formInicio.panel_UsuarioRecomendado1.Visible = false;
-            formInicio.panel_RecorridoRecomendado1.Visible = false;
             formInicio.panel_LogIn1.Visible = false;
-            formInicio.opcionesToolStripMenuItem.Visible = true;
         }
 
-        /* Cancelar registro y volver al panel_login
-         * Se llama al undir en el label cancelar en el pane_registro
+        /*Permite seleccionar la ruta de la imagen
+         * se activa desde el panel de registro
+         * salida: debe poner la ruta de la foto en el textRutafoto del panel de registro
          */
-        public void cancelarRegistro(Object sender)
+        public void seleccionarRutaFoto(Object sender)
         {
-            //TODO limpiar campos
-            formInicio.panel_registro1.Visible = false;
+            OpenFileDialog choofdlog = new OpenFileDialog();
+            Debug.WriteLine("hola");
+            choofdlog.Filter = "All Files (*.*)|*.*";
+            choofdlog.FilterIndex = 1;
+            choofdlog.Multiselect = false;
+            if (choofdlog.ShowDialog() == DialogResult.OK)
+            {
+                string sFileName = choofdlog.FileName;
+                formInicio.panel_registro1.textFoto.Text = sFileName;
+            }
+
         }
 
         /* metodo para confirmar el registro
@@ -86,8 +118,46 @@ namespace Controlador
          */
         public void registrarse(Object sender)
         {
-            //TODO
+            //recuperar textos
+            string nombre = formInicio.panel_registro1.textNombre.Text;
+            string apellido = formInicio.panel_registro1.textApellido.Text;
+            string correo = formInicio.panel_registro1.textCorreo.Text;
+            string celular = formInicio.panel_registro1.textCelular.Text;
+            string rutafoto = formInicio.panel_registro1.textFoto.Text;
+            string contrasena = formInicio.panel_registro1.textContrasena.Text;
+            string confirmarContrasena = formInicio.panel_registro1.textConfContrasena.Text;
+            bool recibirrecomendaciones = formInicio.panel_registro1.checkBoxRecomendaciones.Checked;
+
+            //TODO agregar al modelo, recibir errores, poner campos en rojo
+
         }
+
+        /* Cancelar registro y volver al panel_login
+         * Se llama al undir en el label cancelar en el pane_registro
+         */
+        public void cancelarRegistro(Object sender)
+        {
+            //muestra log in
+            formInicio.panel_LogIn1.Visible = true;
+
+            //limpiar campos
+            formInicio.panel_registro1.textNombre.Clear();
+            formInicio.panel_registro1.textApellido.Clear();
+            formInicio.panel_registro1.textCorreo.Clear();
+            formInicio.panel_registro1.textCelular.Clear();
+            formInicio.panel_registro1.textFoto.Clear();
+            formInicio.panel_registro1.textContrasena.Clear();
+            formInicio.panel_registro1.textConfContrasena.Clear();
+            formInicio.panel_registro1.checkBoxRecomendaciones.Checked = false;
+            
+            //ocultar registro
+            formInicio.panel_registro1.Visible = false;
+        }
+
+        //----------------------------------FIN REGISTRO Y LOG IN---------------------------------------------
+
+
+       
         /* metodo para abrir la ventana de agregar ruta
          * se activa undiendo en el boton "+" en la linea Rutas en el panel perfil_Usuario
          *La ventana queda ligada a Control_AgregarRuta
@@ -163,7 +233,7 @@ namespace Controlador
          */
         private void cerrarSesionToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            //TODO
         }
 
         /* Metodo que se llama cuando se da doble click en el mapa
