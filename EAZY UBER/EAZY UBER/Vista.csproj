@@ -11,21 +11,6 @@
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-    <PublishUrl>publish\</PublishUrl>
-    <Install>true</Install>
-    <InstallFrom>Disk</InstallFrom>
-    <UpdateEnabled>false</UpdateEnabled>
-    <UpdateMode>Foreground</UpdateMode>
-    <UpdateInterval>7</UpdateInterval>
-    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
-    <UpdatePeriodically>false</UpdatePeriodically>
-    <UpdateRequired>false</UpdateRequired>
-    <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
-    <UseApplicationTrust>false</UseApplicationTrust>
-    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -46,16 +31,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject>EAZY_UBER.Program</StartupObject>
-  </PropertyGroup>
   <ItemGroup>
-    <Reference Include="GMap.NET.Core">
-      <HintPath>..\Libreria\gmaps\GMap.NET.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="GMap.NET.WindowsForms">
-      <HintPath>..\Libreria\gmaps\GMap.NET.WindowsForms.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -69,104 +45,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Inicio.cs">
+    <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Notificaciones.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Notificaciones.Designer.cs">
-      <DependentUpon>Notificaciones.cs</DependentUpon>
-    </Compile>
-    <Compile Include="panel_BuscarRuta.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="panel_BuscarRuta.Designer.cs">
-      <DependentUpon>panel_BuscarRuta.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Panel_LogIn.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Panel_LogIn.designer.cs">
-      <DependentUpon>Panel_LogIn.cs</DependentUpon>
-    </Compile>
-    <Compile Include="panel_OfrecerCupo.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="panel_OfrecerCupo.Designer.cs">
-      <DependentUpon>panel_OfrecerCupo.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Panel_PerfilUsuario.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Panel_PerfilUsuario.Designer.cs">
-      <DependentUpon>Panel_PerfilUsuario.cs</DependentUpon>
-    </Compile>
-    <Compile Include="panel_RecorridoRecomendado.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="panel_RecorridoRecomendado.Designer.cs">
-      <DependentUpon>panel_RecorridoRecomendado.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Panel_registro.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Panel_registro.designer.cs">
-      <DependentUpon>Panel_registro.cs</DependentUpon>
-    </Compile>
-    <Compile Include="panel_UsuarioRecomendado.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="panel_UsuarioRecomendado.Designer.cs">
-      <DependentUpon>panel_UsuarioRecomendado.cs</DependentUpon>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RegistroRuta.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="RegistroRuta.Designer.cs">
-      <DependentUpon>RegistroRuta.cs</DependentUpon>
-    </Compile>
-    <Compile Include="RegistroVehiculo.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="RegistroVehiculo.Designer.cs">
-      <DependentUpon>RegistroVehiculo.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Resources\Notificaciones.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Resources\Notificaciones.Designer.cs">
-      <DependentUpon>Notificaciones.cs</DependentUpon>
-    </Compile>
-    <EmbeddedResource Include="Inicio.resx">
-      <DependentUpon>Inicio.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Notificaciones.resx">
-      <DependentUpon>Notificaciones.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="panel_BuscarRuta.resx">
-      <DependentUpon>panel_BuscarRuta.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Panel_LogIn.resx">
-      <DependentUpon>Panel_LogIn.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="panel_OfrecerCupo.resx">
-      <DependentUpon>panel_OfrecerCupo.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Panel_PerfilUsuario.resx">
-      <DependentUpon>Panel_PerfilUsuario.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="panel_RecorridoRecomendado.resx">
-      <DependentUpon>panel_RecorridoRecomendado.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Panel_registro.resx">
-      <DependentUpon>Panel_registro.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="panel_UsuarioRecomendado.resx">
-      <DependentUpon>panel_UsuarioRecomendado.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -175,17 +61,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="RegistroRuta.resx">
-      <DependentUpon>RegistroRuta.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="RegistroVehiculo.resx">
-      <DependentUpon>RegistroVehiculo.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Resources\Notificaciones.resx">
-      <DependentUpon>Notificaciones.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -198,24 +74,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
-      <Visible>False</Visible>
-      <ProductName>Microsoft .NET Framework 4.6.1 %28x86 y x64%29</ProductName>
-      <Install>true</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5 SP1</ProductName>
-      <Install>false</Install>
-    </BootstrapperPackage>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\search.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\maxresdefault.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
