@@ -34,8 +34,8 @@
             this.textBoxNombreRuta = new System.Windows.Forms.TextBox();
             this.textBoxDescripcionRuta = new System.Windows.Forms.TextBox();
             this.gMapControl1 = new GMap.NET.WindowsForms.GMapControl();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnFin = new System.Windows.Forms.Button();
+            this.btnInicio = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
@@ -77,7 +77,7 @@
             // textBoxNombreRuta
             // 
             this.textBoxNombreRuta.Location = new System.Drawing.Point(160, 48);
-            this.textBoxNombreRuta.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxNombreRuta.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxNombreRuta.Name = "textBoxNombreRuta";
             this.textBoxNombreRuta.Size = new System.Drawing.Size(236, 22);
             this.textBoxNombreRuta.TabIndex = 3;
@@ -85,7 +85,7 @@
             // textBoxDescripcionRuta
             // 
             this.textBoxDescripcionRuta.Location = new System.Drawing.Point(160, 80);
-            this.textBoxDescripcionRuta.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxDescripcionRuta.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxDescripcionRuta.Multiline = true;
             this.textBoxDescripcionRuta.Name = "textBoxDescripcionRuta";
             this.textBoxDescripcionRuta.Size = new System.Drawing.Size(236, 93);
@@ -100,7 +100,7 @@
             this.gMapControl1.HelperLineOption = GMap.NET.WindowsForms.HelperLineOptions.DontShow;
             this.gMapControl1.LevelsKeepInMemmory = 5;
             this.gMapControl1.Location = new System.Drawing.Point(413, 11);
-            this.gMapControl1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gMapControl1.Margin = new System.Windows.Forms.Padding(4);
             this.gMapControl1.MarkersEnabled = true;
             this.gMapControl1.MaxZoom = 2;
             this.gMapControl1.MinZoom = 2;
@@ -118,26 +118,27 @@
             this.gMapControl1.TabIndex = 5;
             this.gMapControl1.Zoom = 0D;
             this.gMapControl1.Load += new System.EventHandler(this.gMapControl1_Load);
+            this.gMapControl1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.gMapControl1_MouseDoubleClick);
             // 
-            // button1
+            // btnFin
             // 
-            this.button1.Location = new System.Drawing.Point(259, 234);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(139, 27);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "Seleccionar inicio";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnFin.Location = new System.Drawing.Point(259, 234);
+            this.btnFin.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnFin.Name = "btnFin";
+            this.btnFin.Size = new System.Drawing.Size(139, 27);
+            this.btnFin.TabIndex = 6;
+            this.btnFin.Text = "Seleccionar fin";
+            this.btnFin.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // btnInicio
             // 
-            this.button2.Location = new System.Drawing.Point(259, 204);
-            this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(137, 25);
-            this.button2.TabIndex = 7;
-            this.button2.Text = "Seleccionar fin";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnInicio.Location = new System.Drawing.Point(259, 204);
+            this.btnInicio.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnInicio.Name = "btnInicio";
+            this.btnInicio.Size = new System.Drawing.Size(137, 25);
+            this.btnInicio.TabIndex = 7;
+            this.btnInicio.Text = "Seleccionar inicio";
+            this.btnInicio.UseVisualStyleBackColor = true;
             // 
             // button3
             // 
@@ -159,7 +160,6 @@
             // 
             // textBox2
             // 
-            this.textBox2.Enabled = false;
             this.textBox2.Location = new System.Drawing.Point(44, 234);
             this.textBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox2.Name = "textBox2";
@@ -191,7 +191,7 @@
             this.listBox1.FormattingEnabled = true;
             this.listBox1.ItemHeight = 16;
             this.listBox1.Location = new System.Drawing.Point(44, 266);
-            this.listBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.listBox1.Margin = new System.Windows.Forms.Padding(4);
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(207, 180);
             this.listBox1.TabIndex = 13;
@@ -207,15 +207,15 @@
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnInicio);
+            this.Controls.Add(this.btnFin);
             this.Controls.Add(this.gMapControl1);
             this.Controls.Add(this.textBoxDescripcionRuta);
             this.Controls.Add(this.textBoxNombreRuta);
             this.Controls.Add(this.labelDescripcion);
             this.Controls.Add(this.labelNombreRuta);
             this.Controls.Add(this.labelTitulo);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "RegistroRuta";
             this.Text = "Registro Ruta";
             this.Load += new System.EventHandler(this.RegistroRuta_Load);
@@ -232,8 +232,8 @@
         private System.Windows.Forms.TextBox textBoxNombreRuta;
         private System.Windows.Forms.TextBox textBoxDescripcionRuta;
         private GMap.NET.WindowsForms.GMapControl gMapControl1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnFin;
+        private System.Windows.Forms.Button btnInicio;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox textBox2;
