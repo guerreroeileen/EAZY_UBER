@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using mundo;
+using System.Linq;
 using Excepciones;
 using System.Collections;
 
@@ -95,8 +96,12 @@ namespace PruebaUnitariaModelo
             Usuario carlos = sist.darUsuario("30155844");
             carlos.registrarRuta("El teatro 2", new Tuple<double, double>(45.365, 69.265), new Tuple<double, double>(98.254, 35.365), new System.Collections.Generic.List<Tuple<double, double>>() { new Tuple<double, double>(52.698, 59.333), new Tuple<double, double>(91.365, 42.365) }, "Buena la Obra, triste el final");
             carlos.registrarRuta("La calles saza 2", new Tuple<double, double>(33.254, 71.951), new Tuple<double, double>(94.365, 38.985), new System.Collections.Generic.List<Tuple<double, double>>() { new Tuple<double, double>(48.658, 55.355), new Tuple<double, double>(89.451, 38.923) }, "");
-            Assert.IsTrue(carlos.Rutas.Contains(new Ruta("El teatro 2", new Tuple<double, double>(45.365, 69.265), new Tuple<double, double>(98.254, 35.365), new System.Collections.Generic.List<Tuple<double, double>>() { new Tuple<double, double>(52.698, 59.333), new Tuple<double, double>(91.365, 42.365) }, "Buena la Obra, triste el final")));
-            Assert.IsTrue(carlos.Rutas.Contains(new Ruta("La calles saza 2", new Tuple<double, double>(33.254, 71.951), new Tuple<double, double>(94.365, 38.985), new System.Collections.Generic.List<Tuple<double, double>>() { new Tuple<double, double>(48.658, 55.355), new Tuple<double, double>(89.451, 38.923) }, "")));
+
+
+            Assert.IsTrue(carlos.Rutas.Where(n=> n.Nombre.SequenceEqual("El teatro 2")) !=null);
+            Assert.IsTrue(carlos.Rutas.Where(n => n.Nombre.SequenceEqual("La calles saza 2")) != null);
+
+            
 
         }
 
