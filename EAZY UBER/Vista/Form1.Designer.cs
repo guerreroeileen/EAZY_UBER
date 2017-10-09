@@ -1,4 +1,4 @@
-﻿namespace EAZY_UBER
+﻿namespace Vista
 {
     partial class Form1
     {
