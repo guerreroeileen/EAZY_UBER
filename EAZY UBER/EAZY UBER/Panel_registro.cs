@@ -40,5 +40,10 @@ namespace EAZY_UBER
             if (eventoCancelar != null)
                 eventoCancelar.Invoke(this);
         }
+
+        private void Panel_registro_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

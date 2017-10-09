@@ -21,9 +21,24 @@ namespace EAZY_UBER
 
         private void RegistroRuta_Load(object sender, EventArgs e)
         {
+            gMapControl1.DragButton = MouseButtons.Left;
+           gMapControl1.CanDragMap = true;
             gMapControl1.MapProvider = GMap.NET.MapProviders.GoogleMapProvider.Instance;
             GMap.NET.GMaps.Instance.Mode = GMap.NET.AccessMode.ServerOnly;
             gMapControl1.SetPositionByKeywords("Cali, Colombia");
+            gMapControl1.CanDragMap = true;
+
+
+            gMapControl1.MinZoom = 0;
+            gMapControl1.MaxZoom = 42;
+            gMapControl1.Zoom = 12;
+            gMapControl1.AutoScroll = true;
+
+        }
+
+        private void gMapControl1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

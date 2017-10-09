@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using GMap.NET;
 using GMap.NET.MapProviders;
 using GMap.NET.WindowsForms;
+using GMap.NET.WindowsForms.Markers;
 
 namespace EAZY_UBER
 {
@@ -32,7 +33,8 @@ namespace EAZY_UBER
         private ToolStripMenuItem cerrarSesionToolStripMenuItem;
         private ToolStripMenuItem notificacionesToolStripMenuItem;
         private Panel_LogIn panel_LogIn1;
-
+        GMarkerGoogle marker;
+        GMapOverlay markerOverlay;
         public Inicio()
         {
            
@@ -155,7 +157,32 @@ namespace EAZY_UBER
             // 
             // mapa
             // 
-           
+            this.mapa.Bearing = 0F;
+            this.mapa.CanDragMap = true;
+            this.mapa.EmptyTileColor = System.Drawing.Color.Navy;
+            this.mapa.GrayScaleMode = false;
+            this.mapa.HelperLineOption = GMap.NET.WindowsForms.HelperLineOptions.DontShow;
+            this.mapa.LevelsKeepInMemmory = 5;
+            this.mapa.Location = new System.Drawing.Point(0, 0);
+            this.mapa.MarkersEnabled = true;
+            this.mapa.MaxZoom = 2;
+            this.mapa.MinZoom = 2;
+            this.mapa.MouseWheelZoomEnabled = true;
+            this.mapa.MouseWheelZoomType = GMap.NET.MouseWheelZoomType.MousePositionAndCenter;
+            this.mapa.Name = "mapa";
+            this.mapa.NegativeMode = false;
+            this.mapa.PolygonsEnabled = true;
+            this.mapa.RetryLoadTile = 0;
+            this.mapa.RoutesEnabled = true;
+            this.mapa.ScaleMode = GMap.NET.WindowsForms.ScaleModes.Integer;
+            this.mapa.SelectedAreaFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(65)))), ((int)(((byte)(105)))), ((int)(((byte)(225)))));
+            this.mapa.ShowTileGridLines = false;
+            this.mapa.Size = new System.Drawing.Size(150, 150);
+            this.mapa.TabIndex = 18;
+            this.mapa.Zoom = 0D;
+            this.mapa.Load += new System.EventHandler(this.mapa_Load_1);
+            this.mapa.DoubleClick += new System.EventHandler(this.mapa_DoubleClick);
+            this.mapa.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.mapa_MouseDoubleClick);
             // 
             // panel_registro1
             // 
@@ -246,7 +273,6 @@ namespace EAZY_UBER
             this.notificacionesToolStripMenuItem.Size = new System.Drawing.Size(179, 26);
             this.notificacionesToolStripMenuItem.Text = "Notificaciones";
             this.notificacionesToolStripMenuItem.Click += new System.EventHandler(this.notificacionesToolStripMenuItem_Click);
-            mapa.Visible = true;
             // 
             // Inicio
             // 
@@ -299,10 +325,46 @@ namespace EAZY_UBER
            
          
             this.mapa.Load += new System.EventHandler(this.mapa_Load);
-          
+
+
+            markerOverlay = new GMapOverlay("Marcador");
+            marker = new GMarkerGoogle(new PointLatLng(0, 0), GMarkerGoogleType.blue);
+            markerOverlay.Markers.Add(marker);// Agregamos al map
+            //Agregar texto alos marcadores
+            marker.ToolTipMode = MarkerTooltipMode.Always;
+            // marker.ToolTipText = string.Format("Nombre: \n Latitud: {0} \n Longitud: {1}", LatInicial, lngInicial);
+
+            //Agregamos el map y el marcador al map control
+            mapa.Overlays.Add(markerOverlay);
+
         }
 
         private void mapa_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void mapa_DoubleClick(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void mapa_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            double lat = mapa.FromLocalToLatLng(e.X, e.Y).Lat;
+
+            double lng = mapa.FromLocalToLatLng(e.X, e.Y).Lng;
+            
+
+
+
+
+            marker.Position = new PointLatLng(lat, lng);
+
+            marker.ToolTipText = string.Format("Latitud: {0} \n Longitud: {1}", lat, lng);
+        }
+
+        private void mapa_Load_1(object sender, EventArgs e)
         {
 
         }
