@@ -4,15 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{19ACEFE3-22C4-40E6-9D53-4E85B9702ED7}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>mundo</RootNamespace>
-    <AssemblyName>mundo</AssemblyName>
+    <ProjectGuid>{5841CC6D-933F-4B57-A69C-12CACCFC1DAB}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Controlador</RootNamespace>
+    <AssemblyName>Controlador</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -22,6 +23,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -29,9 +31,15 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
+    <Reference Include="GMap.NET.Core, Version=1.7.0.0, Culture=neutral, PublicKeyToken=b85b9027b614afef" />
+    <Reference Include="GMap.NET.WindowsForms, Version=1.7.0.0, Culture=neutral, PublicKeyToken=b85b9027b614afef" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -40,17 +48,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="SistemaRecomendaciones.cs" />
+    <Compile Include="Control_Inicio.cs" />
+    <Compile Include="Control_Notificaciones.cs" />
+    <Compile Include="Control_RegistroRuta.cs" />
+    <Compile Include="Control_RegistroVehiculo.cs" />
+    <Compile Include="Runner.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Recorrido.cs" />
-    <Compile Include="Ruta.cs" />
-    <Compile Include="Usuario.cs" />
-    <Compile Include="Vehiculo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Excepciones\Excepciones.csproj">
-      <Project>{46B3A480-FA0C-409A-831D-06CD34FD4E29}</Project>
-      <Name>Excepciones</Name>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EAZY UBER\Vista.csproj">
+      <Project>{d3cf22ab-fd3a-419e-a891-b35cb29d3af8}</Project>
+      <Name>Vista</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
