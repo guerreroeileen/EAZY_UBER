@@ -16,6 +16,7 @@ namespace EAZY_UBER
         private event delegado1 eventoAgregarVehiculo;
         private event delegado1 eventoOfrecerCupo;
         private event delegado1 eventoBuscarRuta;
+        public event delegado1 eventoSeleccionarInicio;
 
         public Panel_PerfilUsuario()
         {
@@ -66,6 +67,12 @@ namespace EAZY_UBER
         {
             if (eventoBuscarRuta != null)
                 eventoBuscarRuta.Invoke(this);
+        }
+
+        private void buttonSelInicio_Click(object sender, EventArgs e)
+        {
+            if (eventoSeleccionarInicio != null)
+                eventoSeleccionarInicio.Invoke(this);
         }
     }
 }

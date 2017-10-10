@@ -42,7 +42,7 @@ namespace EAZY_UBER
 
         //MAPA
         public GMap.NET.WindowsForms.GMapControl mapa;
-        public GMarkerGoogle marker;
+        public GMarkerGoogle markerUbicacion;
         public GMapOverlay markerOverlay;
         //evento click en el mapa
         public event delegado2 mapClick;
@@ -233,10 +233,10 @@ namespace EAZY_UBER
 
 
             markerOverlay = new GMapOverlay("Marcador");
-            marker = new GMarkerGoogle(new PointLatLng(0, 0), GMarkerGoogleType.blue);
-            markerOverlay.Markers.Add(marker);// Agregamos al map
+            markerUbicacion = new GMarkerGoogle(new PointLatLng(0, 0), GMarkerGoogleType.orange);
+            markerOverlay.Markers.Add(markerUbicacion);// Agregamos al map
             //Agregar texto alos marcadores
-            marker.ToolTipMode = MarkerTooltipMode.Always;
+            markerUbicacion.ToolTipMode = MarkerTooltipMode.Always;
             // marker.ToolTipText = string.Format("Nombre: \n Latitud: {0} \n Longitud: {1}", LatInicial, lngInicial);
 
             //Agregamos el map y el marcador al map control

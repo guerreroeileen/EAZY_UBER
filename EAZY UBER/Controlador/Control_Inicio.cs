@@ -26,6 +26,9 @@ namespace Controlador
         private Control_RegistroRuta controlRegistroRuta;
         private Control_RegistroVehiculo controlRegistroVehiculo;
 
+        //flags
+        private bool seleccionarInicio;
+
         public Control_Inicio(Inicio formInicio, SistemaRecomendaciones sistema)
         {
             this.sistema = sistema;
@@ -37,6 +40,8 @@ namespace Controlador
             this.formInicio.panel_registro1.eventoRegistro += registrarse;
             this.formInicio.panel_registro1.eventoCancelar += cancelarRegistro;
             this.formInicio.panel_registro1.eventoSeleccionarRutaImagen += seleccionarRutaFoto;
+            this.formInicio.mapClick += map_Click;
+            this.formInicio.panel_PerfilUsuario1.eventoSeleccionarInicio += seleccionInicio;
 
             formInicio.panel_PerfilUsuario1.addHandlerAgregarRuta(agregarRuta);
             formInicio.panel_PerfilUsuario1.addHandlerAgregarVehiculo(agregarVehiculo);
@@ -55,7 +60,6 @@ namespace Controlador
             formInicio.opcionesToolStripMenuItem.Visible = false;
             formInicio.notificacionesToolStripMenuItem.Click += new System.EventHandler(this.notificacionesToolStripMenuItem_Click);
             formInicio.cerrarSesionToolStripMenuItem.Click += new System.EventHandler(this.cerrarSesionToolStripMenuItem_Click);
-            formInicio.mapClick += map_Click;
             Application.Run(this.formInicio);
         }
 
@@ -82,8 +86,7 @@ namespace Controlador
                 formInicio.panel_PerfilUsuario1.lbNombre.Text = sistema.Estado_usuarioLogged.Nombre;
                 formInicio.panel_PerfilUsuario1.lbApellido.Text = sistema.Estado_usuarioLogged.Apellido;
                 formInicio.panel_PerfilUsuario1.lbCelular.Text = sistema.Estado_usuarioLogged.Celular;
-
-
+                formInicio.panel_PerfilUsuario1.lbInicio.Text = (sistema.Estado_usuarioLogged.Ubicacion!= null )? "Asignado" : "Sin asignar";
                 //limpiar campos panel login
                 formInicio.panel_LogIn1.limpiarTextos();
 
@@ -322,14 +325,31 @@ namespace Controlador
             //Debug.WriteLine("Entro 3");
             double lat = formInicio.mapa.FromLocalToLatLng(e.X, e.Y).Lat;
             double lng = formInicio.mapa.FromLocalToLatLng(e.X, e.Y).Lng;
-            formInicio.marker.Position = new PointLatLng(lat, lng);
-            formInicio.marker.ToolTipText = string.Format("Latitud: {0} \n Longitud: {1}", lat, lng);
 
-            //coordenadas
-            Tuple<double, double> ubicacion = new Tuple<double, double>(lat, lng);//este se la pasas al atribut ubicación usuario dependiendo del controlador
-            sistema.Estado_usuarioLogged.Ubicacion = ubicacion;
-            Debug.WriteLine("Se agrego la ubicación al usuario");
+
+            //asiganr inicio
+            if (seleccionarInicio)
+            {
+                //asignar marcador
+                formInicio.markerUbicacion.Position = new PointLatLng(lat, lng);
+                formInicio.markerUbicacion.ToolTipText = string.Format("Latitud: {0} \n Longitud: {1}", lat, lng);
+                //coordenadas
+                Tuple<double, double> ubicacion = new Tuple<double, double>(lat, lng);//este se la pasas al atribut ubicación usuario dependiendo del controlador
+                sistema.Estado_usuarioLogged.Ubicacion = ubicacion;
+                formInicio.panel_PerfilUsuario1.lbInicio.Text = "asignado";
+                formInicio.panel_PerfilUsuario1.buttonSelInicio.Enabled = true;
+                seleccionarInicio = false;
+            }
+
         }
+
+        public void seleccionInicio(Object sender)
+        {
+            formInicio.panel_PerfilUsuario1.buttonSelInicio.Enabled = false;
+            seleccionarInicio = true;
+        }
+
+
 
 
     }

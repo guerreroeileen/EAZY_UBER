@@ -43,13 +43,16 @@
             this.botonAgregarVehiculo = new System.Windows.Forms.Button();
             this.botonBuscarRuta = new System.Windows.Forms.Button();
             this.botonOfrecerCupo = new System.Windows.Forms.Button();
+            this.lbInicio = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.buttonSelInicio = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(110, 13);
+            this.label1.Location = new System.Drawing.Point(107, 12);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(50, 13);
@@ -59,7 +62,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(110, 38);
+            this.label2.Location = new System.Drawing.Point(107, 38);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(47, 13);
@@ -70,17 +73,17 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(110, 62);
+            this.label3.Location = new System.Drawing.Point(107, 62);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(39, 13);
+            this.label3.Size = new System.Drawing.Size(42, 13);
             this.label3.TabIndex = 2;
-            this.label3.Text = "Celular";
+            this.label3.Text = "Celular:";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(38, 93);
+            this.label4.Location = new System.Drawing.Point(38, 108);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(35, 13);
@@ -90,7 +93,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(38, 123);
+            this.label5.Location = new System.Drawing.Point(38, 138);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(48, 13);
@@ -108,17 +111,18 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(41, 12);
+            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox1.Location = new System.Drawing.Point(16, 12);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(57, 63);
+            this.pictureBox1.Size = new System.Drawing.Size(82, 84);
             this.pictureBox1.TabIndex = 6;
             this.pictureBox1.TabStop = false;
             // 
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(113, 93);
+            this.comboBox1.Location = new System.Drawing.Point(113, 108);
             this.comboBox1.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(145, 21);
@@ -127,7 +131,7 @@
             // comboBox2
             // 
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(113, 118);
+            this.comboBox2.Location = new System.Drawing.Point(113, 133);
             this.comboBox2.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(145, 21);
@@ -153,7 +157,7 @@
             // 
             // botonAgregarRuta
             // 
-            this.botonAgregarRuta.Location = new System.Drawing.Point(261, 93);
+            this.botonAgregarRuta.Location = new System.Drawing.Point(261, 108);
             this.botonAgregarRuta.Margin = new System.Windows.Forms.Padding(2);
             this.botonAgregarRuta.Name = "botonAgregarRuta";
             this.botonAgregarRuta.Size = new System.Drawing.Size(18, 20);
@@ -164,7 +168,7 @@
             // 
             // botonAgregarVehiculo
             // 
-            this.botonAgregarVehiculo.Location = new System.Drawing.Point(260, 118);
+            this.botonAgregarVehiculo.Location = new System.Drawing.Point(260, 133);
             this.botonAgregarVehiculo.Margin = new System.Windows.Forms.Padding(2);
             this.botonAgregarVehiculo.Name = "botonAgregarVehiculo";
             this.botonAgregarVehiculo.Size = new System.Drawing.Size(19, 20);
@@ -175,7 +179,7 @@
             // 
             // botonBuscarRuta
             // 
-            this.botonBuscarRuta.Location = new System.Drawing.Point(62, 158);
+            this.botonBuscarRuta.Location = new System.Drawing.Point(59, 167);
             this.botonBuscarRuta.Name = "botonBuscarRuta";
             this.botonBuscarRuta.Size = new System.Drawing.Size(87, 23);
             this.botonBuscarRuta.TabIndex = 13;
@@ -185,7 +189,7 @@
             // 
             // botonOfrecerCupo
             // 
-            this.botonOfrecerCupo.Location = new System.Drawing.Point(170, 158);
+            this.botonOfrecerCupo.Location = new System.Drawing.Point(170, 167);
             this.botonOfrecerCupo.Name = "botonOfrecerCupo";
             this.botonOfrecerCupo.Size = new System.Drawing.Size(88, 23);
             this.botonOfrecerCupo.TabIndex = 14;
@@ -193,10 +197,43 @@
             this.botonOfrecerCupo.UseVisualStyleBackColor = true;
             this.botonOfrecerCupo.Click += new System.EventHandler(this.botonOfrecerCupo_Click);
             // 
+            // lbInicio
+            // 
+            this.lbInicio.AutoSize = true;
+            this.lbInicio.Location = new System.Drawing.Point(167, 83);
+            this.lbInicio.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbInicio.Name = "lbInicio";
+            this.lbInicio.Size = new System.Drawing.Size(0, 13);
+            this.lbInicio.TabIndex = 16;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(107, 83);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(35, 13);
+            this.label7.TabIndex = 15;
+            this.label7.Text = "Inicio:";
+            // 
+            // buttonSelInicio
+            // 
+            this.buttonSelInicio.Location = new System.Drawing.Point(261, 79);
+            this.buttonSelInicio.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonSelInicio.Name = "buttonSelInicio";
+            this.buttonSelInicio.Size = new System.Drawing.Size(18, 20);
+            this.buttonSelInicio.TabIndex = 17;
+            this.buttonSelInicio.Text = "+";
+            this.buttonSelInicio.UseVisualStyleBackColor = true;
+            this.buttonSelInicio.Click += new System.EventHandler(this.buttonSelInicio_Click);
+            // 
             // Panel_PerfilUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.buttonSelInicio);
+            this.Controls.Add(this.lbInicio);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.botonOfrecerCupo);
             this.Controls.Add(this.botonBuscarRuta);
             this.Controls.Add(this.botonAgregarVehiculo);
@@ -238,5 +275,8 @@
         public System.Windows.Forms.Label lbNombre;
         public System.Windows.Forms.Label lbApellido;
         public System.Windows.Forms.Label lbCelular;
+        public System.Windows.Forms.Label lbInicio;
+        private System.Windows.Forms.Label label7;
+        public System.Windows.Forms.Button buttonSelInicio;
     }
 }
