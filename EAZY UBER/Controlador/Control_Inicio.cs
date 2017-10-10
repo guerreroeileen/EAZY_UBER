@@ -78,6 +78,11 @@ namespace Controlador
   
             if (ingresar)
             {
+                //acomodar datos de perfil usuario
+              formInicio.panel_PerfilUsuario1.
+
+
+
                 //log in
                 formInicio.panel_registro1.Visible = false;
                 formInicio.mapa.Visible = true;
@@ -88,6 +93,9 @@ namespace Controlador
                 formInicio.panel_RecorridoRecomendado1.Visible = false;
                 formInicio.panel_LogIn1.Visible = false;
                 formInicio.opcionesToolStripMenuItem.Visible = true;
+
+                
+
             }
             else
             {

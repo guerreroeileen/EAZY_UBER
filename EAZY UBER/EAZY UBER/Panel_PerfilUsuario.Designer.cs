@@ -100,7 +100,7 @@
             // lbNombre
             // 
             this.lbNombre.AutoSize = true;
-            this.lbNombre.Location = new System.Drawing.Point(170, 26);
+            this.lbNombre.Location = new System.Drawing.Point(167, 12);
             this.lbNombre.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbNombre.Name = "lbNombre";
             this.lbNombre.Size = new System.Drawing.Size(0, 13);
@@ -109,7 +109,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Location = new System.Drawing.Point(41, 12);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(57, 63);
             this.pictureBox1.TabIndex = 6;
@@ -119,7 +119,7 @@
             // 
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(113, 93);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(145, 21);
             this.comboBox1.TabIndex = 7;
@@ -128,7 +128,7 @@
             // 
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Location = new System.Drawing.Point(113, 118);
-            this.comboBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboBox2.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(145, 21);
             this.comboBox2.TabIndex = 8;
@@ -136,7 +136,7 @@
             // lbApellido
             // 
             this.lbApellido.AutoSize = true;
-            this.lbApellido.Location = new System.Drawing.Point(167, 62);
+            this.lbApellido.Location = new System.Drawing.Point(167, 38);
             this.lbApellido.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbApellido.Name = "lbApellido";
             this.lbApellido.Size = new System.Drawing.Size(0, 13);
@@ -145,7 +145,7 @@
             // lbCelular
             // 
             this.lbCelular.AutoSize = true;
-            this.lbCelular.Location = new System.Drawing.Point(164, 69);
+            this.lbCelular.Location = new System.Drawing.Point(167, 62);
             this.lbCelular.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbCelular.Name = "lbCelular";
             this.lbCelular.Size = new System.Drawing.Size(0, 13);
@@ -154,7 +154,7 @@
             // botonAgregarRuta
             // 
             this.botonAgregarRuta.Location = new System.Drawing.Point(261, 93);
-            this.botonAgregarRuta.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.botonAgregarRuta.Margin = new System.Windows.Forms.Padding(2);
             this.botonAgregarRuta.Name = "botonAgregarRuta";
             this.botonAgregarRuta.Size = new System.Drawing.Size(18, 20);
             this.botonAgregarRuta.TabIndex = 11;
@@ -165,7 +165,7 @@
             // botonAgregarVehiculo
             // 
             this.botonAgregarVehiculo.Location = new System.Drawing.Point(260, 118);
-            this.botonAgregarVehiculo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.botonAgregarVehiculo.Margin = new System.Windows.Forms.Padding(2);
             this.botonAgregarVehiculo.Name = "botonAgregarVehiculo";
             this.botonAgregarVehiculo.Size = new System.Drawing.Size(19, 20);
             this.botonAgregarVehiculo.TabIndex = 12;
@@ -212,7 +212,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Panel_PerfilUsuario";
             this.Size = new System.Drawing.Size(320, 202);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
