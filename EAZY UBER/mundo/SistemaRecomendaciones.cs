@@ -20,32 +20,40 @@ namespace mundo
 
         public SistemaRecomendaciones() {
             estado_recorridosRecomendados=null;
-            Usuario estado_usuarioVisualizado=null;
-            List<Usuario> estado_usuariosRecomendados=null;
-            Usuario estado_usuarioLogged=null;
+            estado_usuarioVisualizado=null;
+            estado_usuariosRecomendados=null;
+            estado_usuarioLogged=null;
 
             usuarios= new List<Usuario>();
         }
 
-        public Boolean registrarUsuario(string nombre, string apellido, string celular, string contrasenia, string correo, string rutaFoto, Tuple<double,double> ubicacion) {
-
-            if (nombre == null) { throw new AgregarUsuarioExcepcion("Debe ingresar nombre"); }
-            if (apellido == null) { throw new AgregarUsuarioExcepcion("Debe ingresar apellido"); }
-            if (celular == null) { throw new AgregarUsuarioExcepcion("Debe ingresar celular"); }
-            if (contrasenia == null) { throw new AgregarUsuarioExcepcion("Debe ingresar contraseña"); }
-            if (rutaFoto == null) { rutaFoto = ""; }
-            if (correo == null) { throw new AgregarUsuarioExcepcion("Debe ingresar Correo Electronico"); }
-
-            if (!(usuarios.Exists(x => x.Celular.Equals(celular))))
-            {
-                usuarios.Add(new Usuario(nombre, apellido, celular, contrasenia, correo, rutaFoto, ubicacion));
-            }
-            else {
-                throw new AgregarUsuarioExcepcion("El usuario ya existe");
-            }
-            
+        /* Agrega un usuario al sistema
+         * 
+         * arroja excepcion si hay alguna irregularidad en la entrada
+         * excepcion: tiene un arreglo de enteros, 0 si esta bien 1 si no
+         *      INDICES EN EL ARREGLO
+         *      nombre: indice 0
+         *      apellido: indice 1
+         *      correo: 2
+         *      celular: 3
+         *      rutafoto: 4
+         *      contrasena: 5
+         *     
+         */
+        public Boolean resgistrarUsuario(string nombre, string apellido, string correo, string celular, string rutaFoto, string contrasena, string confContrasena, bool recomendar)
+        {
+            int[] controlRegistro = new int[6];
+            if (nombre == null | nombre.Length < 3) controlRegistro[0] = 1;
+            if (apellido == null | apellido.Length < 3) controlRegistro[1] = 1;
+            if (correo == null | usuarios.Any(a => a.Correo.Equals(correo)) | !correo.Contains("@") | correo.Length < 3) controlRegistro[2] = 1;
+            if (celular == null | usuarios.Any(a => a.Celular.Equals(celular)) | celular.Length != 10 | celular.All(char.IsDigit)) controlRegistro[3] = 1;
+            if (contrasena == null | confContrasena == null | contrasena.Length < 5 | !contrasena.Equals(confContrasena)) controlRegistro[5] = 1;
+            if (controlRegistro.Any(a => a == 1))
+                throw new AgregarUsuarioExcepcion(controlRegistro);
+            usuarios.Add(new Usuario(nombre, apellido, correo, celular, rutaFoto, contrasena, recomendar));
             return true;
         }
+
 
         public Usuario darUsuario(string celular) {
             return usuarios.Find(x => x.Celular.Equals(celular));
@@ -170,5 +178,6 @@ namespace mundo
         public Usuario Estado_usuarioVisualizado { get => estado_usuarioVisualizado; set => estado_usuarioVisualizado = value; }
         public List<Usuario> Estado_usuariosRecomendados { get => estado_usuariosRecomendados; set => estado_usuariosRecomendados = value; }
         public Usuario Estado_usuarioLogged { get => estado_usuarioLogged; set => estado_usuarioLogged = value; }
+        public List<Usuario> Usuarios { get => usuarios; set => usuarios = value; }
     }
 }

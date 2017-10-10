@@ -7,11 +7,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
+using mundo;
+using Excepciones;
+using System.Drawing;
 
 namespace Controlador
 {
     public class Control_Inicio
     {
+        //modelo
+        SistemaRecomendaciones sistema;
+
         //ventana de incio
         private Inicio formInicio;
 
@@ -20,8 +26,10 @@ namespace Controlador
         private Control_RegistroRuta controlRegistroRuta;
         private Control_RegistroVehiculo controlRegistroVehiculo;
 
-        public Control_Inicio(Inicio formInicio)
+        public Control_Inicio(Inicio formInicio, SistemaRecomendaciones sistema)
         {
+            this.sistema = sistema;
+
             //eventos listos
             this.formInicio = formInicio;
             this.formInicio.panel_LogIn1.eventoRegistro += iniciarRegistro;
@@ -64,11 +72,12 @@ namespace Controlador
             string contasena = formInicio.panel_LogIn1.textContrasena.Text;
 
 
-            //TODO hacer logica de ingreso
-            bool ingresar = true;
-
+            //consulta usuario
+            bool ingresar = sistema.Usuarios.Any(a => a.Celular == usuario & a.Contrasenia == contasena);
+  
             if (ingresar)
             {
+                //log in
                 formInicio.panel_registro1.Visible = false;
                 formInicio.mapa.Visible = true;
                 formInicio.panel_PerfilUsuario1.Visible = true;
@@ -80,8 +89,9 @@ namespace Controlador
                 formInicio.opcionesToolStripMenuItem.Visible = true;
             }
             else
-            { 
-                //TODO muestra mensaje error login
+            {
+                //mensaje error
+                formInicio.panel_LogIn1.error.Visible = true;
             }
         }
 
@@ -128,7 +138,23 @@ namespace Controlador
             string confirmarContrasena = formInicio.panel_registro1.textConfContrasena.Text;
             bool recibirrecomendaciones = formInicio.panel_registro1.checkBoxRecomendaciones.Checked;
 
-            //TODO agregar al modelo, recibir errores, poner campos en rojo
+            //agregar al modelo, recibir errores, poner campos en rojo
+            try
+            {
+                sistema.resgistrarUsuario(nombre, apellido, correo, celular, rutafoto, contrasena, confirmarContrasena, recibirrecomendaciones);
+            } catch (AgregarUsuarioExcepcion e)
+            {
+
+                //TODO mostrar mensajes de error
+                int[] controlAgregar = e.darErrores();
+                if (controlAgregar[0] == 1) { }
+                if (controlAgregar[1] == 1) { }
+                if (controlAgregar[2] == 1) { }
+                if (controlAgregar[3] == 1) { }
+                if (controlAgregar[4] == 1) { }
+                if (controlAgregar[5] == 1) { }
+
+            }
 
         }
 

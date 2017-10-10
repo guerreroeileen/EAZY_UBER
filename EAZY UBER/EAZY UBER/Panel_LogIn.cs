@@ -21,6 +21,7 @@ namespace EAZY_UBER
         public Panel_LogIn()
         {
             InitializeComponent();
+            error.Visible = false;
         }
         public void addHandlerregistro(delegado1 delegado)
         {

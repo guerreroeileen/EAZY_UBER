@@ -12,6 +12,7 @@ using GMap.NET.MapProviders;
 using GMap.NET.WindowsForms;
 using GMap.NET.WindowsForms.Markers;
 using System.Diagnostics;
+using mundo;
 
 namespace EAZY_UBER
 {
@@ -19,6 +20,10 @@ namespace EAZY_UBER
 
     public partial class Inicio : Form
     {
+
+        //modelo
+        SistemaRecomendaciones sistema;
+
         //paneles agregados al form Inicio
         public Panel_registro panel_registro1;
         public Panel_PerfilUsuario panel_PerfilUsuario1;
@@ -43,8 +48,9 @@ namespace EAZY_UBER
         public event delegado2 mapClick;
 
 
-        public Inicio()
+        public Inicio(SistemaRecomendaciones sistema)
         {
+            this.sistema = sistema;
             InitializeComponent();
         }
 

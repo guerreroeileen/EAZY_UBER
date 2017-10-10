@@ -39,6 +39,7 @@
     <Reference Include="GMap.NET.WindowsForms, Version=1.7.0.0, Culture=neutral, PublicKeyToken=b85b9027b614afef" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -62,6 +63,14 @@
     <ProjectReference Include="..\EAZY UBER\Vista.csproj">
       <Project>{d3cf22ab-fd3a-419e-a891-b35cb29d3af8}</Project>
       <Name>Vista</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Excepciones\Excepciones.csproj">
+      <Project>{46b3a480-fa0c-409a-831d-06cd34fd4e29}</Project>
+      <Name>Excepciones</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\mundo\Modelo.csproj">
+      <Project>{19acefe3-22c4-40e6-9d53-4e85b9702ed7}</Project>
+      <Name>Modelo</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

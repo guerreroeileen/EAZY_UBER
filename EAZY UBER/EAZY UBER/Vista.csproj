@@ -217,5 +217,11 @@
   <ItemGroup>
     <None Include="Resources\maxresdefault.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\mundo\Modelo.csproj">
+      <Project>{19acefe3-22c4-40e6-9d53-4e85b9702ed7}</Project>
+      <Name>Modelo</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

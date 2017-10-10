@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using EAZY_UBER;
+using mundo;
 
 namespace Controlador
 {
@@ -12,9 +13,9 @@ namespace Controlador
         [STAThread]
         static void Main(string[] args)
         {
-            //crear modelo pasar a vista u control
-            Inicio inicio = new Inicio();
-            Control_Inicio control = new Control_Inicio(inicio);
+            SistemaRecomendaciones sistema = new SistemaRecomendaciones();
+            Inicio inicio = new Inicio(sistema);
+            Control_Inicio control = new Control_Inicio(inicio, sistema);
         }
     }
 }

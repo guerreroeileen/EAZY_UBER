@@ -36,11 +36,12 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.error = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(78, 159);
+            this.button1.Location = new System.Drawing.Point(75, 170);
             this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(113, 25);
@@ -103,9 +104,9 @@
             this.label2.Location = new System.Drawing.Point(42, 90);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(46, 13);
+            this.label2.Size = new System.Drawing.Size(42, 13);
             this.label2.TabIndex = 9;
-            this.label2.Text = "Usuario:";
+            this.label2.Text = "Celular:";
             // 
             // label1
             // 
@@ -117,10 +118,22 @@
             this.label1.TabIndex = 8;
             this.label1.Text = "Ingresa tus datos de usuario:";
             // 
+            // error
+            // 
+            this.error.AutoSize = true;
+            this.error.Cursor = System.Windows.Forms.Cursors.Default;
+            this.error.ForeColor = System.Drawing.Color.Red;
+            this.error.Location = new System.Drawing.Point(52, 135);
+            this.error.Name = "error";
+            this.error.Size = new System.Drawing.Size(163, 13);
+            this.error.TabIndex = 16;
+            this.error.Text = "*Celular o contraseña incorrectos";
+            // 
             // Panel_LogIn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.error);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textContrasena);
             this.Controls.Add(this.textUsuario);
@@ -146,5 +159,6 @@
         private System.Windows.Forms.Label label1;
         public System.Windows.Forms.TextBox textUsuario;
         public System.Windows.Forms.TextBox textContrasena;
+        public System.Windows.Forms.Label error;
     }
 }
