@@ -228,15 +228,15 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label lbNombre;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.Label lbApellido;
-        private System.Windows.Forms.Label lbCelular;
         private System.Windows.Forms.Button botonAgregarRuta;
         private System.Windows.Forms.Button botonAgregarVehiculo;
         private System.Windows.Forms.Button botonBuscarRuta;
         private System.Windows.Forms.Button botonOfrecerCupo;
+        public System.Windows.Forms.Label lbNombre;
+        public System.Windows.Forms.Label lbApellido;
+        public System.Windows.Forms.Label lbCelular;
     }
 }

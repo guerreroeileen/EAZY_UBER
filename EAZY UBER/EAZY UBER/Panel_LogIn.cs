@@ -18,11 +18,18 @@ namespace EAZY_UBER
         public event delegado1 eventoIngresar;
 
 
+
         public Panel_LogIn()
         {
             InitializeComponent();
             error.Visible = false;
         }
+        public void limpiarTextos()
+        {
+            textUsuario.Clear();
+            textContrasena.Clear();
+        }
+
         private void registro_Click(object sender, EventArgs e)
         {
             if (eventoRegistro != null)

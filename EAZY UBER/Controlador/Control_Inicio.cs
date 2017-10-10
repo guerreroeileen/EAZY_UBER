@@ -79,7 +79,14 @@ namespace Controlador
             if (ingresar)
             {
                 //acomodar datos de perfil usuario
-              formInicio.panel_PerfilUsuario1.
+                formInicio.panel_PerfilUsuario1.lbNombre.Text = sistema.Estado_usuarioLogged.Nombre;
+                formInicio.panel_PerfilUsuario1.lbApellido.Text = sistema.Estado_usuarioLogged.Apellido;
+                formInicio.panel_PerfilUsuario1.lbCelular.Text = sistema.Estado_usuarioLogged.Celular;
+
+
+                //limpiar campos panel login
+                formInicio.panel_LogIn1.limpiarTextos();
+
 
 
 
@@ -109,6 +116,10 @@ namespace Controlador
          */
         public void iniciarRegistro(Object sender)
         {
+            //Limpiar campos de login
+            formInicio.panel_LogIn1.limpiarTextos();
+
+            //habilitar panel registro e inhabilitar panel login
             formInicio.panel_registro1.Visible = true;
             formInicio.panel_LogIn1.Visible = false;
         }
@@ -286,7 +297,21 @@ namespace Controlador
          */
         private void cerrarSesionToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //TODO
+            sistema.Estado_usuarioLogged = null;
+
+
+            //Acomodar paneles de nuevo
+            formInicio.panel_registro1.Visible = false;
+            formInicio.mapa.Visible = false;
+            formInicio.panel_PerfilUsuario1.Visible = false;
+            formInicio.panel_OfrecerCupo1.Visible = false;
+            formInicio.panel_BuscarRuta1.Visible = false;
+            formInicio.panel_UsuarioRecomendado1.Visible = false;
+            formInicio.panel_RecorridoRecomendado1.Visible = false;
+            formInicio.panel_LogIn1.Visible = true;
+            formInicio.opcionesToolStripMenuItem.Visible = false;
+
+
         }
 
         /* Metodo que se llama cuando se da doble click en el mapa
