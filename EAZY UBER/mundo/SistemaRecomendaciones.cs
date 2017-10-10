@@ -25,6 +25,7 @@ namespace mundo
             estado_usuarioLogged=null;
 
             usuarios= new List<Usuario>();
+            usuarios.Add(new Usuario("prueba", "equipo", "correo@", "0000000000", "", "password", true));
         }
 
         /* Agrega un usuario al sistema

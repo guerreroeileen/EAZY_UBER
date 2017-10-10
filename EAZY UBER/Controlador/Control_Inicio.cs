@@ -129,6 +129,16 @@ namespace Controlador
          */
         public void registrarse(Object sender)
         {
+            //ocultar mensajes de error
+            formInicio.panel_registro1.mError1.Visible = false;
+            formInicio.panel_registro1.mError2.Visible = false;
+            formInicio.panel_registro1.nError0.Visible = false;
+            formInicio.panel_registro1.nError1.Visible = false;
+            formInicio.panel_registro1.nError2.Visible = false;
+            formInicio.panel_registro1.nError3.Visible = false;
+            formInicio.panel_registro1.nError4.Visible = false;
+            formInicio.panel_registro1.nError5.Visible = false;
+
             //recuperar textos
             string nombre = formInicio.panel_registro1.textNombre.Text;
             string apellido = formInicio.panel_registro1.textApellido.Text;
@@ -148,14 +158,18 @@ namespace Controlador
             } catch (AgregarUsuarioExcepcion e)
             {
 
-                //TODO mostrar mensajes de error
+                //mostrar panel adecuado
+                formInicio.panel_registro1.mError1.Visible = true;
+                formInicio.panel_registro1.mError2.Visible = true;
+                             
+                //mostrar mensajes de error
                 int[] controlAgregar = e.darErrores();
-                if (controlAgregar[0] == 1) { Debug.WriteLine(" line 0"); }
-                if (controlAgregar[1] == 1) { Debug.WriteLine(" line 1"); }
-                if (controlAgregar[2] == 1) { Debug.WriteLine(" line 2"); }
-                if (controlAgregar[3] == 1) { Debug.WriteLine(" line 3"); }
-                if (controlAgregar[4] == 1) { Debug.WriteLine(" line 4"); }
-                if (controlAgregar[5] == 1) { Debug.WriteLine(" line 5"); }
+                if (controlAgregar[0] == 1) { formInicio.panel_registro1.nError0.Visible = true; }
+                if (controlAgregar[1] == 1) { formInicio.panel_registro1.nError1.Visible = true; }
+                if (controlAgregar[2] == 1) { formInicio.panel_registro1.nError2.Visible = true; }
+                if (controlAgregar[3] == 1) { formInicio.panel_registro1.nError3.Visible = true; }
+                if (controlAgregar[4] == 1) {  }
+                if (controlAgregar[5] == 1) { formInicio.panel_registro1.nError4.Visible = true; formInicio.panel_registro1.nError5.Visible = true;}
 
             }
 

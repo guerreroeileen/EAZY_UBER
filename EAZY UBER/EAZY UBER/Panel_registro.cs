@@ -19,6 +19,16 @@ namespace EAZY_UBER
         public Panel_registro()
         {
             InitializeComponent();
+
+            //ocultar mensajes de error
+            mError1.Visible = false;
+            mError2.Visible = false;
+            nError0.Visible = false;
+            nError1.Visible = false;
+            nError2.Visible = false;
+            nError3.Visible = false;
+            nError4.Visible = false;
+            nError5.Visible = false;
         }
 
         private void registrarse_Click(object sender, EventArgs e)

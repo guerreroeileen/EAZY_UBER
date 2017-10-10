@@ -49,6 +49,14 @@
             this.label10 = new System.Windows.Forms.Label();
             this.checkBoxRecomendaciones = new System.Windows.Forms.CheckBox();
             this.cancelar = new System.Windows.Forms.Label();
+            this.nError0 = new System.Windows.Forms.Label();
+            this.nError1 = new System.Windows.Forms.Label();
+            this.nError2 = new System.Windows.Forms.Label();
+            this.nError3 = new System.Windows.Forms.Label();
+            this.nError4 = new System.Windows.Forms.Label();
+            this.nError5 = new System.Windows.Forms.Label();
+            this.mError1 = new System.Windows.Forms.Label();
+            this.mError2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // textConfContrasena
@@ -214,7 +222,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(47, 235);
+            this.label9.Location = new System.Drawing.Point(48, 247);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(160, 13);
             this.label9.TabIndex = 32;
@@ -223,7 +231,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(48, 248);
+            this.label10.Location = new System.Drawing.Point(48, 260);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(137, 13);
             this.label10.TabIndex = 33;
@@ -232,7 +240,7 @@
             // checkBoxRecomendaciones
             // 
             this.checkBoxRecomendaciones.AutoSize = true;
-            this.checkBoxRecomendaciones.Location = new System.Drawing.Point(219, 248);
+            this.checkBoxRecomendaciones.Location = new System.Drawing.Point(219, 259);
             this.checkBoxRecomendaciones.Name = "checkBoxRecomendaciones";
             this.checkBoxRecomendaciones.Size = new System.Drawing.Size(15, 14);
             this.checkBoxRecomendaciones.TabIndex = 34;
@@ -251,11 +259,106 @@
             this.cancelar.Text = "Cancelar";
             this.cancelar.Click += new System.EventHandler(this.cancelar_Click);
             // 
+            // nError0
+            // 
+            this.nError0.AutoSize = true;
+            this.nError0.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nError0.ForeColor = System.Drawing.Color.Red;
+            this.nError0.Location = new System.Drawing.Point(264, 52);
+            this.nError0.Name = "nError0";
+            this.nError0.Size = new System.Drawing.Size(15, 18);
+            this.nError0.TabIndex = 36;
+            this.nError0.Text = "*";
+            // 
+            // nError1
+            // 
+            this.nError1.AutoSize = true;
+            this.nError1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nError1.ForeColor = System.Drawing.Color.Red;
+            this.nError1.Location = new System.Drawing.Point(264, 78);
+            this.nError1.Name = "nError1";
+            this.nError1.Size = new System.Drawing.Size(15, 18);
+            this.nError1.TabIndex = 37;
+            this.nError1.Text = "*";
+            // 
+            // nError2
+            // 
+            this.nError2.AutoSize = true;
+            this.nError2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nError2.ForeColor = System.Drawing.Color.Red;
+            this.nError2.Location = new System.Drawing.Point(264, 102);
+            this.nError2.Name = "nError2";
+            this.nError2.Size = new System.Drawing.Size(15, 18);
+            this.nError2.TabIndex = 38;
+            this.nError2.Text = "*";
+            // 
+            // nError3
+            // 
+            this.nError3.AutoSize = true;
+            this.nError3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nError3.ForeColor = System.Drawing.Color.Red;
+            this.nError3.Location = new System.Drawing.Point(264, 125);
+            this.nError3.Name = "nError3";
+            this.nError3.Size = new System.Drawing.Size(15, 18);
+            this.nError3.TabIndex = 39;
+            this.nError3.Text = "*";
+            // 
+            // nError4
+            // 
+            this.nError4.AutoSize = true;
+            this.nError4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nError4.ForeColor = System.Drawing.Color.Red;
+            this.nError4.Location = new System.Drawing.Point(264, 173);
+            this.nError4.Name = "nError4";
+            this.nError4.Size = new System.Drawing.Size(15, 18);
+            this.nError4.TabIndex = 40;
+            this.nError4.Text = "*";
+            // 
+            // nError5
+            // 
+            this.nError5.AutoSize = true;
+            this.nError5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nError5.ForeColor = System.Drawing.Color.Red;
+            this.nError5.Location = new System.Drawing.Point(264, 198);
+            this.nError5.Name = "nError5";
+            this.nError5.Size = new System.Drawing.Size(15, 18);
+            this.nError5.TabIndex = 41;
+            this.nError5.Text = "*";
+            // 
+            // mError1
+            // 
+            this.mError1.AutoSize = true;
+            this.mError1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mError1.ForeColor = System.Drawing.Color.Red;
+            this.mError1.Location = new System.Drawing.Point(48, 224);
+            this.mError1.Name = "mError1";
+            this.mError1.Size = new System.Drawing.Size(15, 18);
+            this.mError1.TabIndex = 42;
+            this.mError1.Text = "*";
+            // 
+            // mError2
+            // 
+            this.mError2.AutoSize = true;
+            this.mError2.ForeColor = System.Drawing.Color.Red;
+            this.mError2.Location = new System.Drawing.Point(60, 228);
+            this.mError2.Name = "mError2";
+            this.mError2.Size = new System.Drawing.Size(165, 13);
+            this.mError2.TabIndex = 43;
+            this.mError2.Text = "revisar los campos seleccionados";
+            // 
             // Panel_registro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.Controls.Add(this.mError2);
+            this.Controls.Add(this.mError1);
+            this.Controls.Add(this.nError5);
+            this.Controls.Add(this.nError4);
+            this.Controls.Add(this.nError3);
+            this.Controls.Add(this.nError2);
+            this.Controls.Add(this.nError1);
+            this.Controls.Add(this.nError0);
             this.Controls.Add(this.cancelar);
             this.Controls.Add(this.checkBoxRecomendaciones);
             this.Controls.Add(this.label10);
@@ -307,5 +410,13 @@
         public System.Windows.Forms.TextBox textContrasena;
         public System.Windows.Forms.TextBox textFoto;
         public System.Windows.Forms.CheckBox checkBoxRecomendaciones;
+        public System.Windows.Forms.Label nError0;
+        public System.Windows.Forms.Label nError1;
+        public System.Windows.Forms.Label nError2;
+        public System.Windows.Forms.Label nError3;
+        public System.Windows.Forms.Label nError4;
+        public System.Windows.Forms.Label nError5;
+        public System.Windows.Forms.Label mError1;
+        public System.Windows.Forms.Label mError2;
     }
 }
