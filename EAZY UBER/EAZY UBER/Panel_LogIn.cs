@@ -23,15 +23,6 @@ namespace EAZY_UBER
             InitializeComponent();
             error.Visible = false;
         }
-        public void addHandlerregistro(delegado1 delegado)
-        {
-            eventoRegistro += delegado;
-        }
-        public void addHandlerIngreso(delegado1 delegado)
-        {
-            eventoIngresar += delegado;
-        }
-
         private void registro_Click(object sender, EventArgs e)
         {
             if (eventoRegistro != null)

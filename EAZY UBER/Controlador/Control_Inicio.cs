@@ -34,7 +34,7 @@ namespace Controlador
             this.formInicio = formInicio;
             this.formInicio.panel_LogIn1.eventoRegistro += iniciarRegistro;
             this.formInicio.panel_LogIn1.eventoIngresar += ingresar;
-            this.formInicio.panel_registro1.eventoRegistro += (registrarse);
+            this.formInicio.panel_registro1.eventoRegistro += registrarse;
             this.formInicio.panel_registro1.eventoCancelar += cancelarRegistro;
             this.formInicio.panel_registro1.eventoSeleccionarRutaImagen += seleccionarRutaFoto;
 
@@ -68,12 +68,13 @@ namespace Controlador
         public void ingresar(Object sender)
         {
             //datos log in
-            string usuario = formInicio.panel_LogIn1.textUsuario.Text;
+            string celular = formInicio.panel_LogIn1.textUsuario.Text;
             string contasena = formInicio.panel_LogIn1.textContrasena.Text;
 
 
             //consulta usuario
-            bool ingresar = sistema.Usuarios.Any(a => a.Celular == usuario & a.Contrasenia == contasena);
+            bool ingresar = sistema.loguearUsuario(celular, contasena);
+
   
             if (ingresar)
             {
@@ -141,20 +142,24 @@ namespace Controlador
             //agregar al modelo, recibir errores, poner campos en rojo
             try
             {
-                sistema.resgistrarUsuario(nombre, apellido, correo, celular, rutafoto, contrasena, confirmarContrasena, recibirrecomendaciones);
+                sistema.registrarUsuario(nombre, apellido, correo, celular, rutafoto, contrasena, confirmarContrasena, recibirrecomendaciones);
+                formInicio.panel_LogIn1.Visible = true;
+                formInicio.panel_registro1.Visible = false;
             } catch (AgregarUsuarioExcepcion e)
             {
 
                 //TODO mostrar mensajes de error
                 int[] controlAgregar = e.darErrores();
-                if (controlAgregar[0] == 1) { }
-                if (controlAgregar[1] == 1) { }
-                if (controlAgregar[2] == 1) { }
-                if (controlAgregar[3] == 1) { }
-                if (controlAgregar[4] == 1) { }
-                if (controlAgregar[5] == 1) { }
+                if (controlAgregar[0] == 1) { Debug.WriteLine(" line 0"); }
+                if (controlAgregar[1] == 1) { Debug.WriteLine(" line 1"); }
+                if (controlAgregar[2] == 1) { Debug.WriteLine(" line 2"); }
+                if (controlAgregar[3] == 1) { Debug.WriteLine(" line 3"); }
+                if (controlAgregar[4] == 1) { Debug.WriteLine(" line 4"); }
+                if (controlAgregar[5] == 1) { Debug.WriteLine(" line 5"); }
 
             }
+
+
 
         }
 
@@ -275,7 +280,8 @@ namespace Controlador
 
             //coordenadas
             Tuple<double, double> ubicacion = new Tuple<double, double>(lat, lng);//este se la pasas al atribut ubicación usuario dependiendo del controlador
-
+            sistema.Estado_usuarioLogged.Ubicacion = ubicacion;
+            Debug.WriteLine("Se agrego la ubicación al usuario");
         }
 
 

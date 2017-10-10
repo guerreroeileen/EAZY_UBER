@@ -40,14 +40,14 @@ namespace mundo
          *      contrasena: 5
          *     
          */
-        public Boolean resgistrarUsuario(string nombre, string apellido, string correo, string celular, string rutaFoto, string contrasena, string confContrasena, bool recomendar)
+        public Boolean registrarUsuario(string nombre, string apellido, string correo, string celular, string rutaFoto, string contrasena, string confContrasena, bool recomendar)
         {
             int[] controlRegistro = new int[6];
-            if (nombre == null | nombre.Length < 3) controlRegistro[0] = 1;
-            if (apellido == null | apellido.Length < 3) controlRegistro[1] = 1;
-            if (correo == null | usuarios.Any(a => a.Correo.Equals(correo)) | !correo.Contains("@") | correo.Length < 3) controlRegistro[2] = 1;
-            if (celular == null | usuarios.Any(a => a.Celular.Equals(celular)) | celular.Length != 10 | celular.All(char.IsDigit)) controlRegistro[3] = 1;
-            if (contrasena == null | confContrasena == null | contrasena.Length < 5 | !contrasena.Equals(confContrasena)) controlRegistro[5] = 1;
+            controlRegistro[0] = (nombre == null) ?  1: (nombre.Length < 3) ?  1 : 0;
+            controlRegistro[1] = (apellido == null) ? 1 : (apellido.Length < 3) ? 1 : 0;
+            controlRegistro[2] = (correo == null) ? 1 : (usuarios.Any(a => a.Correo.Equals(correo)) || !correo.Contains("@") || correo.Length < 3) ? 1 : 0;
+            controlRegistro[3] = (celular == null) ? 1 : (usuarios.Any(a => a.Celular.Equals(celular)) || celular.Length != 10) ? 1 : 0;
+            controlRegistro[5] = (contrasena == null || confContrasena == null) ? 1 : (contrasena.Length < 5 || !contrasena.Equals(confContrasena)) ? 1 : 0;
             if (controlRegistro.Any(a => a == 1))
                 throw new AgregarUsuarioExcepcion(controlRegistro);
             usuarios.Add(new Usuario(nombre, apellido, correo, celular, rutaFoto, contrasena, recomendar));
@@ -64,7 +64,7 @@ namespace mundo
 
             foreach (Usuario u in usuarios)
             {
-                if (u.Ubicacion.Item1 != ubicacion.Item1 || u.Ubicacion.Item2 != ubicacion.Item2)
+                if (!u.Celular.Equals(estado_usuarioLogged.Celular))
                 {
                     List<Recorrido> recomendaciones = new List<Recorrido>();
                     foreach (Recorrido r in u.Recorridos)
@@ -120,20 +120,12 @@ namespace mundo
             return estado_recorridosRecomendados.Count != 0;
         }
 
-        public Boolean loguearUsuario(String celular)
+        public Boolean loguearUsuario(string celular, string contrasena)
         {
-            Boolean logued = true;
-            Usuario aux = usuarios.Find(x => x.Celular.Equals(celular));
-                        if (aux != null)
-            {
-                estado_usuarioLogged = aux;
-                            }
-                        else {
-                logued = false;
-                            }
-                        return logued;
-                    }
- 
+            bool ingresar = Usuarios.Any(a => a.Celular == celular & a.Contrasenia == contrasena);
+            estado_usuarioLogged = darUsuario(celular);
+            return ingresar;
+        }
          public Boolean desloguearUsuario()
         {
                         if (estado_usuarioLogged != null)
