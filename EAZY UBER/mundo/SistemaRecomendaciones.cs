@@ -61,8 +61,8 @@ namespace mundo
         }
 
         public Boolean recomendarRecorridos(Tuple<double, double> ubicacion) {
-            estado_recorridosRecomendados = new Dictionary<Usuario, Recorrido>();
 
+            estado_recorridosRecomendados = new Dictionary<Usuario, Recorrido>();
             foreach (Usuario u in usuarios)
             {
                 if (!u.Celular.Equals(estado_usuarioLogged.Celular))
@@ -105,7 +105,8 @@ namespace mundo
                         recomendaciones.Add(r);
                     }
                     List<Recorrido> auxiliar = recomendaciones.Select(x => new { dist = distMinimaARuta(x, ubicacion), reco = x }).Where(x => x.dist <= radio).OrderBy(x => x.dist).Select(x => x.reco).ToList();
-                    estado_recorridosRecomendados.Add(u, auxiliar[0]);
+                    if(auxiliar.Count>0)
+                        estado_recorridosRecomendados.Add(u, auxiliar[0]);
 
                 }
             }
