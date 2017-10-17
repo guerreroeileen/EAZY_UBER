@@ -35,7 +35,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.lbNombre = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboBoxRutas = new System.Windows.Forms.ComboBox();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.lbApellido = new System.Windows.Forms.Label();
             this.lbCelular = new System.Windows.Forms.Label();
@@ -119,14 +119,14 @@
             this.pictureBox1.TabIndex = 6;
             this.pictureBox1.TabStop = false;
             // 
-            // comboBox1
+            // comboBoxRutas
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(113, 108);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(145, 21);
-            this.comboBox1.TabIndex = 7;
+            this.comboBoxRutas.FormattingEnabled = true;
+            this.comboBoxRutas.Location = new System.Drawing.Point(113, 108);
+            this.comboBoxRutas.Margin = new System.Windows.Forms.Padding(2);
+            this.comboBoxRutas.Name = "comboBoxRutas";
+            this.comboBoxRutas.Size = new System.Drawing.Size(145, 21);
+            this.comboBoxRutas.TabIndex = 7;
             // 
             // comboBox2
             // 
@@ -241,7 +241,7 @@
             this.Controls.Add(this.lbCelular);
             this.Controls.Add(this.lbApellido);
             this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.comboBoxRutas);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.lbNombre);
             this.Controls.Add(this.label5);
@@ -266,7 +266,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.Button botonAgregarRuta;
         private System.Windows.Forms.Button botonAgregarVehiculo;
@@ -278,5 +277,6 @@
         public System.Windows.Forms.Label lbInicio;
         private System.Windows.Forms.Label label7;
         public System.Windows.Forms.Button buttonSelInicio;
+        public System.Windows.Forms.ComboBox comboBoxRutas;
     }
 }
