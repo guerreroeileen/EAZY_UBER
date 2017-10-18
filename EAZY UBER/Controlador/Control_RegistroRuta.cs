@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using GMap.NET.WindowsForms.Markers;
 using GMap.NET.WindowsForms;
 using System.Diagnostics;
+using System.Drawing;
 
 namespace Controlador
 {
@@ -156,7 +157,16 @@ namespace Controlador
          */
         public void registrarRuta(Object sender)
         {
-
+            GMapOverlay rutas = new GMapOverlay("rutas");
+            List<PointLatLng> points = new List<PointLatLng>();
+            points.Add(new PointLatLng(inicio.Item1, inicio.Item2));
+            foreach(Tuple<double,double> t in puntos)
+            points.Add(new PointLatLng(t.Item1, t.Item2));
+            points.Add(new PointLatLng(fin.Item1,fin.Item2));
+            GMapRoute route = new GMapRoute(points, "Cali la mejor");
+            route.Stroke = new Pen(Color.Red, 3);
+            rutas.Routes.Add(route);
+            registroRuta.gMapControl1.Overlays.Add(rutas);
         }
 
 
