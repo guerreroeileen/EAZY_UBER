@@ -46,6 +46,7 @@ namespace mundo
             calificadores = new Dictionary<string, int>();
             rutas = new List<Ruta>();
             vehiculos = new List<Vehiculo>();
+            ubicacion = null;
             recorridos = new List<Recorrido>();
         }
 

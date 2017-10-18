@@ -64,6 +64,7 @@
             this.textConfContrasena.Location = new System.Drawing.Point(149, 198);
             this.textConfContrasena.Margin = new System.Windows.Forms.Padding(2);
             this.textConfContrasena.Name = "textConfContrasena";
+            this.textConfContrasena.PasswordChar = '*';
             this.textConfContrasena.Size = new System.Drawing.Size(110, 20);
             this.textConfContrasena.TabIndex = 27;
             // 
@@ -72,6 +73,7 @@
             this.textContrasena.Location = new System.Drawing.Point(148, 174);
             this.textContrasena.Margin = new System.Windows.Forms.Padding(2);
             this.textContrasena.Name = "textContrasena";
+            this.textContrasena.PasswordChar = '*';
             this.textContrasena.Size = new System.Drawing.Size(110, 20);
             this.textContrasena.TabIndex = 26;
             // 

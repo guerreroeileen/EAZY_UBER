@@ -90,9 +90,6 @@ namespace Controlador
                 //limpiar campos panel login
                 formInicio.panel_LogIn1.limpiarTextos();
 
-
-
-
                 //log in
                 formInicio.panel_registro1.Visible = false;
                 formInicio.mapa.Visible = true;
@@ -103,9 +100,12 @@ namespace Controlador
                 formInicio.panel_RecorridoRecomendado1.Visible = false;
                 formInicio.panel_LogIn1.Visible = false;
                 formInicio.opcionesToolStripMenuItem.Visible = true;
-
-                
-
+                pintarRutas(this);
+                if (sistema.Estado_usuarioLogged.Ubicacion != null)
+                {
+                    Tuple<double, double> ubicacion = sistema.Estado_usuarioLogged.Ubicacion;
+                    formInicio.markerUbicacion.Position = new PointLatLng(ubicacion.Item1, ubicacion.Item2);
+                }
             }
             else
             {
@@ -235,6 +235,7 @@ namespace Controlador
                 controlRegistroRuta.cerrar();
             RegistroRuta registroRuta = new RegistroRuta();
             registroRuta.Owner = formInicio;
+
             controlRegistroRuta = new Control_RegistroRuta(registroRuta);
         }
 
@@ -301,7 +302,7 @@ namespace Controlador
         private void cerrarSesionToolStripMenuItem_Click(object sender, EventArgs e)
         {
             sistema.Estado_usuarioLogged = null;
-
+            formInicio.markerUbicacion.Position = new PointLatLng();
 
             //Acomodar paneles de nuevo
             formInicio.panel_registro1.Visible = false;
@@ -347,6 +348,21 @@ namespace Controlador
         {
             formInicio.panel_PerfilUsuario1.buttonSelInicio.Enabled = false;
             seleccionarInicio = true;
+        }
+
+        /*Pinta las rutas que tiene agregado el usuario en el panel de perfil de usuario
+         * Se llama:
+         *       cuando se hace log in
+         *       cuando se agrega una ruta
+         */ 
+        public void pintarRutas(Object sender)
+        {
+           formInicio.panel_PerfilUsuario1.comboBoxRutas.Items.Clear();
+           List<Ruta> rutas = sistema.Estado_usuarioLogged.Rutas;
+            foreach (var r in rutas)
+            {
+                formInicio.panel_PerfilUsuario1.comboBoxRutas.Items.Add(r.Nombre);
+            }
         }
 
 

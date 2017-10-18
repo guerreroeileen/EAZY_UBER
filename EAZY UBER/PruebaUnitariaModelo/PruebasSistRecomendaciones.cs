@@ -129,7 +129,7 @@ namespace PruebaUnitariaModelo
 
         }
 
-        [TestMethod]
+        
         public void TestRecomendarRecorridos()
         {
             setup2();
