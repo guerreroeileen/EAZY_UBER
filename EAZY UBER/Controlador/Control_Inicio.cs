@@ -303,6 +303,7 @@ namespace Controlador
         {
             sistema.Estado_usuarioLogged = null;
             formInicio.markerUbicacion.Position = new PointLatLng();
+            sistema.guardarDB();
 
             //Acomodar paneles de nuevo
             formInicio.panel_registro1.Visible = false;

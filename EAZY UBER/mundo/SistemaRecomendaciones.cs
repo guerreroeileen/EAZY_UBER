@@ -4,10 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Excepciones;
+using System.IO;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
+using mundo.Properties;
+using System.Diagnostics;
+
 
 namespace mundo
-{
-    public class SistemaRecomendaciones
+{ 
+    
+    public class SistemaRecomendaciones 
     {
         private Dictionary<Usuario, Recorrido> estado_recorridosRecomendados;
         private Usuario estado_usuarioVisualizado;
@@ -17,14 +24,15 @@ namespace mundo
         private List<Usuario> usuarios;
 
         
-
+        
         public SistemaRecomendaciones() {
             estado_recorridosRecomendados=null;
             estado_usuarioVisualizado=null;
             estado_usuariosRecomendados=null;
             estado_usuarioLogged=null;
 
-            usuarios= new List<Usuario>();
+            usuarios= new List<Usuario>();            
+            cargarDB();
             usuarios.Add(new Usuario("prueba", "equipo", "correo@", "0000000000", "", "password", true));
         }
 
@@ -138,7 +146,28 @@ namespace mundo
                         else {
                                 return false;
                             }
-                    }
+         }
+
+        public Boolean cargarDB()
+        {
+            string ruta = Path.GetFullPath("base.bin");
+            Debug.WriteLine(ruta);
+            IFormatter format = new BinaryFormatter();
+            FileStream stream = new FileStream(ruta, FileMode.Open, FileAccess.Read, FileShare.Read);
+            usuarios = (List<Usuario>) format.Deserialize(stream);
+            stream.Close();
+            return true;
+        }
+
+        public Boolean guardarDB() {
+            string ruta = Path.GetFullPath("base.bin");
+            Debug.WriteLine(ruta);
+            IFormatter format = new BinaryFormatter();
+            FileStream stream = new FileStream(ruta, FileMode.Create, FileAccess.Write, FileShare.None);
+            format.Serialize(stream, usuarios);
+            stream.Close();
+            return true;
+        }
 
         private double distMinimaARuta(Recorrido recorrido, Tuple<double, double> punto) {
             double dist = double.MaxValue;

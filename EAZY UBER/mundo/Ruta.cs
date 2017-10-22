@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 namespace mundo
 {
+
+    [Serializable]
     public class Ruta
     {
         private string nombre;
