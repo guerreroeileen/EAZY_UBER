@@ -87,6 +87,7 @@ namespace Controlador
                 formInicio.panel_PerfilUsuario1.lbApellido.Text = sistema.Estado_usuarioLogged.Apellido;
                 formInicio.panel_PerfilUsuario1.lbCelular.Text = sistema.Estado_usuarioLogged.Celular;
                 formInicio.panel_PerfilUsuario1.lbInicio.Text = (sistema.Estado_usuarioLogged.Ubicacion!= null )? "Asignado" : "Sin asignar";
+
                 //limpiar campos panel login
                 formInicio.panel_LogIn1.limpiarTextos();
 
@@ -101,6 +102,7 @@ namespace Controlador
                 formInicio.panel_LogIn1.Visible = false;
                 formInicio.opcionesToolStripMenuItem.Visible = true;
                 pintarRutas(this);
+                pintarvehiculos(this);
                 if (sistema.Estado_usuarioLogged.Ubicacion != null)
                 {
                     Tuple<double, double> ubicacion = sistema.Estado_usuarioLogged.Ubicacion;
@@ -235,8 +237,8 @@ namespace Controlador
                 controlRegistroRuta.cerrar();
             RegistroRuta registroRuta = new RegistroRuta();
             registroRuta.Owner = formInicio;
-
-            controlRegistroRuta = new Control_RegistroRuta(registroRuta);
+            controlRegistroRuta = new Control_RegistroRuta(registroRuta,sistema.Estado_usuarioLogged);
+            controlRegistroRuta.eventoResgitroRuta += pintarRutas;
         }
 
         /* metodo para abrir la ventana de agregar vehiculo
@@ -249,9 +251,8 @@ namespace Controlador
                 controlRegistroVehiculo.cerrar();
             RegistroVehiculo registroVehiculo = new RegistroVehiculo();
             registroVehiculo.Owner = formInicio;
-            controlRegistroVehiculo = new Control_RegistroVehiculo(registroVehiculo);
-
-
+            controlRegistroVehiculo = new Control_RegistroVehiculo(registroVehiculo, sistema.Estado_usuarioLogged);
+            controlRegistroVehiculo.eventoAgregarVehiuclo += pintarvehiculos;
         }
 
         public void buscarRuta(Object sender)
@@ -324,14 +325,14 @@ namespace Controlador
          */
         public void map_Click(Object sender, MouseEventArgs e)
         {
-            //Debug.WriteLine("Entro 3");
-            double lat = formInicio.mapa.FromLocalToLatLng(e.X, e.Y).Lat;
-            double lng = formInicio.mapa.FromLocalToLatLng(e.X, e.Y).Lng;
 
 
             //asiganr inicio
             if (seleccionarInicio)
             {
+                //Debug.WriteLine("Entro 3");
+                double lat = formInicio.mapa.FromLocalToLatLng(e.X, e.Y).Lat;
+                double lng = formInicio.mapa.FromLocalToLatLng(e.X, e.Y).Lng;
                 //asignar marcador
                 formInicio.markerUbicacion.Position = new PointLatLng(lat, lng);
                 formInicio.markerUbicacion.ToolTipText = string.Format("Latitud: {0} \n Longitud: {1}", lat, lng);
@@ -345,6 +346,8 @@ namespace Controlador
 
         }
 
+        /*Activa la flag oara seleccionar el inicio del usuario
+         */
         public void seleccionInicio(Object sender)
         {
             formInicio.panel_PerfilUsuario1.buttonSelInicio.Enabled = false;
@@ -364,7 +367,38 @@ namespace Controlador
             {
                 formInicio.panel_PerfilUsuario1.comboBoxRutas.Items.Add(r.Nombre);
             }
+            if (rutas.Count > 0)
+                formInicio.panel_PerfilUsuario1.comboBoxRutas.SelectedIndex = 0 ;
+            if(sender.GetType() == typeof(Control_RegistroRuta))
+            {
+                controlRegistroRuta.cerrar();
+                controlRegistroRuta = null;
+            }
         }
+
+        /*Pinta las rutas que tiene agregado el usuario en el panel de perfil de usuario
+         * Se llama:
+         *       cuando se hace log in
+         *       cuando se agrega una ruta
+         */
+        public void pintarvehiculos(Object sender)
+        {
+            formInicio.panel_PerfilUsuario1.comboBoxVehiculos.Items.Clear();
+            List<Vehiculo> vehis = sistema.Estado_usuarioLogged.Vehiculos;
+            foreach (var r in vehis)
+            {
+                formInicio.panel_PerfilUsuario1.comboBoxVehiculos.Items.Add(r.Placa);
+            }
+            if (vehis.Count > 0)
+                formInicio.panel_PerfilUsuario1.comboBoxVehiculos.SelectedIndex = 0;
+            if (sender.GetType() == typeof(Control_RegistroVehiculo))
+            {
+                controlRegistroVehiculo.cerrar();
+                controlRegistroVehiculo = null;
+            }
+        }
+
+
 
 
 

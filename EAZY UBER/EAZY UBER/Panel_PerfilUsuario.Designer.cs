@@ -36,7 +36,7 @@
             this.lbNombre = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.comboBoxRutas = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.comboBoxVehiculos = new System.Windows.Forms.ComboBox();
             this.lbApellido = new System.Windows.Forms.Label();
             this.lbCelular = new System.Windows.Forms.Label();
             this.botonAgregarRuta = new System.Windows.Forms.Button();
@@ -128,14 +128,14 @@
             this.comboBoxRutas.Size = new System.Drawing.Size(145, 21);
             this.comboBoxRutas.TabIndex = 7;
             // 
-            // comboBox2
+            // comboBoxVehiculos
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(113, 133);
-            this.comboBox2.Margin = new System.Windows.Forms.Padding(2);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(145, 21);
-            this.comboBox2.TabIndex = 8;
+            this.comboBoxVehiculos.FormattingEnabled = true;
+            this.comboBoxVehiculos.Location = new System.Drawing.Point(113, 133);
+            this.comboBoxVehiculos.Margin = new System.Windows.Forms.Padding(2);
+            this.comboBoxVehiculos.Name = "comboBoxVehiculos";
+            this.comboBoxVehiculos.Size = new System.Drawing.Size(145, 21);
+            this.comboBoxVehiculos.TabIndex = 8;
             // 
             // lbApellido
             // 
@@ -240,7 +240,7 @@
             this.Controls.Add(this.botonAgregarRuta);
             this.Controls.Add(this.lbCelular);
             this.Controls.Add(this.lbApellido);
-            this.Controls.Add(this.comboBox2);
+            this.Controls.Add(this.comboBoxVehiculos);
             this.Controls.Add(this.comboBoxRutas);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.lbNombre);
@@ -266,7 +266,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.Button botonAgregarRuta;
         private System.Windows.Forms.Button botonAgregarVehiculo;
         private System.Windows.Forms.Button botonBuscarRuta;
@@ -278,5 +277,6 @@
         private System.Windows.Forms.Label label7;
         public System.Windows.Forms.Button buttonSelInicio;
         public System.Windows.Forms.ComboBox comboBoxRutas;
+        public System.Windows.Forms.ComboBox comboBoxVehiculos;
     }
 }

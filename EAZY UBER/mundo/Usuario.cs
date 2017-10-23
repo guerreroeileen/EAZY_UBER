@@ -53,16 +53,16 @@ namespace mundo
             recorridos = new List<Recorrido>();
         }
 
-        public Boolean registrarVehiculo(string placa, string color, string modelo, string rutaFoto)
+        public Boolean registrarVehiculo(string placa, string color, string marca, string linea)
         {
             bool registrado= false;
-            if (placa.Length<1 || color.Length<1 || modelo.Length<1 )
+            if (placa.Length<1 || color.Length<1 || linea.Length<1  || marca.Length <1)
             {
                 throw new AgregarVehiculoExcepcion("Debe llenar todos los campos");
             }
             else
             {
-                vehiculos.Add(new Vehiculo(placa,color,modelo,rutaFoto) );
+                vehiculos.Add(new Vehiculo(placa,color,marca,linea) );
                 registrado = true;
             }
 
@@ -74,8 +74,8 @@ namespace mundo
         public Boolean registrarRuta(String nombre, Tuple<double, double> inicio, Tuple<double, double> fin, List<Tuple<double, double>> puntos, string descripcion) 
         {
             bool registrado = true;
-
             if (nombre == null || nombre.Length<1) { throw new AgregarRutaExcepcion("Debe agregar el nombre de la ruta"); }
+            if (descripcion == null || descripcion.Length < 5) { throw new AgregarRutaExcepcion("Debes incluir una descripción de la ruta"); }
             if ((rutas.Exists(x => x.Nombre.Equals(nombre)))){ throw new AgregarRutaExcepcion("El nombre de la ruta ya existe! Debe elegir otro nombre"); }
             if (inicio == null) { throw new AgregarRutaExcepcion("La ruta no tiene inicio"); }
             if (fin == null) { throw new AgregarRutaExcepcion("La ruta no tiene punto final"); }

@@ -151,17 +151,22 @@ namespace mundo
         public Boolean cargarDB()
         {
             string ruta = Path.GetFullPath("base.bin");
-            Debug.WriteLine(ruta);
-            IFormatter format = new BinaryFormatter();
-            FileStream stream = new FileStream(ruta, FileMode.Open, FileAccess.Read, FileShare.Read);
-            usuarios = (List<Usuario>) format.Deserialize(stream);
-            stream.Close();
-            return true;
+            //Debug.WriteLine(ruta);
+            if (File.Exists(ruta))
+            {
+                IFormatter format = new BinaryFormatter();
+                FileStream stream = new FileStream(ruta, FileMode.Open, FileAccess.Read, FileShare.Read);
+                usuarios = (List<Usuario>)format.Deserialize(stream);
+                stream.Close();
+                return true;
+            }
+            return false;
+
         }
 
         public Boolean guardarDB() {
             string ruta = Path.GetFullPath("base.bin");
-            Debug.WriteLine(ruta);
+            //Debug.WriteLine(ruta);
             IFormatter format = new BinaryFormatter();
             FileStream stream = new FileStream(ruta, FileMode.Create, FileAccess.Write, FileShare.None);
             format.Serialize(stream, usuarios);
