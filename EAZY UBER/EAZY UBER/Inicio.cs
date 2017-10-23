@@ -57,17 +57,17 @@ namespace EAZY_UBER
         private void InitializeComponent()
         {
             this.mapa = new GMap.NET.WindowsForms.GMapControl();
-            this.panel_registro1 = new EAZY_UBER.Panel_registro();
-            this.panel_LogIn1 = new EAZY_UBER.Panel_LogIn();
-            this.panel_PerfilUsuario1 = new EAZY_UBER.Panel_PerfilUsuario();
-            this.panel_OfrecerCupo1 = new EAZY_UBER.panel_OfrecerCupo();
-            this.panel_BuscarRuta1 = new EAZY_UBER.panel_BuscarRuta();
-            this.panel_UsuarioRecomendado1 = new EAZY_UBER.panel_UsuarioRecomendado();
-            this.panel_RecorridoRecomendado1 = new EAZY_UBER.panel_RecorridoRecomendado();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.opcionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cerrarSesionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.notificacionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.panel_RecorridoRecomendado1 = new EAZY_UBER.panel_RecorridoRecomendado();
+            this.panel_UsuarioRecomendado1 = new EAZY_UBER.panel_UsuarioRecomendado();
+            this.panel_BuscarRuta1 = new EAZY_UBER.panel_BuscarRuta();
+            this.panel_OfrecerCupo1 = new EAZY_UBER.panel_OfrecerCupo();
+            this.panel_PerfilUsuario1 = new EAZY_UBER.Panel_PerfilUsuario();
+            this.panel_registro1 = new EAZY_UBER.Panel_registro();
+            this.panel_LogIn1 = new EAZY_UBER.Panel_LogIn();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -97,63 +97,6 @@ namespace EAZY_UBER
             this.mapa.TabIndex = 18;
             this.mapa.Zoom = 0D;
             this.mapa.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.mapa_MouseDoubleClick);
-            // 
-            // panel_registro1
-            // 
-            this.panel_registro1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.panel_registro1.Location = new System.Drawing.Point(298, 97);
-            this.panel_registro1.Margin = new System.Windows.Forms.Padding(4);
-            this.panel_registro1.Name = "panel_registro1";
-            this.panel_registro1.Size = new System.Drawing.Size(304, 342);
-            this.panel_registro1.TabIndex = 1;
-            // 
-            // panel_LogIn1
-            // 
-            this.panel_LogIn1.Location = new System.Drawing.Point(335, 130);
-            this.panel_LogIn1.Margin = new System.Windows.Forms.Padding(4);
-            this.panel_LogIn1.Name = "panel_LogIn1";
-            this.panel_LogIn1.Size = new System.Drawing.Size(253, 289);
-            this.panel_LogIn1.TabIndex = 0;
-            // 
-            // panel_PerfilUsuario1
-            // 
-            this.panel_PerfilUsuario1.Location = new System.Drawing.Point(555, 50);
-            this.panel_PerfilUsuario1.Margin = new System.Windows.Forms.Padding(2);
-            this.panel_PerfilUsuario1.Name = "panel_PerfilUsuario1";
-            this.panel_PerfilUsuario1.Size = new System.Drawing.Size(346, 199);
-            this.panel_PerfilUsuario1.TabIndex = 13;
-            // 
-            // panel_OfrecerCupo1
-            // 
-            this.panel_OfrecerCupo1.Location = new System.Drawing.Point(555, 264);
-            this.panel_OfrecerCupo1.Margin = new System.Windows.Forms.Padding(2);
-            this.panel_OfrecerCupo1.Name = "panel_OfrecerCupo1";
-            this.panel_OfrecerCupo1.Size = new System.Drawing.Size(346, 116);
-            this.panel_OfrecerCupo1.TabIndex = 14;
-            // 
-            // panel_BuscarRuta1
-            // 
-            this.panel_BuscarRuta1.Location = new System.Drawing.Point(555, 264);
-            this.panel_BuscarRuta1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.panel_BuscarRuta1.Name = "panel_BuscarRuta1";
-            this.panel_BuscarRuta1.Size = new System.Drawing.Size(346, 116);
-            this.panel_BuscarRuta1.TabIndex = 15;
-            // 
-            // panel_UsuarioRecomendado1
-            // 
-            this.panel_UsuarioRecomendado1.Location = new System.Drawing.Point(555, 396);
-            this.panel_UsuarioRecomendado1.Margin = new System.Windows.Forms.Padding(2);
-            this.panel_UsuarioRecomendado1.Name = "panel_UsuarioRecomendado1";
-            this.panel_UsuarioRecomendado1.Size = new System.Drawing.Size(346, 245);
-            this.panel_UsuarioRecomendado1.TabIndex = 16;
-            // 
-            // panel_RecorridoRecomendado1
-            // 
-            this.panel_RecorridoRecomendado1.Location = new System.Drawing.Point(555, 396);
-            this.panel_RecorridoRecomendado1.Margin = new System.Windows.Forms.Padding(2);
-            this.panel_RecorridoRecomendado1.Name = "panel_RecorridoRecomendado1";
-            this.panel_RecorridoRecomendado1.Size = new System.Drawing.Size(346, 245);
-            this.panel_RecorridoRecomendado1.TabIndex = 17;
             // 
             // menuStrip1
             // 
@@ -186,6 +129,63 @@ namespace EAZY_UBER
             this.notificacionesToolStripMenuItem.Name = "notificacionesToolStripMenuItem";
             this.notificacionesToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.notificacionesToolStripMenuItem.Text = "Notificaciones";
+            // 
+            // panel_RecorridoRecomendado1
+            // 
+            this.panel_RecorridoRecomendado1.Location = new System.Drawing.Point(555, 396);
+            this.panel_RecorridoRecomendado1.Margin = new System.Windows.Forms.Padding(2);
+            this.panel_RecorridoRecomendado1.Name = "panel_RecorridoRecomendado1";
+            this.panel_RecorridoRecomendado1.Size = new System.Drawing.Size(346, 245);
+            this.panel_RecorridoRecomendado1.TabIndex = 17;
+            // 
+            // panel_UsuarioRecomendado1
+            // 
+            this.panel_UsuarioRecomendado1.Location = new System.Drawing.Point(555, 445);
+            this.panel_UsuarioRecomendado1.Margin = new System.Windows.Forms.Padding(2);
+            this.panel_UsuarioRecomendado1.Name = "panel_UsuarioRecomendado1";
+            this.panel_UsuarioRecomendado1.Size = new System.Drawing.Size(346, 196);
+            this.panel_UsuarioRecomendado1.TabIndex = 16;
+            // 
+            // panel_BuscarRuta1
+            // 
+            this.panel_BuscarRuta1.Location = new System.Drawing.Point(555, 264);
+            this.panel_BuscarRuta1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel_BuscarRuta1.Name = "panel_BuscarRuta1";
+            this.panel_BuscarRuta1.Size = new System.Drawing.Size(346, 111);
+            this.panel_BuscarRuta1.TabIndex = 15;
+            // 
+            // panel_OfrecerCupo1
+            // 
+            this.panel_OfrecerCupo1.Location = new System.Drawing.Point(555, 264);
+            this.panel_OfrecerCupo1.Margin = new System.Windows.Forms.Padding(2);
+            this.panel_OfrecerCupo1.Name = "panel_OfrecerCupo1";
+            this.panel_OfrecerCupo1.Size = new System.Drawing.Size(346, 170);
+            this.panel_OfrecerCupo1.TabIndex = 14;
+            // 
+            // panel_PerfilUsuario1
+            // 
+            this.panel_PerfilUsuario1.Location = new System.Drawing.Point(555, 50);
+            this.panel_PerfilUsuario1.Margin = new System.Windows.Forms.Padding(2);
+            this.panel_PerfilUsuario1.Name = "panel_PerfilUsuario1";
+            this.panel_PerfilUsuario1.Size = new System.Drawing.Size(346, 199);
+            this.panel_PerfilUsuario1.TabIndex = 13;
+            // 
+            // panel_registro1
+            // 
+            this.panel_registro1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.panel_registro1.Location = new System.Drawing.Point(298, 97);
+            this.panel_registro1.Margin = new System.Windows.Forms.Padding(4);
+            this.panel_registro1.Name = "panel_registro1";
+            this.panel_registro1.Size = new System.Drawing.Size(304, 342);
+            this.panel_registro1.TabIndex = 1;
+            // 
+            // panel_LogIn1
+            // 
+            this.panel_LogIn1.Location = new System.Drawing.Point(335, 130);
+            this.panel_LogIn1.Margin = new System.Windows.Forms.Padding(4);
+            this.panel_LogIn1.Name = "panel_LogIn1";
+            this.panel_LogIn1.Size = new System.Drawing.Size(253, 289);
+            this.panel_LogIn1.TabIndex = 0;
             // 
             // Inicio
             // 

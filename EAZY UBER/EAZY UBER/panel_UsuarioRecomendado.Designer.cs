@@ -85,7 +85,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(209, 185);
+            this.button2.Location = new System.Drawing.Point(209, 133);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(131, 23);
             this.button2.TabIndex = 13;
@@ -94,7 +94,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(209, 214);
+            this.button1.Location = new System.Drawing.Point(209, 162);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(131, 23);
             this.button1.TabIndex = 12;
@@ -106,7 +106,7 @@
             this.listBox1.FormattingEnabled = true;
             this.listBox1.Location = new System.Drawing.Point(209, 19);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(131, 160);
+            this.listBox1.Size = new System.Drawing.Size(131, 108);
             this.listBox1.TabIndex = 11;
             // 
             // panel_UsuarioRecomendado
