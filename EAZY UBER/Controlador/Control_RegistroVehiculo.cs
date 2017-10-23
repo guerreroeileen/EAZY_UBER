@@ -14,12 +14,22 @@ namespace Controlador
         public Control_RegistroVehiculo(RegistroVehiculo registroVehiculo)
         {
             this.registroVehiculo = registroVehiculo;
+            this.registroVehiculo.eventoRegistrarVehiculo += registrarVehiculo;
             this.registroVehiculo.Show();
         }
 
         internal void cerrar()
         {
             registroVehiculo.Close();
+        }
+
+        public void registrarVehiculo(Object sender) {
+            string placa = registroVehiculo.txbPlaca.Text;
+            string marca = registroVehiculo.txbMarca.Text;
+            string linea = registroVehiculo.txbLinea.Text;
+            string color = registroVehiculo.txbColor.Text;
+
+
         }
     }
 }
