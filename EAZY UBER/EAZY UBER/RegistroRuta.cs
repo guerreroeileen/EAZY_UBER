@@ -57,6 +57,7 @@ namespace EAZY_UBER
             error0.Visible = false;
             error2.Visible = false;
             error1.Visible= false;
+            error3.Visible = false;
 
         }
 

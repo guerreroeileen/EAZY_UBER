@@ -9,19 +9,14 @@ namespace Excepciones
     public class AgregarRutaExcepcion: Exception
     {
 
-        public AgregarRutaExcepcion()
+        private int[] errores;
+        public AgregarRutaExcepcion(int[] errores)
         {
+            this.errores = errores;
         }
-
-        public AgregarRutaExcepcion(string message)
-        : base(message)
-    {
-        }
-
-        public AgregarRutaExcepcion(string message, Exception inner)
-        : base(message, inner)
-    {
-        }
+        public AgregarRutaExcepcion(string message): base(message) { }
+        public AgregarRutaExcepcion(string message, Exception inner): base(message, inner){ }
+        public int[] darErrores() { return errores; }
 
 
 

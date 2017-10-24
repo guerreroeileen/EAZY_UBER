@@ -43,6 +43,7 @@
             this.error0 = new System.Windows.Forms.Label();
             this.error1 = new System.Windows.Forms.Label();
             this.error2 = new System.Windows.Forms.Label();
+            this.error3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // labelTitulo
@@ -208,11 +209,22 @@
             this.error2.TabIndex = 16;
             this.error2.Text = "*";
             // 
+            // error3
+            // 
+            this.error3.AutoSize = true;
+            this.error3.ForeColor = System.Drawing.Color.Red;
+            this.error3.Location = new System.Drawing.Point(306, 68);
+            this.error3.Name = "error3";
+            this.error3.Size = new System.Drawing.Size(11, 13);
+            this.error3.TabIndex = 17;
+            this.error3.Text = "*";
+            // 
             // RegistroRuta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(652, 425);
+            this.Controls.Add(this.error3);
             this.Controls.Add(this.error2);
             this.Controls.Add(this.error1);
             this.Controls.Add(this.error0);
@@ -250,8 +262,9 @@
         public System.Windows.Forms.Button btnFin;
         public System.Windows.Forms.Button btnInicio;
         public System.Windows.Forms.Button btnAgregarPuntos;
-        private System.Windows.Forms.Label error0;
-        private System.Windows.Forms.Label error1;
-        private System.Windows.Forms.Label error2;
+        public System.Windows.Forms.Label error0;
+        public System.Windows.Forms.Label error1;
+        public System.Windows.Forms.Label error2;
+        public System.Windows.Forms.Label error3;
     }
 }

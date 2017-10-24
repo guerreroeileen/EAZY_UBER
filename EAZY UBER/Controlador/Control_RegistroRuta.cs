@@ -193,6 +193,15 @@ namespace Controlador
                 }
             } catch(AgregarRutaExcepcion e){
                 MessageBox.Show(e.Message);
+
+                
+
+                if (registroRuta.textBoxNombreRuta.Text.Length == 0) { registroRuta.error0.Visible = true; };
+                if (inicio == null && fin ==null) { registroRuta.error1.Visible = true; };
+                if (registroRuta.listBox1.Items.Count == 0) { registroRuta.error2.Visible = true; };
+                if (registroRuta.textBoxDescripcionRuta.Text.Length < 5) { registroRuta.error3.Visible = true; };
+
+
             }
 
         }
