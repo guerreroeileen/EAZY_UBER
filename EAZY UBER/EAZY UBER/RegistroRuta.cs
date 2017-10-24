@@ -52,6 +52,12 @@ namespace EAZY_UBER
             markerOverlay = new GMapOverlay("Marcador");
             //Agregamos el map y el marcador al map control
             gMapControl1.Overlays.Add(markerOverlay);
+
+            //pone todos los errores ocultos
+            error0.Visible = false;
+            error2.Visible = false;
+            error1.Visible= false;
+
         }
 
         private void gMapControl1_Load(object sender, EventArgs e)
