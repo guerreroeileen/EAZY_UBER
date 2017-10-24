@@ -10,6 +10,7 @@ using System.Diagnostics;
 using mundo;
 using Excepciones;
 using System.Drawing;
+using GMap.NET.WindowsForms;
 
 namespace Controlador
 {
@@ -47,6 +48,7 @@ namespace Controlador
             formInicio.panel_PerfilUsuario1.addHandlerAgregarVehiculo(agregarVehiculo);
             formInicio.panel_PerfilUsuario1.addHandlerBuscarRuta(buscarRuta);
             formInicio.panel_PerfilUsuario1.addHandlerOfrecerCupo(ofrecerCupo);
+            formInicio.panel_PerfilUsuario1.addHandlerCambiarIndice(mostrarRutas);
             formInicio.panel_OfrecerCupo1.addHandlerConfirmarOfrecerCupoo(confirmarOfrecerCupo);
             formInicio.panel_BuscarRuta1.addHandlerConfirmarOfrecerCupoo(confirmarBuscarRecorrido);
             formInicio.panel_registro1.Visible = false;
@@ -226,6 +228,10 @@ namespace Controlador
         //----------------------------------FIN REGISTRO Y LOG IN---------------------------------------------
 
 
+            
+
+            
+
        
         /* metodo para abrir la ventana de agregar ruta
          * se activa undiendo en el boton "+" en la linea Rutas en el panel perfil_Usuario
@@ -240,6 +246,29 @@ namespace Controlador
             controlRegistroRuta = new Control_RegistroRuta(registroRuta,sistema.Estado_usuarioLogged);
             controlRegistroRuta.eventoResgitroRuta += pintarRutas;
         }
+
+        /**método para visualizar la ruta en el mapa prinicipal
+             * 
+             */
+
+        public void mostrarRutas(Object sender)
+        {
+
+            Ruta selec = sistema.Estado_usuarioLogged.Rutas.Where(x => x.Nombre.Equals(formInicio.panel_PerfilUsuario1.comboBoxRutas.SelectedItem.ToString())).ToList() [0];
+            GMapOverlay rutas = new GMapOverlay("rutas");
+            List<PointLatLng> points = new List<PointLatLng>();
+            points.Add(new PointLatLng(selec.Inicio.Item1, selec.Inicio.Item2));
+            foreach (Tuple<double, double> t in selec.Puntos)
+                points.Add(new PointLatLng(t.Item1, t.Item2));
+            points.Add(new PointLatLng(selec.Fin.Item1, selec.Fin.Item2));
+            GMapRoute route = new GMapRoute(points, "Cali");
+            route.Stroke = new Pen(Color.Red, 3);
+            rutas.Routes.Add(route);     
+
+            formInicio.mapa.Overlays.Add(rutas);
+
+        }
+
 
         /* metodo para abrir la ventana de agregar vehiculo
          * se activa undiendo en el boton "+" en la linea vehiculo en el panel perfil_Usuario
@@ -368,7 +397,7 @@ namespace Controlador
                 formInicio.panel_PerfilUsuario1.comboBoxRutas.Items.Add(r.Nombre);
             }
             if (rutas.Count > 0)
-                formInicio.panel_PerfilUsuario1.comboBoxRutas.SelectedIndex = 0 ;
+               // formInicio.panel_PerfilUsuario1.comboBoxRutas.SelectedIndex = 0 ;
             if(sender.GetType() == typeof(Control_RegistroRuta))
             {
                 controlRegistroRuta.cerrar();

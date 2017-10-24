@@ -12,6 +12,8 @@ namespace EAZY_UBER
 {
     public partial class Panel_PerfilUsuario : UserControl
     {
+
+        private event delegado1 eventoCambiarIndiceCBox;
         private event delegado1 eventoAgregarRuta;
         private event delegado1 eventoAgregarVehiculo;
         private event delegado1 eventoOfrecerCupo;
@@ -22,6 +24,13 @@ namespace EAZY_UBER
         {
             InitializeComponent();
         }
+
+        public void addHandlerCambiarIndice(delegado1 delegado)
+        {
+            eventoCambiarIndiceCBox += delegado;
+        }
+
+
 
         public void addHandlerAgregarRuta(delegado1 delegado)
         {
@@ -73,6 +82,12 @@ namespace EAZY_UBER
         {
             if (eventoSeleccionarInicio != null)
                 eventoSeleccionarInicio.Invoke(this);
+        }
+
+        private void comboBoxRutas_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (eventoCambiarIndiceCBox != null)
+                eventoCambiarIndiceCBox.Invoke(this);
         }
     }
 }

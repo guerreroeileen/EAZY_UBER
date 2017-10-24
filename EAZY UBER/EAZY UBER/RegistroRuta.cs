@@ -22,6 +22,7 @@ namespace EAZY_UBER
         public GMapOverlay markerOverlay;
 
         //events
+        
         public event delegado1 eventoAgregar;
         public event delegado1 eventoAgregarIncio;
         public event delegado1 eventoAgregarFin;
