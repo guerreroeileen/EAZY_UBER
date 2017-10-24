@@ -3,6 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using mundo;
 using Excepciones;
 using System.Collections.Generic;
+using System.IO;
 
 namespace PruebaUnitariaModelo
 {
@@ -157,6 +158,19 @@ namespace PruebaUnitariaModelo
 
         }
 
+
+
+        [TestMethod]
+        public void TestCargar()
+        {            
+            setup1();
+            mundito.guardarDB();
+            mundito.cargarDB();
+            Assert.IsNotNull(mundito.Usuarios.Exists(n=> n.Celular.Equals("3015584448")));
+        }
+
+
+        
 
 
 

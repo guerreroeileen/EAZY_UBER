@@ -35,6 +35,9 @@ namespace Controlador
             this.sistema = sistema;
 
             //eventos listos
+
+            
+
             this.formInicio = formInicio;
             this.formInicio.panel_LogIn1.eventoRegistro += iniciarRegistro;
             this.formInicio.panel_LogIn1.eventoIngresar += ingresar;
@@ -43,6 +46,9 @@ namespace Controlador
             this.formInicio.panel_registro1.eventoSeleccionarRutaImagen += seleccionarRutaFoto;
             this.formInicio.mapClick += map_Click;
             this.formInicio.panel_PerfilUsuario1.eventoSeleccionarInicio += seleccionInicio;
+
+            this.formInicio.FormClosing += Form1_FormClosing; 
+
 
             formInicio.panel_PerfilUsuario1.addHandlerAgregarRuta(agregarRuta);
             formInicio.panel_PerfilUsuario1.addHandlerAgregarVehiculo(agregarVehiculo);
@@ -428,7 +434,18 @@ namespace Controlador
         }
 
 
+        private void Form1_FormClosing(Object sender, FormClosingEventArgs e)
+        {
 
+            System.Text.StringBuilder messageBoxCS = new System.Text.StringBuilder();
+           // messageBoxCS.AppendFormat("{0} = {1}", "CloseReason", e.CloseReason);
+           // messageBoxCS.AppendLine();
+            //messageBoxCS.AppendFormat("{0} = {1}", "Cancel", e.Cancel);
+            //messageBoxCS.AppendLine();
+            //MessageBox.Show(messageBoxCS.ToString(), "FormClosing Event");
+            sistema.guardarDB();
+
+        }
 
 
 
