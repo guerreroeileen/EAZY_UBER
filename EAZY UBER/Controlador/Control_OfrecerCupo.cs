@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using Excepciones;
 using System.Windows.Forms;
 using mundo;
-using Excepciones;
 using EAZY_UBER;
 
 namespace Controlador
@@ -58,6 +57,7 @@ namespace Controlador
 
 
         private void mostrarPUsuariosRecomendados() {
+            //Refrescar lista y toda la cosa
             vPrinc.panel_UsuarioRecomendado1.Visible = true;
             vPrinc.panel_RecorridoRecomendado1.Visible = false;
         }

@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Control_BuscarRuta.cs" />
     <Compile Include="Control_Inicio.cs" />
     <Compile Include="Control_Notificaciones.cs" />
     <Compile Include="Control_OfrecerCupo.cs" />
