@@ -23,6 +23,9 @@ namespace EAZY_UBER
         public Panel_PerfilUsuario()
         {
             InitializeComponent();
+            errorInicio.Visible = false;
+            errorRuta.Visible = false;
+            errorVehiculo.Visible = false;
         }
 
         public void addHandlerCambiarIndice(delegado1 delegado)

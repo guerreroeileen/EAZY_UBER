@@ -17,6 +17,10 @@ namespace EAZY_UBER
         public panel_OfrecerCupo()
         {
             InitializeComponent();
+            errorFecha.Visible = false;
+            errorHora.Visible = false;
+            errorCupo.Visible = false;
+            errorTarifa.Visible = false;
         }
         public void addHandlerConfirmarOfrecerCupoo(delegado1 delegado)
         {
@@ -25,8 +29,7 @@ namespace EAZY_UBER
 
         private void botonConfirmar_Click(object sender, EventArgs e)
         {
-            if (eventoConfirmarOfrecerCupo != null)
-                eventoConfirmarOfrecerCupo.Invoke(this);
+            
         }
 
         private void panel_OfrecerCupo_Load(object sender, EventArgs e)

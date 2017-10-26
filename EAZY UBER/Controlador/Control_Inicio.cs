@@ -26,6 +26,7 @@ namespace Controlador
         private Control_Notificaciones controlNotificaciones;
         private Control_RegistroRuta controlRegistroRuta;
         private Control_RegistroVehiculo controlRegistroVehiculo;
+        private Control_OfrecerCupo controlOfrecerCupos;
 
         //flags
         private bool seleccionarInicio;
@@ -34,6 +35,7 @@ namespace Controlador
         {
             this.sistema = sistema;
 
+            controlOfrecerCupos = new Control_OfrecerCupo(formInicio, sistema);
             //eventos listos            
 
             this.formInicio = formInicio;
@@ -52,8 +54,7 @@ namespace Controlador
             formInicio.panel_PerfilUsuario1.addHandlerAgregarVehiculo(agregarVehiculo);
             formInicio.panel_PerfilUsuario1.addHandlerBuscarRuta(buscarRuta);
             formInicio.panel_PerfilUsuario1.addHandlerOfrecerCupo(ofrecerCupo);
-            formInicio.panel_PerfilUsuario1.addHandlerCambiarIndice(mostrarRutas);
-            formInicio.panel_OfrecerCupo1.addHandlerConfirmarOfrecerCupoo(confirmarOfrecerCupo);
+            formInicio.panel_PerfilUsuario1.addHandlerCambiarIndice(mostrarRutas);            
             formInicio.panel_BuscarRuta1.addHandlerConfirmarOfrecerCupoo(confirmarBuscarRecorrido);
             formInicio.panel_registro1.Visible = false;
             formInicio.mapa.Visible = false;
@@ -257,7 +258,7 @@ namespace Controlador
 
         public void mostrarRutas(Object sender)
         {
-
+            //Error cuando se oprime boton ofrecerCupo por indice en la siguiente linea TODO:
             Ruta selec = sistema.Estado_usuarioLogged.Rutas.Where(x => x.Nombre.Equals(formInicio.panel_PerfilUsuario1.comboBoxRutas.SelectedItem.ToString())).ToList() [0];
             GMapOverlay rutas = new GMapOverlay("rutas");
             List<PointLatLng> points = new List<PointLatLng>();
@@ -302,13 +303,7 @@ namespace Controlador
             formInicio.panel_BuscarRuta1.Visible = false;
             formInicio.panel_RecorridoRecomendado1.Visible = false;
             formInicio.panel_UsuarioRecomendado1.Visible = false;
-        }
-
-        public void confirmarOfrecerCupo(Object sender)
-        {
-            formInicio.panel_UsuarioRecomendado1.Visible = true;
-            formInicio.panel_RecorridoRecomendado1.Visible = false;
-        }
+        }         
 
 
         public void confirmarBuscarRecorrido(Object sender)

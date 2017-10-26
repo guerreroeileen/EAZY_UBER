@@ -31,7 +31,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txbTarifa = new System.Windows.Forms.TextBox();
             this.botonConfirmar = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -41,8 +41,8 @@
             this.errorTarifa = new System.Windows.Forms.Label();
             this.errorFecha = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
+            this.txbCupos = new System.Windows.Forms.TextBox();
+            this.errorCupo = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -75,13 +75,13 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "Tarifa";
             // 
-            // textBox1
+            // txbTarifa
             // 
-            this.textBox1.Location = new System.Drawing.Point(73, 120);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(131, 22);
-            this.textBox1.TabIndex = 3;
+            this.txbTarifa.Location = new System.Drawing.Point(73, 120);
+            this.txbTarifa.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txbTarifa.Name = "txbTarifa";
+            this.txbTarifa.Size = new System.Drawing.Size(131, 22);
+            this.txbTarifa.TabIndex = 3;
             // 
             // botonConfirmar
             // 
@@ -170,29 +170,29 @@
             this.label5.TabIndex = 14;
             this.label5.Text = "Cupos";
             // 
-            // textBox2
+            // txbCupos
             // 
-            this.textBox2.Location = new System.Drawing.Point(73, 93);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(131, 22);
-            this.textBox2.TabIndex = 15;
+            this.txbCupos.Location = new System.Drawing.Point(73, 93);
+            this.txbCupos.Name = "txbCupos";
+            this.txbCupos.Size = new System.Drawing.Size(131, 22);
+            this.txbCupos.TabIndex = 15;
             // 
-            // label7
+            // errorCupo
             // 
-            this.label7.AutoSize = true;
-            this.label7.ForeColor = System.Drawing.Color.Red;
-            this.label7.Location = new System.Drawing.Point(210, 98);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(17, 17);
-            this.label7.TabIndex = 16;
-            this.label7.Text = "X";
+            this.errorCupo.AutoSize = true;
+            this.errorCupo.ForeColor = System.Drawing.Color.Red;
+            this.errorCupo.Location = new System.Drawing.Point(210, 98);
+            this.errorCupo.Name = "errorCupo";
+            this.errorCupo.Size = new System.Drawing.Size(17, 17);
+            this.errorCupo.TabIndex = 16;
+            this.errorCupo.Text = "X";
             // 
             // panel_OfrecerCupo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.errorCupo);
+            this.Controls.Add(this.txbCupos);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.errorFecha);
             this.Controls.Add(this.errorTarifa);
@@ -202,7 +202,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.botonConfirmar);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txbTarifa);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.label1);
@@ -218,19 +218,19 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button botonConfirmar;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label errorHora;
-        private System.Windows.Forms.Label errorTarifa;
-        private System.Windows.Forms.Label errorFecha;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Label label7;
+        public System.Windows.Forms.TextBox txbCupos;
+        public System.Windows.Forms.Label errorCupo;
+        public System.Windows.Forms.DateTimePicker dateTimePicker1;
+        public System.Windows.Forms.TextBox txbTarifa;
+        public System.Windows.Forms.Button botonConfirmar;
+        public System.Windows.Forms.DateTimePicker dateTimePicker2;
+        public System.Windows.Forms.Label errorHora;
+        public System.Windows.Forms.Label errorTarifa;
+        public System.Windows.Forms.Label errorFecha;
     }
 }

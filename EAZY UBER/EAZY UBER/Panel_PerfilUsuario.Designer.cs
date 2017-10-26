@@ -46,6 +46,9 @@
             this.lbInicio = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.buttonSelInicio = new System.Windows.Forms.Button();
+            this.errorRuta = new System.Windows.Forms.Label();
+            this.errorVehiculo = new System.Windows.Forms.Label();
+            this.errorInicio = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -220,10 +223,43 @@
             this.buttonSelInicio.UseVisualStyleBackColor = true;
             this.buttonSelInicio.Click += new System.EventHandler(this.buttonSelInicio_Click);
             // 
+            // errorRuta
+            // 
+            this.errorRuta.AutoSize = true;
+            this.errorRuta.ForeColor = System.Drawing.Color.Red;
+            this.errorRuta.Location = new System.Drawing.Point(128, 136);
+            this.errorRuta.Name = "errorRuta";
+            this.errorRuta.Size = new System.Drawing.Size(17, 17);
+            this.errorRuta.TabIndex = 18;
+            this.errorRuta.Text = "X";
+            // 
+            // errorVehiculo
+            // 
+            this.errorVehiculo.AutoSize = true;
+            this.errorVehiculo.ForeColor = System.Drawing.Color.Red;
+            this.errorVehiculo.Location = new System.Drawing.Point(128, 167);
+            this.errorVehiculo.Name = "errorVehiculo";
+            this.errorVehiculo.Size = new System.Drawing.Size(17, 17);
+            this.errorVehiculo.TabIndex = 19;
+            this.errorVehiculo.Text = "X";
+            // 
+            // errorInicio
+            // 
+            this.errorInicio.AutoSize = true;
+            this.errorInicio.ForeColor = System.Drawing.Color.Red;
+            this.errorInicio.Location = new System.Drawing.Point(200, 101);
+            this.errorInicio.Name = "errorInicio";
+            this.errorInicio.Size = new System.Drawing.Size(17, 17);
+            this.errorInicio.TabIndex = 20;
+            this.errorInicio.Text = "X";
+            // 
             // Panel_PerfilUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.errorInicio);
+            this.Controls.Add(this.errorVehiculo);
+            this.Controls.Add(this.errorRuta);
             this.Controls.Add(this.buttonSelInicio);
             this.Controls.Add(this.lbInicio);
             this.Controls.Add(this.label7);
@@ -271,5 +307,8 @@
         public System.Windows.Forms.Button buttonSelInicio;
         public System.Windows.Forms.ComboBox comboBoxRutas;
         public System.Windows.Forms.ComboBox comboBoxVehiculos;
+        public System.Windows.Forms.Label errorRuta;
+        public System.Windows.Forms.Label errorVehiculo;
+        public System.Windows.Forms.Label errorInicio;
     }
 }
