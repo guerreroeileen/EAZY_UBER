@@ -171,7 +171,7 @@ namespace PruebaUnitariaModelo
             setup2();
             Usuario carlos = sist.darUsuario("3015584448");
             var hora = DateTime.Today.Hour;
-            carlos.registrarRecorrido(2000, DateTime.Today, carlos.darVehiculoPorPlaca("NGJ985"), new Ruta("La calles saza 2", new Tuple<double, double>(33.254, 71.951), new Tuple<double, double>(94.365, 38.985), new System.Collections.Generic.List<Tuple<double, double>>() { new Tuple<double, double>(48.658, 55.355), new Tuple<double, double>(89.451, 38.923) }, ""));
+            carlos.registrarRecorrido(2000,3, DateTime.Today, carlos.darVehiculoPorPlaca("NGJ985"), new Ruta("La calles saza 2", new Tuple<double, double>(33.254, 71.951), new Tuple<double, double>(94.365, 38.985), new System.Collections.Generic.List<Tuple<double, double>>() { new Tuple<double, double>(48.658, 55.355), new Tuple<double, double>(89.451, 38.923) }, ""));
             Assert.IsNotNull(carlos.Recorridos); 
           }
 
@@ -190,7 +190,7 @@ namespace PruebaUnitariaModelo
                 tarifa = 0.0;
                 v = null;
                 r = sist.darUsuario("3015584448").Rutas[0];
-                sist.darUsuario("3015584448").registrarRecorrido(tarifa, fecha, v, r);
+                sist.darUsuario("3015584448").registrarRecorrido(tarifa, 2,fecha, v, r);
                 Assert.Fail("Se debe generar una excepcion por no asignar placa");
             }
             catch (Exception e)
@@ -203,7 +203,7 @@ namespace PruebaUnitariaModelo
                 tarifa = 0.0;
                 v = sist.darUsuario("3015584448").darVehiculoPorPlaca("GFB469");
                 r = null;
-                sist.darUsuario("3015584448").registrarRecorrido(tarifa, fecha, v, r);
+                sist.darUsuario("3015584448").registrarRecorrido(tarifa,4, fecha, v, r);
                 Assert.Fail("Se debe generar una excepcion por no asignar placa");
             }
             catch (Exception e)

@@ -28,5 +28,10 @@ namespace EAZY_UBER
             if (eventoConfirmarOfrecerCupo != null)
                 eventoConfirmarOfrecerCupo.Invoke(this);
         }
+
+        private void panel_OfrecerCupo_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

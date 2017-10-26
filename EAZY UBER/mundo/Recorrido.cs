@@ -10,13 +10,15 @@ namespace mundo
     public class Recorrido
     {
         private Double tarifa;
+        private int cupo;
         private DateTime fecha;        
         private Ruta ruta;
         private Vehiculo vehiculo;
 
-        public Recorrido(double tarifa, DateTime fecha, Vehiculo vehiculo, Ruta ruta)
+        public Recorrido(double tarifa, int cupo, DateTime fecha, Vehiculo vehiculo, Ruta ruta)
         {
             this.tarifa = tarifa;
+            this.cupo = cupo;
             this.fecha = fecha;           
             this.ruta = ruta;
             this.vehiculo = vehiculo;

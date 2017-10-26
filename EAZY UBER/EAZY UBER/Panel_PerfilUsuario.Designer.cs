@@ -173,7 +173,7 @@
             // botonBuscarRuta
             // 
             this.botonBuscarRuta.Location = new System.Drawing.Point(79, 206);
-            this.botonBuscarRuta.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.botonBuscarRuta.Margin = new System.Windows.Forms.Padding(4);
             this.botonBuscarRuta.Name = "botonBuscarRuta";
             this.botonBuscarRuta.Size = new System.Drawing.Size(116, 28);
             this.botonBuscarRuta.TabIndex = 13;
@@ -184,13 +184,13 @@
             // botonOfrecerCupo
             // 
             this.botonOfrecerCupo.Location = new System.Drawing.Point(227, 206);
-            this.botonOfrecerCupo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.botonOfrecerCupo.Margin = new System.Windows.Forms.Padding(4);
             this.botonOfrecerCupo.Name = "botonOfrecerCupo";
             this.botonOfrecerCupo.Size = new System.Drawing.Size(117, 28);
             this.botonOfrecerCupo.TabIndex = 14;
             this.botonOfrecerCupo.Text = "Ofrecer Cupo";
             this.botonOfrecerCupo.UseVisualStyleBackColor = true;
-            this.botonOfrecerCupo.Click += new System.EventHandler(this.botonOfrecerCupo_Click);
+            this.botonOfrecerCupo.Click += new System.EventHandler(this.comboBoxRutas_SelectedIndexChanged);
             // 
             // lbInicio
             // 

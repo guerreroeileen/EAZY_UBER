@@ -34,9 +34,7 @@ namespace Controlador
         {
             this.sistema = sistema;
 
-            //eventos listos
-
-            
+            //eventos listos            
 
             this.formInicio = formInicio;
             this.formInicio.panel_LogIn1.eventoRegistro += iniciarRegistro;

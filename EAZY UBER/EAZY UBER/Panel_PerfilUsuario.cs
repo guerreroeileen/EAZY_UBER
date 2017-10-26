@@ -30,8 +30,6 @@ namespace EAZY_UBER
             eventoCambiarIndiceCBox += delegado;
         }
 
-
-
         public void addHandlerAgregarRuta(delegado1 delegado)
         {
             eventoAgregarRuta += delegado;
@@ -89,5 +87,6 @@ namespace EAZY_UBER
             if (eventoCambiarIndiceCBox != null)
                 eventoCambiarIndiceCBox.Invoke(this);
         }
+
     }
 }

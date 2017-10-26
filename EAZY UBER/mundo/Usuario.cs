@@ -87,26 +87,24 @@ namespace mundo
             return registrado;
         }
 
-        public Boolean registrarRecorrido(Double tarifa, DateTime fecha, Vehiculo vehiculo, Ruta ruta)
+        public Boolean registrarRecorrido(Double tarifa,int cupos, DateTime fecha, Vehiculo vehiculo, Ruta ruta)
         {
-            bool registrado = false;
-            
-            
-            if (vehiculo==null)
+            bool[] campos = new bool[5];
+            bool fail = false; 
+            if (ruta == null) { campos[0] = true; fail = true; }
+            if (vehiculo == null) { campos[1] = true; fail = true; }
+            if (fecha == null) { campos[2] = true; fail = true; }
+            if (cupos>0 && cupos<5) { campos[3] = true; fail = true; }
+            if (tarifa <0) { campos[5] = true; fail = true; }
+            if (fail)
             {
-                throw new AgregarRecorridoExcepcion("Debe agregar un vehiculo al recorrido");
+                AgregarRecorridoExcepcion excep = new AgregarRecorridoExcepcion(campos);
+                throw excep;
             }
-            else if (ruta ==null)
-            {
-                throw new AgregarRecorridoExcepcion("Debe agregar una ruta al recorrido");
+            else {
+                recorridos.Add(new Recorrido(tarifa, cupos, fecha, vehiculo, ruta));
             }
-            else
-            {
-                recorridos.Add(new Recorrido(tarifa,fecha,vehiculo, ruta));
-                registrado = true;
-            }
-            
-            return registrado;
+            return !fail;
         }
          
         

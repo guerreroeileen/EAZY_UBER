@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="Control_Inicio.cs" />
     <Compile Include="Control_Notificaciones.cs" />
+    <Compile Include="Control_OfrecerCupo.cs" />
     <Compile Include="Control_RegistroRuta.cs" />
     <Compile Include="Control_RegistroVehiculo.cs" />
     <Compile Include="Runner.cs" />
