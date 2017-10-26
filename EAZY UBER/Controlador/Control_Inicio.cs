@@ -27,6 +27,7 @@ namespace Controlador
         private Control_RegistroRuta controlRegistroRuta;
         private Control_RegistroVehiculo controlRegistroVehiculo;
         private Control_OfrecerCupo controlOfrecerCupos;
+        private Control_BuscarRuta controlBuscarRuta;
 
         //flags
         private bool seleccionarInicio;
@@ -36,6 +37,7 @@ namespace Controlador
             this.sistema = sistema;
 
             controlOfrecerCupos = new Control_OfrecerCupo(formInicio, sistema);
+            controlBuscarRuta = new Control_BuscarRuta(formInicio, sistema);
             //eventos listos            
 
             this.formInicio = formInicio;
@@ -55,7 +57,7 @@ namespace Controlador
             formInicio.panel_PerfilUsuario1.addHandlerBuscarRuta(buscarRuta);
             formInicio.panel_PerfilUsuario1.addHandlerOfrecerCupo(ofrecerCupo);
             formInicio.panel_PerfilUsuario1.addHandlerCambiarIndice(mostrarRutas);            
-            formInicio.panel_BuscarRuta1.addHandlerConfirmarOfrecerCupoo(confirmarBuscarRecorrido);
+            
             formInicio.panel_registro1.Visible = false;
             formInicio.mapa.Visible = false;
             formInicio.panel_PerfilUsuario1.Visible = false;
@@ -304,13 +306,7 @@ namespace Controlador
             formInicio.panel_RecorridoRecomendado1.Visible = false;
             formInicio.panel_UsuarioRecomendado1.Visible = false;
         }         
-
-
-        public void confirmarBuscarRecorrido(Object sender)
-        {
-            formInicio.panel_RecorridoRecomendado1.Visible = true;
-            formInicio.panel_UsuarioRecomendado1.Visible = false;
-        }
+               
 
         /* metodo para abrir la ventana de notificaciones
         * se activa undiendo notificaciones en la barra de opciones
