@@ -33,12 +33,21 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lbLinea = new System.Windows.Forms.Label();
+            this.lbMarca = new System.Windows.Forms.Label();
+            this.lbColor = new System.Windows.Forms.Label();
+            this.lbPlaca = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.lbHora = new System.Windows.Forms.Label();
+            this.lbTarifa = new System.Windows.Forms.Label();
+            this.lbCalificacion = new System.Windows.Forms.Label();
+            this.lbApellido = new System.Windows.Forms.Label();
+            this.lbNombre = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.lbRecorridos = new System.Windows.Forms.ListBox();
@@ -89,6 +98,10 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.lbLinea);
+            this.groupBox1.Controls.Add(this.lbMarca);
+            this.groupBox1.Controls.Add(this.lbColor);
+            this.groupBox1.Controls.Add(this.lbPlaca);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.label5);
@@ -102,6 +115,38 @@
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Vehiculo";
+            // 
+            // lbLinea
+            // 
+            this.lbLinea.AutoSize = true;
+            this.lbLinea.Location = new System.Drawing.Point(181, 76);
+            this.lbLinea.Name = "lbLinea";
+            this.lbLinea.Size = new System.Drawing.Size(0, 17);
+            this.lbLinea.TabIndex = 11;
+            // 
+            // lbMarca
+            // 
+            this.lbMarca.AutoSize = true;
+            this.lbMarca.Location = new System.Drawing.Point(181, 59);
+            this.lbMarca.Name = "lbMarca";
+            this.lbMarca.Size = new System.Drawing.Size(0, 17);
+            this.lbMarca.TabIndex = 14;
+            // 
+            // lbColor
+            // 
+            this.lbColor.AutoSize = true;
+            this.lbColor.Location = new System.Drawing.Point(181, 42);
+            this.lbColor.Name = "lbColor";
+            this.lbColor.Size = new System.Drawing.Size(0, 17);
+            this.lbColor.TabIndex = 13;
+            // 
+            // lbPlaca
+            // 
+            this.lbPlaca.AutoSize = true;
+            this.lbPlaca.Location = new System.Drawing.Point(181, 25);
+            this.lbPlaca.Name = "lbPlaca";
+            this.lbPlaca.Size = new System.Drawing.Size(0, 17);
+            this.lbPlaca.TabIndex = 12;
             // 
             // label7
             // 
@@ -151,6 +196,11 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.lbHora);
+            this.groupBox2.Controls.Add(this.lbTarifa);
+            this.groupBox2.Controls.Add(this.lbCalificacion);
+            this.groupBox2.Controls.Add(this.lbApellido);
+            this.groupBox2.Controls.Add(this.lbNombre);
             this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.Controls.Add(this.pictureBox1);
@@ -165,6 +215,47 @@
             this.groupBox2.TabIndex = 7;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Conductor";
+            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
+            // 
+            // lbHora
+            // 
+            this.lbHora.AutoSize = true;
+            this.lbHora.Location = new System.Drawing.Point(181, 103);
+            this.lbHora.Name = "lbHora";
+            this.lbHora.Size = new System.Drawing.Size(0, 17);
+            this.lbHora.TabIndex = 10;
+            // 
+            // lbTarifa
+            // 
+            this.lbTarifa.AutoSize = true;
+            this.lbTarifa.Location = new System.Drawing.Point(181, 86);
+            this.lbTarifa.Name = "lbTarifa";
+            this.lbTarifa.Size = new System.Drawing.Size(0, 17);
+            this.lbTarifa.TabIndex = 9;
+            // 
+            // lbCalificacion
+            // 
+            this.lbCalificacion.AutoSize = true;
+            this.lbCalificacion.Location = new System.Drawing.Point(202, 56);
+            this.lbCalificacion.Name = "lbCalificacion";
+            this.lbCalificacion.Size = new System.Drawing.Size(0, 17);
+            this.lbCalificacion.TabIndex = 8;
+            // 
+            // lbApellido
+            // 
+            this.lbApellido.AutoSize = true;
+            this.lbApellido.Location = new System.Drawing.Point(187, 37);
+            this.lbApellido.Name = "lbApellido";
+            this.lbApellido.Size = new System.Drawing.Size(0, 17);
+            this.lbApellido.TabIndex = 7;
+            // 
+            // lbNombre
+            // 
+            this.lbNombre.AutoSize = true;
+            this.lbNombre.Location = new System.Drawing.Point(187, 20);
+            this.lbNombre.Name = "lbNombre";
+            this.lbNombre.Size = new System.Drawing.Size(0, 17);
+            this.lbNombre.TabIndex = 6;
             // 
             // label9
             // 
@@ -179,7 +270,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(100, 53);
+            this.label8.Location = new System.Drawing.Point(101, 54);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(83, 17);
@@ -191,7 +282,7 @@
             this.lbRecorridos.FormattingEnabled = true;
             this.lbRecorridos.ItemHeight = 16;
             this.lbRecorridos.Location = new System.Drawing.Point(289, 16);
-            this.lbRecorridos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lbRecorridos.Margin = new System.Windows.Forms.Padding(4);
             this.lbRecorridos.Name = "lbRecorridos";
             this.lbRecorridos.Size = new System.Drawing.Size(160, 196);
             this.lbRecorridos.TabIndex = 8;
@@ -199,7 +290,7 @@
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(289, 263);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(161, 28);
             this.button1.TabIndex = 9;
@@ -209,7 +300,7 @@
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(289, 228);
-            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(161, 28);
             this.button2.TabIndex = 10;
@@ -257,5 +348,14 @@
         public System.Windows.Forms.ListBox lbRecorridos;
         public System.Windows.Forms.Button button1;
         public System.Windows.Forms.Button button2;
+        public System.Windows.Forms.Label lbTarifa;
+        public System.Windows.Forms.Label lbApellido;
+        public System.Windows.Forms.Label lbNombre;
+        public System.Windows.Forms.Label lbHora;
+        public System.Windows.Forms.Label lbPlaca;
+        public System.Windows.Forms.Label lbColor;
+        public System.Windows.Forms.Label lbMarca;
+        public System.Windows.Forms.Label lbLinea;
+        public System.Windows.Forms.Label lbCalificacion;
     }
 }

@@ -21,5 +21,10 @@ namespace EAZY_UBER
         {
 
         }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }

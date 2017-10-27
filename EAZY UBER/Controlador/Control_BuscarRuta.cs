@@ -14,11 +14,12 @@ namespace Controlador
     {
         private Inicio vPrin;
         private SistemaRecomendaciones sistema;
+        private Control_RecoRecomend cRecorrido;
 
-
-        public Control_BuscarRuta(Inicio vPrin, SistemaRecomendaciones sistema) {
+        public Control_BuscarRuta(Inicio vPrin, SistemaRecomendaciones sistema, Control_RecoRecomend cRecorrido) {
             this.vPrin = vPrin;
             this.sistema = sistema;
+            this.cRecorrido = cRecorrido;
 
             vPrin.panel_BuscarRuta1.botonConfirmar.Click += evento_confirmarBuscarRuta;
         }
@@ -53,6 +54,8 @@ namespace Controlador
         private void mostrarPRecorridos() {
             vPrin.panel_RecorridoRecomendado1.Visible = true;
             vPrin.panel_UsuarioRecomendado1.Visible = false;
+
+            cRecorrido.refreshPanelRecorridosRecomend();
         }
     }
 }

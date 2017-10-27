@@ -27,6 +27,7 @@ namespace mundo
         public double Tarifa { get => tarifa; set => tarifa = value; }
         public DateTime Fecha { get => fecha; set => fecha = value; }
         
-        public Ruta Ruta { get => ruta; set => ruta = value; }
+        public Ruta Ruta { get => ruta; set => ruta = value; }        
+        public Vehiculo Vehiculo { get => vehiculo; set => vehiculo = value; }
     }
 }

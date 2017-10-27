@@ -28,6 +28,7 @@ namespace Controlador
         private Control_RegistroVehiculo controlRegistroVehiculo;
         private Control_OfrecerCupo controlOfrecerCupos;
         private Control_BuscarRuta controlBuscarRuta;
+        private Control_RecoRecomend controlRecorridoRecom;
 
         //flags
         private bool seleccionarInicio;
@@ -36,8 +37,9 @@ namespace Controlador
         {
             this.sistema = sistema;
 
+            controlRecorridoRecom = new Control_RecoRecomend(formInicio.panel_RecorridoRecomendado1, sistema, this);
             controlOfrecerCupos = new Control_OfrecerCupo(formInicio, sistema);
-            controlBuscarRuta = new Control_BuscarRuta(formInicio, sistema);
+            controlBuscarRuta = new Control_BuscarRuta(formInicio, sistema, controlRecorridoRecom);
             //eventos listos            
 
             this.formInicio = formInicio;
@@ -262,6 +264,15 @@ namespace Controlador
         {
             //Error cuando se oprime boton ofrecerCupo por indice en la siguiente linea TODO:
             Ruta selec = sistema.Estado_usuarioLogged.Rutas.Where(x => x.Nombre.Equals(formInicio.panel_PerfilUsuario1.comboBoxRutas.SelectedItem.ToString())).ToList() [0];
+            pintarRutaMapa(selec);
+
+        }
+
+        /*
+         * El metodo pinta en el mapa de la ventana principal la ruta.
+         *  -Input: Ruta selec: Ruta que se va a pintar
+         * */
+        public void pintarRutaMapa(Ruta selec) {
             GMapOverlay rutas = new GMapOverlay("rutas");
             List<PointLatLng> points = new List<PointLatLng>();
             points.Add(new PointLatLng(selec.Inicio.Item1, selec.Inicio.Item2));
@@ -270,10 +281,9 @@ namespace Controlador
             points.Add(new PointLatLng(selec.Fin.Item1, selec.Fin.Item2));
             GMapRoute route = new GMapRoute(points, "Cali");
             route.Stroke = new Pen(Color.Red, 3);
-            rutas.Routes.Add(route);     
+            rutas.Routes.Add(route);
 
             formInicio.mapa.Overlays.Add(rutas);
-
         }
 
 
