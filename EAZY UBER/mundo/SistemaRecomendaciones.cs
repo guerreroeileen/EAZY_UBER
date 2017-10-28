@@ -34,6 +34,7 @@ namespace mundo
             usuarios= new List<Usuario>();            
             cargarDB();
             usuarios.Add(new Usuario("prueba", "equipo", "correo@", "0000000000", "", "password", true));
+                        
         }
 
         /* Agrega un usuario al sistema
@@ -66,6 +67,21 @@ namespace mundo
 
         public Usuario darUsuario(string celular) {
             return usuarios.Find(x => x.Celular.Equals(celular));
+        }
+
+        /*
+         * Metodo que recomienda lo primero 15 usuarios para un recorrido.
+         * El criterio de ordenamiento es la distancia del usuario a la ruta.
+         */
+        public Boolean recomendarUsuarios(Recorrido recorrido) {
+            List<Usuario> auxList = new List<Usuario>();
+            foreach (Usuario u in usuarios) {
+                if (u.Ubicacion != null) {
+                    auxList.Add(u);
+                }
+            }
+            Estado_usuariosRecomendados = auxList.Select(x => new { dist = distMinimaARuta(recorrido, x.Ubicacion), usu = x }).OrderBy(x => x.dist).Select(x => x.usu).Take(15).ToList();
+            return true;
         }
 
         public Boolean recomendarRecorridos(Tuple<double, double> ubicacion) {
