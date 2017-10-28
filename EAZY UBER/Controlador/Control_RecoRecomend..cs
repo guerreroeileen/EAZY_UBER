@@ -24,12 +24,22 @@ namespace Controlador
 
         private void evento_selecionRecorrido(object sender, EventArgs e) {
             int iReco = pRecomend.lbRecorridos.SelectedIndex;
+            String ruta = pRecomend.lbRecorridos.SelectedItem.ToString();//Se sca el nombre de la ruta
             if (iReco >= 0)
             {
                 
+                //Una posible solución-Convertir el diccionario a una lista de KeyValuePair
               List  <KeyValuePair<Usuario, Recorrido>> xd = sistema.Estado_recorridosRecomendados.ToList();
-                Usuario usua = xd [iReco].Key ;    //Lo mismo ->Daniel 
-                Recorrido reco = xd[iReco].Value; //poner el recorrido en la posicion iReco-> Daniel soluciona esto
+                Usuario usua = xd [iReco].Key ;    
+                Recorrido reco = xd[iReco].Value; 
+                //Otra posible solución---Se compara con la el nombr de la ruta ya que estos son los que estan en la list box
+                
+                var objeto = from x in sistema.Estado_recorridosRecomendados where x.Value.Ruta.Equals(ruta) select x;
+                Usuario usua = objeto.First().Key;    
+                Recorrido reco = objeto.First().Value;
+
+                //Otra propuesta de solucion
+
 
                 pRecomend.lbNombre.Text = usua.Nombre;
                 pRecomend.lbApellido.Text = usua.Apellido;
