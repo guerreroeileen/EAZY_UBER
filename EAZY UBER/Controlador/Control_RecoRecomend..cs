@@ -26,8 +26,10 @@ namespace Controlador
             int iReco = pRecomend.lbRecorridos.SelectedIndex;
             if (iReco >= 0)
             {
-                Usuario usua = null;    //Lo mismo ->Daniel 
-                Recorrido reco = null; //poner el recorrido en la posicion iReco-> Daniel soluciona esto
+                
+              List  <KeyValuePair<Usuario, Recorrido>> xd = sistema.Estado_recorridosRecomendados.ToList();
+                Usuario usua = xd [iReco].Key ;    //Lo mismo ->Daniel 
+                Recorrido reco = xd[iReco].Value; //poner el recorrido en la posicion iReco-> Daniel soluciona esto
 
                 pRecomend.lbNombre.Text = usua.Nombre;
                 pRecomend.lbApellido.Text = usua.Apellido;
