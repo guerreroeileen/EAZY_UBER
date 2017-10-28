@@ -13,7 +13,7 @@ namespace EAZY_UBER
     public partial class Panel_PerfilUsuario : UserControl
     {
 
-        private event delegado1 eventoCambiarIndiceCBox;
+        public event delegado1 eventoCambiarIndiceCBox;
         private event delegado1 eventoAgregarRuta;
         private event delegado1 eventoAgregarVehiculo;
         private event delegado1 eventoOfrecerCupo;
