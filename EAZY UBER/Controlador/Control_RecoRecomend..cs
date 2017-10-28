@@ -31,14 +31,19 @@ namespace Controlador
                 //Una posible solución-Convertir el diccionario a una lista de KeyValuePair
               List  <KeyValuePair<Usuario, Recorrido>> xd = sistema.Estado_recorridosRecomendados.ToList();
                 Usuario usua = xd [iReco].Key ;    
-                Recorrido reco = xd[iReco].Value; 
+                Recorrido reco = xd[iReco].Value;
                 //Otra posible solución---Se compara con la el nombr de la ruta ya que estos son los que estan en la list box
-                
-                var objeto = from x in sistema.Estado_recorridosRecomendados where x.Value.Ruta.Equals(ruta) select x;
-                Usuario usua = objeto.First().Key;    
-                Recorrido reco = objeto.First().Value;
 
-                //Otra propuesta de solucion
+                 var objeto = from x in sistema.Estado_recorridosRecomendados where x.Value.Ruta.Equals(ruta) select x;
+                // Usuario usua = objeto.First().Key;    
+                // Recorrido reco = objeto.First().Value;
+
+                //Otra propuesta de solucion -- Me parece buena
+                KeyValuePair<Usuario, Recorrido> parOrdenadoDatos = sistema.Estado_recorridosRecomendados.FirstOrDefault(x => x.Value.Ruta.Equals(ruta));
+               // Usuario usua = parOrdenadoDatos.Key;
+                //Recorrido reco = parOrdenadoDatos.Value;
+
+
 
 
                 pRecomend.lbNombre.Text = usua.Nombre;
