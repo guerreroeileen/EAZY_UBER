@@ -193,7 +193,7 @@
             this.botonOfrecerCupo.TabIndex = 14;
             this.botonOfrecerCupo.Text = "Ofrecer Cupo";
             this.botonOfrecerCupo.UseVisualStyleBackColor = true;
-            this.botonOfrecerCupo.Click += new System.EventHandler(this.comboBoxRutas_SelectedIndexChanged);
+            this.botonOfrecerCupo.Click += new System.EventHandler(this.botonOfrecerCupo_Click);
             // 
             // lbInicio
             // 

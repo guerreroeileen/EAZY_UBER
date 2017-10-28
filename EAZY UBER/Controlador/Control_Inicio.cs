@@ -50,7 +50,7 @@ namespace Controlador
             this.formInicio.panel_registro1.eventoSeleccionarRutaImagen += seleccionarRutaFoto;
             this.formInicio.mapClick += map_Click;
             this.formInicio.panel_PerfilUsuario1.eventoSeleccionarInicio += seleccionInicio;
-
+            this.formInicio.panel_PerfilUsuario1.eventoCambiarIndiceCBox += mostrarRutas;
             this.formInicio.FormClosing += Form1_FormClosing; 
 
 
@@ -315,6 +315,7 @@ namespace Controlador
             formInicio.panel_BuscarRuta1.Visible = false;
             formInicio.panel_RecorridoRecomendado1.Visible = false;
             formInicio.panel_UsuarioRecomendado1.Visible = false;
+            Debug.WriteLine("ENTRO");
         }         
                
 

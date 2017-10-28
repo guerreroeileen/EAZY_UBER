@@ -55,7 +55,13 @@ namespace Controlador
          * pre: Se debe llamar primero al sistema para que actualice el estado.
          * */
         public void refreshPanelRecorridosRecomend() {
-            pRecomend.lbRecorridos.DataSource = sistema.Estado_recorridosRecomendados.Select(x => x.Value.Ruta.Nombre);
+            if (sistema.Estado_recorridosRecomendados != null)
+            {
+                pRecomend.lbRecorridos.DataSource = sistema.Estado_recorridosRecomendados.Select(x => x.Value.Ruta.Nombre);
+            }
+            else {
+                pRecomend.lbRecorridos.Items.Clear();
+            }
         }
     }
 }
