@@ -47,7 +47,7 @@ namespace Controlador
                 cInicio.pintarRutaMapa(reco.Ruta);
             }
             else {
-                //hacer clear
+                pRecomend.clear();
             }
         }
 
@@ -57,8 +57,7 @@ namespace Controlador
          * pre: Se debe llamar primero al sistema para que actualice el estado.
          * */
         public void refreshPanelRecorridosRecomend() {
-            if (sistema.Estado_recorridosRecomendados != null)
-            {
+            if (sistema.Estado_recorridosRecomendados != null){
                 pRecomend.lbRecorridos.DataSource = sistema.Estado_recorridosRecomendados.Select(x => x.Value.Ruta.Nombre);
             }
             else {

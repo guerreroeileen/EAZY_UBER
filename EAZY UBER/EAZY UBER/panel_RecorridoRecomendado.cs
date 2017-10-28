@@ -26,5 +26,19 @@ namespace EAZY_UBER
         {
 
         }
+
+        public void clear() {
+            lbNombre.Text = "";
+            lbApellido.Text = "";
+            lbCalificacion.Text = "";
+
+            lbTarifa.Text = "";
+            lbHora.Text = "";
+
+            lbPlaca.Text = "";
+            lbColor.Text = "";
+            lbLinea.Text = "";
+            lbMarca.Text = "";
+        }
     }
 }
