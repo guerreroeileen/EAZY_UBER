@@ -45,6 +45,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="SistemaAdministrador.cs" />
     <Compile Include="SistemaRecomendaciones.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Recorrido.cs" />
