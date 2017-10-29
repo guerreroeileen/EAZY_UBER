@@ -84,9 +84,10 @@ namespace mundo
             return true;
         }
 
-        public Boolean recomendarRecorridos(Tuple<double, double> ubicacion) {
+        public Boolean recomendarRecorridos(Tuple<double, double> ubicacion, DateTime fecha) {
 
             estado_recorridosRecomendados = new Dictionary<Usuario, Recorrido>();
+
             foreach (Usuario u in usuarios)
             {
                 if (!u.Celular.Equals(estado_usuarioLogged.Celular))
@@ -94,6 +95,7 @@ namespace mundo
                     List<Recorrido> recomendaciones = new List<Recorrido>();
                     foreach (Recorrido r in u.Recorridos)
                     {
+                        if((fecha.Minute >= r.Fecha.Minute - 15)  && (fecha.Minute <= r.Fecha.Minute + 15))
                         recomendaciones.Add(r);
                     }
 
