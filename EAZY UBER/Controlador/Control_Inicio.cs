@@ -29,16 +29,18 @@ namespace Controlador
         private Control_OfrecerCupo controlOfrecerCupos;
         private Control_BuscarRuta controlBuscarRuta;
         private Control_RecoRecomend controlRecorridoRecom;
+        private Control_UsuarioRecom controlUsuarioRecom;
 
         //flags
         private bool seleccionarInicio;
 
         public Control_Inicio(Inicio formInicio, SistemaRecomendaciones sistema)
-        {
+        {            
             this.sistema = sistema;
 
+            controlUsuarioRecom = new Control_UsuarioRecom(formInicio.panel_UsuarioRecomendado1, sistema);
             controlRecorridoRecom = new Control_RecoRecomend(formInicio.panel_RecorridoRecomendado1, sistema, this);
-            controlOfrecerCupos = new Control_OfrecerCupo(formInicio, sistema);
+            controlOfrecerCupos = new Control_OfrecerCupo(formInicio, sistema, controlUsuarioRecom );
             controlBuscarRuta = new Control_BuscarRuta(formInicio, sistema, controlRecorridoRecom);
             //eventos listos            
 

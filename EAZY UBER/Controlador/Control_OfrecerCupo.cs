@@ -50,6 +50,7 @@ namespace Controlador
             try
             {
                 sistema.Estado_usuarioLogged.registrarRecorrido(tarifa, cupo, fecha, sistema.Estado_usuarioLogged.Vehiculos[iVehiculo], sistema.Estado_usuarioLogged.Rutas[iRuta]);
+                sistema.recomendarUsuarios( sistema.Estado_usuarioLogged.Recorridos.Last());
             }
             catch(AgregarRecorridoExcepcion ex) {
                 bool[] campos = ex.CamposF;
