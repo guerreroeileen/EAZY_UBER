@@ -20,8 +20,13 @@ namespace Controlador
             this.cInicio = cInicio;
 
             pRecomend.lbRecorridos.SelectedIndexChanged += evento_selecionRecorrido;
+            pRecomend.btnDescartar.Click += evento_descartarRecorrido;
         }
 
+
+        /*
+         * Muestra la informacion del recorrido seleccionado
+         */
         private void evento_selecionRecorrido(object sender, EventArgs e) {
             int iReco = pRecomend.lbRecorridos.SelectedIndex;
             String ruta = pRecomend.lbRecorridos.SelectedItem.ToString();//Se sca el nombre de la ruta
@@ -60,13 +65,24 @@ namespace Controlador
 
                 //Pinta ruta en el mapa
                 cInicio.pintarRutaMapa(reco.Ruta);
+
+                pRecomend.btnDescartar.Enabled = true;
             }
             else {
                 pRecomend.clear();
+                pRecomend.btnDescartar.Enabled = false;
             }
         }
 
-        /**
+        /*
+         * Elimina el recorrido seleccionado que se descarta
+         */
+        public void evento_descartarRecorrido(object sender, EventArgs e) {
+            sistema.Estado_recorridosRecomendados.Remove(sistema.Estado_recorridosRecomendados.ToList()[pRecomend.lbRecorridos.SelectedIndex].Key);
+            refreshPanelRecorridosRecomend();
+        }
+
+        /*
          * Metodo que refresca el listBox del panel de Recorridos Recomendados.
          * 
          * pre: Se debe llamar primero al sistema para que actualice el estado.

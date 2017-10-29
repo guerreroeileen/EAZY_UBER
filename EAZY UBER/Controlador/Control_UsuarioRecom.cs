@@ -20,7 +20,8 @@ namespace Controlador
             this.pUsuarioRecom = pUsuarioRecom;
             this.sistema = sistema;
 
-
+            pUsuarioRecom.lbxUsuarios.SelectedIndexChanged += evento_selectedUsuarioRecom;
+            pUsuarioRecom.btnDescartar.Click += evento_selectedUsuarioRecom;
         }
 
         private void evento_selectedUsuarioRecom(object sender, EventArgs e) {
@@ -33,10 +34,17 @@ namespace Controlador
                 pUsuarioRecom.lbApellido.Text = uReco.Apellido;
 
                 //falta actualizar la imagen
+                pUsuarioRecom.btnDescartar.Enabled = true;
             }
             else {
                 pUsuarioRecom.clear();
+                pUsuarioRecom.btnDescartar.Enabled = false;
             }
+        }
+
+        private void evento_descartarUsuario(object sender, EventArgs e) {
+            sistema.Estado_usuariosRecomendados.Remove(sistema.Estado_usuariosRecomendados[pUsuarioRecom.lbxUsuarios.SelectedIndex]);
+            actualizarPanelUsuarioRecom();
         }
 
         public void actualizarPanelUsuarioRecom() {

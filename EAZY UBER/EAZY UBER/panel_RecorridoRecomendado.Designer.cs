@@ -51,8 +51,8 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.lbRecorridos = new System.Windows.Forms.ListBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnDescartar = new System.Windows.Forms.Button();
+            this.btnSolicitar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -287,32 +287,32 @@
             this.lbRecorridos.Size = new System.Drawing.Size(160, 196);
             this.lbRecorridos.TabIndex = 8;
             // 
-            // button1
+            // btnDescartar
             // 
-            this.button1.Location = new System.Drawing.Point(289, 263);
-            this.button1.Margin = new System.Windows.Forms.Padding(4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(161, 28);
-            this.button1.TabIndex = 9;
-            this.button1.Text = "Descartar";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnDescartar.Location = new System.Drawing.Point(289, 263);
+            this.btnDescartar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnDescartar.Name = "btnDescartar";
+            this.btnDescartar.Size = new System.Drawing.Size(161, 28);
+            this.btnDescartar.TabIndex = 9;
+            this.btnDescartar.Text = "Descartar";
+            this.btnDescartar.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // btnSolicitar
             // 
-            this.button2.Location = new System.Drawing.Point(289, 228);
-            this.button2.Margin = new System.Windows.Forms.Padding(4);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(161, 28);
-            this.button2.TabIndex = 10;
-            this.button2.Text = "Solicitar Cupo";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnSolicitar.Location = new System.Drawing.Point(289, 228);
+            this.btnSolicitar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnSolicitar.Name = "btnSolicitar";
+            this.btnSolicitar.Size = new System.Drawing.Size(161, 28);
+            this.btnSolicitar.TabIndex = 10;
+            this.btnSolicitar.Text = "Solicitar Cupo";
+            this.btnSolicitar.UseVisualStyleBackColor = true;
             // 
             // panel_RecorridoRecomendado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnSolicitar);
+            this.Controls.Add(this.btnDescartar);
             this.Controls.Add(this.lbRecorridos);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -346,8 +346,8 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         public System.Windows.Forms.ListBox lbRecorridos;
-        public System.Windows.Forms.Button button1;
-        public System.Windows.Forms.Button button2;
+        public System.Windows.Forms.Button btnDescartar;
+        public System.Windows.Forms.Button btnSolicitar;
         public System.Windows.Forms.Label lbTarifa;
         public System.Windows.Forms.Label lbApellido;
         public System.Windows.Forms.Label lbNombre;
