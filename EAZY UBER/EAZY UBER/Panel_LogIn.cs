@@ -41,5 +41,10 @@ namespace EAZY_UBER
             if (eventoIngresar != null)
                 eventoIngresar.Invoke(this);
         }
+
+        private void Panel_LogIn_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

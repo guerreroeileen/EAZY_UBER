@@ -31,6 +31,8 @@ namespace Controlador
         private Control_RecoRecomend controlRecorridoRecom;
         private Control_UsuarioRecom controlUsuarioRecom;
 
+        private Administrador adminPanel;
+
         //flags
         private bool seleccionarInicio;
 
@@ -95,32 +97,46 @@ namespace Controlador
   
             if (ingresar)
             {
-                //acomodar datos de perfil usuario
-                formInicio.panel_PerfilUsuario1.lbNombre.Text = sistema.Estado_usuarioLogged.Nombre;
-                formInicio.panel_PerfilUsuario1.lbApellido.Text = sistema.Estado_usuarioLogged.Apellido;
-                formInicio.panel_PerfilUsuario1.lbCelular.Text = sistema.Estado_usuarioLogged.Celular;
-                formInicio.panel_PerfilUsuario1.lbInicio.Text = (sistema.Estado_usuarioLogged.Ubicacion!= null )? "Asignado" : "Sin asignar";
 
-                //limpiar campos panel login
-                formInicio.panel_LogIn1.limpiarTextos();
-
-                //log in
-                formInicio.panel_registro1.Visible = false;
-                formInicio.mapa.Visible = true;
-                formInicio.panel_PerfilUsuario1.Visible = true;
-                formInicio.panel_OfrecerCupo1.Visible = true;
-                formInicio.panel_BuscarRuta1.Visible = false;
-                formInicio.panel_UsuarioRecomendado1.Visible = false;
-                formInicio.panel_RecorridoRecomendado1.Visible = false;
-                formInicio.panel_LogIn1.Visible = false;
-                formInicio.opcionesToolStripMenuItem.Visible = true;
-                pintarRutas(this);
-                pintarvehiculos(this);
-                if (sistema.Estado_usuarioLogged.Ubicacion != null)
+                if (celular.SequenceEqual("0000000000") && contasena.SequenceEqual("password"))
                 {
-                    Tuple<double, double> ubicacion = sistema.Estado_usuarioLogged.Ubicacion;
-                    formInicio.markerUbicacion.Position = new PointLatLng(ubicacion.Item1, ubicacion.Item2);
+                    adminPanel = new Administrador();
+                    formInicio.Visible = false;
+                    adminPanel.Show();
                 }
+                else
+                {
+                    //acomodar datos de perfil usuario
+                    formInicio.panel_PerfilUsuario1.lbNombre.Text = sistema.Estado_usuarioLogged.Nombre;
+                    formInicio.panel_PerfilUsuario1.lbApellido.Text = sistema.Estado_usuarioLogged.Apellido;
+                    formInicio.panel_PerfilUsuario1.lbCelular.Text = sistema.Estado_usuarioLogged.Celular;
+                    formInicio.panel_PerfilUsuario1.lbInicio.Text = (sistema.Estado_usuarioLogged.Ubicacion != null) ? "Asignado" : "Sin asignar";
+
+                    //limpiar campos panel login
+                    formInicio.panel_LogIn1.limpiarTextos();
+
+                    //log in
+                    formInicio.panel_registro1.Visible = false;
+                    formInicio.mapa.Visible = true;
+                    formInicio.panel_PerfilUsuario1.Visible = true;
+                    formInicio.panel_OfrecerCupo1.Visible = true;
+                    formInicio.panel_BuscarRuta1.Visible = false;
+                    formInicio.panel_UsuarioRecomendado1.Visible = false;
+                    formInicio.panel_RecorridoRecomendado1.Visible = false;
+                    formInicio.panel_LogIn1.Visible = false;
+                    formInicio.opcionesToolStripMenuItem.Visible = true;
+                    pintarRutas(this);
+                    pintarvehiculos(this);
+                    if (sistema.Estado_usuarioLogged.Ubicacion != null)
+                    {
+                        Tuple<double, double> ubicacion = sistema.Estado_usuarioLogged.Ubicacion;
+                        formInicio.markerUbicacion.Position = new PointLatLng(ubicacion.Item1, ubicacion.Item2);
+                        
+                    }
+                }
+
+
+               
             }
             else
             {
