@@ -105,7 +105,7 @@ namespace Controlador
                    //     controlAdmin.cerrar();
                     Administrador admin = new Administrador();
                     admin.Owner = formInicio;
-                    controlAdmin= new Control_Administrador(admin);
+                    controlAdmin= new Control_Administrador(admin, sistema);
 
                    
                     formInicio.Visible = false;
