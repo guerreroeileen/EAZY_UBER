@@ -32,6 +32,7 @@ namespace EAZY_UBER
         public panel_UsuarioRecomendado panel_UsuarioRecomendado1;
         public panel_RecorridoRecomendado panel_RecorridoRecomendado1;
         public Panel_LogIn panel_LogIn1;
+       
 
         //menu strip
         public MenuStrip menuStrip1;
@@ -68,6 +69,7 @@ namespace EAZY_UBER
             this.panel_PerfilUsuario1 = new EAZY_UBER.Panel_PerfilUsuario();
             this.panel_registro1 = new EAZY_UBER.Panel_registro();
             this.panel_LogIn1 = new EAZY_UBER.Panel_LogIn();
+            
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 

@@ -31,7 +31,7 @@ namespace Controlador
         private Control_RecoRecomend controlRecorridoRecom;
         private Control_UsuarioRecom controlUsuarioRecom;
 
-        private Administrador adminPanel;
+        private Control_Administrador controlAdmin;
 
         //flags
         private bool seleccionarInicio;
@@ -44,6 +44,7 @@ namespace Controlador
             controlRecorridoRecom = new Control_RecoRecomend(formInicio.panel_RecorridoRecomendado1, sistema, this);
             controlOfrecerCupos = new Control_OfrecerCupo(formInicio, sistema, controlUsuarioRecom );
             controlBuscarRuta = new Control_BuscarRuta(formInicio, sistema, controlRecorridoRecom);
+          
             //eventos listos            
 
             this.formInicio = formInicio;
@@ -100,9 +101,16 @@ namespace Controlador
 
                 if (celular.SequenceEqual("0000000000") && contasena.SequenceEqual("password"))
                 {
-                    adminPanel = new Administrador();
+                  //  if (controlAdmin != null)
+                   //     controlAdmin.cerrar();
+                    Administrador admin = new Administrador();
+                    admin.Owner = formInicio;
+                    controlAdmin= new Control_Administrador(admin);
+
+                   
                     formInicio.Visible = false;
-                    adminPanel.Show();
+
+                   
                 }
                 else
                 {
@@ -346,6 +354,7 @@ namespace Controlador
             if (controlNotificaciones != null)
                 controlNotificaciones.cerrar();
             Notificaciones notificaciones = new Notificaciones();
+          
             notificaciones.Owner = formInicio;
             controlNotificaciones = new Control_Notificaciones(notificaciones);
         }
