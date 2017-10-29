@@ -195,20 +195,19 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.ListBox listUsuariosRegistrados;
         private System.Windows.Forms.Label labelUsuarios;
         private Panel_PerfilUsuario panel_PerfilUsuario1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label labelUsuariosRegistrados;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label labelAutosRegistrados;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label labelRecorridosRegistrados;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label labelUsuariosAuto;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label labelUsuariosSinAuto;
+        public System.Windows.Forms.ListBox listUsuariosRegistrados;
+        public System.Windows.Forms.Label labelUsuariosRegistrados;
+        public System.Windows.Forms.Label labelAutosRegistrados;
+        public System.Windows.Forms.Label labelRecorridosRegistrados;
+        public System.Windows.Forms.Label labelUsuariosAuto;
+        public System.Windows.Forms.Label labelUsuariosSinAuto;
     }
 }
