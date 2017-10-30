@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Administrador));
             this.listUsuariosRegistrados = new System.Windows.Forms.ListBox();
             this.labelUsuarios = new System.Windows.Forms.Label();
             this.panel_PerfilUsuario1 = new EAZY_UBER.Panel_PerfilUsuario();
@@ -42,6 +43,11 @@
             this.labelUsuariosAuto = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.labelUsuariosSinAuto = new System.Windows.Forms.Label();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
+            this.generarUsuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // listUsuariosRegistrados
@@ -169,11 +175,46 @@
             this.labelUsuariosSinAuto.TabIndex = 13;
             this.labelUsuariosSinAuto.Text = "0";
             // 
+            // toolStrip1
+            // 
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripDropDownButton1});
+            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(662, 25);
+            this.toolStrip1.TabIndex = 14;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
+            // toolStripDropDownButton1
+            // 
+            this.toolStripDropDownButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripDropDownButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.generarUsuariosToolStripMenuItem,
+            this.toolStripMenuItem1});
+            this.toolStripDropDownButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton1.Image")));
+            this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
+            this.toolStripDropDownButton1.Size = new System.Drawing.Size(29, 22);
+            this.toolStripDropDownButton1.Text = "toolStripDropDownButton1";
+            // 
+            // generarUsuariosToolStripMenuItem
+            // 
+            this.generarUsuariosToolStripMenuItem.Name = "generarUsuariosToolStripMenuItem";
+            this.generarUsuariosToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.generarUsuariosToolStripMenuItem.Text = "Generar Usuarios";
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(163, 22);
+            this.toolStripMenuItem1.Text = "Volver a Inicio";
+            // 
             // Administrador
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(662, 339);
+            this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.labelUsuariosSinAuto);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.labelUsuariosAuto);
@@ -190,6 +231,8 @@
             this.Controls.Add(this.listUsuariosRegistrados);
             this.Name = "Administrador";
             this.Text = "Panel de Administrador";
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -210,5 +253,9 @@
         public System.Windows.Forms.Label labelUsuariosAuto;
         public System.Windows.Forms.Label labelUsuariosSinAuto;
         public Panel_PerfilUsuario panel_PerfilUsuario1;
+        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton1;
+        public System.Windows.Forms.ToolStripMenuItem generarUsuariosToolStripMenuItem;
+        public System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
     }
 }

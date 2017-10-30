@@ -187,7 +187,10 @@ namespace mundo
             return res;
         }
 
-
+        public Ruta darRutaPorNombre(String nombreRuta)
+        {
+            return rutas.Where(a => a.Nombre.SequenceEqual(nombreRuta)).First();
+        }
 
 
         public string Nombre { get => nombre; set => nombre = value; }

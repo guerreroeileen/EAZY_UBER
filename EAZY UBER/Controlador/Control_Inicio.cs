@@ -44,6 +44,7 @@ namespace Controlador
             controlRecorridoRecom = new Control_RecoRecomend(formInicio.panel_RecorridoRecomendado1, sistema, this);
             controlOfrecerCupos = new Control_OfrecerCupo(formInicio, sistema, controlUsuarioRecom );
             controlBuscarRuta = new Control_BuscarRuta(formInicio, sistema, controlRecorridoRecom);
+
           
             //eventos listos            
 
