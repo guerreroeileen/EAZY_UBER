@@ -64,10 +64,22 @@ namespace Controlador
 
 
 
-            admen.Show();
+            admon.Show();
+
+
+
+            admon.addHandlerCambiarDatos(cambiarObejeto);
 
 
         }
+
+        public void cambiarObejeto(Object sender)
+        {
+            admon.panel_PerfilUsuario1.lbNombre.Text = sistema.darUsuario(admon.listUsuariosRegistrados.Text).Nombre;
+        }
+
+
+
 
         internal void cerrar()
         {

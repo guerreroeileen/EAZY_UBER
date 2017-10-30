@@ -51,6 +51,7 @@
             this.listUsuariosRegistrados.Name = "listUsuariosRegistrados";
             this.listUsuariosRegistrados.Size = new System.Drawing.Size(145, 251);
             this.listUsuariosRegistrados.TabIndex = 0;
+            this.listUsuariosRegistrados.SelectedIndexChanged += new System.EventHandler(this.listUsuariosRegistrados_SelectedIndexChanged);
             // 
             // labelUsuarios
             // 
@@ -196,7 +197,6 @@
 
         #endregion
         private System.Windows.Forms.Label labelUsuarios;
-        private Panel_PerfilUsuario panel_PerfilUsuario1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
@@ -209,5 +209,6 @@
         public System.Windows.Forms.Label labelRecorridosRegistrados;
         public System.Windows.Forms.Label labelUsuariosAuto;
         public System.Windows.Forms.Label labelUsuariosSinAuto;
+        public Panel_PerfilUsuario panel_PerfilUsuario1;
     }
 }
