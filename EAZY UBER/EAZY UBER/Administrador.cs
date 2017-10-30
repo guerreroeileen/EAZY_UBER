@@ -24,12 +24,18 @@ namespace EAZY_UBER
 
         private void listUsuariosRegistrados_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+            if (eventoCambiarDatos != null)
+                eventoCambiarDatos.Invoke(this);
         }
 
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void Administrador_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -35,7 +35,7 @@ namespace mundo
             cargarDB();
             if (!usuarios.Where(a => a.Celular.Equals("0000000000")).Any())
             {
-                usuarios.Add(new Usuario("prueba", "equipo", "correo@", "0000000000", "", "password", true));
+                usuarios.Add(new Usuario("nombreAdmon", "apellidoAdmon", "correo@admon", "0000000000", "", "password", true));
                 Debug.WriteLine("Agrego");
             }
                 
