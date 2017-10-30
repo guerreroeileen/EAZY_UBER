@@ -96,22 +96,15 @@ namespace Controlador
             //consulta usuario
             bool ingresar = sistema.loguearUsuario(celular, contasena);
 
-  
             if (ingresar)
             {
 
                 if (celular.SequenceEqual("0000000000") && contasena.SequenceEqual("password"))
                 {
-                  //  if (controlAdmin != null)
-                   //     controlAdmin.cerrar();
                     Administrador admin = new Administrador();
                     admin.Owner = formInicio;
                     controlAdmin= new Control_Administrador(admin, sistema);
-
-                   
-                    formInicio.Visible = false;
-
-                   
+                    formInicio.Visible = false;     
                 }
                 else
                 {

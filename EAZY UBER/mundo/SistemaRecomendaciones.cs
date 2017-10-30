@@ -33,8 +33,13 @@ namespace mundo
 
             usuarios= new List<Usuario>();            
             cargarDB();
-            usuarios.Add(new Usuario("prueba", "equipo", "correo@", "0000000000", "", "password", true));
-                        
+            if (!usuarios.Where(a => a.Celular.Equals("0000000000")).Any())
+            {
+                usuarios.Add(new Usuario("prueba", "equipo", "correo@", "0000000000", "", "password", true));
+                Debug.WriteLine("Agrego");
+            }
+                
+              
         }
 
         /* Agrega un usuario al sistema

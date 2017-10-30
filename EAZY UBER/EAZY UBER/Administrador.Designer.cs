@@ -31,7 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Administrador));
             this.listUsuariosRegistrados = new System.Windows.Forms.ListBox();
             this.labelUsuarios = new System.Windows.Forms.Label();
-            this.panel_PerfilUsuario1 = new EAZY_UBER.Panel_PerfilUsuario();
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.labelUsuariosRegistrados = new System.Windows.Forms.Label();
@@ -68,17 +67,9 @@
             this.labelUsuarios.TabIndex = 1;
             this.labelUsuarios.Text = "Usuarios Registrados";
             // 
-            // panel_PerfilUsuario1
-            // 
-            this.panel_PerfilUsuario1.Location = new System.Drawing.Point(162, 83);
-            this.panel_PerfilUsuario1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.panel_PerfilUsuario1.Name = "panel_PerfilUsuario1";
-            this.panel_PerfilUsuario1.Size = new System.Drawing.Size(320, 202);
-            this.panel_PerfilUsuario1.TabIndex = 2;
-            // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(163, 290);
+            this.button1.Location = new System.Drawing.Point(257, 304);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(111, 23);
             this.button1.TabIndex = 3;
@@ -208,6 +199,7 @@
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.Size = new System.Drawing.Size(163, 22);
             this.toolStripMenuItem1.Text = "Volver a Inicio";
+            this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
             // Administrador
             // 
@@ -226,7 +218,6 @@
             this.Controls.Add(this.labelUsuariosRegistrados);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.panel_PerfilUsuario1);
             this.Controls.Add(this.labelUsuarios);
             this.Controls.Add(this.listUsuariosRegistrados);
             this.Name = "Administrador";
@@ -252,7 +243,6 @@
         public System.Windows.Forms.Label labelRecorridosRegistrados;
         public System.Windows.Forms.Label labelUsuariosAuto;
         public System.Windows.Forms.Label labelUsuariosSinAuto;
-        public Panel_PerfilUsuario panel_PerfilUsuario1;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton1;
         public System.Windows.Forms.ToolStripMenuItem generarUsuariosToolStripMenuItem;

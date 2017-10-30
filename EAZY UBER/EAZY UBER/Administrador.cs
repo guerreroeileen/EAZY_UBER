@@ -13,23 +13,23 @@ namespace EAZY_UBER
 {
     public partial class Administrador : Form
     {
-        private delegado1 eventoCambiarDatos;
+        public delegado1 eventoCambiarDatos;
 
         private SistemaRecomendaciones sistema;
+
         public Administrador()
         {
             InitializeComponent();
         }
 
-        public void addHandlerCambiarDatos(delegado1 delegado)
-        {
-            eventoCambiarDatos += delegado;
-        }
-
-
         private void listUsuariosRegistrados_SelectedIndexChanged(object sender, EventArgs e)
         {
             
+        }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

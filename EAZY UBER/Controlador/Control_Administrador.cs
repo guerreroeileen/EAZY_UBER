@@ -5,87 +5,74 @@ using System.Text;
 using System.Threading.Tasks;
 using mundo;
 using EAZY_UBER;
+using System.Windows.Forms;
+using GMap.NET.WindowsForms;
 
 namespace Controlador
 {
     class Control_Administrador
-    {
-      
-        public event delegado1 eventoQueSeNecesite;
-    
-        private SistemaRecomendaciones sistema;
-        
+    { 
+        private SistemaRecomendaciones sistema;    
         private Administrador admon;
 
-        public Control_Administrador(Administrador admen, SistemaRecomendaciones sis)
+        public Control_Administrador(Administrador admon, SistemaRecomendaciones sistema)
         {
-            
-            admon = admen;
-            sistema = sis;
+            this.admon = admon;
+            this.admon.FormClosing += Form1_FormClosing;
+            this.sistema = sistema;
+            this.admon.eventoCambiarDatos += cambiarObejeto;
+            llenar_Datos();           
+        }
 
-
+        public void llenar_Datos()
+        {
             //LLENADO DE DATOS GENERALES
-
             //cantidad de users registrados
-            admen.labelUsuariosRegistrados.Text = ""+sis.Usuarios.Count();
+            this.admon.labelUsuariosRegistrados.Text = "" + this.sistema.Usuarios.Count();
             //carros totales
-            int carrosTotales = 0;
-            for (int i =0; i< sis.Usuarios.Count; i++)
-            {
-                carrosTotales = carrosTotales + sis.Usuarios.ElementAt(i).Vehiculos.Count;
-            }
-            admen.labelAutosRegistrados.Text = "" + carrosTotales;
+            int carrosT = sistema.Usuarios.Aggregate(0, (a, b) => a + b.Vehiculos.Count); 
+            this.admon.labelAutosRegistrados.Text = "" + carrosT;
             //recorridos registrados
-            int recorridosTotales = 0;
-            for (int i = 0; i < sis.Usuarios.Count; i++)
-            {
-                recorridosTotales = recorridosTotales + sis.Usuarios.ElementAt(i).Recorridos.Count;
-            }
-            admen.labelRecorridosRegistrados.Text = "" + recorridosTotales;
+            int recorridosTotales = sistema.Usuarios.Aggregate(0,(a,b)=> a+b.Recorridos.Count);
+            this.admon.labelRecorridosRegistrados.Text = "" + recorridosTotales;
             //usuarios con auto
             int usuariosConAuto = 0;
-            for (int i = 0; i < sis.Usuarios.Count; i++)
+            for (int i = 0; i < this.sistema.Usuarios.Count; i++)
             {
-                if ( sis.Usuarios.ElementAt(i).Vehiculos.Count > 0)
+                if (this.sistema.Usuarios.ElementAt(i).Vehiculos.Count > 0)
                 {
-                    usuariosConAuto = usuariosConAuto + sis.Usuarios.ElementAt(i).Vehiculos.Count;
+                    usuariosConAuto = usuariosConAuto + this.sistema.Usuarios.ElementAt(i).Vehiculos.Count;
                 }
-                
-            }
-            admen.labelUsuariosAuto.Text = "" + usuariosConAuto;
 
+            }
+            this.admon.labelUsuariosAuto.Text = "" + usuariosConAuto;
             //usuarios sin auto
-            admen.labelUsuariosSinAuto.Text = "" + (sis.Usuarios.Count - usuariosConAuto);
+            this.admon.labelUsuariosSinAuto.Text = "" + (this.sistema.Usuarios.Count - usuariosConAuto);
 
-            for (int i =0; i < sis.Usuarios.Count; i++)
+
+            var usuarios = sistema.Usuarios.Select(a => new { celular = a.Celular });
+            foreach (var a in usuarios)
             {
-                admen.listUsuariosRegistrados.Items.Add(sis.Usuarios.ElementAt(i).Celular);
+                this.admon.listUsuariosRegistrados.Items.Add(a.celular);
             }
-
-
-
             admon.Show();
 
-
-
-            admon.addHandlerCambiarDatos(cambiarObejeto);
-
-
         }
+
 
         public void cambiarObejeto(Object sender)
         {
-            admon.panel_PerfilUsuario1.lbNombre.Text = sistema.darUsuario(admon.listUsuariosRegistrados.Text).Nombre;
+            //TODO
         }
 
-
-
-
-        internal void cerrar()
+        private void Form1_FormClosing(Object sender, FormClosingEventArgs e)
         {
-            admon.Close();
-            
+            Inicio ini = (Inicio) admon.Owner;
+            ini.panel_LogIn1.limpiarTextos();
+            admon.Owner.Visible = true;
         }
+
+
 
 
     }
