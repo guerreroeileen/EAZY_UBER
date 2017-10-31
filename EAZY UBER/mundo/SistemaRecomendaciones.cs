@@ -21,6 +21,8 @@ namespace mundo
         private List<Usuario> estado_usuariosRecomendados;
         private Usuario estado_usuarioLogged;
 
+
+
         private List<Usuario> usuarios;
 
         
