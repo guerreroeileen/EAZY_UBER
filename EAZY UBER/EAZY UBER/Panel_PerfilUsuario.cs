@@ -26,6 +26,8 @@ namespace EAZY_UBER
             errorInicio.Visible = false;
             errorRuta.Visible = false;
             errorVehiculo.Visible = false;
+
+            
         }
 
         public void addHandlerCambiarIndice(delegado1 delegado)

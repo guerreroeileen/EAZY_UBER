@@ -232,5 +232,29 @@
       <Name>Modelo</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Image1.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icono_basura.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icono_agregar.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icono_agregarPequeño.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icono_basura1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icono_agregar1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icono_basura2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\globo_ubicacion.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -28,27 +28,30 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Panel_PerfilUsuario));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.lbNombre = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.comboBoxRutas = new System.Windows.Forms.ComboBox();
             this.comboBoxVehiculos = new System.Windows.Forms.ComboBox();
             this.lbApellido = new System.Windows.Forms.Label();
             this.lbCelular = new System.Windows.Forms.Label();
-            this.botonAgregarRuta = new System.Windows.Forms.Button();
-            this.botonAgregarVehiculo = new System.Windows.Forms.Button();
             this.botonBuscarRuta = new System.Windows.Forms.Button();
             this.botonOfrecerCupo = new System.Windows.Forms.Button();
             this.lbInicio = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.buttonSelInicio = new System.Windows.Forms.Button();
             this.errorRuta = new System.Windows.Forms.Label();
             this.errorVehiculo = new System.Windows.Forms.Label();
             this.errorInicio = new System.Windows.Forms.Label();
+            this.btnEliminarVehic = new System.Windows.Forms.Button();
+            this.btnEliminarRuta = new System.Windows.Forms.Button();
+            this.buttonSelInicio = new System.Windows.Forms.Button();
+            this.botonAgregarVehiculo = new System.Windows.Forms.Button();
+            this.botonAgregarRuta = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -106,16 +109,6 @@
             this.lbNombre.Size = new System.Drawing.Size(0, 17);
             this.lbNombre.TabIndex = 5;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox1.Location = new System.Drawing.Point(21, 15);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(109, 103);
-            this.pictureBox1.TabIndex = 6;
-            this.pictureBox1.TabStop = false;
-            // 
             // comboBoxRutas
             // 
             this.comboBoxRutas.FormattingEnabled = true;
@@ -150,28 +143,6 @@
             this.lbCelular.Name = "lbCelular";
             this.lbCelular.Size = new System.Drawing.Size(0, 17);
             this.lbCelular.TabIndex = 10;
-            // 
-            // botonAgregarRuta
-            // 
-            this.botonAgregarRuta.Location = new System.Drawing.Point(348, 133);
-            this.botonAgregarRuta.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.botonAgregarRuta.Name = "botonAgregarRuta";
-            this.botonAgregarRuta.Size = new System.Drawing.Size(24, 25);
-            this.botonAgregarRuta.TabIndex = 11;
-            this.botonAgregarRuta.Text = "+";
-            this.botonAgregarRuta.UseVisualStyleBackColor = true;
-            this.botonAgregarRuta.Click += new System.EventHandler(this.botonAgregarRuta_Click);
-            // 
-            // botonAgregarVehiculo
-            // 
-            this.botonAgregarVehiculo.Location = new System.Drawing.Point(347, 164);
-            this.botonAgregarVehiculo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.botonAgregarVehiculo.Name = "botonAgregarVehiculo";
-            this.botonAgregarVehiculo.Size = new System.Drawing.Size(25, 25);
-            this.botonAgregarVehiculo.TabIndex = 12;
-            this.botonAgregarVehiculo.Text = "+";
-            this.botonAgregarVehiculo.UseVisualStyleBackColor = true;
-            this.botonAgregarVehiculo.Click += new System.EventHandler(this.botonAgregarVehiculo_Click);
             // 
             // botonBuscarRuta
             // 
@@ -212,17 +183,6 @@
             this.label7.TabIndex = 15;
             this.label7.Text = "Inicio:";
             // 
-            // buttonSelInicio
-            // 
-            this.buttonSelInicio.Location = new System.Drawing.Point(348, 97);
-            this.buttonSelInicio.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.buttonSelInicio.Name = "buttonSelInicio";
-            this.buttonSelInicio.Size = new System.Drawing.Size(24, 25);
-            this.buttonSelInicio.TabIndex = 17;
-            this.buttonSelInicio.Text = "+";
-            this.buttonSelInicio.UseVisualStyleBackColor = true;
-            this.buttonSelInicio.Click += new System.EventHandler(this.buttonSelInicio_Click);
-            // 
             // errorRuta
             // 
             this.errorRuta.AutoSize = true;
@@ -253,10 +213,81 @@
             this.errorInicio.TabIndex = 20;
             this.errorInicio.Text = "X";
             // 
+            // btnEliminarVehic
+            // 
+            this.btnEliminarVehic.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnEliminarVehic.BackgroundImage")));
+            this.btnEliminarVehic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnEliminarVehic.Location = new System.Drawing.Point(378, 164);
+            this.btnEliminarVehic.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnEliminarVehic.Name = "btnEliminarVehic";
+            this.btnEliminarVehic.Size = new System.Drawing.Size(24, 25);
+            this.btnEliminarVehic.TabIndex = 22;
+            this.btnEliminarVehic.UseVisualStyleBackColor = true;
+            // 
+            // btnEliminarRuta
+            // 
+            this.btnEliminarRuta.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnEliminarRuta.BackgroundImage")));
+            this.btnEliminarRuta.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnEliminarRuta.Location = new System.Drawing.Point(378, 133);
+            this.btnEliminarRuta.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnEliminarRuta.Name = "btnEliminarRuta";
+            this.btnEliminarRuta.Size = new System.Drawing.Size(24, 27);
+            this.btnEliminarRuta.TabIndex = 21;
+            this.btnEliminarRuta.UseVisualStyleBackColor = true;
+            // 
+            // buttonSelInicio
+            // 
+            this.buttonSelInicio.BackColor = System.Drawing.Color.White;
+            this.buttonSelInicio.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonSelInicio.BackgroundImage")));
+            this.buttonSelInicio.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.buttonSelInicio.Location = new System.Drawing.Point(348, 97);
+            this.buttonSelInicio.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonSelInicio.Name = "buttonSelInicio";
+            this.buttonSelInicio.Size = new System.Drawing.Size(24, 25);
+            this.buttonSelInicio.TabIndex = 17;
+            this.buttonSelInicio.UseVisualStyleBackColor = false;
+            this.buttonSelInicio.Click += new System.EventHandler(this.buttonSelInicio_Click);
+            // 
+            // botonAgregarVehiculo
+            // 
+            this.botonAgregarVehiculo.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("botonAgregarVehiculo.BackgroundImage")));
+            this.botonAgregarVehiculo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.botonAgregarVehiculo.Location = new System.Drawing.Point(347, 164);
+            this.botonAgregarVehiculo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.botonAgregarVehiculo.Name = "botonAgregarVehiculo";
+            this.botonAgregarVehiculo.Size = new System.Drawing.Size(25, 25);
+            this.botonAgregarVehiculo.TabIndex = 12;
+            this.botonAgregarVehiculo.UseVisualStyleBackColor = true;
+            this.botonAgregarVehiculo.Click += new System.EventHandler(this.botonAgregarVehiculo_Click);
+            // 
+            // botonAgregarRuta
+            // 
+            this.botonAgregarRuta.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("botonAgregarRuta.BackgroundImage")));
+            this.botonAgregarRuta.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.botonAgregarRuta.Location = new System.Drawing.Point(348, 133);
+            this.botonAgregarRuta.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.botonAgregarRuta.Name = "botonAgregarRuta";
+            this.botonAgregarRuta.Size = new System.Drawing.Size(24, 24);
+            this.botonAgregarRuta.TabIndex = 11;
+            this.botonAgregarRuta.UseVisualStyleBackColor = true;
+            this.botonAgregarRuta.Click += new System.EventHandler(this.botonAgregarRuta_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox1.Location = new System.Drawing.Point(21, 15);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(109, 103);
+            this.pictureBox1.TabIndex = 6;
+            this.pictureBox1.TabStop = false;
+            // 
             // Panel_PerfilUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnEliminarVehic);
+            this.Controls.Add(this.btnEliminarRuta);
             this.Controls.Add(this.errorInicio);
             this.Controls.Add(this.errorVehiculo);
             this.Controls.Add(this.errorRuta);
@@ -310,5 +341,7 @@
         public System.Windows.Forms.Label errorRuta;
         public System.Windows.Forms.Label errorVehiculo;
         public System.Windows.Forms.Label errorInicio;
+        public System.Windows.Forms.Button btnEliminarRuta;
+        public System.Windows.Forms.Button btnEliminarVehic;
     }
 }

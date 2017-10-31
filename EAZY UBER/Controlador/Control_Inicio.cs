@@ -57,6 +57,8 @@ namespace Controlador
             this.formInicio.mapClick += map_Click;
             this.formInicio.panel_PerfilUsuario1.eventoSeleccionarInicio += seleccionInicio;
             this.formInicio.panel_PerfilUsuario1.eventoCambiarIndiceCBox += mostrarRutas;
+            this.formInicio.panel_PerfilUsuario1.btnEliminarRuta.Click += evento_eliminarRuta;
+            this.formInicio.panel_PerfilUsuario1.btnEliminarVehic.Click += evento_eliminarVehiculo;
             this.formInicio.FormClosing += Form1_FormClosing; 
 
 
@@ -434,6 +436,37 @@ namespace Controlador
             }
         }
 
+        private void evento_eliminarRuta(object sender, EventArgs e) {
+            int index = formInicio.panel_PerfilUsuario1.comboBoxRutas.SelectedIndex;
+            if (index > -1)
+            {
+                sistema.Estado_usuarioLogged.Rutas.Remove(sistema.Estado_usuarioLogged.Rutas[index]);
+               // formInicio.panel_PerfilUsuario1.comboBoxRutas.Items.Clear();
+                formInicio.panel_PerfilUsuario1.comboBoxRutas.Text = "";
+                formInicio.panel_PerfilUsuario1.comboBoxRutas.SelectedIndex = -1;
+                formInicio.panel_PerfilUsuario1.comboBoxRutas.DataSource = sistema.Estado_usuarioLogged.Rutas.Select(x => x.Nombre).ToList();
+            }
+
+            //formInicio.panel_PerfilUsuario1.btnEliminarRuta.Enabled = false;
+            
+        }
+
+        private void evento_eliminarVehiculo(object sender, EventArgs e)
+        {
+            int index = formInicio.panel_PerfilUsuario1.comboBoxVehiculos.SelectedIndex;
+            if (index > -1)
+            {
+                sistema.Estado_usuarioLogged.Vehiculos.Remove(sistema.Estado_usuarioLogged.Vehiculos[index]);
+                //formInicio.panel_PerfilUsuario1.comboBoxVehiculos.Items.Clear();
+                formInicio.panel_PerfilUsuario1.comboBoxVehiculos.Text = "";
+                formInicio.panel_PerfilUsuario1.comboBoxVehiculos.SelectedIndex = -1;
+                formInicio.panel_PerfilUsuario1.comboBoxVehiculos.DataSource = sistema.Estado_usuarioLogged.Vehiculos.Select(x => x.Placa).ToList();
+            } 
+            
+            //formInicio.panel_PerfilUsuario1.btnEliminarVehic.Enabled = false;
+            
+        }
+
         /*Pinta las rutas que tiene agregado el usuario en el panel de perfil de usuario
          * Se llama:
          *       cuando se hace log in
@@ -441,14 +474,11 @@ namespace Controlador
          */
         public void pintarvehiculos(Object sender)
         {
-            formInicio.panel_PerfilUsuario1.comboBoxVehiculos.Items.Clear();
+            
             List<Vehiculo> vehis = sistema.Estado_usuarioLogged.Vehiculos;
-            foreach (var r in vehis)
-            {
-                formInicio.panel_PerfilUsuario1.comboBoxVehiculos.Items.Add(r.Placa);
-            }
+            formInicio.panel_PerfilUsuario1.comboBoxVehiculos.DataSource = vehis.Select(x => x.Placa).ToList();
             if (vehis.Count > 0)
-                formInicio.panel_PerfilUsuario1.comboBoxVehiculos.SelectedIndex = 0;
+                formInicio.panel_PerfilUsuario1.comboBoxVehiculos.SelectedIndex = -1;
             if (sender.GetType() == typeof(Control_RegistroVehiculo))
             {
                 controlRegistroVehiculo.cerrar();
