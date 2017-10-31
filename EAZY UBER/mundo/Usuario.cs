@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Runtime.Serialization;
 using System.Xml;
+using System.Diagnostics;
 
 namespace mundo
 {
@@ -94,10 +95,10 @@ namespace mundo
             if (ruta == null) { campos[0] = true; fail = true; }
             if (vehiculo == null) { campos[1] = true; fail = true; }
             if (fecha == null) { campos[2] = true; fail = true; }
-            if (cupos>0 && cupos<5) { campos[3] = true; fail = true; }
+            if (cupos<=0 && cupos>=5) { campos[3] = true; fail = true; }
             if (tarifa <0) { campos[5] = true; fail = true; }
             if (fail)
-            {
+            {                
                 AgregarRecorridoExcepcion excep = new AgregarRecorridoExcepcion(campos);
                 throw excep;
             }

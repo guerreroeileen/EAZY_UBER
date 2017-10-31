@@ -13,23 +13,27 @@ namespace Controlador
 {
     class Control_Administrador
     { 
-        private SistemaRecomendaciones sistema;    
+        private SistemaAdministrador sistemaAdmon;    
         private Administrador admon;
 
-        public Control_Administrador(Administrador admon, SistemaRecomendaciones sistema)
+        public Control_Administrador(Administrador admon, SistemaAdministrador sistemaAdmon)
         {
             this.admon = admon;
             this.admon.FormClosing += Form1_FormClosing;
             this.admon.eventoCambiarDatos += cambiarDatos;
-            this.sistema = sistema;
+            this.sistemaAdmon = sistemaAdmon;
+
+            this.admon.generarUsuariosToolStripMenuItem.Click += eventHandler_generarUsuarios;
             llenar_Datos();           
         }
 
         public void llenar_Datos()
         {
+            SistemaRecomendaciones sistema = sistemaAdmon.SistRecomendaciones;
+            if (sistema.Usuarios == null) { Debug.WriteLine("usuarios es null es null"); }
             //LLENADO DE DATOS GENERALES
             //cantidad de users registrados
-            this.admon.labelUsuariosRegistrados.Text = "" + this.sistema.Usuarios.Count();
+            this.admon.labelUsuariosRegistrados.Text = "" + sistema.Usuarios.Count();
             //carros totales
             int carrosT = sistema.Usuarios.Aggregate(0, (a, b) => a + b.Vehiculos.Count); 
             this.admon.labelAutosRegistrados.Text = "" + carrosT;
@@ -38,17 +42,17 @@ namespace Controlador
             this.admon.labelRecorridosRegistrados.Text = "" + recorridosTotales;
             //usuarios con auto
             int usuariosConAuto = 0;
-            for (int i = 0; i < this.sistema.Usuarios.Count; i++)
+            for (int i = 0; i < sistema.Usuarios.Count; i++)
             {
-                if (this.sistema.Usuarios.ElementAt(i).Vehiculos.Count > 0)
+                if (sistema.Usuarios.ElementAt(i).Vehiculos.Count > 0)
                 {
-                    usuariosConAuto = usuariosConAuto + this.sistema.Usuarios.ElementAt(i).Vehiculos.Count;
+                    usuariosConAuto = usuariosConAuto + sistema.Usuarios.ElementAt(i).Vehiculos.Count;
                 }
 
             }
             this.admon.labelUsuariosAuto.Text = "" + usuariosConAuto;
             //usuarios sin auto
-            this.admon.labelUsuariosSinAuto.Text = "" + (this.sistema.Usuarios.Count - usuariosConAuto);
+            this.admon.labelUsuariosSinAuto.Text = "" + (sistema.Usuarios.Count - usuariosConAuto);
 
 
             var usuarios = sistema.Usuarios.Select(a => new { celular = a.Celular });
@@ -60,9 +64,17 @@ namespace Controlador
 
         }
 
+        /*
+         * EventHandler para llamar al generador de usuario del sistema administrador
+         */
+        public void eventHandler_generarUsuarios(object sender, EventArgs e) {
+            sistemaAdmon.SistRecomendaciones.Usuarios = sistemaAdmon.generarBaseDatos(100);
+            llenar_Datos();
+        }
 
         public void cambiarDatos(Object sender)
         {
+            SistemaRecomendaciones sistema = sistemaAdmon.SistRecomendaciones;
             Usuario user = sistema.darUsuario(admon.listUsuariosRegistrados.SelectedItem.ToString());
             admon.LabelNombre.Text = user.Nombre + " " + user.Apellido;
             admon.labelCelular.Text = user.Celular;
