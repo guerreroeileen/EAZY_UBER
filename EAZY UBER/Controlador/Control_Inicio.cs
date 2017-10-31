@@ -102,8 +102,9 @@ namespace Controlador
                 if (celular.SequenceEqual("0000000000") && contasena.SequenceEqual("password"))
                 {
                     Administrador admin = new Administrador();
+                    SistemaAdministrador sistAdmon = new SistemaAdministrador(sistema);
                     admin.Owner = formInicio;
-                    controlAdmin= new Control_Administrador(admin, sistema);
+                    controlAdmin= new Control_Administrador(admin, sistAdmon);
                     formInicio.Visible = false;     
                 }
                 else
