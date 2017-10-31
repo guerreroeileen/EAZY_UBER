@@ -48,16 +48,16 @@ namespace mundo
                 for (int r = 0; r < numRutas; r++) {
                     int haciaIcesi = new Random().Next(0, 1);
                     List<Tuple<double, double>> puntos = new List<Tuple<double, double>>();
-                    int numPuntos = new Random().Next(15, 51);
+                    int numPuntos = new Random().Next(5, 13);
                     
                     int avance = 0;
                     //Genera los puntos intermedios de la ruta.
                     for (int p = 0; p < numPuntos; p++) {
-                        double lat = (((double)(new Random().Next(504511 - avance, 506511 - avance))) / 1000000.0) + 3.0;
-                        double lng = -1*((((double)(new Random().Next(460037, 558263))) / 1000000.0) + 76.0);
+                        double lat = (((double)(new Random((int)DateTime.Now.Ticks).Next(502511 - avance, 504511 - avance))) / 1000000.0) + 3.0;
+                        double lng = -1*((((double)(new Random((int)DateTime.Now.Ticks).Next(460037, 558263))) / 1000000.0) + 76.0);
                         Debug.WriteLine("lat: {0} lng: {1}", lat, lng);
                         puntos.Add(new Tuple<double, double>(lat, lng));
-                        avance += 2000;
+                        avance += (int)((3.514511-3.344655)/((double)numPuntos)*1000000);
                     }
                     Debug.WriteLine("");
                     //Registra la ruta si se dirige a Icesi 

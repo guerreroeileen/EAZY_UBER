@@ -56,7 +56,7 @@ namespace Controlador
                 pRecomend.lbCalificacion.Text = usua.darCalificacion() + "";
 
                 pRecomend.lbTarifa.Text = reco.Tarifa + "";
-                pRecomend.lbHora.Text = reco.Fecha.ToShortDateString() + "\n" + reco.Fecha.Hour.ToString() + ": " +reco.Fecha.Minute.ToString() + reco.Fecha.
+                pRecomend.lbHora.Text = reco.Fecha.ToShortDateString();
 
                 pRecomend.lbPlaca.Text = reco.Vehiculo.Placa;
                 pRecomend.lbColor.Text = reco.Vehiculo.Color;
@@ -89,7 +89,7 @@ namespace Controlador
          * */
         public void refreshPanelRecorridosRecomend() {
             if (sistema.Estado_recorridosRecomendados != null){
-                pRecomend.lbRecorridos.DataSource = sistema.Estado_recorridosRecomendados.Select(x => x.Value.Ruta.Nombre).ToList();
+                pRecomend.lbRecorridos.DataSource = sistema.Estado_recorridosRecomendados.Select(x => x.Value.Ruta.Nombre);
             }
             else {
                 pRecomend.lbRecorridos.Items.Clear();
