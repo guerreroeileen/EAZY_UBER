@@ -89,7 +89,7 @@ namespace Controlador
          * */
         public void refreshPanelRecorridosRecomend() {
             if (sistema.Estado_recorridosRecomendados != null){
-                pRecomend.lbRecorridos.DataSource = sistema.Estado_recorridosRecomendados.Select(x => x.Value.Ruta.Nombre);
+                pRecomend.lbRecorridos.DataSource = sistema.Estado_recorridosRecomendados.Select(x => x.Value.Ruta.Nombre).ToList() ;
             }
             else {
                 pRecomend.lbRecorridos.Items.Clear();

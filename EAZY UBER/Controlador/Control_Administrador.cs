@@ -22,6 +22,7 @@ namespace Controlador
             this.admon.FormClosing += Form1_FormClosing;
             this.admon.eventoCambiarDatos += cambiarDatos;
             this.sistemaAdmon = sistemaAdmon;
+            this.admon.buttonEliminar.Click += eliminar_Click;
 
             this.admon.generarUsuariosToolStripMenuItem.Click += eventHandler_generarUsuarios;
             llenar_Datos();           
@@ -54,7 +55,7 @@ namespace Controlador
             //usuarios sin auto
             this.admon.labelUsuariosSinAuto.Text = "" + (sistema.Usuarios.Count - usuariosConAuto);
 
-
+            admon.listUsuariosRegistrados.Items.Clear();
             var usuarios = sistema.Usuarios.Select(a => new { celular = a.Celular });
             foreach (var a in usuarios)
             {
@@ -116,6 +117,13 @@ namespace Controlador
             admon.Owner.Visible = true;
         }
 
+        public void eliminar_Click(object sender, EventArgs e)
+        {
+            Usuario user = sistemaAdmon.SistRecomendaciones.darUsuario( admon.listUsuariosRegistrados.SelectedItem.ToString());
+            sistemaAdmon.SistRecomendaciones.Usuarios.Remove(user);
+            llenar_Datos();
+            MessageBox.Show("Se ha eliminado el usuario");
+        }
 
 
 
