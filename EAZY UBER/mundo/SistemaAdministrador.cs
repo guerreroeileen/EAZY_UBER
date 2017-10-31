@@ -30,7 +30,7 @@ namespace mundo
             List<Usuario> nuevaBD = new List<Usuario>();
             int vc = 'A', vd = 'A', vu = 'A', vNum=100;
             for (int i = 0; i < numUsuario; i++) {
-                Usuario aux = new Usuario("Usuario" + i, "Apellido" + i, "generado@" + i, 1000000000 + i+"", "", "usuario" + i, new Random().Next(0, 1)==0?false:true);
+                Usuario aux = new Usuario("Usuario" + i, "Apellido" + i, "generado@" + i, 3022500000 + i+"", "", "usuario" + i, new Random().Next(0, 1)==0?false:true);
 
                 //Genera vehiculos para el usuario
                 int numVehiculos = new Random().Next(1, 4);
