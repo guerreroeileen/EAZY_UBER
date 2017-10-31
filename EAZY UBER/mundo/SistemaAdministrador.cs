@@ -13,7 +13,7 @@ namespace mundo
         private SistemaRecomendaciones sistRecomendaciones;
 
         public SistemaAdministrador(SistemaRecomendaciones sistemaRecomendaciones) {
-            this.sistRecomendaciones = sistRecomendaciones;
+            this.sistRecomendaciones = sistemaRecomendaciones;
         }
 
         /*
