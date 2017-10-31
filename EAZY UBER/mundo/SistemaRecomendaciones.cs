@@ -100,11 +100,14 @@ namespace mundo
                     List<Recorrido> recomendaciones = new List<Recorrido>();
                     foreach (Recorrido r in u.Recorridos)
                     {
-                        if((fecha.Minute >= r.Fecha.Minute - 15)  && (fecha.Minute <= r.Fecha.Minute + 15))
+                        if((fecha.Minute >= r.Fecha.Minute - 15)  && (fecha.Minute <= r.Fecha.Minute + 15) && r.Fecha.Day== (fecha.Day))
                         recomendaciones.Add(r);
                     }
+                                        
+                        List<Recorrido> auxiliar = recomendaciones.Select(x => new { dist = distMinimaARuta(x, ubicacion), reco = x }).OrderBy(x => x.dist).Select(x => x.reco).ToList();
+                    
 
-                    List<Recorrido> auxiliar = recomendaciones.Select(x => new { dist = distMinimaARuta(x, ubicacion), reco = x }).OrderBy(x => x.dist).Select(x => x.reco).ToList();
+                    if(auxiliar.Count!=0)
                     estado_recorridosRecomendados.Add(u, auxiliar[0]);
 
 

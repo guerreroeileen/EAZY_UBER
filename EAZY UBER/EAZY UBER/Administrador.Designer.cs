@@ -31,7 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Administrador));
             this.listUsuariosRegistrados = new System.Windows.Forms.ListBox();
             this.labelUsuarios = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.buttonEliminar = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.labelUsuariosRegistrados = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -85,14 +85,14 @@
             this.labelUsuarios.TabIndex = 1;
             this.labelUsuarios.Text = "Usuarios Registrados";
             // 
-            // button1
+            // buttonEliminar
             // 
-            this.button1.Location = new System.Drawing.Point(257, 304);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(111, 23);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Eliminar Usuario";
-            this.button1.UseVisualStyleBackColor = true;
+            this.buttonEliminar.Location = new System.Drawing.Point(257, 304);
+            this.buttonEliminar.Name = "buttonEliminar";
+            this.buttonEliminar.Size = new System.Drawing.Size(111, 23);
+            this.buttonEliminar.TabIndex = 3;
+            this.buttonEliminar.Text = "Eliminar Usuario";
+            this.buttonEliminar.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
@@ -186,11 +186,12 @@
             // 
             // toolStrip1
             // 
+            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripDropDownButton1});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(662, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(662, 27);
             this.toolStrip1.TabIndex = 14;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -203,7 +204,7 @@
             this.toolStripDropDownButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton1.Image")));
             this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
-            this.toolStripDropDownButton1.Size = new System.Drawing.Size(29, 22);
+            this.toolStripDropDownButton1.Size = new System.Drawing.Size(33, 24);
             this.toolStripDropDownButton1.Text = "toolStripDropDownButton1";
             // 
             // generarUsuariosToolStripMenuItem
@@ -387,7 +388,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.toolStrip1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.buttonEliminar);
             this.Controls.Add(this.labelUsuarios);
             this.Controls.Add(this.listUsuariosRegistrados);
             this.Name = "Administrador";
@@ -406,7 +407,6 @@
 
         #endregion
         private System.Windows.Forms.Label labelUsuarios;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
@@ -438,5 +438,6 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
+        public System.Windows.Forms.Button buttonEliminar;
     }
 }

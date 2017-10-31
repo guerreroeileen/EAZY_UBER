@@ -135,7 +135,7 @@ namespace PruebaUnitariaModelo
         {
             setup2();
             mundito.loguearUsuario("3095488541", "del20al30");
-            Boolean xd = mundito.recomendarRecorridos(mundito.darUsuario("3095488541").Ubicacion);
+            Boolean xd = mundito.recomendarRecorridos(mundito.darUsuario("3095488541").Ubicacion,new DateTime());
             String[] nombres = { "vito", "michael", "vincent" };
             int i = 0;
             //Hacer comprobaciones de orden de recorridos, primero vito, segundo michael, tercero vincent
