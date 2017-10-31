@@ -46,7 +46,7 @@ namespace Controlador
             {
                 if (sistema.Usuarios.ElementAt(i).Vehiculos.Count > 0)
                 {
-                    usuariosConAuto = usuariosConAuto + sistema.Usuarios.ElementAt(i).Vehiculos.Count;
+                    usuariosConAuto = usuariosConAuto + 1;
                 }
 
             }
