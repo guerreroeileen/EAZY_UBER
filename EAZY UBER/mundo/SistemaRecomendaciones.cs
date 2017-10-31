@@ -4,10 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Excepciones;
+using System.IO;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
+using mundo.Properties;
+using System.Diagnostics;
+
 
 namespace mundo
-{
-    public class SistemaRecomendaciones
+{ 
+    
+    public class SistemaRecomendaciones 
     {
         private Dictionary<Usuario, Recorrido> estado_recorridosRecomendados;
         private Usuario estado_usuarioVisualizado;
@@ -17,15 +24,22 @@ namespace mundo
         private List<Usuario> usuarios;
 
         
-
+        
         public SistemaRecomendaciones() {
             estado_recorridosRecomendados=null;
             estado_usuarioVisualizado=null;
             estado_usuariosRecomendados=null;
             estado_usuarioLogged=null;
 
-            usuarios= new List<Usuario>();
-            usuarios.Add(new Usuario("prueba", "equipo", "correo@", "0000000000", "", "password", true));
+            usuarios= new List<Usuario>();            
+            cargarDB();
+            if (!usuarios.Where(a => a.Celular.Equals("0000000000")).Any())
+            {
+                usuarios.Add(new Usuario("nombreAdmon", "apellidoAdmon", "correo@admon", "0000000000", "", "password", true));
+                Debug.WriteLine("Agrego");
+            }
+                
+              
         }
 
         /* Agrega un usuario al sistema
@@ -60,9 +74,25 @@ namespace mundo
             return usuarios.Find(x => x.Celular.Equals(celular));
         }
 
-        public Boolean recomendarRecorridos(Tuple<double, double> ubicacion) {
+        /*
+         * Metodo que recomienda lo primero 15 usuarios para un recorrido.
+         * El criterio de ordenamiento es la distancia del usuario a la ruta.
+         */
+        public Boolean recomendarUsuarios(Recorrido recorrido) {
+            List<Usuario> auxList = new List<Usuario>();
+            foreach (Usuario u in usuarios) {
+                if (u.Ubicacion != null) {
+                    auxList.Add(u);
+                }
+            }
+            Estado_usuariosRecomendados = auxList.Select(x => new { dist = distMinimaARuta(recorrido, x.Ubicacion), usu = x }).OrderBy(x => x.dist).Select(x => x.usu).Take(15).ToList();
+            return true;
+        }
+
+        public Boolean recomendarRecorridos(Tuple<double, double> ubicacion, DateTime fecha) {
 
             estado_recorridosRecomendados = new Dictionary<Usuario, Recorrido>();
+
             foreach (Usuario u in usuarios)
             {
                 if (!u.Celular.Equals(estado_usuarioLogged.Celular))
@@ -70,6 +100,7 @@ namespace mundo
                     List<Recorrido> recomendaciones = new List<Recorrido>();
                     foreach (Recorrido r in u.Recorridos)
                     {
+                        if((fecha.Minute >= r.Fecha.Minute - 15)  && (fecha.Minute <= r.Fecha.Minute + 15))
                         recomendaciones.Add(r);
                     }
 
@@ -138,7 +169,33 @@ namespace mundo
                         else {
                                 return false;
                             }
-                    }
+         }
+
+        public Boolean cargarDB()
+        {
+            string ruta = Path.GetFullPath("base.bin");
+            //Debug.WriteLine(ruta);
+            if (File.Exists(ruta))
+            {
+                IFormatter format = new BinaryFormatter();
+                FileStream stream = new FileStream(ruta, FileMode.Open, FileAccess.Read, FileShare.Read);
+                usuarios = (List<Usuario>)format.Deserialize(stream);
+                stream.Close();
+                return true;
+            }
+            return false;
+
+        }
+
+        public Boolean guardarDB() {
+            string ruta = Path.GetFullPath("base.bin");
+            //Debug.WriteLine(ruta);
+            IFormatter format = new BinaryFormatter();
+            FileStream stream = new FileStream(ruta, FileMode.Create, FileAccess.Write, FileShare.None);
+            format.Serialize(stream, usuarios);
+            stream.Close();
+            return true;
+        }
 
         private double distMinimaARuta(Recorrido recorrido, Tuple<double, double> punto) {
             double dist = double.MaxValue;

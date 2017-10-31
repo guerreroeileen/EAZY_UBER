@@ -40,6 +40,10 @@
             this.btnAgregarPuntos = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.listBox1 = new System.Windows.Forms.ListBox();
+            this.error0 = new System.Windows.Forms.Label();
+            this.error1 = new System.Windows.Forms.Label();
+            this.error2 = new System.Windows.Forms.Label();
+            this.error3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // labelTitulo
@@ -92,7 +96,7 @@
             this.gMapControl1.GrayScaleMode = false;
             this.gMapControl1.HelperLineOption = GMap.NET.WindowsForms.HelperLineOptions.DontShow;
             this.gMapControl1.LevelsKeepInMemmory = 5;
-            this.gMapControl1.Location = new System.Drawing.Point(310, 9);
+            this.gMapControl1.Location = new System.Drawing.Point(323, 9);
             this.gMapControl1.MarkersEnabled = true;
             this.gMapControl1.MaxZoom = 2;
             this.gMapControl1.MinZoom = 2;
@@ -106,7 +110,7 @@
             this.gMapControl1.ScaleMode = GMap.NET.WindowsForms.ScaleModes.Integer;
             this.gMapControl1.SelectedAreaFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(65)))), ((int)(((byte)(105)))), ((int)(((byte)(225)))));
             this.gMapControl1.ShowTileGridLines = false;
-            this.gMapControl1.Size = new System.Drawing.Size(330, 354);
+            this.gMapControl1.Size = new System.Drawing.Size(317, 354);
             this.gMapControl1.TabIndex = 5;
             this.gMapControl1.Zoom = 0D;
             this.gMapControl1.Load += new System.EventHandler(this.gMapControl1_Load);
@@ -136,7 +140,7 @@
             // 
             // btnRegistro
             // 
-            this.btnRegistro.Location = new System.Drawing.Point(310, 388);
+            this.btnRegistro.Location = new System.Drawing.Point(323, 388);
             this.btnRegistro.Margin = new System.Windows.Forms.Padding(2);
             this.btnRegistro.Name = "btnRegistro";
             this.btnRegistro.Size = new System.Drawing.Size(76, 26);
@@ -175,11 +179,55 @@
             this.listBox1.Size = new System.Drawing.Size(156, 160);
             this.listBox1.TabIndex = 13;
             // 
+            // error0
+            // 
+            this.error0.AutoSize = true;
+            this.error0.ForeColor = System.Drawing.Color.Red;
+            this.error0.Location = new System.Drawing.Point(306, 46);
+            this.error0.Name = "error0";
+            this.error0.Size = new System.Drawing.Size(11, 13);
+            this.error0.TabIndex = 14;
+            this.error0.Text = "*";
+            // 
+            // error1
+            // 
+            this.error1.AutoSize = true;
+            this.error1.ForeColor = System.Drawing.Color.Red;
+            this.error1.Location = new System.Drawing.Point(304, 164);
+            this.error1.Name = "error1";
+            this.error1.Size = new System.Drawing.Size(11, 13);
+            this.error1.TabIndex = 15;
+            this.error1.Text = "*";
+            // 
+            // error2
+            // 
+            this.error2.AutoSize = true;
+            this.error2.ForeColor = System.Drawing.Color.Red;
+            this.error2.Location = new System.Drawing.Point(303, 207);
+            this.error2.Name = "error2";
+            this.error2.Size = new System.Drawing.Size(11, 13);
+            this.error2.TabIndex = 16;
+            this.error2.Text = "*";
+            // 
+            // error3
+            // 
+            this.error3.AutoSize = true;
+            this.error3.ForeColor = System.Drawing.Color.Red;
+            this.error3.Location = new System.Drawing.Point(306, 68);
+            this.error3.Name = "error3";
+            this.error3.Size = new System.Drawing.Size(11, 13);
+            this.error3.TabIndex = 17;
+            this.error3.Text = "*";
+            // 
             // RegistroRuta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(652, 425);
+            this.Controls.Add(this.error3);
+            this.Controls.Add(this.error2);
+            this.Controls.Add(this.error1);
+            this.Controls.Add(this.error0);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnAgregarPuntos);
@@ -214,5 +262,9 @@
         public System.Windows.Forms.Button btnFin;
         public System.Windows.Forms.Button btnInicio;
         public System.Windows.Forms.Button btnAgregarPuntos;
+        public System.Windows.Forms.Label error0;
+        public System.Windows.Forms.Label error1;
+        public System.Windows.Forms.Label error2;
+        public System.Windows.Forms.Label error3;
     }
 }

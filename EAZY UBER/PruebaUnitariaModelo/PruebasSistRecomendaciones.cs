@@ -3,6 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using mundo;
 using Excepciones;
 using System.Collections.Generic;
+using System.IO;
 
 namespace PruebaUnitariaModelo
 {
@@ -37,16 +38,16 @@ namespace PruebaUnitariaModelo
             vito.registrarVehiculo("GFB469", "Azul", "Cayenne", "");
             vito.registrarVehiculo("NGJ985", "Negro", "Cadilac", "");
             vito.registrarRuta("El peaje", new Tuple<double, double>(-2,0.5), new Tuple<double, double>(3,0.5), null, "");
-            vito.registrarRecorrido(3000.00, DateTime.Today, vito.Vehiculos[0], vito.Rutas[0]);
+            vito.registrarRecorrido(3000.00,4, DateTime.Today, vito.Vehiculos[0], vito.Rutas[0]);
             Usuario michael = mundito.darUsuario("3068455487");
             michael.registrarVehiculo("MKL598", "Blanco", "Toyota", "");
             michael.registrarVehiculo("CRL656", "Gris", "Ford", "");
             michael.registrarRuta("La calle saza", new Tuple<double, double>(1,3), new Tuple<double, double>(3,1), new System.Collections.Generic.List<Tuple<double, double>>() { new Tuple<double, double>(1,2), new Tuple<double, double>(2,1) }, "");
-            michael.registrarRecorrido(3000.00, DateTime.Today, michael.Vehiculos[0], michael.Rutas[0]);
+            michael.registrarRecorrido(3000.00,3, DateTime.Today, michael.Vehiculos[0], michael.Rutas[0]);
             Usuario vincent = mundito.darUsuario("3326555884");
             vincent.registrarVehiculo("GPL098", "Azul", "Chiron", "");
             vincent.registrarRuta("El teatro", new Tuple<double, double>(-2,2.5), new Tuple<double, double>(2,2), new System.Collections.Generic.List<Tuple<double, double>>() { new Tuple<double, double>(2,2.5) }, "Buena la Obra, triste el final");
-           vincent.registrarRecorrido(3000.00, DateTime.Today, vincent.Vehiculos[0], vincent.Rutas[0]);
+           vincent.registrarRecorrido(3000.00,2, DateTime.Today, vincent.Vehiculos[0], vincent.Rutas[0]);
         }
 
         [TestMethod]
@@ -157,6 +158,19 @@ namespace PruebaUnitariaModelo
 
         }
 
+
+
+        [TestMethod]
+        public void TestCargar()
+        {            
+            setup1();
+            mundito.guardarDB();
+            mundito.cargarDB();
+            Assert.IsNotNull(mundito.Usuarios.Exists(n=> n.Celular.Equals("3015584448")));
+        }
+
+
+        
 
 
 

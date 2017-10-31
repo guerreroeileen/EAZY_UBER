@@ -4,10 +4,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Runtime.Serialization;
+using System.Xml;
 
 namespace mundo
 {
-    public class Usuario
+    [Serializable]
+    public class Usuario 
     {
 
 
@@ -50,16 +53,16 @@ namespace mundo
             recorridos = new List<Recorrido>();
         }
 
-        public Boolean registrarVehiculo(string placa, string color, string modelo, string rutaFoto)
+        public Boolean registrarVehiculo(string placa, string color, string marca, string linea)
         {
             bool registrado= false;
-            if (placa.Length<1 || color.Length<1 || modelo.Length<1 )
+            if (placa.Length<1 || color.Length<1 || linea.Length<1  || marca.Length <1)
             {
                 throw new AgregarVehiculoExcepcion("Debe llenar todos los campos");
             }
             else
             {
-                vehiculos.Add(new Vehiculo(placa,color,modelo,rutaFoto) );
+                vehiculos.Add(new Vehiculo(placa,color,marca,linea) );
                 registrado = true;
             }
 
@@ -71,8 +74,8 @@ namespace mundo
         public Boolean registrarRuta(String nombre, Tuple<double, double> inicio, Tuple<double, double> fin, List<Tuple<double, double>> puntos, string descripcion) 
         {
             bool registrado = true;
-
             if (nombre == null || nombre.Length<1) { throw new AgregarRutaExcepcion("Debe agregar el nombre de la ruta"); }
+            if (descripcion == null || descripcion.Length < 5) { throw new AgregarRutaExcepcion("Debes incluir una descripción de la ruta"); }
             if ((rutas.Exists(x => x.Nombre.Equals(nombre)))){ throw new AgregarRutaExcepcion("El nombre de la ruta ya existe! Debe elegir otro nombre"); }
             if (inicio == null) { throw new AgregarRutaExcepcion("La ruta no tiene inicio"); }
             if (fin == null) { throw new AgregarRutaExcepcion("La ruta no tiene punto final"); }
@@ -84,26 +87,24 @@ namespace mundo
             return registrado;
         }
 
-        public Boolean registrarRecorrido(Double tarifa, DateTime fecha, Vehiculo vehiculo, Ruta ruta)
+        public Boolean registrarRecorrido(Double tarifa,int cupos, DateTime fecha, Vehiculo vehiculo, Ruta ruta)
         {
-            bool registrado = false;
-            
-            
-            if (vehiculo==null)
+            bool[] campos = new bool[5];
+            bool fail = false; 
+            if (ruta == null) { campos[0] = true; fail = true; }
+            if (vehiculo == null) { campos[1] = true; fail = true; }
+            if (fecha == null) { campos[2] = true; fail = true; }
+            if (cupos>0 && cupos<5) { campos[3] = true; fail = true; }
+            if (tarifa <0) { campos[5] = true; fail = true; }
+            if (fail)
             {
-                throw new AgregarRecorridoExcepcion("Debe agregar un vehiculo al recorrido");
+                AgregarRecorridoExcepcion excep = new AgregarRecorridoExcepcion(campos);
+                throw excep;
             }
-            else if (ruta ==null)
-            {
-                throw new AgregarRecorridoExcepcion("Debe agregar una ruta al recorrido");
+            else {
+                recorridos.Add(new Recorrido(tarifa, cupos, fecha, vehiculo, ruta));
             }
-            else
-            {
-                recorridos.Add(new Recorrido(tarifa,fecha,vehiculo, ruta));
-                registrado = true;
-            }
-            
-            return registrado;
+            return !fail;
         }
          
         
@@ -186,7 +187,10 @@ namespace mundo
             return res;
         }
 
-
+        public Ruta darRutaPorNombre(String nombreRuta)
+        {
+            return rutas.Where(a => a.Nombre.SequenceEqual(nombreRuta)).First();
+        }
 
 
         public string Nombre { get => nombre; set => nombre = value; }

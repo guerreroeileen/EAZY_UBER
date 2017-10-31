@@ -11,11 +11,19 @@ using GMap.NET.WindowsForms.Markers;
 using GMap.NET.WindowsForms;
 using System.Diagnostics;
 using System.Drawing;
+using mundo;
+using Excepciones;
 
 namespace Controlador
 {
     class Control_RegistroRuta
     {
+        //evento registrar
+        public event delegado1 eventoResgitroRuta;
+
+        //usuario
+        private Usuario usuario;
+
         //panel registroRuta
         private RegistroRuta registroRuta;
 
@@ -30,9 +38,9 @@ namespace Controlador
         public bool agregarFin;
         public bool agregarPuntos;
 
-        public Control_RegistroRuta(RegistroRuta registroRuta)
+        public Control_RegistroRuta(RegistroRuta registroRuta, Usuario usuario)
         {
-
+            this.usuario = usuario;
             puntos = new List<Tuple< double, double>>();
             this.registroRuta = registroRuta;
             this.registroRuta.eventogmapControl += doubleClickMap;
@@ -150,6 +158,23 @@ namespace Controlador
             }
         }
 
+        /*
+         * realiza el trazado entre los puntos
+         */
+        public void trazado()
+        {
+            GMapOverlay rutas = new GMapOverlay("rutas");
+            List<PointLatLng> points = new List<PointLatLng>();
+            points.Add(new PointLatLng(inicio.Item1, inicio.Item2));
+            foreach (Tuple<double, double> t in puntos)
+                points.Add(new PointLatLng(t.Item1, t.Item2));
+            points.Add(new PointLatLng(fin.Item1, fin.Item2));
+            GMapRoute route = new GMapRoute(points, "Cali la mejor");
+            route.Stroke = new Pen(Color.Red, 3);
+            rutas.Routes.Add(route);
+            registroRuta.gMapControl1.Overlays.Add(rutas);
+        }
+
         /*Evento ligado al boton registrar
          * se debe verificar toda la info antes de agregar
          *              puede ser con manejo de excepciones desde el mundo
@@ -157,16 +182,28 @@ namespace Controlador
          */
         public void registrarRuta(Object sender)
         {
-            GMapOverlay rutas = new GMapOverlay("rutas");
-            List<PointLatLng> points = new List<PointLatLng>();
-            points.Add(new PointLatLng(inicio.Item1, inicio.Item2));
-            foreach(Tuple<double,double> t in puntos)
-            points.Add(new PointLatLng(t.Item1, t.Item2));
-            points.Add(new PointLatLng(fin.Item1,fin.Item2));
-            GMapRoute route = new GMapRoute(points, "Cali la mejor");
-            route.Stroke = new Pen(Color.Red, 3);
-            rutas.Routes.Add(route);
-            registroRuta.gMapControl1.Overlays.Add(rutas);
+            string nombre = registroRuta.textBoxNombreRuta.Text;
+            string descripcion = registroRuta.textBoxDescripcionRuta.Text;
+            try{
+                usuario.registrarRuta(nombre, inicio, fin, puntos, descripcion);
+                if(eventoResgitroRuta != null)
+                {
+                    eventoResgitroRuta.Invoke(this);
+                    
+                }
+            } catch(AgregarRutaExcepcion e){
+                MessageBox.Show(e.Message);
+
+                
+
+                if (registroRuta.textBoxNombreRuta.Text.Length == 0) { registroRuta.error0.Visible = true; };
+                if (inicio == null && fin ==null) { registroRuta.error1.Visible = true; };
+                if (registroRuta.listBox1.Items.Count == 0) { registroRuta.error2.Visible = true; };
+                if (registroRuta.textBoxDescripcionRuta.Text.Length < 5) { registroRuta.error3.Visible = true; };
+
+
+            }
+
         }
 
 

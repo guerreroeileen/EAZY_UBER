@@ -16,5 +16,12 @@ namespace EAZY_UBER
         {
             InitializeComponent();
         }
+
+        public void clear() {
+            lbNombre.Text = "";
+            lbApellido.Text = "";
+
+            //falta limpiar la imagen
+        }
     }
 }

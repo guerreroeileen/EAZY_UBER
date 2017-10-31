@@ -21,5 +21,24 @@ namespace EAZY_UBER
         {
 
         }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        public void clear() {
+            lbNombre.Text = "";
+            lbApellido.Text = "";
+            lbCalificacion.Text = "";
+
+            lbTarifa.Text = "";
+            lbHora.Text = "";
+
+            lbPlaca.Text = "";
+            lbColor.Text = "";
+            lbLinea.Text = "";
+            lbMarca.Text = "";
+        }
     }
 }
