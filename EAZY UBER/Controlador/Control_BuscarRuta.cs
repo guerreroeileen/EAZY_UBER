@@ -38,13 +38,14 @@ namespace Controlador
 
             if (pRuta.txbRadio.Text.SequenceEqual(""))
             {
-                //Pa hacer todo el visaje sin radio
+                sistema.recomendarRecorridos(ubica, fecha);
             }
             else
             {
                 //llamar recomendacion con radio
                 int radio = -1;
                 try { radio = int.Parse(pRuta.txbRadio.Text); } catch { MessageBox.Show("El valor del radio debe ser numerico"); }
+                //sistema.recomendarRecorridos(ubica, radio);
             }
             
             //refrescar info de panel recorridosRecomendados y luego mostrar
