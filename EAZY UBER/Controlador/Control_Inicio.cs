@@ -294,7 +294,7 @@ namespace Controlador
          *  -Input: Ruta selec: Ruta que se va a pintar
          * */
         public void pintarRutaMapa(Ruta selec) {
-
+            formInicio.mapa.Overlays.Clear();
             GMapOverlay rutas = new GMapOverlay("rutas");
             List<PointLatLng> points = new List<PointLatLng>();
             points.Add(new PointLatLng(selec.Inicio.Item1, selec.Inicio.Item2));
