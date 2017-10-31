@@ -68,7 +68,7 @@ namespace Controlador
          * EventHandler para llamar al generador de usuario del sistema administrador
          */
         public void eventHandler_generarUsuarios(object sender, EventArgs e) {
-            sistemaAdmon.SistRecomendaciones.Usuarios = sistemaAdmon.generarBaseDatos(100);
+            sistemaAdmon.SistRecomendaciones.Usuarios = sistemaAdmon.generarBaseDatos(10);
             llenar_Datos();
         }
 
