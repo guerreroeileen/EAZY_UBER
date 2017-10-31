@@ -54,7 +54,8 @@ namespace mundo
                     //Genera los puntos intermedios de la ruta.
                     for (int p = 0; p < numPuntos; p++) {
                         double lat = (((double)(new Random().Next(504511 - avance, 506511 - avance))) / 1000000.0) + 3.0;
-                        double lng = -1*((((double)(new Random().Next(460037, 558263))) / 1000000.0) + 76.0);                        
+                        double lng = -1*((((double)(new Random().Next(460037, 558263))) / 1000000.0) + 76.0);
+                        Debug.WriteLine("lat: {0} lng: {1}", lat, lng);
                         puntos.Add(new Tuple<double, double>(lat, lng));
                         avance += 2000;
                     }
