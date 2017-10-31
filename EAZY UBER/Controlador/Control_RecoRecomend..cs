@@ -56,7 +56,7 @@ namespace Controlador
                 pRecomend.lbCalificacion.Text = usua.darCalificacion() + "";
 
                 pRecomend.lbTarifa.Text = reco.Tarifa + "";
-                pRecomend.lbHora.Text = reco.Fecha.ToLongDateString();
+                pRecomend.lbHora.Text = reco.Fecha.ToShortDateString();
 
                 pRecomend.lbPlaca.Text = reco.Vehiculo.Placa;
                 pRecomend.lbColor.Text = reco.Vehiculo.Color;
