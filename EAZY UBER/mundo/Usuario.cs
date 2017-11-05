@@ -46,10 +46,10 @@ namespace mundo
             this.contrasenia = contrasena;
             this.recomendarRecorrido = recomendar;
 
+            notificaciones = new List<Notificacion>();
             usuariosAceptados = new List<Usuario>();
             usuariosPorAceptar = new List<Usuario>();
             calificadores = new Dictionary<string, int>();
-            notificaciones = new List<Notificacion>();
             rutas = new List<Ruta>();
             vehiculos = new List<Vehiculo>();
             ubicacion = null;
@@ -198,7 +198,8 @@ namespace mundo
 
         public void notificarUsuario(string tipo, Usuario solicitante, Recorrido recorrido)
         {
-            notificaciones.Add(new Notificacion(tipo, solicitante, recorrido));
+            Notificacion noti = new Notificacion(tipo, solicitante, recorrido);
+            notificaciones.Add(noti);
         }
         public void eliminarNotificacion(int index)
         {
