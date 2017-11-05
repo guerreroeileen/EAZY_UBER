@@ -8,6 +8,7 @@ using EAZY_UBER;
 using System.Windows.Forms;
 using GMap.NET.WindowsForms;
 using System.Diagnostics;
+using Microsoft.VisualBasic;
 
 namespace Controlador
 {
@@ -69,8 +70,14 @@ namespace Controlador
          * EventHandler para llamar al generador de usuario del sistema administrador
          */
         public void eventHandler_generarUsuarios(object sender, EventArgs e) {
-            sistemaAdmon.SistRecomendaciones.Usuarios = sistemaAdmon.generarBaseDatos(100);
-            llenar_Datos();
+           string resp =  Interaction.InputBox("Ingrese el numero de usuarios a generar aleatoriamente","Gerador usuarios", "");
+            int numUsuarios = 100;
+            try { numUsuarios = int.Parse(resp);
+                sistemaAdmon.SistRecomendaciones.Usuarios = sistemaAdmon.generarBaseDatos(numUsuarios);
+                llenar_Datos();
+            } catch(Exception ex)
+            { MessageBox.Show("Ingresa un valor entero de usuarios a generar"); }            
+            
         }
 
         public void cambiarDatos(Object sender)
