@@ -39,7 +39,8 @@ namespace Controlador
             if (pRuta.txbRadio.Text.SequenceEqual(""))
             {
                 if (ubica == null) { MessageBox.Show("Debes asignar un punto de referencia para la busqueda\nDando click en el globo naranja de tu perfil."); }
-                else { sistema.recomendarRecorridos(ubica, fecha);
+                else {
+                    sistema.recomendarRecorridos(ubica, fecha);
                     //refrescar info de panel recorridosRecomendados y luego mostrar
                     mostrarPRecorridos();
                 }
@@ -50,7 +51,8 @@ namespace Controlador
                 int radio = -1;
                 try { radio = int.Parse(pRuta.txbRadio.Text); } catch { MessageBox.Show("El valor del radio debe ser numerico"); }
                 if (ubica == null) { MessageBox.Show("Debes asignar un punto de referencia para la busqueda\nDando click en el globo naranja de tu perfil."); }
-                else { sistema.recomendarRecorridos(ubica, fecha);
+                else {
+                    sistema.recomendarRecorridos(ubica,radio, fecha);
                     //refrescar info de panel recorridosRecomendados y luego mostrar
                     mostrarPRecorridos();
                     //sistema.recomendarRecorridos(ubica, radio);

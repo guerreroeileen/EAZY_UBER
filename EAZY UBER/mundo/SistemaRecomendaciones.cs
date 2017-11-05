@@ -129,7 +129,7 @@ namespace mundo
             return estado_recorridosRecomendados.Count != 0;
         }
 
-        public Boolean recomendarRecorridos(Tuple<double, double> ubicacion, double radio)
+        public Boolean recomendarRecorridos(Tuple<double, double> ubicacion, double radio, DateTime fecha)
         {
             estado_recorridosRecomendados = new Dictionary<Usuario, Recorrido>();
             foreach (Usuario u in usuarios)
@@ -139,7 +139,8 @@ namespace mundo
                 {
                     foreach (Recorrido r in u.Recorridos)
                     {
-                        recomendaciones.Add(r);
+                        if ((fecha.Minute >= r.Fecha.Minute - 15) && (fecha.Minute <= r.Fecha.Minute + 15) && r.Fecha.Day == (fecha.Day))
+                            recomendaciones.Add(r);
                     }
                     List<Recorrido> auxiliar = recomendaciones.Select(x => new { dist = distMinimaARuta(x, ubicacion), reco = x }).Where(x => x.dist <= radio).OrderBy(x => x.dist).Select(x => x.reco).ToList();
                     if(auxiliar.Count>0)
