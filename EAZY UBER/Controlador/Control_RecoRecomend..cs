@@ -19,7 +19,7 @@ namespace Controlador
             this.pRecomend = pRecomend;
             this.cInicio = cInicio;
 
-            pRecomend.lbRecorridos.SelectedIndexChanged += evento_selecionRecorrido;
+            pRecomend.lbRecorridos.SelectedIndexChanged += evento_seleccionRecorrido;
             pRecomend.btnDescartar.Click += evento_descartarRecorrido;
         }
 
@@ -27,10 +27,10 @@ namespace Controlador
         /*
          * Muestra la informacion del recorrido seleccionado
          */
-        private void evento_selecionRecorrido(object sender, EventArgs e) {
+        private void evento_seleccionRecorrido(object sender, EventArgs e) {
             int iReco = pRecomend.lbRecorridos.SelectedIndex;
             String ruta = pRecomend.lbRecorridos.SelectedItem.ToString();//Se sca el nombre de la ruta
-            if (iReco >= 0)
+            if (iReco >= 0 && sistema.Estado_recorridosRecomendados.Count>0)
             {
                 
                 //Una posible solución-Convertir el diccionario a una lista de KeyValuePair
@@ -71,6 +71,7 @@ namespace Controlador
             else {
                 pRecomend.clear();
                 pRecomend.btnDescartar.Enabled = false;
+                cInicio.pintarRutaMapa(null);
             }
         }
 
@@ -78,8 +79,11 @@ namespace Controlador
          * Elimina el recorrido seleccionado que se descarta
          */
         public void evento_descartarRecorrido(object sender, EventArgs e) {
-            sistema.Estado_recorridosRecomendados.Remove(sistema.Estado_recorridosRecomendados.ToList()[pRecomend.lbRecorridos.SelectedIndex].Key);
-            refreshPanelRecorridosRecomend();
+            if (sistema.Estado_recorridosRecomendados.Count > 0)
+            {
+                sistema.Estado_recorridosRecomendados.Remove(sistema.Estado_recorridosRecomendados.ToList()[pRecomend.lbRecorridos.SelectedIndex].Key);
+                refreshPanelRecorridosRecomend();
+            }
         }
 
         /*
@@ -89,7 +93,14 @@ namespace Controlador
          * */
         public void refreshPanelRecorridosRecomend() {
             if (sistema.Estado_recorridosRecomendados != null){
-                pRecomend.lbRecorridos.DataSource = sistema.Estado_recorridosRecomendados.Select(x => x.Value.Ruta.Nombre).ToList() ;
+                pRecomend.lbRecorridos.Items.Clear();
+                if (sistema.Estado_usuarioLogged.Rutas != null)
+                {
+                    foreach (var r in sistema.Estado_usuarioLogged.Rutas) { pRecomend.lbRecorridos.Items.Add(r.Nombre); }
+                }
+                cInicio.pintarRutaMapa(null);
+                pRecomend.lbRecorridos.SelectedIndex = -1;
+                pRecomend.lbRecorridos.Text = "";
             }
             else {
                 pRecomend.lbRecorridos.Items.Clear();

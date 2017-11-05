@@ -92,8 +92,9 @@ namespace mundo
         }
 
         public Boolean recomendarRecorridos(Tuple<double, double> ubicacion, DateTime fecha) {
-
+                       
             estado_recorridosRecomendados = new Dictionary<Usuario, Recorrido>();
+            Estado_usuariosRecomendados = null;
 
             foreach (Usuario u in usuarios)
             {

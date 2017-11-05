@@ -69,8 +69,7 @@ namespace Controlador
                 double lng = registroRuta.gMapControl1.FromLocalToLatLng(e.X, e.Y).Lng;
                 registroRuta.markerOverlay.Markers.Remove(registroRuta.markerInicio);
                 registroRuta.markerInicio = new GMarkerGoogle( new PointLatLng(lat, lng), GMarkerGoogleType.green_big_go);
-                registroRuta.markerInicio.ToolTipMode = MarkerTooltipMode.Always;
-                registroRuta.markerInicio.ToolTipText = string.Format("Latitud: {0} \n Longitud: {1}", lat, lng);
+                registroRuta.markerInicio.ToolTipMode = MarkerTooltipMode.Always;                
                 registroRuta.markerOverlay.Markers.Add(registroRuta.markerInicio);
                 //agregar punto
                 inicio = new Tuple<double, double>(lat, lng);//Para registrar inicio fin y puntos
@@ -83,8 +82,7 @@ namespace Controlador
                 double lng = registroRuta.gMapControl1.FromLocalToLatLng(e.X, e.Y).Lng;
                 registroRuta.markerOverlay.Markers.Remove(registroRuta.markerFinal);
                 registroRuta.markerFinal = new GMarkerGoogle(new PointLatLng(lat, lng), GMarkerGoogleType.red_big_stop);
-                registroRuta.markerFinal.ToolTipMode = MarkerTooltipMode.Always;
-                registroRuta.markerFinal.ToolTipText = string.Format("Latitud: {0} \n Longitud: {1}", lat, lng);
+                registroRuta.markerFinal.ToolTipMode = MarkerTooltipMode.Always;                
                 registroRuta.markerOverlay.Markers.Add(registroRuta.markerFinal);
                 //agregar punto
                 fin = new Tuple<double, double>(lat, lng);//Para registrar inicio fin y puntos

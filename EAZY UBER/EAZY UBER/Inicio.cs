@@ -238,9 +238,7 @@ namespace EAZY_UBER
             markerUbicacion = new GMarkerGoogle(new PointLatLng(0, 0), GMarkerGoogleType.orange);
             markerOverlay.Markers.Add(markerUbicacion);// Agregamos al map
             //Agregar texto alos marcadores
-            markerUbicacion.ToolTipMode = MarkerTooltipMode.Always;
-            // marker.ToolTipText = string.Format("Nombre: \n Latitud: {0} \n Longitud: {1}", LatInicial, lngInicial);
-
+            markerUbicacion.ToolTipMode = MarkerTooltipMode.Always; 
             //Agregamos el map y el marcador al map control
             mapa.Overlays.Add(markerOverlay);
 

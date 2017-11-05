@@ -11,6 +11,7 @@ using mundo;
 using Excepciones;
 using System.Drawing;
 using GMap.NET.WindowsForms;
+using GMap.NET.WindowsForms.Markers;
 
 namespace Controlador
 {
@@ -280,15 +281,19 @@ namespace Controlador
         }
 
         /**método para visualizar la ruta en el mapa prinicipal
-             * 
-             */
+         * Evento cuando hay cambio de indice en el combobox de rutas 
+         */
 
         public void mostrarRutas(Object sender)
         {
-            //Error cuando se oprime boton ofrecerCupo por indice en la siguiente linea TODO:
-            Ruta selec = sistema.Estado_usuarioLogged.Rutas.Where(x => x.Nombre.Equals(formInicio.panel_PerfilUsuario1.comboBoxRutas.SelectedItem.ToString())).ToList() [0];
-            pintarRutaMapa(selec);
-
+            int iRuta = formInicio.panel_PerfilUsuario1.comboBoxRutas.SelectedIndex;
+            Ruta selec = null;
+            if (iRuta > -1)
+            {
+                selec = sistema.Estado_usuarioLogged.Rutas[iRuta];
+            }
+            Debug.WriteLine("Elimino "+iRuta);
+            pintarRutaMapa(selec); 
         }
 
         /*
@@ -296,18 +301,39 @@ namespace Controlador
          *  -Input: Ruta selec: Ruta que se va a pintar
          * */
         public void pintarRutaMapa(Ruta selec) {
-            formInicio.mapa.Overlays.Clear();
-            GMapOverlay rutas = new GMapOverlay("rutas");
-            List<PointLatLng> points = new List<PointLatLng>();
-            points.Add(new PointLatLng(selec.Inicio.Item1, selec.Inicio.Item2));
-            foreach (Tuple<double, double> t in selec.Puntos)
-                points.Add(new PointLatLng(t.Item1, t.Item2));
-            points.Add(new PointLatLng(selec.Fin.Item1, selec.Fin.Item2));
-            GMapRoute route = new GMapRoute(points, "Cali");
-            route.Stroke = new Pen(Color.Red, 3);
-            rutas.Routes.Add(route);
 
-            formInicio.mapa.Overlays.Add(rutas);
+            
+            var overlayUbicacion = formInicio.mapa.Overlays.First();
+            formInicio.mapa.Overlays.Clear();
+            formInicio.mapa.Overlays.Add(overlayUbicacion);
+
+            if (selec != null)
+            {     
+                GMapOverlay rutas = new GMapOverlay("rutas");
+                List<PointLatLng> points = new List<PointLatLng>();
+                points.Add(new PointLatLng(selec.Inicio.Item1, selec.Inicio.Item2));
+                foreach (Tuple<double, double> t in selec.Puntos)
+                    points.Add(new PointLatLng(t.Item1, t.Item2));
+                points.Add(new PointLatLng(selec.Fin.Item1, selec.Fin.Item2));
+                GMapRoute route = new GMapRoute(points, "Cali");
+                route.Stroke = new Pen(Color.Red, 3);
+                //Agrega un marcador para el inicio de la ruta
+                GMarkerGoogle markerInicio = new GMarkerGoogle(new PointLatLng(selec.Inicio.Item1, selec.Inicio.Item2), GMarkerGoogleType.green);
+                markerInicio.ToolTipMode = MarkerTooltipMode.Always;
+                rutas.Markers.Add(markerInicio);
+                //Agrega un marcador con para el fin de la ruta
+                GMarkerGoogle markerFin = new GMarkerGoogle(new PointLatLng(selec.Fin.Item1, selec.Fin.Item2), GMarkerGoogleType.red);
+                markerInicio.ToolTipMode = MarkerTooltipMode.Always;
+                rutas.Markers.Add(markerFin);
+
+                //Agrega la ruta 
+                
+                rutas.Routes.Add(route);
+                formInicio.mapa.Overlays.Add(rutas);
+                formInicio.mapa.ZoomAndCenterRoutes("rutas");
+            }
+
+
         }
 
 
@@ -339,7 +365,7 @@ namespace Controlador
             formInicio.panel_BuscarRuta1.Visible = false;
             formInicio.panel_RecorridoRecomendado1.Visible = false;
             formInicio.panel_UsuarioRecomendado1.Visible = false;
-            Debug.WriteLine("ENTRO");
+            
         }         
                
 
@@ -383,10 +409,7 @@ namespace Controlador
         /* Metodo que se llama cuando se da doble click en el mapa
          * Pone el marcador en el mapa y recupera las coordenadas 
          */
-        public void map_Click(Object sender, MouseEventArgs e)
-        {
-
-
+        public void map_Click(Object sender, MouseEventArgs e)   {
             //asiganr inicio
             if (seleccionarInicio)
             {
@@ -395,7 +418,7 @@ namespace Controlador
                 double lng = formInicio.mapa.FromLocalToLatLng(e.X, e.Y).Lng;
                 //asignar marcador
                 formInicio.markerUbicacion.Position = new PointLatLng(lat, lng);
-                formInicio.markerUbicacion.ToolTipText = string.Format("Latitud: {0} \n Longitud: {1}", lat, lng);
+                //formInicio.markerUbicacion.ToolTipText = string.Format("Latitud: {0} \n Longitud: {1}", lat, lng);
                 //coordenadas
                 Tuple<double, double> ubicacion = new Tuple<double, double>(lat, lng);//este se la pasas al atribut ubicación usuario dependiendo del controlador
                 sistema.Estado_usuarioLogged.Ubicacion = ubicacion;
@@ -421,15 +444,13 @@ namespace Controlador
          */ 
         public void pintarRutas(Object sender)
         {
-           formInicio.panel_PerfilUsuario1.comboBoxRutas.Items.Clear();
-           List<Ruta> rutas = sistema.Estado_usuarioLogged.Rutas;
-            foreach (var r in rutas)
-            {
-                formInicio.panel_PerfilUsuario1.comboBoxRutas.Items.Add(r.Nombre);
+            formInicio.panel_PerfilUsuario1.comboBoxRutas.Items.Clear();
+            if (sistema.Estado_usuarioLogged.Rutas != null) {
+                foreach(var r in sistema.Estado_usuarioLogged.Rutas) { formInicio.panel_PerfilUsuario1.comboBoxRutas.Items.Add(r.Nombre); }
             }
-            if (rutas.Count > 0)
-               // formInicio.panel_PerfilUsuario1.comboBoxRutas.SelectedIndex = 0 ;
-            if(sender.GetType() == typeof(Control_RegistroRuta))
+            formInicio.panel_PerfilUsuario1.comboBoxRutas.SelectedIndex = -1;
+            formInicio.panel_PerfilUsuario1.comboBoxRutas.Text = "";
+            if (sender.GetType() == typeof(Control_RegistroRuta))
             {
                 controlRegistroRuta.cerrar();
                 controlRegistroRuta = null;
@@ -441,10 +462,14 @@ namespace Controlador
             if (index > -1)
             {
                 sistema.Estado_usuarioLogged.Rutas.Remove(sistema.Estado_usuarioLogged.Rutas[index]);
-               // formInicio.panel_PerfilUsuario1.comboBoxRutas.Items.Clear();
-                formInicio.panel_PerfilUsuario1.comboBoxRutas.Text = "";
+                formInicio.panel_PerfilUsuario1.comboBoxRutas.Items.Clear();
+                if (sistema.Estado_usuarioLogged.Rutas != null)
+                {
+                    foreach (var r in sistema.Estado_usuarioLogged.Rutas) { formInicio.panel_PerfilUsuario1.comboBoxRutas.Items.Add(r.Nombre); }
+                }
+                pintarRutaMapa(null);
                 formInicio.panel_PerfilUsuario1.comboBoxRutas.SelectedIndex = -1;
-                formInicio.panel_PerfilUsuario1.comboBoxRutas.DataSource = sistema.Estado_usuarioLogged.Rutas.Select(x => x.Nombre).ToList();
+                formInicio.panel_PerfilUsuario1.comboBoxRutas.Text = "";
             }
 
             //formInicio.panel_PerfilUsuario1.btnEliminarRuta.Enabled = false;
@@ -456,11 +481,10 @@ namespace Controlador
             int index = formInicio.panel_PerfilUsuario1.comboBoxVehiculos.SelectedIndex;
             if (index > -1)
             {
-                sistema.Estado_usuarioLogged.Vehiculos.Remove(sistema.Estado_usuarioLogged.Vehiculos[index]);
-                //formInicio.panel_PerfilUsuario1.comboBoxVehiculos.Items.Clear();
-                formInicio.panel_PerfilUsuario1.comboBoxVehiculos.Text = "";
-                formInicio.panel_PerfilUsuario1.comboBoxVehiculos.SelectedIndex = -1;
+                sistema.Estado_usuarioLogged.Vehiculos.Remove(sistema.Estado_usuarioLogged.Vehiculos[index]);                
                 formInicio.panel_PerfilUsuario1.comboBoxVehiculos.DataSource = sistema.Estado_usuarioLogged.Vehiculos.Select(x => x.Placa).ToList();
+                formInicio.panel_PerfilUsuario1.comboBoxVehiculos.SelectedIndex = -1;
+                formInicio.panel_PerfilUsuario1.comboBoxVehiculos.Text = "";
             } 
             
             //formInicio.panel_PerfilUsuario1.btnEliminarVehic.Enabled = false;
@@ -499,8 +523,7 @@ namespace Controlador
             sistema.guardarDB();
 
         }
-
-
+        
 
     }
 }
