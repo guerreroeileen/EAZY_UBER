@@ -125,7 +125,7 @@ namespace Controlador
                     formInicio.panel_registro1.Visible = false;
                     formInicio.mapa.Visible = true;
                     formInicio.panel_PerfilUsuario1.Visible = true;
-                    formInicio.panel_OfrecerCupo1.Visible = true;
+                    formInicio.panel_OfrecerCupo1.Visible = false;
                     formInicio.panel_BuscarRuta1.Visible = false;
                     formInicio.panel_UsuarioRecomendado1.Visible = false;
                     formInicio.panel_RecorridoRecomendado1.Visible = false;
