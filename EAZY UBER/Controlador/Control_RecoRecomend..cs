@@ -92,14 +92,18 @@ namespace Controlador
         /*
          * Solicitar cupo en un recorrido
          */
-         public void solicitarRecorrido_click(object sender, EventArgs e)
+        public void solicitarRecorrido_click(object sender, EventArgs e)
         {
+
             int iReco = pRecomend.lbRecorridos.SelectedIndex;
-            List<KeyValuePair<Usuario, Recorrido>> xd = sistema.Estado_recorridosRecomendados.ToList();
-            Usuario usua = xd[iReco].Key;
-            Recorrido reco = xd[iReco].Value;
-            usua.notificarUsuario(Notificacion.TIPO_SOLICITAR_CUPO,sistema.Estado_usuarioLogged,reco);
-            Debug.WriteLine("Se notifico al usuario" + "--size:"+ usua.Notificaciones.Count);
+            if (iReco >= 0)
+            { 
+                List<KeyValuePair<Usuario, Recorrido>> xd = sistema.Estado_recorridosRecomendados.ToList();
+                Usuario usua = xd[iReco].Key;
+                Recorrido reco = xd[iReco].Value;
+                usua.notificarUsuario(Notificacion.TIPO_SOLICITAR_CUPO, sistema.Estado_usuarioLogged, reco);
+                MessageBox.Show(" Se ha solicitado un cupo en el recorrido exitosamente");
+            }
         }
 
         /*

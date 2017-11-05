@@ -68,7 +68,7 @@ namespace Controlador
             {
                 Usuario uReco = sistema.Estado_usuariosRecomendados[iUserReco];
                 uReco.notificarUsuario(Notificacion.TIPO_OFRECER_CUPO, sistema.Estado_usuarioLogged, null);
-                MessageBox.Show("Se ha ofrecido el cupo exitosamente");
+                MessageBox.Show("Se ha ofrecido el cupo en el recorrido exitosamente");
             }
         }
 
