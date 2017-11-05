@@ -96,7 +96,7 @@ namespace Controlador
                 pRecomend.lbRecorridos.Items.Clear();
                 if (sistema.Estado_usuarioLogged.Rutas != null)
                 {
-                    foreach (var r in sistema.Estado_usuarioLogged.Rutas) { pRecomend.lbRecorridos.Items.Add(r.Nombre); }
+                    foreach (var r in sistema.Estado_recorridosRecomendados.ToList()) { pRecomend.lbRecorridos.Items.Add(r.Value.Ruta.Nombre); }
                 }
                 cInicio.pintarRutaMapa(null);
                 pRecomend.lbRecorridos.SelectedIndex = -1;

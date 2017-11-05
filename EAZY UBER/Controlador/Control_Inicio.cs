@@ -315,7 +315,7 @@ namespace Controlador
                 foreach (Tuple<double, double> t in selec.Puntos)
                     points.Add(new PointLatLng(t.Item1, t.Item2));
                 points.Add(new PointLatLng(selec.Fin.Item1, selec.Fin.Item2));
-                GMapRoute route = snapToRoads(points);
+                GMapRoute route = new GMapRoute(points, "Cali");
                 route.Stroke = new Pen(Color.Red, 3);
                 //Agrega un marcador para el inicio de la ruta
                 GMarkerGoogle markerInicio = new GMarkerGoogle(new PointLatLng(selec.Inicio.Item1, selec.Inicio.Item2), GMarkerGoogleType.green);
