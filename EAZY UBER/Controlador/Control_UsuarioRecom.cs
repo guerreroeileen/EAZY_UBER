@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using EAZY_UBER;
 using mundo;
+using System.Diagnostics;
 
 namespace Controlador
 {
@@ -21,7 +22,7 @@ namespace Controlador
             this.sistema = sistema;
 
             pUsuarioRecom.lbxUsuarios.SelectedIndexChanged += evento_selectedUsuarioRecom;
-            pUsuarioRecom.btnDescartar.Click += evento_selectedUsuarioRecom;
+            pUsuarioRecom.btnDescartar.Click += evento_descartarUsuario;
         }
 
         private void evento_selectedUsuarioRecom(object sender, EventArgs e) {
@@ -43,15 +44,24 @@ namespace Controlador
         }
 
         private void evento_descartarUsuario(object sender, EventArgs e) {
+            if (sistema.Estado_usuariosRecomendados != null) {
             sistema.Estado_usuariosRecomendados.Remove(sistema.Estado_usuariosRecomendados[pUsuarioRecom.lbxUsuarios.SelectedIndex]);
             actualizarPanelUsuarioRecom();
+                
+            }
         }
 
         public void actualizarPanelUsuarioRecom() {
-            if (sistema.Estado_usuariosRecomendados != null)
+            if (sistema.Estado_usuariosRecomendados != null )
             {
-                int i = 0;
-                pUsuarioRecom.lbxUsuarios.DataSource = sistema.Estado_usuariosRecomendados.Select(x => { i++; return "Usuario " + i; });
+                pUsuarioRecom.lbxUsuarios.Items.Clear();                
+                foreach (var u in sistema.Estado_usuariosRecomendados)
+                {
+                    pUsuarioRecom.lbxUsuarios.Items.Add(u.Nombre);
+                }
+                pUsuarioRecom.lbxUsuarios.SelectedIndex = -1;
+                pUsuarioRecom.lbxUsuarios.Text = "";
+                pUsuarioRecom.clear();
             }
             else {
                 pUsuarioRecom.lbxUsuarios.Items.Clear();

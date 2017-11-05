@@ -101,6 +101,7 @@ namespace Controlador
                 cInicio.pintarRutaMapa(null);
                 pRecomend.lbRecorridos.SelectedIndex = -1;
                 pRecomend.lbRecorridos.Text = "";
+                pRecomend.clear();
             }
             else {
                 pRecomend.lbRecorridos.Items.Clear();
