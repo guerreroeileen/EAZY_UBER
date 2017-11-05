@@ -25,6 +25,7 @@ namespace mundo
         private List<Usuario> usuariosAceptados;
         private List<Usuario> usuariosPorAceptar;
         private Dictionary<String, int> calificadores;
+        private List<Notificacion> notificaciones;
         private Tuple<double, double> ubicacion;
         private bool recomendarRecorrido;
 
@@ -48,6 +49,7 @@ namespace mundo
             usuariosAceptados = new List<Usuario>();
             usuariosPorAceptar = new List<Usuario>();
             calificadores = new Dictionary<string, int>();
+            notificaciones = new List<Notificacion>();
             rutas = new List<Ruta>();
             vehiculos = new List<Vehiculo>();
             ubicacion = null;
@@ -194,6 +196,16 @@ namespace mundo
         }
 
 
+        public void notificarUsuario(string tipo, Usuario solicitante, Recorrido recorrido)
+        {
+            notificaciones.Add(new Notificacion(tipo, solicitante, recorrido));
+        }
+        public void eliminarNotificacion(int index)
+        {
+            notificaciones.RemoveAt(index);
+        }
+
+
         public string Nombre { get => nombre; set => nombre = value; }
         public string Apellido { get => apellido; set => apellido = value; }
         public string Celular { get => celular; set => celular = value; }
@@ -208,5 +220,6 @@ namespace mundo
         public List<Ruta> Rutas { get => rutas; set => rutas = value; }
         public List<Vehiculo> Vehiculos { get => vehiculos; set => vehiculos = value; }
         public List<Recorrido> Recorridos1 { get => recorridos; set => recorridos = value; }
+        public List<Notificacion> Notificaciones { get => notificaciones; set => notificaciones = value; }
     }
 }

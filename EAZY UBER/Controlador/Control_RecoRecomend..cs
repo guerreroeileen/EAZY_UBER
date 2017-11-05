@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using EAZY_UBER;
 using mundo;
+using System.Diagnostics;
 
 namespace Controlador
 {
@@ -14,6 +15,7 @@ namespace Controlador
         private SistemaRecomendaciones sistema;
         private panel_RecorridoRecomendado pRecomend;
         private Control_Inicio cInicio;
+
         public Control_RecoRecomend(panel_RecorridoRecomendado pRecomend, SistemaRecomendaciones sistema, Control_Inicio cInicio) {
             this.sistema = sistema;
             this.pRecomend = pRecomend;
@@ -21,6 +23,7 @@ namespace Controlador
 
             pRecomend.lbRecorridos.SelectedIndexChanged += evento_seleccionRecorrido;
             pRecomend.btnDescartar.Click += evento_descartarRecorrido;
+            pRecomend.btnSolicitar.Click += solicitarRecorrido_click;
         }
 
 
@@ -34,7 +37,7 @@ namespace Controlador
             {
                 
                 //Una posible solución-Convertir el diccionario a una lista de KeyValuePair
-              List  <KeyValuePair<Usuario, Recorrido>> xd = sistema.Estado_recorridosRecomendados.ToList();
+                List<KeyValuePair<Usuario, Recorrido>> xd = sistema.Estado_recorridosRecomendados.ToList();
                 Usuario usua = xd [iReco].Key ;    
                 Recorrido reco = xd[iReco].Value;
                 //Otra posible solución---Se compara con la el nombr de la ruta ya que estos son los que estan en la list box
@@ -45,12 +48,8 @@ namespace Controlador
 
                 //Otra propuesta de solucion -- Me parece buena
                 KeyValuePair<Usuario, Recorrido> parOrdenadoDatos = sistema.Estado_recorridosRecomendados.FirstOrDefault(x => x.Value.Ruta.Equals(ruta));
-               // Usuario usua = parOrdenadoDatos.Key;
+                //Usuario usua = parOrdenadoDatos.Key;
                 //Recorrido reco = parOrdenadoDatos.Value;
-
-
-
-
                 pRecomend.lbNombre.Text = usua.Nombre;
                 pRecomend.lbApellido.Text = usua.Apellido;
                 pRecomend.lbCalificacion.Text = usua.darCalificacion() + "";
@@ -66,10 +65,12 @@ namespace Controlador
                 //Pinta ruta en el mapa
                 cInicio.pintarRutaMapa(reco.Ruta);
 
+                pRecomend.btnSolicitar.Enabled = true;
                 pRecomend.btnDescartar.Enabled = true;
             }
             else {
                 pRecomend.clear();
+                pRecomend.btnSolicitar.Enabled = false;
                 pRecomend.btnDescartar.Enabled = false;
                 cInicio.pintarRutaMapa(null);
             }
@@ -84,6 +85,19 @@ namespace Controlador
                 sistema.Estado_recorridosRecomendados.Remove(sistema.Estado_recorridosRecomendados.ToList()[pRecomend.lbRecorridos.SelectedIndex].Key);
                 refreshPanelRecorridosRecomend();
             }
+        }
+
+        /*
+         * Solicitar cupo en un recorrido
+         */
+         public void solicitarRecorrido_click(object sender, EventArgs e)
+        {
+            int iReco = pRecomend.lbRecorridos.SelectedIndex;
+            List<KeyValuePair<Usuario, Recorrido>> xd = sistema.Estado_recorridosRecomendados.ToList();
+            Usuario usua = xd[iReco].Key;
+            Recorrido reco = xd[iReco].Value;
+            usua.notificarUsuario(Notificacion.TIPO_SOLICITAR_CUPO,sistema.Estado_usuarioLogged,reco);
+            Debug.WriteLine("Se notifico al usuario" + "--size:"+ usua.Notificaciones.Count);
         }
 
         /*
