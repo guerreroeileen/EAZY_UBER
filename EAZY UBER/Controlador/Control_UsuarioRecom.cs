@@ -24,6 +24,8 @@ namespace Controlador
             pUsuarioRecom.lbxUsuarios.SelectedIndexChanged += evento_selectedUsuarioRecom;
             pUsuarioRecom.btnDescartar.Click += evento_selectedUsuarioRecom;
             pUsuarioRecom.btnOfrecerCupo.Click += ofrecerCupo_Click;
+            pUsuarioRecom.btnDescartar.Enabled = false;
+            pUsuarioRecom.btnOfrecerCupo.Enabled = false;
         }
 
         private void evento_selectedUsuarioRecom(object sender, EventArgs e) {
@@ -62,9 +64,12 @@ namespace Controlador
         private void ofrecerCupo_Click(Object sender, EventArgs e)
         {
             int iUserReco = pUsuarioRecom.lbxUsuarios.SelectedIndex;
-            Usuario uReco = sistema.Estado_usuariosRecomendados[iUserReco];
-            uReco.notificarUsuario(Notificacion.TIPO_OFRECER_CUPO, sistema.Estado_usuarioLogged, null);
-            Debug.WriteLine("Se ofrecio un cupo" + "--size:" + uReco.Notificaciones.Count);
+            if (iUserReco > -1)
+            {
+                Usuario uReco = sistema.Estado_usuariosRecomendados[iUserReco];
+                uReco.notificarUsuario(Notificacion.TIPO_OFRECER_CUPO, sistema.Estado_usuarioLogged, null);
+                MessageBox.Show("Se ha ofrecido el cupo exitosamente");
+            }
         }
 
         public void actualizarPanelUsuarioRecom() {

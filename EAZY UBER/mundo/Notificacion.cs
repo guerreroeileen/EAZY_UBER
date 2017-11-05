@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace mundo
 {
+    [Serializable]
     public class Notificacion
     {
         //usuario que envia la solicitud

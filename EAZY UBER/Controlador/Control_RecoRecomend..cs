@@ -24,6 +24,8 @@ namespace Controlador
             pRecomend.lbRecorridos.SelectedIndexChanged += evento_seleccionRecorrido;
             pRecomend.btnDescartar.Click += evento_descartarRecorrido;
             pRecomend.btnSolicitar.Click += solicitarRecorrido_click;
+            pRecomend.btnSolicitar.Enabled = false;
+            pRecomend.btnDescartar.Enabled = false;
         }
 
 
