@@ -135,8 +135,6 @@ namespace mundo
             foreach (Usuario u in usuarios)
             {
                 List<Recorrido> recomendaciones = new List<Recorrido>();
-                if (u.Ubicacion.Item1 != ubicacion.Item1 && u.Ubicacion.Item2 != ubicacion.Item2)
-                {
                     foreach (Recorrido r in u.Recorridos)
                     {
                         if ((fecha.Minute >= r.Fecha.Minute - 15) && (fecha.Minute <= r.Fecha.Minute + 15) && r.Fecha.Day == (fecha.Day))
@@ -145,9 +143,7 @@ namespace mundo
                     List<Recorrido> auxiliar = recomendaciones.Select(x => new { dist = distMinimaARuta(x, ubicacion), reco = x }).Where(x => x.dist <= radio).OrderBy(x => x.dist).Select(x => x.reco).ToList();
                     if(auxiliar.Count>0)
                         estado_recorridosRecomendados.Add(u, auxiliar[0]);
-
-                }
-            }
+       }
             var dictionary = from entry in estado_recorridosRecomendados orderby distMinimaARuta(entry.Value, ubicacion) ascending select entry;
             estado_recorridosRecomendados = new Dictionary<Usuario, Recorrido>();
             foreach (KeyValuePair<Usuario, Recorrido> kvp in dictionary)

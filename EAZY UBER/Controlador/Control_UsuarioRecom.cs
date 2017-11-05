@@ -22,8 +22,7 @@ namespace Controlador
             this.sistema = sistema;
 
             pUsuarioRecom.lbxUsuarios.SelectedIndexChanged += evento_selectedUsuarioRecom;
-            pUsuarioRecom.btnDescartar.Click += evento_selectedUsuarioRecom;
-            pUsuarioRecom.btnOfrecerCupo.Click += ofrecerCupo_Click;
+            pUsuarioRecom.btnDescartar.Click += evento_descartarUsuario;
         }
 
         private void evento_selectedUsuarioRecom(object sender, EventArgs e) {
@@ -37,38 +36,32 @@ namespace Controlador
 
                 //falta actualizar la imagen
                 pUsuarioRecom.btnDescartar.Enabled = true;
-                pUsuarioRecom.btnOfrecerCupo.Enabled = true;
-
             }
             else {
                 pUsuarioRecom.clear();
                 pUsuarioRecom.btnDescartar.Enabled = false;
-                pUsuarioRecom.btnOfrecerCupo.Enabled = false;
-
             }
         }
 
         private void evento_descartarUsuario(object sender, EventArgs e) {
+            if (sistema.Estado_usuariosRecomendados != null) {
             sistema.Estado_usuariosRecomendados.Remove(sistema.Estado_usuariosRecomendados[pUsuarioRecom.lbxUsuarios.SelectedIndex]);
             actualizarPanelUsuarioRecom();
-        }
-
-        /*
-         * Notifica al usuario que se desea oferecr un cupu
-         */
-        private void ofrecerCupo_Click(Object sender, EventArgs e)
-        {
-            int iUserReco = pUsuarioRecom.lbxUsuarios.SelectedIndex;
-            Usuario uReco = sistema.Estado_usuariosRecomendados[iUserReco];
-            uReco.notificarUsuario(Notificacion.TIPO_OFRECER_CUPO, sistema.Estado_usuarioLogged, null);
-            Debug.WriteLine("Se ofrecio un cupo" + "--size:" + uReco.Notificaciones.Count);
+                
+            }
         }
 
         public void actualizarPanelUsuarioRecom() {
-            if (sistema.Estado_usuariosRecomendados != null)
+            if (sistema.Estado_usuariosRecomendados != null )
             {
-                int i = 0;
-                pUsuarioRecom.lbxUsuarios.DataSource = sistema.Estado_usuariosRecomendados.Select(x => { i++; return "Usuario " + i; });
+                pUsuarioRecom.lbxUsuarios.Items.Clear();                
+                foreach (var u in sistema.Estado_usuariosRecomendados)
+                {
+                    pUsuarioRecom.lbxUsuarios.Items.Add(u.Nombre);
+                }
+                pUsuarioRecom.lbxUsuarios.SelectedIndex = -1;
+                pUsuarioRecom.lbxUsuarios.Text = "";
+                pUsuarioRecom.clear();
             }
             else {
                 pUsuarioRecom.lbxUsuarios.Items.Clear();
