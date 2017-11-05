@@ -315,7 +315,7 @@ namespace Controlador
                 foreach (Tuple<double, double> t in selec.Puntos)
                     points.Add(new PointLatLng(t.Item1, t.Item2));
                 points.Add(new PointLatLng(selec.Fin.Item1, selec.Fin.Item2));
-                GMapRoute route = new GMapRoute(points, "Cali");
+                GMapRoute route = snapToRoads(points);
                 route.Stroke = new Pen(Color.Red, 3);
                 //Agrega un marcador para el inicio de la ruta
                 GMarkerGoogle markerInicio = new GMarkerGoogle(new PointLatLng(selec.Inicio.Item1, selec.Inicio.Item2), GMarkerGoogleType.green);
@@ -332,11 +332,8 @@ namespace Controlador
                 formInicio.mapa.Overlays.Add(rutas);
                 formInicio.mapa.ZoomAndCenterRoutes("rutas");
             }
-
-
         }
-
-
+        
         /* metodo para abrir la ventana de agregar vehiculo
          * se activa undiendo en el boton "+" en la linea vehiculo en el panel perfil_Usuario
          * La ventana queda ligada a Control_AgregarVehiculo
