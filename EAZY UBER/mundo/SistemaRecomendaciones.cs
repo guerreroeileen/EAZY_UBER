@@ -200,33 +200,34 @@ namespace mundo
             return true;
         }
 
-        private double distMinimaARuta(Recorrido recorrido, Tuple<double, double> punto) {
-            double dist = double.MaxValue;
-            double v1=0.0;
-            double v2=0.0;
-            double distAux=0.0;
-            Tuple < double, double> ini = recorrido.Ruta.Inicio;
-            Tuple<double, double> fin;
-            if (recorrido.Ruta.Puntos != null) {
+        public const double RadioDeLaTierra = 6371;
+        public static double distMinimaARuta(Recorrido recorrido, Tuple<double,double> point1)
+        {
+
+            double distance = Double.MaxValue;
+
+            double aux = 0;
+
+            if (recorrido.Ruta.Puntos != null)
+            {
                 foreach (var p in recorrido.Ruta.Puntos)
                 {
-                    fin = p;
-                    v1 = fin.Item1 - ini.Item1;
-                    v2 = fin.Item2 - ini.Item2;
-                    distAux = (Math.Abs((v2 * punto.Item1) + (v1 * punto.Item2) + ((ini.Item1 * v2) + (ini.Item2 * v1)))) / (Math.Sqrt((v2 * v2) + (v1 * v1)));
-                    dist = Math.Min(dist, distAux);
-
-                    ini = p;
+                    double Lat = (p.Item1 - point1.Item1) * (Math.PI / 180);
+                    double Lon = (p.Item2 - point1.Item2) * (Math.PI / 180);
+                    double a = Math.Sin(Lat / 2) * Math.Sin(Lat / 2) + Math.Cos(point1.Item1 * (Math.PI / 180)) * Math.Cos(p.Item1 * (Math.PI / 180)) * Math.Sin(Lon / 2) * Math.Sin(Lon / 2);
+                    double c = 2 * Math.Atan2(Math.Sqrt(a), Math.Sqrt(1 - a));
+                    aux = RadioDeLaTierra * c;
+                    if (aux < distance)
+                        distance = aux;
                 }
             }
-            fin = recorrido.Ruta.Fin;
-            v1 = fin.Item1 - ini.Item1;
-            v2 = fin.Item2 - ini.Item2;
-            distAux = (Math.Abs((v2 * punto.Item1) + (v1 * punto.Item2) + ((ini.Item1 * v2) + (ini.Item2 * v1)))) / (Math.Sqrt((v2 * v2) + (v1 * v1)));
-            dist = Math.Min(dist, distAux);
-            
-            return dist;
+
+
+            return distance;
         }
+
+
+        
 
         public Dictionary<Usuario, Recorrido> Estado_recorridosRecomendados { get => estado_recorridosRecomendados; set => estado_recorridosRecomendados = value; }
         public Usuario Estado_usuarioVisualizado { get => estado_usuarioVisualizado; set => estado_usuarioVisualizado = value; }
