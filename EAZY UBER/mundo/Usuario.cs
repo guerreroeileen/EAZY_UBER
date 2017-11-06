@@ -207,6 +207,11 @@ namespace mundo
             notificaciones.RemoveAt(index);
         }
 
+        public Notificacion darNotificacion(int index)
+        {
+            return notificaciones.ElementAt(index);
+        }
+
 
         public string Nombre { get => nombre; set => nombre = value; }
         public string Apellido { get => apellido; set => apellido = value; }

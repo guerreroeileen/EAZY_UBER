@@ -22,13 +22,10 @@ namespace Controlador
         {
             this.notificaciones = notificaciones;
             this.notificaciones.Show();
+            sistema = sistemaRecomendaciones;
 
-
-            Usuario logueado = sistemaRecomendaciones.Estado_usuarioLogged;
-
-            for (int i = 0; i < logueado.Notificaciones.Count; i++){
-                notificaciones.listBoxNotificaciones.Items.Add(logueado.Notificaciones.ElementAt(i).Solicitante.Nombre +"");
-            }
+            actualizarListaNotificaciones();
+         
             notificaciones.btnAceptar.Click += evento_clickBotonAceptar;
             notificaciones.btnDeclinar.Click += evento_clickBotonDeclinar;
             notificaciones.btnEliminar.Click += evento_clickBotonEliminar;
@@ -36,19 +33,35 @@ namespace Controlador
         }
 
 
+        public void actualizarListaNotificaciones()
+        {
+            Usuario logueado = sistema.Estado_usuarioLogged;
+
+            for (int i = 0; i < logueado.Notificaciones.Count; i++)
+            {
+                notificaciones.listBoxNotificaciones.Items.Add(logueado.Notificaciones.ElementAt(i).Solicitante.Celular + "");
+            }
+            
+    }
+
+
+
         private void evento_cambiarIndiceDeLaLista(object sender, EventArgs e)
         {
             //Acá se pone que pasa al cambiar de indice la lista
             String item = notificaciones.listBoxNotificaciones.SelectedItem.ToString();//Así se recupera el nombre de lo que esté en lista, en este caso usuarios
             int indice = notificaciones.listBoxNotificaciones.SelectedIndex;//Así se recupera el indice para operar con la lsita de notificaciones (solicitante)
-           
+            notificaciones.lblMensaje.Text = item;
 
         }
 
         private void evento_clickBotonEliminar(object sender, EventArgs e)
         {
             //Acá se pone que pasa al oprimir el boton eliminar
-            notificaciones.lblMensaje.Text = "Acá se cambia el mensaje" + "\n" + "Reyes (Profesor) no sabe de visual";
+            
+            sistema.Estado_usuarioLogged.eliminarNotificacion(notificaciones.listBoxNotificaciones.SelectedIndex);
+            notificaciones.listBoxNotificaciones.Items.Clear();
+            actualizarListaNotificaciones();
 
         }
         private void evento_clickBotonDeclinar(object sender, EventArgs e)
@@ -59,9 +72,8 @@ namespace Controlador
         }
         private void evento_clickBotonAceptar(object sender, EventArgs e)
         {
-            //Acá se pone que pasa al oprimir el boton aceptar
-
-            notificaciones.lblMensaje.Text = "Acá se cambia el mensaje" + "\n" + "Edisson es el mejor amigo de NIño";
+            sistema.darUsuario(notificaciones.listBoxNotificaciones.SelectedItem.ToString()).notificarUsuario(Notificacion.TIPO_ACEPTAR_SOLICITUD, sistema.Estado_usuarioLogged, sistema.Estado_usuarioLogged.darNotificacion(notificaciones.listBoxNotificaciones.SelectedIndex));
+            
         }
         internal void cerrar()
         {
