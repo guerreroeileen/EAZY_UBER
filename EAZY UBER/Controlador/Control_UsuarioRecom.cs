@@ -78,7 +78,12 @@ namespace Controlador
                 pUsuarioRecom.lbxUsuarios.Items.Clear();                
                 foreach (var u in sistema.Estado_usuariosRecomendados)
                 {
-                    pUsuarioRecom.lbxUsuarios.Items.Add(u.Nombre);
+                    //condicional para evitar que el usuario se recomiende a si mismo
+                    if (u.Celular!= sistema.Estado_usuarioLogged.Celular)
+                    {
+                        pUsuarioRecom.lbxUsuarios.Items.Add(u.Nombre);
+                    }
+                    
                 }
                 pUsuarioRecom.lbxUsuarios.SelectedIndex = -1;
                 pUsuarioRecom.lbxUsuarios.Text = "";
