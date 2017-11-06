@@ -72,7 +72,7 @@ namespace Controlador
         }
         private void evento_clickBotonAceptar(object sender, EventArgs e)
         {
-            sistema.darUsuario(notificaciones.listBoxNotificaciones.SelectedItem.ToString()).notificarUsuario(Notificacion.TIPO_ACEPTAR_SOLICITUD, sistema.Estado_usuarioLogged, sistema.Estado_usuarioLogged.darNotificacion(notificaciones.listBoxNotificaciones.SelectedIndex));
+            sistema.darUsuario(notificaciones.listBoxNotificaciones.SelectedItem.ToString()).notificarUsuario(Notificacion.TIPO_ACEPTAR_SOLICITUD, sistema.Estado_usuarioLogged, sistema.Estado_usuarioLogged.darNotificacion(notificaciones.listBoxNotificaciones.SelectedIndex).Recorrido);
             
         }
         internal void cerrar()
