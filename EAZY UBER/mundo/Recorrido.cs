@@ -29,5 +29,6 @@ namespace mundo
         
         public Ruta Ruta { get => ruta; set => ruta = value; }        
         public Vehiculo Vehiculo { get => vehiculo; set => vehiculo = value; }
+        public int Cupo { get => cupo; set => cupo = value; }
     }
 }

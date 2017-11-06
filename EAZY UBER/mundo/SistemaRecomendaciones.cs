@@ -103,7 +103,9 @@ namespace mundo
                     List<Recorrido> recomendaciones = new List<Recorrido>();
                     foreach (Recorrido r in u.Recorridos)
                     {
-                        if((fecha.Minute >= r.Fecha.Minute - 15)  && (fecha.Minute <= r.Fecha.Minute + 15) && r.Fecha.Day== (fecha.Day))
+                        // se agrega la condicion que solo recomiende recorridos que tengan cupos disponibles.
+                        if((fecha.Minute >= r.Fecha.Minute - 15)  && (fecha.Minute <= r.Fecha.Minute + 15) && r.Fecha.Day== (fecha.Day)
+                            && r.Cupo>0)
                         recomendaciones.Add(r);
                     }
                                         
@@ -134,15 +136,22 @@ namespace mundo
             estado_recorridosRecomendados = new Dictionary<Usuario, Recorrido>();
             foreach (Usuario u in usuarios)
             {
-                List<Recorrido> recomendaciones = new List<Recorrido>();
+                
+                    List<Recorrido> recomendaciones = new List<Recorrido>();
                     foreach (Recorrido r in u.Recorridos)
                     {
-                        if ((fecha.Minute >= r.Fecha.Minute - 15) && (fecha.Minute <= r.Fecha.Minute + 15) && r.Fecha.Day == (fecha.Day))
+                    //se agrega la condicion que el recorrido tenga cupos disponibles.
+                        if ((fecha.Minute >= r.Fecha.Minute - 15) && (fecha.Minute <= r.Fecha.Minute + 15) && r.Fecha.Day == (fecha.Day) 
+                        && r.Cupo>0)
                             recomendaciones.Add(r);
                     }
                     List<Recorrido> auxiliar = recomendaciones.Select(x => new { dist = distMinimaARuta(x, ubicacion), reco = x }).Where(x => x.dist <= radio).OrderBy(x => x.dist).Select(x => x.reco).ToList();
-                    if(auxiliar.Count>0)
+                    if (auxiliar.Count > 0)
                         estado_recorridosRecomendados.Add(u, auxiliar[0]);
+                
+
+
+                
        }
             var dictionary = from entry in estado_recorridosRecomendados orderby distMinimaARuta(entry.Value, ubicacion) ascending select entry;
             estado_recorridosRecomendados = new Dictionary<Usuario, Recorrido>();
@@ -151,7 +160,7 @@ namespace mundo
                 estado_recorridosRecomendados.Add(kvp.Key, kvp.Value);
 
             }
-
+       
 
             return estado_recorridosRecomendados.Count != 0;
         }

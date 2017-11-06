@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using EAZY_UBER;
 using mundo;
+using System.Windows.Forms;
 
 namespace Controlador
 {
@@ -51,29 +52,39 @@ namespace Controlador
             //Acá se pone que pasa al cambiar de indice la lista
             String item = notificaciones.listBoxNotificaciones.SelectedItem.ToString();//Así se recupera el nombre de lo que esté en lista, en este caso usuarios
             int indice = notificaciones.listBoxNotificaciones.SelectedIndex;//Así se recupera el indice para operar con la lsita de notificaciones (solicitante)
-            notificaciones.lblMensaje.Text = item;
+            notificaciones.lblMensaje.Text = sistema.Estado_usuarioLogged.darNotificacion(indice).ToString();
 
         }
 
         private void evento_clickBotonEliminar(object sender, EventArgs e)
-        {
-            //Acá se pone que pasa al oprimir el boton eliminar
-            
+        {        
+            // elimino la notificacion
             sistema.Estado_usuarioLogged.eliminarNotificacion(notificaciones.listBoxNotificaciones.SelectedIndex);
+            // actualizo la lista
             notificaciones.listBoxNotificaciones.Items.Clear();
             actualizarListaNotificaciones();
+            //mensaje al usuario
+            MessageBox.Show("Notificacion eliminada");
 
         }
         private void evento_clickBotonDeclinar(object sender, EventArgs e)
         {
             //Acá se pone que pasa al oprimir el boton declinar
-            notificaciones.lblMensaje.Text = "Acá se cambia el mensaje" + "\n" + "Zapata es el mejor amigo de Eilen";
+            
 
         }
         private void evento_clickBotonAceptar(object sender, EventArgs e)
         {
+            //envio la notificacion al usuario que pidio el cupo diciendo que he aceptado
             sistema.darUsuario(notificaciones.listBoxNotificaciones.SelectedItem.ToString()).notificarUsuario(Notificacion.TIPO_ACEPTAR_SOLICITUD, sistema.Estado_usuarioLogged, sistema.Estado_usuarioLogged.darNotificacion(notificaciones.listBoxNotificaciones.SelectedIndex).Recorrido);
-            
+            //disminuyo la cantidad de cupos disponibles
+            sistema.Estado_usuarioLogged.darNotificacion(notificaciones.listBoxNotificaciones.SelectedIndex).Recorrido.Cupo--;
+            //mensaje al usuario
+            MessageBox.Show("Notificacion aceptada");
+
+            //si decidimos implementar las calificaciones, aqui iria la agregada a los usuarios aceptados
+
+
         }
         internal void cerrar()
         {
