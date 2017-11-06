@@ -12,6 +12,12 @@ namespace Controlador
     {
         private Notificaciones notificaciones;
 
+        private Inicio vPrin;
+        private SistemaRecomendaciones sistema;
+        
+
+       
+
         public Control_Notificaciones(Notificaciones notificaciones, SistemaRecomendaciones sistemaRecomendaciones)
         {
             this.notificaciones = notificaciones;
@@ -23,11 +29,40 @@ namespace Controlador
             for (int i = 0; i < logueado.Notificaciones.Count; i++){
                 notificaciones.listBoxNotificaciones.Items.Add(logueado.Notificaciones.ElementAt(i).Solicitante.Nombre +"");
             }
+            notificaciones.btnAceptar.Click += evento_clickBotonAceptar;
+            notificaciones.btnDeclinar.Click += evento_clickBotonDeclinar;
+            notificaciones.btnEliminar.Click += evento_clickBotonEliminar;
+            notificaciones.listBoxNotificaciones.SelectedIndexChanged += evento_cambiarIndiceDeLaLista;//Se le pasa el evento de cambiar Indice de la lista
+        }
 
 
+        private void evento_cambiarIndiceDeLaLista(object sender, EventArgs e)
+        {
+            //Acá se pone que pasa al cambiar de indice la lista
+            String item = notificaciones.listBoxNotificaciones.SelectedItem.ToString();//Así se recupera el nombre de lo que esté en lista, en este caso usuarios
+            int indice = notificaciones.listBoxNotificaciones.SelectedIndex;//Así se recupera el indice para operar con la lsita de notificaciones (solicitante)
+           
 
         }
 
+        private void evento_clickBotonEliminar(object sender, EventArgs e)
+        {
+            //Acá se pone que pasa al oprimir el boton eliminar
+            notificaciones.lblMensaje.Text = "Acá se cambia el mensaje" + "\n" + "Reyes (Profesor) no sabe de visual";
+
+        }
+        private void evento_clickBotonDeclinar(object sender, EventArgs e)
+        {
+            //Acá se pone que pasa al oprimir el boton declinar
+            notificaciones.lblMensaje.Text = "Acá se cambia el mensaje" + "\n" + "Zapata es el mejor amigo de Eilen";
+
+        }
+        private void evento_clickBotonAceptar(object sender, EventArgs e)
+        {
+            //Acá se pone que pasa al oprimir el boton aceptar
+
+            notificaciones.lblMensaje.Text = "Acá se cambia el mensaje" + "\n" + "Edisson es el mejor amigo de NIño";
+        }
         internal void cerrar()
         {
             notificaciones.Close();
