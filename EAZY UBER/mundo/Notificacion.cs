@@ -31,6 +31,9 @@ namespace mundo
             this.solicitante = solicitante;
             this.recorrido = recorrido;
         }
+
+
+
         //devuelve el texto a mostrar en las notificaciones segun el tipo
         public override string ToString()
         {

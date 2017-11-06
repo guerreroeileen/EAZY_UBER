@@ -31,7 +31,6 @@ namespace Controlador
         private Control_BuscarRuta controlBuscarRuta;
         private Control_RecoRecomend controlRecorridoRecom;
         private Control_UsuarioRecom controlUsuarioRecom;
-
         private Control_Administrador controlAdmin;
 
         //flags
@@ -377,7 +376,7 @@ namespace Controlador
             Notificaciones notificaciones = new Notificaciones();
           
             notificaciones.Owner = formInicio;
-            controlNotificaciones = new Control_Notificaciones(notificaciones);
+            controlNotificaciones = new Control_Notificaciones(notificaciones, sistema);
         }
     
         /*metodo para cerrar sesion
