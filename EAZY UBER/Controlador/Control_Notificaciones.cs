@@ -75,14 +75,24 @@ namespace Controlador
         }
         private void evento_clickBotonAceptar(object sender, EventArgs e)
         {
-            //envio la notificacion al usuario que pidio el cupo diciendo que he aceptado
-            sistema.darUsuario(notificaciones.listBoxNotificaciones.SelectedItem.ToString()).notificarUsuario(Notificacion.TIPO_ACEPTAR_SOLICITUD, sistema.Estado_usuarioLogged, sistema.Estado_usuarioLogged.darNotificacion(notificaciones.listBoxNotificaciones.SelectedIndex).Recorrido);
-            //disminuyo la cantidad de cupos disponibles
-            sistema.Estado_usuarioLogged.darNotificacion(notificaciones.listBoxNotificaciones.SelectedIndex).Recorrido.Cupo--;
-            //mensaje al usuario
-            MessageBox.Show("Notificacion aceptada");
+            Recorrido temporalReco = sistema.Estado_usuarioLogged.darNotificacion(notificaciones.listBoxNotificaciones.SelectedIndex).Recorrido;
+            if (temporalReco.Cupo > 0)
+            {
+                //envio la notificacion al usuario que pidio el cupo diciendo que he aceptado
+                sistema.darUsuario(notificaciones.listBoxNotificaciones.SelectedItem.ToString()).notificarUsuario(Notificacion.TIPO_ACEPTAR_SOLICITUD, sistema.Estado_usuarioLogged, sistema.Estado_usuarioLogged.darNotificacion(notificaciones.listBoxNotificaciones.SelectedIndex).Recorrido);
+                //disminuyo la cantidad de cupos disponibles
+                sistema.Estado_usuarioLogged.darNotificacion(notificaciones.listBoxNotificaciones.SelectedIndex).Recorrido.Cupo--;
+                //mensaje al usuario
+                MessageBox.Show("Notificacion aceptada");
 
-            //si decidimos implementar las calificaciones, aqui iria la agregada a los usuarios aceptados
+                //si decidimos implementar las calificaciones, aqui iria la agregada a los usuarios aceptados
+            }
+            else
+            {
+                MessageBox.Show("No tienes cupos disponibles para ofrecer");
+            }
+
+            
 
 
         }
