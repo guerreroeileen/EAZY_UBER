@@ -49,9 +49,9 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.picbxUsuario);
             this.groupBox1.Location = new System.Drawing.Point(13, 19);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox1.Size = new System.Drawing.Size(191, 124);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
@@ -99,7 +99,7 @@
             // 
             this.picbxUsuario.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.picbxUsuario.Location = new System.Drawing.Point(5, 17);
-            this.picbxUsuario.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.picbxUsuario.Margin = new System.Windows.Forms.Padding(2);
             this.picbxUsuario.Name = "picbxUsuario";
             this.picbxUsuario.Size = new System.Drawing.Size(67, 95);
             this.picbxUsuario.TabIndex = 0;
@@ -107,7 +107,7 @@
             // 
             // btnOfrecerCupo
             // 
-            this.btnOfrecerCupo.Location = new System.Drawing.Point(209, 133);
+            this.btnOfrecerCupo.Location = new System.Drawing.Point(209, 175);
             this.btnOfrecerCupo.Name = "btnOfrecerCupo";
             this.btnOfrecerCupo.Size = new System.Drawing.Size(131, 23);
             this.btnOfrecerCupo.TabIndex = 13;
@@ -116,7 +116,7 @@
             // 
             // btnDescartar
             // 
-            this.btnDescartar.Location = new System.Drawing.Point(209, 162);
+            this.btnDescartar.Location = new System.Drawing.Point(209, 204);
             this.btnDescartar.Name = "btnDescartar";
             this.btnDescartar.Size = new System.Drawing.Size(131, 23);
             this.btnDescartar.TabIndex = 12;
@@ -128,7 +128,7 @@
             this.lbxUsuarios.FormattingEnabled = true;
             this.lbxUsuarios.Location = new System.Drawing.Point(209, 19);
             this.lbxUsuarios.Name = "lbxUsuarios";
-            this.lbxUsuarios.Size = new System.Drawing.Size(131, 108);
+            this.lbxUsuarios.Size = new System.Drawing.Size(131, 147);
             this.lbxUsuarios.TabIndex = 11;
             // 
             // panel_UsuarioRecomendado
@@ -139,7 +139,7 @@
             this.Controls.Add(this.btnDescartar);
             this.Controls.Add(this.lbxUsuarios);
             this.Controls.Add(this.groupBox1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "panel_UsuarioRecomendado";
             this.Size = new System.Drawing.Size(357, 265);
             this.groupBox1.ResumeLayout(false);

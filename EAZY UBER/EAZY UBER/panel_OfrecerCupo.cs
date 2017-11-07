@@ -7,24 +7,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using mundo;
 
 namespace EAZY_UBER
 {
     public partial class panel_OfrecerCupo : UserControl
     {
-        private event delegado1 eventoConfirmarOfrecerCupo;
 
         public panel_OfrecerCupo()
         {
             InitializeComponent();
-            errorFecha.Visible = false;
-            errorHora.Visible = false;
-            errorCupo.Visible = false;
-            errorTarifa.Visible = false;
         }
-        public void addHandlerConfirmarOfrecerCupoo(delegado1 delegado)
+        public void pintarrecorridos(Usuario user)
         {
-            eventoConfirmarOfrecerCupo += delegado;
+            comboBox1.Items.Clear();
+            foreach(var i in user.Recorridos)
+            {
+                comboBox1.Items.Add(i.Fecha);
+            }
+            comboBox1.SelectedIndex = 0;
         }
 
         private void botonConfirmar_Click(object sender, EventArgs e)

@@ -32,6 +32,7 @@ namespace Controlador
         private Control_RecoRecomend controlRecorridoRecom;
         private Control_UsuarioRecom controlUsuarioRecom;
         private Control_Administrador controlAdmin;
+        private Control_RegistroRecorrido controlRegistroRecorrido;
 
         //flags
         private bool seleccionarInicio;
@@ -59,7 +60,9 @@ namespace Controlador
             this.formInicio.panel_PerfilUsuario1.eventoCambiarIndiceCBox += mostrarRutas;
             this.formInicio.panel_PerfilUsuario1.btnEliminarRuta.Click += evento_eliminarRuta;
             this.formInicio.panel_PerfilUsuario1.btnEliminarVehic.Click += evento_eliminarVehiculo;
-            this.formInicio.FormClosing += Form1_FormClosing; 
+            this.formInicio.FormClosing += Form1_FormClosing;
+            this.formInicio.panel_PerfilUsuario1.btnAgregarRecorrido.Click += agregarRecorrido_Click;
+            this.formInicio.panel_PerfilUsuario1.btnEliminarRecorrido.Click += eliminarRecorrido_Click;
 
 
             formInicio.panel_PerfilUsuario1.addHandlerAgregarRuta(agregarRuta);
@@ -132,6 +135,7 @@ namespace Controlador
                     formInicio.opcionesToolStripMenuItem.Visible = true;
                     pintarRutas(this);
                     pintarvehiculos(this);
+                    pintarRecorridos(this);
                     if (sistema.Estado_usuarioLogged.Ubicacion != null)
                     {
                         Tuple<double, double> ubicacion = sistema.Estado_usuarioLogged.Ubicacion;
@@ -332,7 +336,7 @@ namespace Controlador
                 formInicio.mapa.ZoomAndCenterRoutes("rutas");
             }
         }
-        
+
         /* metodo para abrir la ventana de agregar vehiculo
          * se activa undiendo en el boton "+" en la linea vehiculo en el panel perfil_Usuario
          * La ventana queda ligada a Control_AgregarVehiculo
@@ -347,6 +351,36 @@ namespace Controlador
             controlRegistroVehiculo.eventoAgregarVehiuclo += pintarvehiculos;
         }
 
+        /* Inicia el registro de un recorrido
+         */
+         public void agregarRecorrido_Click(Object sender, EventArgs e)
+        {
+            if (sistema.Estado_usuarioLogged.Vehiculos.Any() && sistema.Estado_usuarioLogged.Rutas.Any())
+            {
+                if (controlRegistroRecorrido != null)
+                    controlRegistroRecorrido.cerrar();
+                RegistroRecorrido registroRec = new RegistroRecorrido();
+                registroRec.Owner = formInicio;
+                controlRegistroRecorrido = new Control_RegistroRecorrido(sistema.Estado_usuarioLogged, registroRec);
+                controlRegistroRecorrido.eventoAgregar += pintarRecorridos;
+            }
+            else
+            {
+                MessageBox.Show("Debes tener al menos una ruta y un vehiculo registrado");
+            }
+        }
+        /*Elimina el recorrido seleccionado en el panel perfil usuario
+         */
+         public void eliminarRecorrido_Click(Object sender, EventArgs e)
+        {
+            int index = formInicio.panel_PerfilUsuario1.comboBoxRecorridos.SelectedIndex;
+            if (index > -1)
+            {
+                sistema.Estado_usuarioLogged.Recorridos.Remove(sistema.Estado_usuarioLogged.Recorridos[index]);
+                pintarRecorridos(this);
+            }
+        }
+
         public void buscarRuta(Object sender)
         {
             formInicio.panel_BuscarRuta1.Visible = true;
@@ -357,10 +391,16 @@ namespace Controlador
 
         public void ofrecerCupo(Object sender)
         {
-            formInicio.panel_OfrecerCupo1.Visible = true;
-            formInicio.panel_BuscarRuta1.Visible = false;
-            formInicio.panel_RecorridoRecomendado1.Visible = false;
-            formInicio.panel_UsuarioRecomendado1.Visible = false;
+            if (sistema.Estado_usuarioLogged.Recorridos.Count > 0)
+            {
+                formInicio.panel_OfrecerCupo1.pintarrecorridos(sistema.Estado_usuarioLogged);
+                formInicio.panel_OfrecerCupo1.Visible = true;
+                formInicio.panel_BuscarRuta1.Visible = false;
+                formInicio.panel_RecorridoRecomendado1.Visible = false;
+                formInicio.panel_UsuarioRecomendado1.Visible = false;
+            }
+            else
+                MessageBox.Show("Debes tener al menos un recorrido programado");
             
         }         
                
@@ -479,33 +519,54 @@ namespace Controlador
             int index = formInicio.panel_PerfilUsuario1.comboBoxVehiculos.SelectedIndex;
             if (index > -1)
             {
-                sistema.Estado_usuarioLogged.Vehiculos.Remove(sistema.Estado_usuarioLogged.Vehiculos[index]);                
-                formInicio.panel_PerfilUsuario1.comboBoxVehiculos.DataSource = sistema.Estado_usuarioLogged.Vehiculos.Select(x => x.Placa).ToList();
-                formInicio.panel_PerfilUsuario1.comboBoxVehiculos.SelectedIndex = -1;
-                formInicio.panel_PerfilUsuario1.comboBoxVehiculos.Text = "";
+                sistema.Estado_usuarioLogged.Vehiculos.Remove(sistema.Estado_usuarioLogged.Vehiculos[index]);
+                pintarvehiculos(this);
             } 
             
             //formInicio.panel_PerfilUsuario1.btnEliminarVehic.Enabled = false;
             
         }
 
-        /*Pinta las rutas que tiene agregado el usuario en el panel de perfil de usuario
+        /*Pinta los vehiculos que tiene agregado el usuario en el panel de perfil de usuario
          * Se llama:
          *       cuando se hace log in
          *       cuando se agrega una ruta
          */
         public void pintarvehiculos(Object sender)
         {
-            
             List<Vehiculo> vehis = sistema.Estado_usuarioLogged.Vehiculos;
-            formInicio.panel_PerfilUsuario1.comboBoxVehiculos.DataSource = vehis.Select(x => x.Placa).ToList();
-            if (vehis.Count > 0)
-                formInicio.panel_PerfilUsuario1.comboBoxVehiculos.SelectedIndex = -1;
+            formInicio.panel_PerfilUsuario1.comboBoxVehiculos.Items.Clear();
+            formInicio.panel_PerfilUsuario1.comboBoxVehiculos.SelectedIndex = -1;
+            formInicio.panel_PerfilUsuario1.comboBoxVehiculos.Text = "";
+            if (sistema.Estado_usuarioLogged.Vehiculos != null)
+            {
+                foreach (var r in vehis) { formInicio.panel_PerfilUsuario1.comboBoxVehiculos.Items.Add(r.Placa); }
+            } 
             if (sender.GetType() == typeof(Control_RegistroVehiculo))
             {
                 controlRegistroVehiculo.cerrar();
                 controlRegistroVehiculo = null;
             }
+        }
+
+        /*pinta los recorridos disponible
+         */
+         public void pintarRecorridos(Object sender)
+        {
+            List<Recorrido> recos = sistema.Estado_usuarioLogged.Recorridos;
+            formInicio.panel_PerfilUsuario1.comboBoxRecorridos.Items.Clear();
+            formInicio.panel_PerfilUsuario1.comboBoxRecorridos.SelectedIndex = -1;
+            formInicio.panel_PerfilUsuario1.comboBoxRecorridos.Text = "";
+            if (sistema.Estado_usuarioLogged.Rutas != null)
+            {
+                foreach (var r in recos) { formInicio.panel_PerfilUsuario1.comboBoxRecorridos.Items.Add(r.Fecha); }
+            }
+            if(sender.GetType()== typeof(Control_RegistroRecorrido))
+            {
+                controlRegistroRecorrido.cerrar();
+                controlRegistroRecorrido = null;
+            }
+            
         }
 
 
