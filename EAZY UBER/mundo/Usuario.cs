@@ -226,7 +226,6 @@ namespace mundo
         public Tuple<double, double> Ubicacion { get => ubicacion; set => ubicacion = value; }
         public List<Ruta> Rutas { get => rutas; set => rutas = value; }
         public List<Vehiculo> Vehiculos { get => vehiculos; set => vehiculos = value; }
-        public List<Recorrido> Recorridos1 { get => recorridos; set => recorridos = value; }
         public List<Notificacion> Notificaciones { get => notificaciones; set => notificaciones = value; }
     }
 }

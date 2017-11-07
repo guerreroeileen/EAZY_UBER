@@ -133,10 +133,14 @@ namespace mundo
 
         public Boolean recomendarRecorridos(Tuple<double, double> ubicacion, double radio, DateTime fecha)
         {
+            radio /= 1000;
+
+
             estado_recorridosRecomendados = new Dictionary<Usuario, Recorrido>();
             foreach (Usuario u in usuarios)
             {
-                
+
+               
                     List<Recorrido> recomendaciones = new List<Recorrido>();
                     foreach (Recorrido r in u.Recorridos)
                     {
