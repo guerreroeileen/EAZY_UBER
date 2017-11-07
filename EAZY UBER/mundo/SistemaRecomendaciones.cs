@@ -136,7 +136,9 @@ namespace mundo
             estado_recorridosRecomendados = new Dictionary<Usuario, Recorrido>();
             foreach (Usuario u in usuarios)
             {
-                
+
+                radio = (radio * (Math.PI / 180))/1000;
+
                     List<Recorrido> recomendaciones = new List<Recorrido>();
                     foreach (Recorrido r in u.Recorridos)
                     {
