@@ -96,6 +96,7 @@ namespace mundo
                         try
                         {
                             aux.registrarRecorrido(aleatorio.Next(1, 5) * 1000, aleatorio.Next(1, 4),
+                                String x = "para sincronizar";
                                 new DateTime(DateTime.Now.Year, DateTime.Now.Month+1, 15, 13, 48, DateTime.Now.Second),
                                 aux.Vehiculos[new Random().Next(0, aux.Vehiculos.Count - 1)],
                                 aux.Rutas[new Random().Next(0, aux.Rutas.Count - 1)]);
