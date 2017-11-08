@@ -22,6 +22,24 @@ namespace mundo
             this.sistemaRecomendaciones = sistemaRecomendaciones;
         }
 
+
+        public Dictionary<String, string> usuariosQueMasGeneranDinero(int cantidadUsuarios)
+        {
+            Dictionary<String, string> usuarios = new Dictionary<string, string>();
+            for (int i=0; i< sistemaRecomendaciones.Usuarios.Count;i++)
+            {
+                Usuario actual = sistemaRecomendaciones.Usuarios.ElementAt(i);
+                //usuarios.Add(actual.Celular, actual.dineroGeneradoPorRecorridos.ToString()+"");
+            }
+
+            return usuarios;
+
+
+        }
+
+
+
+
         public SistemaRecomendaciones SistRecomendaciones { get => sistemaRecomendaciones; set => sistemaRecomendaciones = value; }
 
         /*

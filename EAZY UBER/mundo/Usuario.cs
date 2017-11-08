@@ -57,6 +57,13 @@ namespace mundo
             recorridos = new List<Recorrido>();
         }
 
+        public Double dineroGeneradoPorRecorridos()
+        {
+            return  recorridos.Sum(a=> a.DineroGenerado);
+        }
+
+
+
         public Boolean registrarVehiculo(string placa, string color, string marca, string linea)
         {
             bool registrado= false;
