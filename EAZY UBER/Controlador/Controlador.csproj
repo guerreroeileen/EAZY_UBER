@@ -37,6 +37,7 @@
   <ItemGroup>
     <Reference Include="GMap.NET.Core, Version=1.7.0.0, Culture=neutral, PublicKeyToken=b85b9027b614afef" />
     <Reference Include="GMap.NET.WindowsForms, Version=1.7.0.0, Culture=neutral, PublicKeyToken=b85b9027b614afef" />
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -55,6 +56,7 @@
     <Compile Include="Control_Notificaciones.cs" />
     <Compile Include="Control_OfrecerCupo.cs" />
     <Compile Include="Control_RecoRecomend..cs" />
+    <Compile Include="Control_RegistroRecorrido.cs" />
     <Compile Include="Control_RegistroRuta.cs" />
     <Compile Include="Control_RegistroVehiculo.cs" />
     <Compile Include="Control_UsuarioRecom.cs" />

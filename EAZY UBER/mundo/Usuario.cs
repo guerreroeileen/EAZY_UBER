@@ -8,6 +8,7 @@ using System.Runtime.Serialization;
 using System.Xml;
 using System.Diagnostics;
 
+
 namespace mundo
 {
     [Serializable]
@@ -25,6 +26,7 @@ namespace mundo
         private List<Usuario> usuariosAceptados;
         private List<Usuario> usuariosPorAceptar;
         private Dictionary<String, int> calificadores;
+        private List<Notificacion> notificaciones;
         private Tuple<double, double> ubicacion;
         private bool recomendarRecorrido;
 
@@ -45,6 +47,7 @@ namespace mundo
             this.contrasenia = contrasena;
             this.recomendarRecorrido = recomendar;
 
+            notificaciones = new List<Notificacion>();
             usuariosAceptados = new List<Usuario>();
             usuariosPorAceptar = new List<Usuario>();
             calificadores = new Dictionary<string, int>();
@@ -53,6 +56,13 @@ namespace mundo
             ubicacion = null;
             recorridos = new List<Recorrido>();
         }
+
+        public Double dineroGeneradoPorRecorridos()
+        {
+            return  recorridos.Sum(a=> a.DineroGenerado);
+        }
+
+
 
         public Boolean registrarVehiculo(string placa, string color, string marca, string linea)
         {
@@ -96,7 +106,7 @@ namespace mundo
             if (vehiculo == null) { campos[1] = true; fail = true; }
             if (fecha == null) { campos[2] = true; fail = true; }
             if (cupos<=0 && cupos>=5) { campos[3] = true; fail = true; }
-            if (tarifa <0) { campos[5] = true; fail = true; }
+            if (tarifa <0) { campos[4] = true; fail = true; }
             if (fail)
             {                
                 AgregarRecorridoExcepcion excep = new AgregarRecorridoExcepcion(campos);
@@ -194,6 +204,22 @@ namespace mundo
         }
 
 
+        public void notificarUsuario(string tipo, Usuario solicitante, Recorrido recorrido)
+        {
+            Notificacion noti = new Notificacion(tipo, solicitante, recorrido);
+            notificaciones.Add(noti);
+        }
+        public void eliminarNotificacion(int index)
+        {
+            notificaciones.RemoveAt(index);
+        }
+
+        public Notificacion darNotificacion(int index)
+        {
+            return notificaciones.ElementAt(index);
+        }
+
+
         public string Nombre { get => nombre; set => nombre = value; }
         public string Apellido { get => apellido; set => apellido = value; }
         public string Celular { get => celular; set => celular = value; }
@@ -207,6 +233,6 @@ namespace mundo
         public Tuple<double, double> Ubicacion { get => ubicacion; set => ubicacion = value; }
         public List<Ruta> Rutas { get => rutas; set => rutas = value; }
         public List<Vehiculo> Vehiculos { get => vehiculos; set => vehiculos = value; }
-        public List<Recorrido> Recorridos1 { get => recorridos; set => recorridos = value; }
+        public List<Notificacion> Notificaciones { get => notificaciones; set => notificaciones = value; }
     }
 }

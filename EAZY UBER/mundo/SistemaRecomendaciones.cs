@@ -21,6 +21,8 @@ namespace mundo
         private List<Usuario> estado_usuariosRecomendados;
         private Usuario estado_usuarioLogged;
 
+
+
         private List<Usuario> usuarios;
 
         
@@ -90,8 +92,9 @@ namespace mundo
         }
 
         public Boolean recomendarRecorridos(Tuple<double, double> ubicacion, DateTime fecha) {
-
+                       
             estado_recorridosRecomendados = new Dictionary<Usuario, Recorrido>();
+            Estado_usuariosRecomendados = null;
 
             foreach (Usuario u in usuarios)
             {
@@ -100,7 +103,9 @@ namespace mundo
                     List<Recorrido> recomendaciones = new List<Recorrido>();
                     foreach (Recorrido r in u.Recorridos)
                     {
-                        if((fecha.Minute >= r.Fecha.Minute - 15)  && (fecha.Minute <= r.Fecha.Minute + 15) && r.Fecha.Day== (fecha.Day))
+                        // se agrega la condicion que solo recomiende recorridos que tengan cupos disponibles.
+                        if((fecha.Minute >= r.Fecha.Minute - 15)  && (fecha.Minute <= r.Fecha.Minute + 15) && r.Fecha.Day== (fecha.Day)
+                            && r.Cupo>0)
                         recomendaciones.Add(r);
                     }
                                         
@@ -126,24 +131,32 @@ namespace mundo
             return estado_recorridosRecomendados.Count != 0;
         }
 
-        public Boolean recomendarRecorridos(Tuple<double, double> ubicacion, double radio)
+        public Boolean recomendarRecorridos(Tuple<double, double> ubicacion, double radio, DateTime fecha)
         {
+            radio /= 1000;
+
+
             estado_recorridosRecomendados = new Dictionary<Usuario, Recorrido>();
             foreach (Usuario u in usuarios)
             {
-                List<Recorrido> recomendaciones = new List<Recorrido>();
-                if (u.Ubicacion.Item1 != ubicacion.Item1 && u.Ubicacion.Item2 != ubicacion.Item2)
-                {
+
+               
+                    List<Recorrido> recomendaciones = new List<Recorrido>();
                     foreach (Recorrido r in u.Recorridos)
                     {
-                        recomendaciones.Add(r);
+                    //se agrega la condicion que el recorrido tenga cupos disponibles.
+                        if ((fecha.Minute >= r.Fecha.Minute - 15) && (fecha.Minute <= r.Fecha.Minute + 15) && r.Fecha.Day == (fecha.Day) 
+                        && r.Cupo>0)
+                            recomendaciones.Add(r);
                     }
                     List<Recorrido> auxiliar = recomendaciones.Select(x => new { dist = distMinimaARuta(x, ubicacion), reco = x }).Where(x => x.dist <= radio).OrderBy(x => x.dist).Select(x => x.reco).ToList();
-                    if(auxiliar.Count>0)
+                    if (auxiliar.Count > 0)
                         estado_recorridosRecomendados.Add(u, auxiliar[0]);
+                
 
-                }
-            }
+
+                
+       }
             var dictionary = from entry in estado_recorridosRecomendados orderby distMinimaARuta(entry.Value, ubicacion) ascending select entry;
             estado_recorridosRecomendados = new Dictionary<Usuario, Recorrido>();
             foreach (KeyValuePair<Usuario, Recorrido> kvp in dictionary)
@@ -151,7 +164,7 @@ namespace mundo
                 estado_recorridosRecomendados.Add(kvp.Key, kvp.Value);
 
             }
-
+       
 
             return estado_recorridosRecomendados.Count != 0;
         }
@@ -200,33 +213,34 @@ namespace mundo
             return true;
         }
 
-        private double distMinimaARuta(Recorrido recorrido, Tuple<double, double> punto) {
-            double dist = double.MaxValue;
-            double v1=0.0;
-            double v2=0.0;
-            double distAux=0.0;
-            Tuple < double, double> ini = recorrido.Ruta.Inicio;
-            Tuple<double, double> fin;
-            if (recorrido.Ruta.Puntos != null) {
+        public const double RadioDeLaTierra = 6371;
+        public static double distMinimaARuta(Recorrido recorrido, Tuple<double,double> point1)
+        {
+
+            double distance = Double.MaxValue;
+
+            double aux = 0;
+
+            if (recorrido.Ruta.Puntos != null)
+            {
                 foreach (var p in recorrido.Ruta.Puntos)
                 {
-                    fin = p;
-                    v1 = fin.Item1 - ini.Item1;
-                    v2 = fin.Item2 - ini.Item2;
-                    distAux = (Math.Abs((v2 * punto.Item1) + (v1 * punto.Item2) + ((ini.Item1 * v2) + (ini.Item2 * v1)))) / (Math.Sqrt((v2 * v2) + (v1 * v1)));
-                    dist = Math.Min(dist, distAux);
-
-                    ini = p;
+                    double Lat = (p.Item1 - point1.Item1) * (Math.PI / 180);
+                    double Lon = (p.Item2 - point1.Item2) * (Math.PI / 180);
+                    double a = Math.Sin(Lat / 2) * Math.Sin(Lat / 2) + Math.Cos(point1.Item1 * (Math.PI / 180)) * Math.Cos(p.Item1 * (Math.PI / 180)) * Math.Sin(Lon / 2) * Math.Sin(Lon / 2);
+                    double c = 2 * Math.Atan2(Math.Sqrt(a), Math.Sqrt(1 - a));
+                    aux = RadioDeLaTierra * c;
+                    if (aux < distance)
+                        distance = aux;
                 }
             }
-            fin = recorrido.Ruta.Fin;
-            v1 = fin.Item1 - ini.Item1;
-            v2 = fin.Item2 - ini.Item2;
-            distAux = (Math.Abs((v2 * punto.Item1) + (v1 * punto.Item2) + ((ini.Item1 * v2) + (ini.Item2 * v1)))) / (Math.Sqrt((v2 * v2) + (v1 * v1)));
-            dist = Math.Min(dist, distAux);
-            
-            return dist;
+
+
+            return distance;
         }
+
+
+        
 
         public Dictionary<Usuario, Recorrido> Estado_recorridosRecomendados { get => estado_recorridosRecomendados; set => estado_recorridosRecomendados = value; }
         public Usuario Estado_usuarioVisualizado { get => estado_usuarioVisualizado; set => estado_usuarioVisualizado = value; }

@@ -38,18 +38,28 @@ namespace Controlador
 
             if (pRuta.txbRadio.Text.SequenceEqual(""))
             {
-                sistema.recomendarRecorridos(ubica, fecha);
+                if (ubica == null) { MessageBox.Show("Debes asignar un punto de referencia para la busqueda\nDando click en el globo naranja de tu perfil."); }
+                else {
+                    sistema.recomendarRecorridos(ubica, fecha);
+                    //refrescar info de panel recorridosRecomendados y luego mostrar
+                    mostrarPRecorridos();
+                }
             }
             else
             {
                 //llamar recomendacion con radio
-                int radio = -1;
-                try { radio = int.Parse(pRuta.txbRadio.Text); } catch { MessageBox.Show("El valor del radio debe ser numerico"); }
-                //sistema.recomendarRecorridos(ubica, radio);
+                double radio = -1;
+                try { radio = double.Parse(pRuta.txbRadio.Text); } catch { MessageBox.Show("El valor del radio debe ser numerico"); }
+                if (ubica == null) { MessageBox.Show("Debes asignar un punto de referencia para la busqueda\nDando click en el globo naranja de tu perfil."); }
+                else {
+                    sistema.recomendarRecorridos(ubica,radio, fecha);
+                    //refrescar info de panel recorridosRecomendados y luego mostrar
+                    mostrarPRecorridos();
+                    //sistema.recomendarRecorridos(ubica, radio);
+                }
+            
             }
             
-            //refrescar info de panel recorridosRecomendados y luego mostrar
-            mostrarPRecorridos();
         }
 
         private void mostrarPRecorridos() {

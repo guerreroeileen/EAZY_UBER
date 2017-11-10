@@ -22,6 +22,24 @@ namespace mundo
             this.sistemaRecomendaciones = sistemaRecomendaciones;
         }
 
+
+        public Dictionary<String, string> usuariosQueMasGeneranDinero(int cantidadUsuarios)
+        {
+            Dictionary<String, string> usuarios = new Dictionary<string, string>();
+            for (int i=0; i< sistemaRecomendaciones.Usuarios.Count;i++)
+            {
+                Usuario actual = sistemaRecomendaciones.Usuarios.ElementAt(i);
+                //usuarios.Add(actual.Celular, actual.dineroGeneradoPorRecorridos.ToString()+"");
+            }
+
+            return usuarios;
+
+
+        }
+
+
+
+
         public SistemaRecomendaciones SistRecomendaciones { get => sistemaRecomendaciones; set => sistemaRecomendaciones = value; }
 
         /*
@@ -96,7 +114,8 @@ namespace mundo
                         try
                         {
                             aux.registrarRecorrido(aleatorio.Next(1, 5) * 1000, aleatorio.Next(1, 4),
-                                new DateTime(DateTime.Now.Year, DateTime.Now.Month+1, aleatorio.Next(1,30), aleatorio.Next(6, 14), aleatorio.Next(1, 59), DateTime.Now.Second),
+                                
+                                new DateTime(DateTime.Now.Year, DateTime.Now.Month+1, 15, 13, 48, DateTime.Now.Second),
                                 aux.Vehiculos[new Random().Next(0, aux.Vehiculos.Count - 1)],
                                 aux.Rutas[new Random().Next(0, aux.Rutas.Count - 1)]);
                         }

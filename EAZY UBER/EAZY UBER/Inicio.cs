@@ -69,7 +69,6 @@ namespace EAZY_UBER
             this.panel_PerfilUsuario1 = new EAZY_UBER.Panel_PerfilUsuario();
             this.panel_registro1 = new EAZY_UBER.Panel_registro();
             this.panel_LogIn1 = new EAZY_UBER.Panel_LogIn();
-            
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -134,18 +133,18 @@ namespace EAZY_UBER
             // 
             // panel_RecorridoRecomendado1
             // 
-            this.panel_RecorridoRecomendado1.Location = new System.Drawing.Point(555, 396);
-            this.panel_RecorridoRecomendado1.Margin = new System.Windows.Forms.Padding(2);
+            this.panel_RecorridoRecomendado1.Location = new System.Drawing.Point(555, 384);
+            this.panel_RecorridoRecomendado1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel_RecorridoRecomendado1.Name = "panel_RecorridoRecomendado1";
-            this.panel_RecorridoRecomendado1.Size = new System.Drawing.Size(346, 245);
+            this.panel_RecorridoRecomendado1.Size = new System.Drawing.Size(346, 257);
             this.panel_RecorridoRecomendado1.TabIndex = 17;
             // 
             // panel_UsuarioRecomendado1
             // 
-            this.panel_UsuarioRecomendado1.Location = new System.Drawing.Point(555, 445);
+            this.panel_UsuarioRecomendado1.Location = new System.Drawing.Point(555, 384);
             this.panel_UsuarioRecomendado1.Margin = new System.Windows.Forms.Padding(2);
             this.panel_UsuarioRecomendado1.Name = "panel_UsuarioRecomendado1";
-            this.panel_UsuarioRecomendado1.Size = new System.Drawing.Size(346, 196);
+            this.panel_UsuarioRecomendado1.Size = new System.Drawing.Size(346, 257);
             this.panel_UsuarioRecomendado1.TabIndex = 16;
             // 
             // panel_BuscarRuta1
@@ -153,7 +152,7 @@ namespace EAZY_UBER
             this.panel_BuscarRuta1.Location = new System.Drawing.Point(555, 264);
             this.panel_BuscarRuta1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel_BuscarRuta1.Name = "panel_BuscarRuta1";
-            this.panel_BuscarRuta1.Size = new System.Drawing.Size(346, 111);
+            this.panel_BuscarRuta1.Size = new System.Drawing.Size(346, 105);
             this.panel_BuscarRuta1.TabIndex = 15;
             // 
             // panel_OfrecerCupo1
@@ -161,7 +160,7 @@ namespace EAZY_UBER
             this.panel_OfrecerCupo1.Location = new System.Drawing.Point(555, 264);
             this.panel_OfrecerCupo1.Margin = new System.Windows.Forms.Padding(2);
             this.panel_OfrecerCupo1.Name = "panel_OfrecerCupo1";
-            this.panel_OfrecerCupo1.Size = new System.Drawing.Size(346, 170);
+            this.panel_OfrecerCupo1.Size = new System.Drawing.Size(346, 105);
             this.panel_OfrecerCupo1.TabIndex = 14;
             // 
             // panel_PerfilUsuario1
@@ -169,7 +168,7 @@ namespace EAZY_UBER
             this.panel_PerfilUsuario1.Location = new System.Drawing.Point(555, 50);
             this.panel_PerfilUsuario1.Margin = new System.Windows.Forms.Padding(2);
             this.panel_PerfilUsuario1.Name = "panel_PerfilUsuario1";
-            this.panel_PerfilUsuario1.Size = new System.Drawing.Size(346, 199);
+            this.panel_PerfilUsuario1.Size = new System.Drawing.Size(346, 222);
             this.panel_PerfilUsuario1.TabIndex = 13;
             // 
             // panel_registro1
@@ -238,9 +237,7 @@ namespace EAZY_UBER
             markerUbicacion = new GMarkerGoogle(new PointLatLng(0, 0), GMarkerGoogleType.orange);
             markerOverlay.Markers.Add(markerUbicacion);// Agregamos al map
             //Agregar texto alos marcadores
-            markerUbicacion.ToolTipMode = MarkerTooltipMode.Always;
-            // marker.ToolTipText = string.Format("Nombre: \n Latitud: {0} \n Longitud: {1}", LatInicial, lngInicial);
-
+            markerUbicacion.ToolTipMode = MarkerTooltipMode.Always; 
             //Agregamos el map y el marcador al map control
             mapa.Overlays.Add(markerOverlay);
 

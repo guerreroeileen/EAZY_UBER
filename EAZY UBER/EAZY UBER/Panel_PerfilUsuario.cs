@@ -25,9 +25,10 @@ namespace EAZY_UBER
             InitializeComponent();
             errorInicio.Visible = false;
             errorRuta.Visible = false;
-            errorVehiculo.Visible = false;
+            errorVehiculo.Visible = false;          
 
-            
+            comboBoxRutas.SelectedIndex = -1;
+            comboBoxVehiculos.SelectedIndex = -1;
         }
 
         public void addHandlerCambiarIndice(delegado1 delegado)

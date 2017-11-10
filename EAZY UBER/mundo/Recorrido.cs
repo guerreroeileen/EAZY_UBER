@@ -10,6 +10,7 @@ namespace mundo
     public class Recorrido
     {
         private Double tarifa;
+        private Double dineroGenerado;
         private int cupo;
         private DateTime fecha;        
         private Ruta ruta;
@@ -22,6 +23,7 @@ namespace mundo
             this.fecha = fecha;           
             this.ruta = ruta;
             this.vehiculo = vehiculo;
+            dineroGenerado = 0.0;
         }
 
         public double Tarifa { get => tarifa; set => tarifa = value; }
@@ -29,5 +31,7 @@ namespace mundo
         
         public Ruta Ruta { get => ruta; set => ruta = value; }        
         public Vehiculo Vehiculo { get => vehiculo; set => vehiculo = value; }
+        public int Cupo { get => cupo; set => cupo = value; }
+        public Double DineroGenerado { get => dineroGenerado; set => dineroGenerado = value; }
     }
 }
