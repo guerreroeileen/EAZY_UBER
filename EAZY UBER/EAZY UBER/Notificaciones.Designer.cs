@@ -34,14 +34,11 @@
             this.label1 = new System.Windows.Forms.Label();
             this.lblMensaje = new System.Windows.Forms.Label();
             this.btnEliminar = new System.Windows.Forms.Button();
-            this.tipo1 = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // btnAceptar
             // 
-            this.btnAceptar.Location = new System.Drawing.Point(406, 309);
+            this.btnAceptar.Location = new System.Drawing.Point(406, 235);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(75, 23);
             this.btnAceptar.TabIndex = 0;
@@ -50,7 +47,7 @@
             // 
             // btnDeclinar
             // 
-            this.btnDeclinar.Location = new System.Drawing.Point(315, 309);
+            this.btnDeclinar.Location = new System.Drawing.Point(310, 235);
             this.btnDeclinar.Name = "btnDeclinar";
             this.btnDeclinar.Size = new System.Drawing.Size(75, 23);
             this.btnDeclinar.TabIndex = 1;
@@ -79,57 +76,24 @@
             // 
             this.lblMensaje.Location = new System.Drawing.Point(194, 46);
             this.lblMensaje.Name = "lblMensaje";
-            this.lblMensaje.Size = new System.Drawing.Size(287, 212);
+            this.lblMensaje.Size = new System.Drawing.Size(287, 180);
             this.lblMensaje.TabIndex = 4;
             this.lblMensaje.Text = "Mensaje";
             // 
             // btnEliminar
             // 
-            this.btnEliminar.Location = new System.Drawing.Point(223, 309);
+            this.btnEliminar.Location = new System.Drawing.Point(208, 235);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(75, 23);
             this.btnEliminar.TabIndex = 5;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = true;
             // 
-            // tipo1
-            // 
-            this.tipo1.AutoSize = true;
-            this.tipo1.Location = new System.Drawing.Point(38, 264);
-            this.tipo1.Name = "tipo1";
-            this.tipo1.Size = new System.Drawing.Size(80, 17);
-            this.tipo1.TabIndex = 6;
-            this.tipo1.Text = "checkBox1";
-            this.tipo1.UseVisualStyleBackColor = true;
-            // 
-            // checkBox2
-            // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(38, 287);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(80, 17);
-            this.checkBox2.TabIndex = 7;
-            this.checkBox2.Text = "checkBox2";
-            this.checkBox2.UseVisualStyleBackColor = true;
-            // 
-            // checkBox3
-            // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(38, 310);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(80, 17);
-            this.checkBox3.TabIndex = 8;
-            this.checkBox3.Text = "checkBox3";
-            this.checkBox3.UseVisualStyleBackColor = true;
-            // 
             // Notificaciones
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(530, 344);
-            this.Controls.Add(this.checkBox3);
-            this.Controls.Add(this.checkBox2);
-            this.Controls.Add(this.tipo1);
+            this.ClientSize = new System.Drawing.Size(530, 269);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.lblMensaje);
             this.Controls.Add(this.label1);
@@ -145,9 +109,6 @@
 
         #endregion
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.CheckBox tipo1;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.CheckBox checkBox3;
         public System.Windows.Forms.ListBox listBoxNotificaciones;
         public System.Windows.Forms.Button btnAceptar;
         public System.Windows.Forms.Button btnDeclinar;

@@ -45,7 +45,7 @@ namespace mundo
 
                 case TIPO_OFRECER_CUPO:
                     return "El usuario identificado como " + solicitante.Nombre + " " + solicitante.Apellido + " desea ofrecerte un cupo en uno de sus recorridos" +
-                        ". Para más información comunácate con el al número de celular: " + solicitante.Celular;
+                        ". Para más información comunicate con el al número de celular: " + solicitante.Celular;
 
                 case TIPO_RECHAZAR_SOLICITUD:
                     return "El usuario identificado como " + solicitante.Nombre + " " + solicitante.Apellido + " ha rechazado tu solicitud";
