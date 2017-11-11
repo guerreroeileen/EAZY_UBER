@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using GMap.NET.WindowsForms;
 using System.Diagnostics;
 using Microsoft.VisualBasic;
+using System.Globalization;
 
 namespace Controlador
 {
@@ -62,9 +63,27 @@ namespace Controlador
             {
                 this.admon.listUsuariosRegistrados.Items.Add(a.celular);
             }
+
+            llenarTablaUsuarios();
+
             admon.Show();
 
         }
+
+
+        private void llenarTablaUsuarios() {
+            admon.chartRegUser.Series.Clear();
+            admon.chartRegUser.Series.Add("registros");
+            List<Tuple<int, int>> datos = sistemaAdmon.reporteRegistroUsuarios();            
+            var max = datos.Select(b => b.Item2).Max();
+            foreach (var d in datos) {
+                admon.chartRegUser.Series["registros"].Points.AddXY(DateTimeFormatInfo.CurrentInfo.GetMonthName( d.Item1), d.Item2);
+            }
+            admon.chartRegUser.ChartAreas[0].AxisY.Maximum = max + max*0.1;
+            admon.chartRegUser.Series["registros"].ChartArea = "ChartArea1";
+            
+        }
+
 
         /*
          * EventHandler para llamar al generador de usuario del sistema administrador

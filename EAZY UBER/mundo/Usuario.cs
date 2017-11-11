@@ -23,6 +23,7 @@ namespace mundo
         private string contrasenia;
         private string correo;
         private string rutaFoto;
+        private DateTime fechaRegistro;
         private List<Usuario> usuariosAceptados;
         private List<Usuario> usuariosPorAceptar;
         private Dictionary<String, int> calificadores;
@@ -37,7 +38,7 @@ namespace mundo
         private List<Recorrido> recorridos;
 
 
-        public Usuario(string nombre, string apellido, string correo, string celular, string rutaFoto, string contrasena, bool recomendar)
+        public Usuario(string nombre, string apellido, string correo, string celular, string rutaFoto, string contrasena, bool recomendar, DateTime fechaRegistro)
         {
             this.nombre = nombre;
             this.apellido = apellido;
@@ -46,6 +47,7 @@ namespace mundo
             this.rutaFoto = rutaFoto;
             this.contrasenia = contrasena;
             this.recomendarRecorrido = recomendar;
+            this.fechaRegistro = fechaRegistro;
 
             notificaciones = new List<Notificacion>();
             usuariosAceptados = new List<Usuario>();
@@ -234,5 +236,6 @@ namespace mundo
         public List<Ruta> Rutas { get => rutas; set => rutas = value; }
         public List<Vehiculo> Vehiculos { get => vehiculos; set => vehiculos = value; }
         public List<Notificacion> Notificaciones { get => notificaciones; set => notificaciones = value; }
+        public DateTime FechaRegistro { get => fechaRegistro; set => fechaRegistro = value; }
     }
 }
