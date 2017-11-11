@@ -37,8 +37,13 @@ namespace mundo
 
         }
 
+        public List<Tuple<int,int>> reporteRegistroUsuarios() {
 
-
+            List<Tuple<int, int>>  resp = sistemaRecomendaciones.Usuarios.Select(u => new { fecha = u.FechaRegistro.Month })
+                .GroupBy(g=>g.fecha  ).OrderBy(g=>g.Key).Select(g => new Tuple<int, int>(g.Key, g.Count())).ToList();
+            return resp;
+                      
+        }
 
         public SistemaRecomendaciones SistRecomendaciones { get => sistemaRecomendaciones; set => sistemaRecomendaciones = value; }
 
@@ -49,13 +54,13 @@ namespace mundo
          */
         public List<Usuario> generarBaseDatos(int numUsuario) {
             List<Usuario> nuevaBD = new List<Usuario>();
-            nuevaBD.Add(new Usuario("nombreAdmon", "apellidoAdmon", "correo@admon", "0000000000", "", "password", true));
+            nuevaBD.Add(new Usuario("nombreAdmon", "apellidoAdmon", "correo@admon", "0000000000", "", "password", true, DateTime.Now));
             int vc = 'A', vd = 'A', vu = 'A', vNum=100;
             
             Random aleatorio = new Random((int)DateTime.Now.Ticks);
 
             for (int i = 0; i < numUsuario; i++) {
-                Usuario aux = new Usuario(nombres[aleatorio.Next(0, (nombres.Length-1))], apellidos[aleatorio.Next(0, (apellidos.Length-1))], "generado@" + i, 3022500000 + i+"", "", "usuario" + i, new Random().Next(0, 1)==0?false:true);
+                Usuario aux = new Usuario(nombres[aleatorio.Next(0, (nombres.Length-1))], apellidos[aleatorio.Next(0, (apellidos.Length-1))], "generado@" + i, 3022500000 + i+"", "", "usuario" + i, new Random().Next(0, 1)==0?false:true, new DateTime(DateTime.Now.Year, aleatorio.Next( DateTime.Now.Month-5, DateTime.Now.Month+1), DateTime.Now.Day));
 
                 //Genera vehiculos para el usuario
                 int numVehiculos = aleatorio.Next(0, 4);

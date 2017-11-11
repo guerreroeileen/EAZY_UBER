@@ -19,7 +19,8 @@ namespace EAZY_UBER
 
         public Administrador()
         {
-            InitializeComponent();
+            InitializeComponent();     
+           
         }
 
         private void listUsuariosRegistrados_SelectedIndexChanged(object sender, EventArgs e)

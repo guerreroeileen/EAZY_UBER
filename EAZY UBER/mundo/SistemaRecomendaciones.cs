@@ -37,7 +37,7 @@ namespace mundo
             cargarDB();
             if (!usuarios.Where(a => a.Celular.Equals("0000000000")).Any())
             {
-                usuarios.Add(new Usuario("nombreAdmon", "apellidoAdmon", "correo@admon", "0000000000", "", "password", true));
+                usuarios.Add(new Usuario("nombreAdmon", "apellidoAdmon", "correo@admon", "0000000000", "", "password", true, DateTime.Now));
                 Debug.WriteLine("Agrego");
             }
                 
@@ -67,7 +67,7 @@ namespace mundo
             controlRegistro[5] = (contrasena == null || confContrasena == null) ? 1 : (contrasena.Length < 5 || !contrasena.Equals(confContrasena)) ? 1 : 0;
             if (controlRegistro.Any(a => a == 1))
                 throw new AgregarUsuarioExcepcion(controlRegistro);
-            usuarios.Add(new Usuario(nombre, apellido, correo, celular, rutaFoto, contrasena, recomendar));
+            usuarios.Add(new Usuario(nombre, apellido, correo, celular, rutaFoto, contrasena, recomendar, DateTime.Now));
             return true;
         }
 
