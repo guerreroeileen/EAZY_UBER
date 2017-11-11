@@ -28,17 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Administrador));
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Administrador));
             this.listUsuariosRegistrados = new System.Windows.Forms.ListBox();
             this.labelUsuarios = new System.Windows.Forms.Label();
             this.buttonEliminar = new System.Windows.Forms.Button();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
-            this.generarUsuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -69,6 +66,15 @@
             this.labelUsuariosRegistrados = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.lbxNombre = new System.Windows.Forms.ListBox();
+            this.lbxDinero = new System.Windows.Forms.ListBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
+            this.generarUsuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tabPageChartRegUser.SuspendLayout();
@@ -76,6 +82,8 @@
             this.tabPage1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // listUsuariosRegistrados
@@ -119,31 +127,6 @@
             this.toolStrip1.Size = new System.Drawing.Size(883, 27);
             this.toolStrip1.TabIndex = 14;
             this.toolStrip1.Text = "toolStrip1";
-            // 
-            // toolStripDropDownButton1
-            // 
-            this.toolStripDropDownButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripDropDownButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.generarUsuariosToolStripMenuItem,
-            this.toolStripMenuItem1});
-            this.toolStripDropDownButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton1.Image")));
-            this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
-            this.toolStripDropDownButton1.Size = new System.Drawing.Size(34, 24);
-            this.toolStripDropDownButton1.Text = "toolStripDropDownButton1";
-            // 
-            // generarUsuariosToolStripMenuItem
-            // 
-            this.generarUsuariosToolStripMenuItem.Name = "generarUsuariosToolStripMenuItem";
-            this.generarUsuariosToolStripMenuItem.Size = new System.Drawing.Size(196, 26);
-            this.generarUsuariosToolStripMenuItem.Text = "Generar Usuarios";
-            // 
-            // toolStripMenuItem1
-            // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(196, 26);
-            this.toolStripMenuItem1.Text = "Volver a Inicio";
-            this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
             // label6
             // 
@@ -308,13 +291,13 @@
             this.chartRegUser.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             this.chartRegUser.Legends.Add(legend1);
-            this.chartRegUser.Location = new System.Drawing.Point(6, 24);
+            this.chartRegUser.Location = new System.Drawing.Point(6, 3);
             this.chartRegUser.Name = "chartRegUser";
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";
             series1.Name = "Series1";
             this.chartRegUser.Series.Add(series1);
-            this.chartRegUser.Size = new System.Drawing.Size(320, 247);
+            this.chartRegUser.Size = new System.Drawing.Size(320, 268);
             this.chartRegUser.TabIndex = 0;
             this.chartRegUser.Text = "Usuarios Registrados";
             // 
@@ -463,11 +446,98 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPageChartRegUser);
+            this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Location = new System.Drawing.Point(531, 53);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(340, 308);
             this.tabControl1.TabIndex = 31;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.pictureBox1);
+            this.tabPage2.Controls.Add(this.label15);
+            this.tabPage2.Controls.Add(this.label14);
+            this.tabPage2.Controls.Add(this.lbxDinero);
+            this.tabPage2.Controls.Add(this.lbxNombre);
+            this.tabPage2.Location = new System.Drawing.Point(4, 25);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(332, 279);
+            this.tabPage2.TabIndex = 2;
+            this.tabPage2.Text = "Ranking Dinero";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // lbxNombre
+            // 
+            this.lbxNombre.FormattingEnabled = true;
+            this.lbxNombre.ItemHeight = 16;
+            this.lbxNombre.Location = new System.Drawing.Point(23, 136);
+            this.lbxNombre.Name = "lbxNombre";
+            this.lbxNombre.Size = new System.Drawing.Size(120, 116);
+            this.lbxNombre.TabIndex = 0;
+            // 
+            // lbxDinero
+            // 
+            this.lbxDinero.FormattingEnabled = true;
+            this.lbxDinero.ItemHeight = 16;
+            this.lbxDinero.Location = new System.Drawing.Point(169, 136);
+            this.lbxDinero.Name = "lbxDinero";
+            this.lbxDinero.Size = new System.Drawing.Size(120, 116);
+            this.lbxDinero.TabIndex = 1;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(26, 111);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(58, 17);
+            this.label14.TabIndex = 2;
+            this.label14.Text = "Nombre";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(166, 111);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(124, 17);
+            this.label15.TabIndex = 3;
+            this.label15.Text = "Dinero Acumulado";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(15, 11);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(303, 82);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 4;
+            this.pictureBox1.TabStop = false;
+            // 
+            // toolStripDropDownButton1
+            // 
+            this.toolStripDropDownButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripDropDownButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.generarUsuariosToolStripMenuItem,
+            this.toolStripMenuItem1});
+            this.toolStripDropDownButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton1.Image")));
+            this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
+            this.toolStripDropDownButton1.Size = new System.Drawing.Size(34, 24);
+            this.toolStripDropDownButton1.Text = "toolStripDropDownButton1";
+            // 
+            // generarUsuariosToolStripMenuItem
+            // 
+            this.generarUsuariosToolStripMenuItem.Name = "generarUsuariosToolStripMenuItem";
+            this.generarUsuariosToolStripMenuItem.Size = new System.Drawing.Size(196, 26);
+            this.generarUsuariosToolStripMenuItem.Text = "Generar Usuarios";
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(196, 26);
+            this.toolStripMenuItem1.Text = "Volver a Inicio";
+            this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
             // Administrador
             // 
@@ -494,6 +564,9 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -537,5 +610,11 @@
         private System.Windows.Forms.Label label1;
         public System.Windows.Forms.TabControl tabControl1;
         public System.Windows.Forms.DataVisualization.Charting.Chart chartRegUser;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label14;
+        public System.Windows.Forms.ListBox lbxDinero;
+        public System.Windows.Forms.ListBox lbxNombre;
     }
 }
