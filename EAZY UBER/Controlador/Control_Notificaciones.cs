@@ -76,7 +76,7 @@ namespace Controlador
         private void evento_clickBotonAceptar(object sender, EventArgs e)
         {
             Recorrido temporalReco = sistema.Estado_usuarioLogged.darNotificacion(notificaciones.listBoxNotificaciones.SelectedIndex).Recorrido;
-            if (temporalReco.Cupo > 0)
+            if (temporalReco != null && temporalReco.Cupo > 0)
             {
                 //envio la notificacion al usuario que pidio el cupo diciendo que he aceptado
                 sistema.darUsuario(notificaciones.listBoxNotificaciones.SelectedItem.ToString()).notificarUsuario(Notificacion.TIPO_ACEPTAR_SOLICITUD, sistema.Estado_usuarioLogged, sistema.Estado_usuarioLogged.darNotificacion(notificaciones.listBoxNotificaciones.SelectedIndex).Recorrido);
