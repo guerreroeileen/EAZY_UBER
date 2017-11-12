@@ -40,7 +40,7 @@ namespace Controlador
 
             for (int i = 0; i < logueado.Notificaciones.Count; i++)
             {
-                notificaciones.listBoxNotificaciones.Items.Add(logueado.Notificaciones.ElementAt(i).Solicitante.Celular + "");
+                notificaciones.listBoxNotificaciones.Items.Add(logueado.Notificaciones.ElementAt(i).Solicitante.Nombre + " " + logueado.Notificaciones.ElementAt(i).Solicitante.Apellido);
             }
             
     }

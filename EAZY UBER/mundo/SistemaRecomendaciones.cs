@@ -20,6 +20,7 @@ namespace mundo
         private Usuario estado_usuarioVisualizado;
         private List<Usuario> estado_usuariosRecomendados;
         private Usuario estado_usuarioLogged;
+        private Recorrido estado_recorrido;
 
 
 
@@ -88,6 +89,7 @@ namespace mundo
                 }
             }
             Estado_usuariosRecomendados = auxList.Select(x => new { dist = distMinimaARuta(recorrido, x.Ubicacion), usu = x }).OrderBy(x => x.dist).Select(x => x.usu).Take(15).ToList();
+            estado_recorrido = recorrido;
             return true;
         }
 
@@ -239,13 +241,23 @@ namespace mundo
             return distance;
         }
 
+        public override bool Equals(object obj)
+        {
+            var recomendaciones = obj as SistemaRecomendaciones;
+            return recomendaciones != null &&
+                   EqualityComparer<Recorrido>.Default.Equals(estado_recorrido, recomendaciones.estado_recorrido);
+        }
 
-        
+        public override int GetHashCode()
+        {
+            return 1194412899 + EqualityComparer<Recorrido>.Default.GetHashCode(estado_recorrido);
+        }
 
         public Dictionary<Usuario, Recorrido> Estado_recorridosRecomendados { get => estado_recorridosRecomendados; set => estado_recorridosRecomendados = value; }
         public Usuario Estado_usuarioVisualizado { get => estado_usuarioVisualizado; set => estado_usuarioVisualizado = value; }
         public List<Usuario> Estado_usuariosRecomendados { get => estado_usuariosRecomendados; set => estado_usuariosRecomendados = value; }
         public Usuario Estado_usuarioLogged { get => estado_usuarioLogged; set => estado_usuarioLogged = value; }
         public List<Usuario> Usuarios { get => usuarios; set => usuarios = value; }
+        public Recorrido Estado_recorrido { get => estado_recorrido; set => estado_recorrido = value; }
     }
 }

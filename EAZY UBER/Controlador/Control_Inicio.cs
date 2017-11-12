@@ -217,6 +217,7 @@ namespace Controlador
                 sistema.registrarUsuario(nombre, apellido, correo, celular, rutafoto, contrasena, confirmarContrasena, recibirrecomendaciones);
                 formInicio.panel_LogIn1.Visible = true;
                 formInicio.panel_registro1.Visible = false;
+                formInicio.panel_registro1.limpiar();
             } catch (AgregarUsuarioExcepcion e)
             {
 
@@ -256,8 +257,9 @@ namespace Controlador
             formInicio.panel_registro1.textContrasena.Clear();
             formInicio.panel_registro1.textConfContrasena.Clear();
             formInicio.panel_registro1.checkBoxRecomendaciones.Checked = false;
-            
+
             //ocultar registro
+            formInicio.panel_registro1.limpiar();
             formInicio.panel_registro1.Visible = false;
         }
 
@@ -395,6 +397,7 @@ namespace Controlador
             {
                 formInicio.panel_OfrecerCupo1.pintarrecorridos(sistema.Estado_usuarioLogged);
                 formInicio.panel_OfrecerCupo1.Visible = true;
+                controlUsuarioRecom.setrecorrido(sistema.Estado_recorrido);
                 formInicio.panel_BuscarRuta1.Visible = false;
                 formInicio.panel_RecorridoRecomendado1.Visible = false;
                 formInicio.panel_UsuarioRecomendado1.Visible = false;
