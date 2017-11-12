@@ -427,10 +427,13 @@ namespace Controlador
          */
         private void cerrarSesionToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            sistema.Estado_usuarioLogged = null;            
-            var overlayUbicacion = formInicio.mapa.Overlays.First();
+            sistema.Estado_usuarioLogged = null;
+
+            GMapOverlay capa = formInicio.MarkerOverlay;
+            formInicio.MarkerOverlay.Clear();
+
             formInicio.mapa.Overlays.Clear();
-            formInicio.mapa.Overlays.Add(overlayUbicacion);
+            formInicio.mapa.Overlays.Add(capa);
             sistema.guardarDB();
 
             //Acomodar paneles de nuevo
@@ -575,15 +578,13 @@ namespace Controlador
 
         private void Form1_FormClosing(Object sender, FormClosingEventArgs e)
         {
-            var overlayUbicacion = formInicio.mapa.Overlays.First();
+            GMapOverlay capa = formInicio.MarkerOverlay;
+
+            
             formInicio.mapa.Overlays.Clear();
-            formInicio.mapa.Overlays.Add(overlayUbicacion);
+            formInicio.mapa.Overlays.Add(capa);
             System.Text.StringBuilder messageBoxCS = new System.Text.StringBuilder();
-           // messageBoxCS.AppendFormat("{0} = {1}", "CloseReason", e.CloseReason);
-           // messageBoxCS.AppendLine();
-            //messageBoxCS.AppendFormat("{0} = {1}", "Cancel", e.Cancel);
-            //messageBoxCS.AppendLine();
-            //MessageBox.Show(messageBoxCS.ToString(), "FormClosing Event");
+           
             sistema.guardarDB();
 
         }
