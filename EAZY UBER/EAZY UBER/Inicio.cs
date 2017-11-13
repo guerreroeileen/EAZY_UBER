@@ -48,6 +48,7 @@ namespace EAZY_UBER
 
         public GMapOverlay MarkerOverlay { get => markerOverlay; set => markerOverlay = value; }
 
+
         //evento click en el mapa
         public event delegado2 mapClick;
 
@@ -57,6 +58,19 @@ namespace EAZY_UBER
             this.sistema = sistema;
             InitializeComponent();
         }
+        public void actualizarCapaMarcador()
+        {
+            mapa.Overlays.Clear();
+           
+           // Agregamos al map
+            //Agregar texto alos marcadores
+            
+            //Agregamos el map y el marcador al map control
+            mapa.Overlays.Add(MarkerOverlay);
+
+
+        }
+
 
         private void InitializeComponent()
         {

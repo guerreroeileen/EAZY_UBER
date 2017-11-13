@@ -139,9 +139,15 @@ namespace Controlador
                     if (sistema.Estado_usuarioLogged.Ubicacion != null)
                     {
                         Tuple<double, double> ubicacion = sistema.Estado_usuarioLogged.Ubicacion;
+
                         formInicio.markerUbicacion.Position = new PointLatLng(ubicacion.Item1, ubicacion.Item2);
-                        
+
                     }
+                    else
+                    {
+                        formInicio.markerUbicacion.Position = new PointLatLng(0, 0); 
+                    }
+
                 }
 
 
@@ -429,11 +435,8 @@ namespace Controlador
         {
             sistema.Estado_usuarioLogged = null;
 
-            GMapOverlay capa = formInicio.MarkerOverlay;
            
-
-            formInicio.mapa.Overlays.Clear();
-            formInicio.mapa.Overlays.Add(capa);
+            formInicio.actualizarCapaMarcador();
             sistema.guardarDB();
 
             //Acomodar paneles de nuevo
@@ -578,11 +581,7 @@ namespace Controlador
 
         private void Form1_FormClosing(Object sender, FormClosingEventArgs e)
         {
-            GMapOverlay capa = formInicio.MarkerOverlay;
-
-            
-            formInicio.mapa.Overlays.Clear();
-            formInicio.mapa.Overlays.Add(capa);
+            formInicio.actualizarCapaMarcador();
             System.Text.StringBuilder messageBoxCS = new System.Text.StringBuilder();
            
             sistema.guardarDB();
