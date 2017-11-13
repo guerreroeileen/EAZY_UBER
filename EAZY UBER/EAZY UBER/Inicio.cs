@@ -44,7 +44,11 @@ namespace EAZY_UBER
         //MAPA
         public GMap.NET.WindowsForms.GMapControl mapa;
         public GMarkerGoogle markerUbicacion;
-        public GMapOverlay markerOverlay;
+        private GMapOverlay markerOverlay;
+
+        public GMapOverlay MarkerOverlay { get => markerOverlay; set => markerOverlay = value; }
+
+
         //evento click en el mapa
         public event delegado2 mapClick;
 
@@ -54,6 +58,19 @@ namespace EAZY_UBER
             this.sistema = sistema;
             InitializeComponent();
         }
+        public void actualizarCapaMarcador()
+        {
+            mapa.Overlays.Clear();
+           
+           // Agregamos al map
+            //Agregar texto alos marcadores
+            
+            //Agregamos el map y el marcador al map control
+            mapa.Overlays.Add(MarkerOverlay);
+
+
+        }
+
 
         private void InitializeComponent()
         {
@@ -233,13 +250,13 @@ namespace EAZY_UBER
             this.mapa.Size = new System.Drawing.Size(523, 590);
 
 
-            markerOverlay = new GMapOverlay("Marcador");
+            MarkerOverlay = new GMapOverlay("Marcador");
             markerUbicacion = new GMarkerGoogle(new PointLatLng(0, 0), GMarkerGoogleType.orange);
-            markerOverlay.Markers.Add(markerUbicacion);// Agregamos al map
+            MarkerOverlay.Markers.Add(markerUbicacion);// Agregamos al map
             //Agregar texto alos marcadores
             markerUbicacion.ToolTipMode = MarkerTooltipMode.Always; 
             //Agregamos el map y el marcador al map control
-            mapa.Overlays.Add(markerOverlay);
+            mapa.Overlays.Add(MarkerOverlay);
 
         }
 

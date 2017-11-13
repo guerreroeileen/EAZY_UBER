@@ -15,6 +15,7 @@ namespace Controlador
 
         private panel_UsuarioRecomendado pUsuarioRecom;
         private SistemaRecomendaciones sistema;
+        private Recorrido recorridoReco;
 
         public Control_UsuarioRecom(panel_UsuarioRecomendado pUsuarioRecom, SistemaRecomendaciones sistema)
         {
@@ -26,6 +27,11 @@ namespace Controlador
             pUsuarioRecom.btnOfrecerCupo.Click += ofrecerCupo_Click;
             pUsuarioRecom.btnDescartar.Enabled = false;
             pUsuarioRecom.btnOfrecerCupo.Enabled = false;
+        }
+
+        public void setrecorrido(Recorrido rec)
+        {
+            recorridoReco = rec;
         }
 
         private void evento_selectedUsuarioRecom(object sender, EventArgs e) {
@@ -67,7 +73,7 @@ namespace Controlador
             if (iUserReco > -1)
             {
                 Usuario uReco = sistema.Estado_usuariosRecomendados[iUserReco];
-                uReco.notificarUsuario(Notificacion.TIPO_OFRECER_CUPO, sistema.Estado_usuarioLogged,null);
+                uReco.notificarUsuario(Notificacion.TIPO_OFRECER_CUPO, sistema.Estado_usuarioLogged, recorridoReco);
                 MessageBox.Show("Se ha ofrecido el cupo en el recorrido exitosamente");
             }
         }
@@ -78,11 +84,11 @@ namespace Controlador
                 pUsuarioRecom.lbxUsuarios.Items.Clear();                
                 foreach (var u in sistema.Estado_usuariosRecomendados)
                 {
-                    //condicional para evitar que el usuario se recomiende a si mismo
-                    if (u.Celular!= sistema.Estado_usuarioLogged.Celular)
-                    {
+                    //Se quita el condicional de agregar el propio nombre al listBox ya que ya se modifico
+                    //el método recomendarUsuarios en sistemaRecomendaciones
+                    
                         pUsuarioRecom.lbxUsuarios.Items.Add(u.Nombre);
-                    }
+                    
                     
                 }
                 pUsuarioRecom.lbxUsuarios.SelectedIndex = -1;

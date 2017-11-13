@@ -20,6 +20,7 @@ namespace mundo
         private Usuario estado_usuarioVisualizado;
         private List<Usuario> estado_usuariosRecomendados;
         private Usuario estado_usuarioLogged;
+        private Recorrido estado_recorrido;
 
 
 
@@ -77,17 +78,21 @@ namespace mundo
         }
 
         /*
-         * Metodo que recomienda lo primero 15 usuarios para un recorrido.
-         * El criterio de ordenamiento es la distancia del usuario a la ruta.
+         * Metodo que recomienda los usuarios que están a menos de 2.3 km de el trayecto del recorrido
+         * //(13-11-2017)Se le agrega condicional para que en la lista de usuarios recomendados no se recomiende a sí mismo
          */
         public Boolean recomendarUsuarios(Recorrido recorrido) {
             List<Usuario> auxList = new List<Usuario>();
+            estado_usuariosRecomendados = null;
             foreach (Usuario u in usuarios) {
-                if (u.Ubicacion != null) {
+                if (u.Ubicacion != null && u.Celular!=estado_usuarioLogged.Celular) {
                     auxList.Add(u);
                 }
             }
-            Estado_usuariosRecomendados = auxList.Select(x => new { dist = distMinimaARuta(recorrido, x.Ubicacion), usu = x }).OrderBy(x => x.dist).Select(x => x.usu).Take(15).ToList();
+            estado_usuariosRecomendados = auxList.Select(x => new { dist = distMinimaARuta(recorrido, x.Ubicacion), usu = x }).Select(x=> { Debug.WriteLine(x.dist); return x; }).Where(x => x.dist <= 2.3).Select(x => x.usu).ToList();
+            estado_recorrido = recorrido;
+            foreach (Usuario u in estado_usuariosRecomendados)
+                Debug.WriteLine("eL NOMBRE ES " + u.Nombre);
             return true;
         }
 
@@ -239,13 +244,23 @@ namespace mundo
             return distance;
         }
 
+        public override bool Equals(object obj)
+        {
+            var recomendaciones = obj as SistemaRecomendaciones;
+            return recomendaciones != null &&
+                   EqualityComparer<Recorrido>.Default.Equals(estado_recorrido, recomendaciones.estado_recorrido);
+        }
 
-        
+        public override int GetHashCode()
+        {
+            return 1194412899 + EqualityComparer<Recorrido>.Default.GetHashCode(estado_recorrido);
+        }
 
         public Dictionary<Usuario, Recorrido> Estado_recorridosRecomendados { get => estado_recorridosRecomendados; set => estado_recorridosRecomendados = value; }
         public Usuario Estado_usuarioVisualizado { get => estado_usuarioVisualizado; set => estado_usuarioVisualizado = value; }
         public List<Usuario> Estado_usuariosRecomendados { get => estado_usuariosRecomendados; set => estado_usuariosRecomendados = value; }
         public Usuario Estado_usuarioLogged { get => estado_usuarioLogged; set => estado_usuarioLogged = value; }
         public List<Usuario> Usuarios { get => usuarios; set => usuarios = value; }
+        public Recorrido Estado_recorrido { get => estado_recorrido; set => estado_recorrido = value; }
     }
 }

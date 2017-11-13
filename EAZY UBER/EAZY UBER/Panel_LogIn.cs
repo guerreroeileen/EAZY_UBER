@@ -28,6 +28,7 @@ namespace EAZY_UBER
         {
             textUsuario.Clear();
             textContrasena.Clear();
+            error.Visible = false;
         }
 
         private void registro_Click(object sender, EventArgs e)
