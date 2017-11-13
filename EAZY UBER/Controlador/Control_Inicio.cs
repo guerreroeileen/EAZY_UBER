@@ -430,7 +430,7 @@ namespace Controlador
             sistema.Estado_usuarioLogged = null;
 
             GMapOverlay capa = formInicio.MarkerOverlay;
-            formInicio.MarkerOverlay.Clear();
+           
 
             formInicio.mapa.Overlays.Clear();
             formInicio.mapa.Overlays.Add(capa);
