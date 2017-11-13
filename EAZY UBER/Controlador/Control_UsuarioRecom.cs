@@ -84,11 +84,11 @@ namespace Controlador
                 pUsuarioRecom.lbxUsuarios.Items.Clear();                
                 foreach (var u in sistema.Estado_usuariosRecomendados)
                 {
-                    //condicional para evitar que el usuario se recomiende a si mismo
-                    if (u.Celular!= sistema.Estado_usuarioLogged.Celular)
-                    {
+                    //Se quita el condicional de agregar el propio nombre al listBox ya que ya se modifico
+                    //el método recomendarUsuarios en sistemaRecomendaciones
+                    
                         pUsuarioRecom.lbxUsuarios.Items.Add(u.Nombre);
-                    }
+                    
                     
                 }
                 pUsuarioRecom.lbxUsuarios.SelectedIndex = -1;
