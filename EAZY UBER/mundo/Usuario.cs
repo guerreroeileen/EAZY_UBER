@@ -110,7 +110,7 @@ namespace mundo
             if (cupos<=0 && cupos>=5) { campos[3] = true; fail = true; }
             if (tarifa <0) { campos[4] = true; fail = true; }
             if (fail)
-            {                
+            {                 
                 AgregarRecorridoExcepcion excep = new AgregarRecorridoExcepcion(campos);
                 throw excep;
             }

@@ -78,18 +78,21 @@ namespace mundo
         }
 
         /*
-         * Metodo que recomienda lo primero 15 usuarios para un recorrido.
-         * El criterio de ordenamiento es la distancia del usuario a la ruta.
+         * Metodo que recomienda los usuarios que están a menos de 2.3 km de el trayecto del recorrido
+         * //(13-11-2017)Se le agrega condicional para que en la lista de usuarios recomendados no se recomiende a sí mismo
          */
         public Boolean recomendarUsuarios(Recorrido recorrido) {
             List<Usuario> auxList = new List<Usuario>();
+            estado_usuariosRecomendados = null;
             foreach (Usuario u in usuarios) {
-                if (u.Ubicacion != null) {
+                if (u.Ubicacion != null && u.Celular!=estado_usuarioLogged.Celular) {
                     auxList.Add(u);
                 }
             }
-            Estado_usuariosRecomendados = auxList.Select(x => new { dist = distMinimaARuta(recorrido, x.Ubicacion), usu = x }).OrderBy(x => x.dist).Select(x => x.usu).Take(15).ToList();
+            estado_usuariosRecomendados = auxList.Select(x => new { dist = distMinimaARuta(recorrido, x.Ubicacion), usu = x }).Select(x=> { Debug.WriteLine(x.dist); return x; }).Where(x => x.dist <= 2.3).Select(x => x.usu).ToList();
             estado_recorrido = recorrido;
+            foreach (Usuario u in estado_usuariosRecomendados)
+                Debug.WriteLine("eL NOMBRE ES " + u.Nombre);
             return true;
         }
 
