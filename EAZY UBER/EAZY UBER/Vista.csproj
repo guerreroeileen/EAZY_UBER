@@ -263,5 +263,8 @@
   <ItemGroup>
     <None Include="Resources\globo_ubicacion.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GoldBar Banner.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

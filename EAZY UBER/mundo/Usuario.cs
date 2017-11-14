@@ -188,7 +188,7 @@ namespace mundo
             }
             else
             {
-                throw new AgregarVehiculoExcepcion("El vehiculo que esta intentando eliminar no existe"); //por que esa exception?
+                throw new AgregarVehiculoExcepcion("El vehiculo que esta intentando eliminar no existe"); 
             }
             
             return eliminado;
