@@ -139,9 +139,15 @@ namespace Controlador
                     if (sistema.Estado_usuarioLogged.Ubicacion != null)
                     {
                         Tuple<double, double> ubicacion = sistema.Estado_usuarioLogged.Ubicacion;
+
                         formInicio.markerUbicacion.Position = new PointLatLng(ubicacion.Item1, ubicacion.Item2);
-                        
+
                     }
+                    else
+                    {
+                        formInicio.markerUbicacion.Position = new PointLatLng(0, 0); 
+                    }
+
                 }
 
 
@@ -217,6 +223,7 @@ namespace Controlador
                 sistema.registrarUsuario(nombre, apellido, correo, celular, rutafoto, contrasena, confirmarContrasena, recibirrecomendaciones);
                 formInicio.panel_LogIn1.Visible = true;
                 formInicio.panel_registro1.Visible = false;
+                formInicio.panel_registro1.limpiar();
             } catch (AgregarUsuarioExcepcion e)
             {
 
@@ -256,8 +263,9 @@ namespace Controlador
             formInicio.panel_registro1.textContrasena.Clear();
             formInicio.panel_registro1.textConfContrasena.Clear();
             formInicio.panel_registro1.checkBoxRecomendaciones.Checked = false;
-            
+
             //ocultar registro
+            formInicio.panel_registro1.limpiar();
             formInicio.panel_registro1.Visible = false;
         }
 
@@ -395,6 +403,7 @@ namespace Controlador
             {
                 formInicio.panel_OfrecerCupo1.pintarrecorridos(sistema.Estado_usuarioLogged);
                 formInicio.panel_OfrecerCupo1.Visible = true;
+                
                 formInicio.panel_BuscarRuta1.Visible = false;
                 formInicio.panel_RecorridoRecomendado1.Visible = false;
                 formInicio.panel_UsuarioRecomendado1.Visible = false;
@@ -424,10 +433,10 @@ namespace Controlador
          */
         private void cerrarSesionToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            sistema.Estado_usuarioLogged = null;            
-            var overlayUbicacion = formInicio.mapa.Overlays.First();
-            formInicio.mapa.Overlays.Clear();
-            formInicio.mapa.Overlays.Add(overlayUbicacion);
+            sistema.Estado_usuarioLogged = null;
+
+           
+            formInicio.actualizarCapaMarcador();
             sistema.guardarDB();
 
             //Acomodar paneles de nuevo
@@ -572,15 +581,9 @@ namespace Controlador
 
         private void Form1_FormClosing(Object sender, FormClosingEventArgs e)
         {
-            var overlayUbicacion = formInicio.mapa.Overlays.First();
-            formInicio.mapa.Overlays.Clear();
-            formInicio.mapa.Overlays.Add(overlayUbicacion);
+            formInicio.actualizarCapaMarcador();
             System.Text.StringBuilder messageBoxCS = new System.Text.StringBuilder();
-           // messageBoxCS.AppendFormat("{0} = {1}", "CloseReason", e.CloseReason);
-           // messageBoxCS.AppendLine();
-            //messageBoxCS.AppendFormat("{0} = {1}", "Cancel", e.Cancel);
-            //messageBoxCS.AppendLine();
-            //MessageBox.Show(messageBoxCS.ToString(), "FormClosing Event");
+           
             sistema.guardarDB();
 
         }

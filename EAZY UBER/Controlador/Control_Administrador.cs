@@ -65,11 +65,22 @@ namespace Controlador
             }
 
             llenarTablaUsuarios();
-
+            rankingDineroAcumuladoUsuarios();
             admon.Show();
 
         }
 
+        private void rankingDineroAcumuladoUsuarios() {
+            admon.lbxDinero.Items.Clear();
+            admon.lbxNombre.Items.Clear();
+
+            List<Tuple<String, Double>> ranking = sistemaAdmon.usuariosQueMasGeneranDinero();
+            foreach (var u in ranking) {
+                admon.lbxDinero.Items.Add(u.Item2);
+                admon.lbxNombre.Items.Add(u.Item1);
+            }
+            
+        }
 
         private void llenarTablaUsuarios() {
             admon.chartRegUser.Series.Clear();

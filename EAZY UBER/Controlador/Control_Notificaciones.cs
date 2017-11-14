@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using EAZY_UBER;
 using mundo;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace Controlador
 {
@@ -40,7 +41,7 @@ namespace Controlador
 
             for (int i = 0; i < logueado.Notificaciones.Count; i++)
             {
-                notificaciones.listBoxNotificaciones.Items.Add(logueado.Notificaciones.ElementAt(i).Solicitante.Celular + "");
+                notificaciones.listBoxNotificaciones.Items.Add(logueado.Notificaciones.ElementAt(i).Solicitante.Nombre + " " + logueado.Notificaciones.ElementAt(i).Solicitante.Apellido);
             }
             
     }
@@ -52,7 +53,11 @@ namespace Controlador
             //Acá se pone que pasa al cambiar de indice la lista
             String item = notificaciones.listBoxNotificaciones.SelectedItem.ToString();//Así se recupera el nombre de lo que esté en lista, en este caso usuarios
             int indice = notificaciones.listBoxNotificaciones.SelectedIndex;//Así se recupera el indice para operar con la lsita de notificaciones (solicitante)
-            notificaciones.lblMensaje.Text = sistema.Estado_usuarioLogged.darNotificacion(indice).ToString();
+            Notificacion not = sistema.Estado_usuarioLogged.darNotificacion(indice);
+            notificaciones.lblMensaje.Text = not.ToString();
+            notificaciones.btnAceptar.Enabled = true;
+            if (not.Aceptado)
+                notificaciones.btnAceptar.Enabled = false;
 
         }
 
@@ -76,18 +81,18 @@ namespace Controlador
         private void evento_clickBotonAceptar(object sender, EventArgs e)
         {
             Recorrido temporalReco = sistema.Estado_usuarioLogged.darNotificacion(notificaciones.listBoxNotificaciones.SelectedIndex).Recorrido;
-            if (temporalReco.Cupo > 0)
+            if (temporalReco != null && temporalReco.Cupo > 0)
             {
                 //envio la notificacion al usuario que pidio el cupo diciendo que he aceptado
-                sistema.darUsuario(notificaciones.listBoxNotificaciones.SelectedItem.ToString()).notificarUsuario(Notificacion.TIPO_ACEPTAR_SOLICITUD, sistema.Estado_usuarioLogged, sistema.Estado_usuarioLogged.darNotificacion(notificaciones.listBoxNotificaciones.SelectedIndex).Recorrido);
+                temporalReco.Usuario.notificarUsuario(Notificacion.TIPO_ACEPTAR_SOLICITUD, sistema.Estado_usuarioLogged, temporalReco);
                 //disminuyo la cantidad de cupos disponibles
-                sistema.Estado_usuarioLogged.darNotificacion(notificaciones.listBoxNotificaciones.SelectedIndex).Recorrido.Cupo--;
-                //incrementa el dinero generado en este recorrido
-                sistema.Estado_usuarioLogged.darNotificacion(notificaciones.listBoxNotificaciones.SelectedIndex).Recorrido.DineroGenerado= sistema.Estado_usuarioLogged.darNotificacion(notificaciones.listBoxNotificaciones.SelectedIndex).Recorrido.DineroGenerado+ sistema.Estado_usuarioLogged.darNotificacion(notificaciones.listBoxNotificaciones.SelectedIndex).Recorrido.Tarifa;
-
+                temporalReco.Cupo--;
+                //incrementa el dinero generado en este recorrido     
+                temporalReco.DineroGenerado= temporalReco.DineroGenerado+ temporalReco.Tarifa;
                 //mensaje al usuario
-                MessageBox.Show("Notificacion aceptada");
-
+                sistema.Estado_usuarioLogged.darNotificacion(notificaciones.listBoxNotificaciones.SelectedIndex).Aceptado = true;
+                MessageBox.Show("Notificacion aceptada exitosamente");
+                evento_cambiarIndiceDeLaLista(this, null);
                 //si decidimos implementar las calificaciones, aqui iria la agregada a los usuarios aceptados
             }
             else

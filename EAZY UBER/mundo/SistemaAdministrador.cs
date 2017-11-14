@@ -23,24 +23,22 @@ namespace mundo
         }
 
 
-        public Dictionary<String, string> usuariosQueMasGeneranDinero(int cantidadUsuarios)
+        public List<Tuple<String, Double>> usuariosQueMasGeneranDinero()
         {
-            Dictionary<String, string> usuarios = new Dictionary<string, string>();
-            for (int i=0; i< sistemaRecomendaciones.Usuarios.Count;i++)
-            {
-                Usuario actual = sistemaRecomendaciones.Usuarios.ElementAt(i);
-                //usuarios.Add(actual.Celular, actual.dineroGeneradoPorRecorridos.ToString()+"");
-            }
+            int maxU = 5;
+            if (sistemaRecomendaciones.Usuarios.Count < 5) { maxU = sistemaRecomendaciones.Usuarios.Count; }
+            var usuarios =  sistemaRecomendaciones.Usuarios.Select(u => new { nombre = u.Nombre + " " + u.Apellido, dinero = u.dineroGeneradoPorRecorridos() }).
+                OrderByDescending(u => u.dinero).Take(maxU).Select(g => new Tuple<String, double>(g.nombre, g.dinero)).ToList();
 
             return usuarios;
-
-
         }
 
         public List<Tuple<int,int>> reporteRegistroUsuarios() {
-
             List<Tuple<int, int>>  resp = sistemaRecomendaciones.Usuarios.Select(u => new { fecha = u.FechaRegistro.Month })
-                .GroupBy(g=>g.fecha  ).OrderBy(g=>g.Key).Select(g => new Tuple<int, int>(g.Key, g.Count())).ToList();
+                .GroupBy(g=>g.fecha  ).OrderBy(g=>g.Key).Select(g => new Tuple<int, int>(g.Key, g.Count())).Reverse().ToList();
+            int maxG = 5;
+            if (resp.Count< 5) { maxG = resp.Count; }
+            resp=resp.Take(5).Reverse().ToList();
             return resp;
                       
         }

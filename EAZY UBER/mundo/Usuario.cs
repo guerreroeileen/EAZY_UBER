@@ -110,12 +110,12 @@ namespace mundo
             if (cupos<=0 && cupos>=5) { campos[3] = true; fail = true; }
             if (tarifa <0) { campos[4] = true; fail = true; }
             if (fail)
-            {                
+            {                 
                 AgregarRecorridoExcepcion excep = new AgregarRecorridoExcepcion(campos);
                 throw excep;
             }
             else {
-                recorridos.Add(new Recorrido(tarifa, cupos, fecha, vehiculo, ruta));
+                recorridos.Add(new Recorrido(tarifa, cupos, fecha, vehiculo, ruta,this));
             }
             return !fail;
         }
@@ -188,7 +188,7 @@ namespace mundo
             }
             else
             {
-                throw new AgregarVehiculoExcepcion("El vehiculo que esta intentando eliminar no existe"); //por que esa exception?
+                throw new AgregarVehiculoExcepcion("El vehiculo que esta intentando eliminar no existe"); 
             }
             
             return eliminado;

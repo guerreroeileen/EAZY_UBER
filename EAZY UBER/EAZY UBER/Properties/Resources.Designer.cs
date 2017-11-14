@@ -73,6 +73,16 @@ namespace EAZY_UBER.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap GoldBar_Banner {
+            get {
+                object obj = ResourceManager.GetObject("GoldBar_Banner", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icono_agregar1 {
             get {
                 object obj = ResourceManager.GetObject("icono_agregar1", resourceCulture);
