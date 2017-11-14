@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 using EAZY_UBER;
 using mundo;
 using System.Windows.Forms;
-
+using System.Diagnostics;
 namespace Controlador
 {
     class Control_Notificaciones
     {
         private Notificaciones notificaciones;
 
-        private Inicio vPrin;
+      
         private SistemaRecomendaciones sistema;
         
 
@@ -78,8 +78,10 @@ namespace Controlador
             Recorrido temporalReco = sistema.Estado_usuarioLogged.darNotificacion(notificaciones.listBoxNotificaciones.SelectedIndex).Recorrido;
             if (temporalReco != null && temporalReco.Cupo > 0)
             {
+                
                 //envio la notificacion al usuario que pidio el cupo diciendo que he aceptado
-                sistema.darUsuario(notificaciones.listBoxNotificaciones.SelectedItem.ToString()).notificarUsuario(Notificacion.TIPO_ACEPTAR_SOLICITUD, sistema.Estado_usuarioLogged, sistema.Estado_usuarioLogged.darNotificacion(notificaciones.listBoxNotificaciones.SelectedIndex).Recorrido);
+                temporalReco.Usuario.notificarUsuario(Notificacion.TIPO_ACEPTAR_SOLICITUD, sistema.Estado_usuarioLogged, sistema.Estado_usuarioLogged.darNotificacion(notificaciones.listBoxNotificaciones.SelectedIndex).Recorrido);
+                Debug.WriteLine(temporalReco.Usuario.Nombre);
                 //disminuyo la cantidad de cupos disponibles
                 sistema.Estado_usuarioLogged.darNotificacion(notificaciones.listBoxNotificaciones.SelectedIndex).Recorrido.Cupo--;
                 //incrementa el dinero generado en este recorrido

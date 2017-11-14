@@ -91,6 +91,7 @@ namespace Controlador
                     
                     
                 }
+                setrecorrido(sistema.Estado_recorrido);
                 pUsuarioRecom.lbxUsuarios.SelectedIndex = -1;
                 pUsuarioRecom.lbxUsuarios.Text = "";
                 pUsuarioRecom.clear();

@@ -115,7 +115,7 @@ namespace mundo
                 throw excep;
             }
             else {
-                recorridos.Add(new Recorrido(tarifa, cupos, fecha, vehiculo, ruta));
+                recorridos.Add(new Recorrido(tarifa, cupos, fecha, vehiculo, ruta,this));
             }
             return !fail;
         }

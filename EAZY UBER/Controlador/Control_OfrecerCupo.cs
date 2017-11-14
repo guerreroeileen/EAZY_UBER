@@ -31,7 +31,8 @@ namespace Controlador
          * Evento para el boton confirmar registro de recorrido cuando un usuario recomienda un recorrido
          */
         private void evento_RegistroRecorrido(object sender, EventArgs e) {
-               
+
+           // cUsuarioReco.setrecorrido(sistema.Estado_recorrido);
             sistema.recomendarUsuarios( sistema.Estado_usuarioLogged.Recorridos[vPrinc.panel_OfrecerCupo1.comboBox1.SelectedIndex]);
             mostrarPUsuariosRecomendados();
         }

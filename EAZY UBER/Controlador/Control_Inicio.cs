@@ -403,7 +403,7 @@ namespace Controlador
             {
                 formInicio.panel_OfrecerCupo1.pintarrecorridos(sistema.Estado_usuarioLogged);
                 formInicio.panel_OfrecerCupo1.Visible = true;
-                controlUsuarioRecom.setrecorrido(sistema.Estado_recorrido);
+                
                 formInicio.panel_BuscarRuta1.Visible = false;
                 formInicio.panel_RecorridoRecomendado1.Visible = false;
                 formInicio.panel_UsuarioRecomendado1.Visible = false;
