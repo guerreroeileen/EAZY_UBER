@@ -20,6 +20,8 @@ namespace mundo
         public const string TIPO_OFRECER_CUPO = "ofrecerCupo";
         public const string TIPO_RECHAZAR_SOLICITUD = "RechazarSOli";
         public const string TIPO_ACEPTAR_SOLICITUD = "AceptarSoli";
+        //variable de estado de la notid
+        private bool aceptado;
         /*Constructor
          * tipo: tipo de notificación que se va a enviar
          * solicitante: usuario que envia la notificación
@@ -30,6 +32,10 @@ namespace mundo
             this.tipo = tipo;
             this.solicitante = solicitante;
             this.recorrido = recorrido;
+            this.aceptado = false;
+            if (tipo.Equals(TIPO_ACEPTAR_SOLICITUD))
+                aceptado = true;
+            
         }
 
 
@@ -61,5 +67,6 @@ namespace mundo
         public string Tipo { get => tipo; set => tipo = value; }
         public Usuario Solicitante { get => solicitante; set => solicitante = value; }
         public Recorrido Recorrido { get => recorrido; set => recorrido = value; }
+        public bool Aceptado { get => aceptado; set => aceptado = value; }
     }
 }

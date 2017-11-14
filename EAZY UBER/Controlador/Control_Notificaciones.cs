@@ -53,7 +53,11 @@ namespace Controlador
             //Acá se pone que pasa al cambiar de indice la lista
             String item = notificaciones.listBoxNotificaciones.SelectedItem.ToString();//Así se recupera el nombre de lo que esté en lista, en este caso usuarios
             int indice = notificaciones.listBoxNotificaciones.SelectedIndex;//Así se recupera el indice para operar con la lsita de notificaciones (solicitante)
-            notificaciones.lblMensaje.Text = sistema.Estado_usuarioLogged.darNotificacion(indice).ToString();
+            Notificacion not = sistema.Estado_usuarioLogged.darNotificacion(indice);
+            notificaciones.lblMensaje.Text = not.ToString();
+            notificaciones.btnAceptar.Enabled = true;
+            if (not.Aceptado)
+                notificaciones.btnAceptar.Enabled = false;
 
         }
 
@@ -84,11 +88,11 @@ namespace Controlador
                 //disminuyo la cantidad de cupos disponibles
                 temporalReco.Cupo--;
                 //incrementa el dinero generado en este recorrido     
-               temporalReco.DineroGenerado= temporalReco.DineroGenerado+ temporalReco.Tarifa;
-                
+                temporalReco.DineroGenerado= temporalReco.DineroGenerado+ temporalReco.Tarifa;
                 //mensaje al usuario
+                sistema.Estado_usuarioLogged.darNotificacion(notificaciones.listBoxNotificaciones.SelectedIndex).Aceptado = true;
                 MessageBox.Show("Notificacion aceptada exitosamente");
-
+                evento_cambiarIndiceDeLaLista(this, null);
                 //si decidimos implementar las calificaciones, aqui iria la agregada a los usuarios aceptados
             }
             else
