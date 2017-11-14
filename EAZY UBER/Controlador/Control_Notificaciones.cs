@@ -80,15 +80,14 @@ namespace Controlador
             if (temporalReco != null && temporalReco.Cupo > 0)
             {
                 //envio la notificacion al usuario que pidio el cupo diciendo que he aceptado
-                sistema.darUsuario(notificaciones.listBoxNotificaciones.SelectedItem.ToString()).notificarUsuario(Notificacion.TIPO_ACEPTAR_SOLICITUD, sistema.Estado_usuarioLogged, sistema.Estado_usuarioLogged.darNotificacion(notificaciones.listBoxNotificaciones.SelectedIndex).Recorrido);
+                temporalReco.Usuario.notificarUsuario(Notificacion.TIPO_ACEPTAR_SOLICITUD, sistema.Estado_usuarioLogged, temporalReco);
                 //disminuyo la cantidad de cupos disponibles
-                sistema.Estado_usuarioLogged.darNotificacion(notificaciones.listBoxNotificaciones.SelectedIndex).Recorrido.Cupo--;
-                //incrementa el dinero generado en este recorrido
-                
-                sistema.Estado_usuarioLogged.darNotificacion(notificaciones.listBoxNotificaciones.SelectedIndex).Recorrido.DineroGenerado= sistema.Estado_usuarioLogged.darNotificacion(notificaciones.listBoxNotificaciones.SelectedIndex).Recorrido.DineroGenerado+ sistema.Estado_usuarioLogged.darNotificacion(notificaciones.listBoxNotificaciones.SelectedIndex).Recorrido.Tarifa;
+                temporalReco.Cupo--;
+                //incrementa el dinero generado en este recorrido     
+               temporalReco.DineroGenerado= temporalReco.DineroGenerado+ temporalReco.Tarifa;
                 
                 //mensaje al usuario
-                MessageBox.Show("Notificacion aceptada");
+                MessageBox.Show("Notificacion aceptada exitosamente");
 
                 //si decidimos implementar las calificaciones, aqui iria la agregada a los usuarios aceptados
             }
